@@ -60,7 +60,7 @@ Init_Wp(){
 # 插入数据库一些内容
 Insert_Db(){
     # 获取SQL文件
-    wget -O init-wp.sql https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/shells/init-wp.sql.des3 &&
+    wget -O init-wp.sql https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/sql/init-wp.sql.des3 &&
     # 进行解密
     dd if=init-wp.sql.des3 |openssl des3 -d -k ${DBPASS} | tar zxf - &&
     # 进入数据库，运行sql语句
