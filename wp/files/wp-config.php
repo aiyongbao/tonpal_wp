@@ -29,7 +29,7 @@ define( 'DB_USER', '$DBUSER' );
 define( 'DB_PASSWORD', '$DBPASS' );
 
 /** MySQL主机 */
-define( 'DB_HOST', 'mysql' );
+define( 'DB_HOST', 'localhost' );
 
 /** 创建数据表时默认的文字编码 */
 define( 'DB_CHARSET', 'utf8mb4' );
@@ -83,13 +83,20 @@ $table_prefix = 'wp_';
 define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
 
 // 开启WP_DEBUG模式
-define( 'WP_DEBUG', true );
+define( 'WP_DEBUG', false );
+
+$domain = ['www.$DOMAIN', '$DOMAIN', 'm.$DOMAIN', '$TEMPDOMAIN']; 
+if(in_array($_SERVER['HTTP_HOST'], $domain)){
+    define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+    define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
+}
+define( 'WP_CONTENT_URL', '/wp-content');
  
 // 开启DEBUG日志，一定要记得关闭这个日志功能并清理这个日志文件哦，产生的日志文件在: /wp-content/debug.log
-define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_LOG', false );
  
 // 显示errors and warnings
-define( 'WP_DEBUG_DISPLAY', true );
+define( 'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 'On' );
 
 /* 好了！请不要再继续编辑。请保存本文件。使用愉快！ */
