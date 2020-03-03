@@ -9,6 +9,21 @@ do
             DOMAIN=$2
             shift
             ;;
+        # wp 数据库名称
+        -dbname)
+            DBNAME=$2 
+            shift  
+            ;;
+        # wp 数据库用户名
+        -dbuser)
+            DBUSER=$2 
+            shift  
+            ;;
+        # wp 数据库密码
+        -dbpass)
+            DBPASS=$2
+            shift
+            ;;
     esac  
     shift  
 done
@@ -18,17 +33,38 @@ if [ "${DOMAIN}" = "" ]; then
     echo '-domain is necessary'
     exit 1
 fi
+if [ "${DBNAME}" = "" ]; then
+    echo '-dbname is necessary'
+    exit 1
+fi
+if [ "${DBUSER}" = "" ]; then
+    echo '-dbuser is necessary'
+    exit 1
+fi
+if [ "${DBPASS}" = "" ]; then
+    echo '-dbpass is necessary'
+    exit 1
+fi
 
 # 初始化 wordpress 信息
 Init_Wp(){
-    # 替换文本中的 php 内容（将域名信息进行替换）
-    sed -i 's/$key/'${DOMAIN}'/g'  /www/wwwroot/${DOMAIN}/wp-config.php
-    php /www/wwwroot/${DOMAIN}/custom-install.php
+    # 下载wp目录文件
+    wget -O wp.zip https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/wp/zips/wp.zip &&
+    unzip wp.zip &&
+    # 替换文本中的 php 内容（将数据库信息进行替换）
+    sed -i 's/$DBNAME/'${DBNAME}'/g' /www/wwwroot/${DOMAIN}/wp-config.php &&
+    sed -i 's/$DBUSER/'${DBUSER}'/g' /www/wwwroot/${DOMAIN}/wp-config.php &&
+    sed -i 's/$DBPASS/'${DBPASS}'/g' /www/wwwroot/${DOMAIN}/wp-config.php &&
 }
 
 # 插入数据库一些内容
 Insert_Db(){
-
+    # 获取SQL文件
+    wget -O init-wp.sql https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/shells/init-wp.sql.des3 &&
+    # 进行解密
+    dd if=init-wp.sql.des3 |openssl des3 -d -k ${DBPASS} | tar zxf - &&
+    # 进入数据库，运行sql语句
+    mysql -u ${DBUSER} -p ${DBPASS} -D ${DBNAME} < init-wp.sql
 }
 
 # 安装主方法
@@ -47,11 +83,6 @@ echo "
 # 进入域名文件夹
 cd /www/wwwroot/${DOMAIN} &&
 yum install -y wget &&
-# 下载文件压缩包
-wget -O wp.zip https://www.github.com/wp.zip &&
-# 压缩包解压
-unzip wp.zip &&
-
 # 进行安装
 Install_Main
 
