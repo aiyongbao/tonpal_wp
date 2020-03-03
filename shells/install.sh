@@ -609,7 +609,7 @@ Upload_Data(){
     count=0
     limit=5
     sign=`echo -n ${ORGANIZATIONID}|md5sum|cut -d ' ' -f1`
-    APIURL="${WEBHOOK}?btUser=${username}&btPass=${password}&ip=${getIpAddress}&btUrl=http://${getIpAddress}:10086$auth_path&organization_id=${ORGANIZATIONID}&btKey=${TOKEN}&sign=${sign}"
+    APIURL="${WEBHOOK}?btUser=${username}&btPass=${password}&ip=${getIpAddress}&btUrl=http://${getIpAddress}:10086$auth_path&organization_id=${ORGANIZATIONID}&btKey=${TOKEN_ENCRYPT}&sign=${sign}"
     while [ "${result}" != "success" ] && [ $count -lt $limit ]
     do 
         result=$(curl -s "${APIURL}")
