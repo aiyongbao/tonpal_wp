@@ -607,19 +607,19 @@ Set_Token(){
 Upload_Data(){
     result=""
     count=0
-    limit=10
+    limit=5
     sign=`echo -n ${ORGANIZATIONID}|md5sum|cut -d ' ' -f1`
-    APIURL="${WEBHOOK}?username=${username}&password=${password}&ip=${getIpAddress}&url=http://${getIpAddress}:10086$auth_path&organization_id=${ORGANIZATIONID}&token=${TOKEN}&sign=${sign}"
-    # while [ "${result}" != "success" ] && [ $count -lt $limit ]
-    # do 
-    #     result=$(curl -s "${APIURL}")
-    #     if [ "${result}" != "success" ]; then
-    #         waitTime=$[2**${count}]
-    #         sleep ${waitTime}
-    #         echo "数据上传失败, 等待 ${waitTime} 秒后重新上传..."
-    #     fi
-    #     count=$( expr $count + 1 )
-    # done
+    APIURL="${WEBHOOK}?btUser=${username}&btPass=${password}&ip=${getIpAddress}&btUrl=http://${getIpAddress}:10086$auth_path&organization_id=${ORGANIZATIONID}&btKey=${TOKEN_ENCRYPT}&sign=${sign}"
+    while [ "${result}" != "success" ] && [ $count -lt $limit ]
+    do 
+        result=$(curl -s "${APIURL}")
+        if [ "${result}" != "success" ]; then
+            waitTime=$[2**${count}]
+            sleep ${waitTime}
+            echo "数据上传失败, 等待 ${waitTime} 秒后重新上传..."
+        fi
+        count=$( expr $count + 1 )
+    done
     echo "数据上传成功, 上传地址为 ${APIURL}"
 }
 
