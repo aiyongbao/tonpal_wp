@@ -1,9 +1,10 @@
 <?php
 
-use PhpMyAdmin\Theme;
+use app\admin\controller\IndexController;
 use app\admin\controller\SlideController;
 use app\admin\controller\ThemeController;
 use app\admin\controller\NavMenuController;
+use app\admin\controller\SettingController;
 use app\admin\controller\SlideItemController;
 use app\admin\controller\ThemeFileController;
 
@@ -20,12 +21,21 @@ class routes {
     function register_plugins_routes()
     {
 
+         //测试路由
+         register_rest_route( $this->namespace , '/test', array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $theme = new IndexController();
+                return middleware::run('api')->init($theme->index(),$request);
+            },
+        ) );
+
         //查看主题列表
         register_rest_route( $this->namespace , '/themes', array(
             'methods'  => WP_REST_Server::READABLE,
-            'callback' => function(){
+            'callback' => function($request){
                 $theme = new ThemeController();
-                return $theme->index();
+                return middleware::run()->init($theme->index(),$request);
             },
         ) );
 
@@ -34,7 +44,7 @@ class routes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $theme = new ThemeController();
-                return $theme->set_theme($request);
+                return middleware::run('api')->init( $theme->set_theme($request),$request);
             },
         ) );
 
@@ -115,7 +125,7 @@ class routes {
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->get_nav_items($request);
+                return $navMenu->get_nav_item($request);
             },
             'args' => function(){
                 $args = array();
@@ -123,11 +133,35 @@ class routes {
         ) );
         
         //增加父导航子项
-        register_rest_route( $this->namespace , '/nav_menu_items/(?P<id>[\d]+)', array(
+        register_rest_route( $this->namespace , '/nav_menu_item/(?P<id>[\d]+)', array(
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->add_nav_items($request);
+                return $navMenu->add_nav_item($request);
+            },
+            'args' => function(){
+                $args = array();
+            }
+        ) );
+
+        //根据id更新导航栏子项
+        register_rest_route( $this->namespace , '/update_nav_menu_item/(?P<id>[\d]+)', array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $navMenu = new NavMenuController();
+                return $navMenu->update_nav_menu_item($request);
+            },
+            'args' => function(){
+                $args = array();
+            }
+        ) );
+
+        //根据id删除导航栏子项
+        register_rest_route( $this->namespace , '/nav_menu_item/(?P<id>[\d]+)', array(
+            'methods'  => WP_REST_Server::DELETABLE,
+            'callback' => function($request){
+                $navMenu = new NavMenuController();
+                return $navMenu->delete_nav_menu_item($request);
             },
             'args' => function(){
                 $args = array();
@@ -152,14 +186,60 @@ class routes {
             }
         ) );
 
-        //获取当前主题的json配置文件列表
+        //同步当前主题的json配置文件列表
         register_rest_route($this->namespace , '/theme_file_list',array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return middleware::run('api')->init( $themeFile->index(), $request);
+            }
+        ));
+
+        //获取当前主题的json配置文件列表
+        register_rest_route($this->namespace , '/get_theme_file_list',array(
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $themeFile = new ThemeFileController();
-                return $themeFile->index();
+                return middleware::run('api')->init( $themeFile->fileList(), $request);
             }
         ));
+
+        //根据id获取主题的json单个配置文件列表
+        register_rest_route($this->namespace , '/theme_file_item/(?P<id>[\d]+)',array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return $themeFile->fileItem($request);
+            }
+        ));
+
+        //更新主题的json配置文件列表
+        register_rest_route($this->namespace , '/update_theme_file_item/(?P<id>[\d]+)',array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return $themeFile->updateFileItem($request);
+            }
+        ));
+
+        //获取站点的基本配置文件
+        register_rest_route($this->namespace , '/settings',array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return $settings->index();
+            }
+        ));
+
+        //获取站点的设置文件
+        register_rest_route($this->namespace , '/store',array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return $settings->store($request);
+            }
+        ));
+
     }
 }
 

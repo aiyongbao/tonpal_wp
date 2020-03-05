@@ -2,8 +2,6 @@
 
 use app\home\controller\CourseController;
 
-
-
 /*
 Plugin Name: system-settings Plugin
 Plugin URI:  https://developer.wordpress.org/plugins/the-basics/
@@ -25,7 +23,6 @@ error_reporting(1);
 require plugin_dir_path(__FILE__) . 'library/autoload/autoload.php';
 
 add_action('get_course','get_course');
-
 function get_course(){
     $caurse = new CourseController();
     return $caurse->Index();

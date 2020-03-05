@@ -1,9 +1,9 @@
 <?php
 namespace app\admin\controller;
-use library\controller\BaseController;
+use library\controller\RestController;
 use library\Db;
 
-class SlideItemController extends BaseController{
+class SlideItemController extends RestController{
 
     public function add_item($request = '')
     {

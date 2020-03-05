@@ -1,8 +1,8 @@
 <?php
 namespace app\admin\controller;
-use library\controller\BaseController;
+use library\controller\RestController;
 
-class ThemeController extends BaseController{
+class ThemeController extends RestController{
 
     public function __construct()
     {

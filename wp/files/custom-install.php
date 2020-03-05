@@ -21,5 +21,4 @@ $public = 1;
 $admin_password = '$domain'; // in plain text
 $loaded_language = '';
 $result = wp_install($weblog_title, $user_name, $admin_email, $public, '', wp_slash( $admin_password ), $loaded_language);
-print_r($result);
 ?>
