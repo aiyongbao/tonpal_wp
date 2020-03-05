@@ -1,15 +1,15 @@
 {
     "name": "首页配置文件",
-    "action": "home",
+    "action": "portal/home",
     "description": "首页模板文件",
     "order": 6.0,
     "more": {
         "vars": {
-            "varName1": {
-                "title": "测试 text",
+            "company_name": {
+                "title": "公司名称",
                 "value": "1",
                 "type": "text",
-                "tip": "这是一个text",
+                "tip": "这是公司名称",
                 "rule": {
                     "require": true
                 }

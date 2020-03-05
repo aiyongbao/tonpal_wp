@@ -1,8 +1,8 @@
 <?php
 namespace app\admin\controller;
-use library\controller\BaseController;
+use library\controller\RestController;
 
-class NavMenuController extends BaseController{
+class NavMenuController extends RestController{
 
     public function __construct()
     {
@@ -51,8 +51,8 @@ class NavMenuController extends BaseController{
         }
     }
 
-    //根据父类导航id获取单个navitem
-    public function get_nav_items($request)
+    //根据父类导航id获取单个nav_item
+    public function get_nav_item($request)
     {
         $id = $request['id'];
         $data = wp_get_nav_menu_items($id);
@@ -66,30 +66,86 @@ class NavMenuController extends BaseController{
     }
 
     //根据父类导航id新增navitem
-    public function add_nav_items($request)
+    public function add_nav_item($request)
     {
+    
+        $id = $request['id'];
+        $data = [];
+
+        // $data = [
+        //     'menu-item-object'      => 'page',
+        //     'menu-item-type'        => 'post_type',
+        //     'menu-item-title'       => '示例页面',
+        //     'menu-item-object-id'   => $id,
+        //     'menu-item-object'      => 'page',
+        //     'menu-item-status'      => 'publish'
+        // ];
         
-        $type = $this->request->get('type');
+        isset($request['menu-item-type']) && $data['menu-item-type'] = $request['menu-item-type'] ;
+        isset($request['menu-item-title']) && $data['menu-item-title'] = $request['menu-item-title'];
+        isset($request['menu-item-object-id']) && $data['menu-item-object-id'] = $id;
+        isset($request['menu-item-object']) && $data['menu-item-object'] = $request['menu-item-object'];
+        isset($request['menu-item-type']) && $data['menu-item-type'] = $request['menu-item-type'];
+        isset($request['menu-item-status']) && $data['menu-item-status'] = $request['menu-item-status'];
+        
+        
+        $result = wp_update_nav_menu_item($id,0,$data);
+        if(!$result->errors)
+        {
+            return $this->success('新增成功',['menu_id' => $result]);
+        }
+        else{
+            return $this->success('添加失败！',$result);
+        }
+        
+    }
+
+    //根据id更新导航栏详情
+    public function update_nav_menu_item($request)
+    {
+        $id = $request['id'];
 
         $data = [];
-        
-        switch($type)
-        {
-            case 'page':
-                break;
-                
-        }
 
-        $data = [
-            'menu-item-object'      => 'page',
-            'menu-item-type'        => 'post_type',
-            'menu-item-title'       => '示例页面',
-            'menu-item-object-id'   => 2,
-            'menu-item-object'      => 'page',
-            'menu-item-status'      => 'publish'
-        ];
+        // $data = [
+        //     'menu-item-object'      => 'page',
+        //     'menu-item-type'        => 'post_type',
+        //     'menu-item-title'       => '示例页面',
+        //     'menu-item-object-id'   => $id,
+        //     'menu-item-object'      => 'page',
+        //     'menu-item-status'      => 'publish'
+        // ];
         
-        wp_update_nav_menu_item(2,0,$data);
+        isset($request['menu-item-type']) && $data['menu-item-type'] = $request['menu-item-type'] ;
+        isset($request['menu-item-title']) && $data['menu-item-title'] = $request['menu-item-title'];
+        isset($request['menu-item-object-id']) && $data['menu-item-object-id'] = $id;
+        isset($request['menu-item-object']) && $data['menu-item-object'] = $request['menu-item-object'];
+        isset($request['menu-item-type']) && $data['menu-item-type'] = $request['menu-item-type'];
+        isset($request['menu-item-status']) && $data['menu-item-status'] = $request['menu-item-status'];
+
+        $result  = wp_update_nav_menu_item($meun_id = 0,$id,$data);
+        if(!$result->errors)
+        {
+            return $this->success('更新成功！',$result );
+        }
+        else{
+            return $this->success('更新失败！',$result);
+        }
+    }
+
+    //根据id删除导航栏详情
+    public function delete_nav_menu_item($request)
+    {
+        $id = $request['id'];
+
+        $result  = wp_delete_post( $id );
+        if(!$result->errors)
+        {
+            return $this->success('删除成功！',$result );
+        }
+        else{
+            return $this->success('删除失败！',$result);
+        }
     }
 
 }
