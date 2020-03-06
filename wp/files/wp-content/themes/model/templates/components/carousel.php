@@ -11,69 +11,43 @@
 
 ?>
 
-<?php
+<?php 
 
-    if(function_exists('get_course'))
-    {
-        $course = get_course();
-    }
-    else{
-        echo 'plugins it not active';
-        $course = [];
+$theme_vars = get_query_var('theme_vars');
+
+$carousel_vars = $theme_vars['carousel'];
+
+if($carousel_vars['display'] == 1)
+{
+
+?>
+
+<section class="hero-section overlay bg-cover" data-background="<?php echo get_template_directory_uri()?>/assets/images/banner/banner-1.jpg">
+  <div class="container">
+    <div class="hero-slider">
+    <?php
+    foreach($carousel_vars['vars']['items']['value'] as $key => $item){
+    ?>
+      <!-- slider item -->
+      <div class="hero-slider-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1"><?php echo isset($item['title']) ? $item['title'] : '' ?></h1>
+            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4"><?php echo isset($item['desc']) ? $item['desc'] : '' ?></p>
+            <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7"><?php echo isset($item['btn']) ? $item['btn'] : '' ?></a>
+          </div>
+        </div>
+      </div>
+
+      <?php
     }
   ?>
 
-<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        
-        <?php
-            if(!empty($course))
-            {
-                $item = '';
-                foreach($course as $key => $value)
-                {
+    </div>
+  </div>
+</section>
 
-                    $active = $key == 0 ? 'class="active"' : 'class=""' ;
+<?php
 
-                    $item .= <<<EOT
-                        <li data-target="#carouselExampleCaptions" data-slide-to="{$key}" $active></li>
-EOT;
-                }
-                echo $item;
-            }
-        ?>
-
-    </ol>
-        <div class="carousel-inner">
-            
-            <?php
-                if(!empty($course))
-                    {
-                        $item = '';
-                        foreach($course as $key => $value)
-                        {
-                            $active = $key == 0 ? 'active' : '' ;
-                            $item .= <<<EOT
-                            <div class="carousel-item {$active}">
-                                <img src="{$value['image']}" class="d-block w-100" alt="{$value['title']}">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>{$value['title']}</h5>
-                                    <p>{$value['description']}</p>
-                                </div>
-                            </div>
-EOT;
-                        }
-                        echo $item;
-                    }
-                ?>
-            
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-</div>
+  }
+?>

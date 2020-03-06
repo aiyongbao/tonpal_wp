@@ -1,65 +1,56 @@
-<?php
+<!doctype html>
+<title>Educenter</title>
+<head>
+  <meta charset="utf-8">
+  <?php get_header()?>
+</head>
 
-/**
- * The Home template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage test
- * @since 1.0.0
- */
+<body>
+    <!-- preloader start -->
+    <div class="preloader">
+        <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
+    </div>
+    <!-- preloader end -->
 
-get_header();
-?>
-
-<!-- hero slider -->
-
-<?php 
-
-$theme_vars = json_config_array(__FILE__,'widgets');
-
-$carousel_vars = $theme_vars['carousel'];
-
-if($carousel_vars['display'] == 1)
-{
-
-?>
-
-<section class="hero-section overlay bg-cover" data-background="<?php echo get_template_directory_uri()?>/assets/images/banner/banner-1.jpg">
-  <div class="container">
-    <div class="hero-slider">
-    <?php
-    foreach($carousel_vars['vars']['items']['value'] as $key => $item){
-    ?>
-      <!-- slider item -->
-      <div class="hero-slider-item">
-        <div class="row">
-          <div class="col-md-8">
-            <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1"><?php echo isset($item['title']) ? $item['title'] : '' ?></h1>
-            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4"><?php echo isset($item['desc']) ? $item['desc'] : '' ?></p>
-            <a href="contact.html" class="btn btn-primary" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7"><?php echo isset($item['btn']) ? $item['btn'] : '' ?></a>
-          </div>
+    <!-- header -->
+    <header class="fixed-top header">
+        <!-- top header -->
+        <div class="top-header py-2 bg-white">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-4 text-center text-lg-left">
+                        <a class="text-color mr-3" href="callto:+443003030266"><strong>CALL</strong> +44 300 303 0266</a>
+                        <ul class="list-inline d-inline">
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-linkedin"></i></a></li>
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-8 text-center text-lg-right">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li>    
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    
+        <?php get_template_part( 'templates/components/nav' ); ?>
 
-      <?php
-    }
+    </header>
+    <!-- /header -->
+
+
+<!-- hero slider -->  
+<?php  
+$theme_vars = json_config_array(__FILE__,'widgets');
+set_query_var('theme_vars', $theme_vars);
+ get_template_part( 'templates/components/carousel' );
   ?>
 
-    </div>
-  </div>
-</section>
-
-<?php
-
-  }
-?>
 <!-- /hero slider -->
 
 <!-- banner-feature -->
