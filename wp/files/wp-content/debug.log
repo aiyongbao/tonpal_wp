@@ -1519,3 +1519,22 @@ Stack trace:
 #3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/updat...')
 #4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
 #5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->a in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 118
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  Invalid argument supplied for foreach() in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php on line 876
+[06-Mar-2020 02:51:46 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/NavMenuController.php on line 121
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php on line 876
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php on line 876

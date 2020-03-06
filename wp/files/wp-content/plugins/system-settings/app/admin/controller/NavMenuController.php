@@ -61,7 +61,7 @@ class NavMenuController extends RestController{
             return $this->success('获取成功',$data);
         }
         else{
-            return $this->success('获取失败，该导航栏不存在！');
+            return $this->error('获取失败，该导航栏不存在！');
         }
     }
 
@@ -107,21 +107,31 @@ class NavMenuController extends RestController{
 
         $data = [];
 
-        // $data = [
-        //     'menu-item-object'      => 'page',
-        //     'menu-item-type'        => 'post_type',
-        //     'menu-item-title'       => '示例页面',
-        //     'menu-item-object-id'   => $id,
-        //     'menu-item-object'      => 'page',
-        //     'menu-item-status'      => 'publish'
-        // ];
-        
-        isset($request['menu-item-type']) && $data['menu-item-type'] = $request['menu-item-type'] ;
+        /* $data = [
+            'menu-item-position'    => '0', //排序
+            'menu-item-type'        => 'post_type', // ['post_type','taxonomy', 'custom', 'post_type'] 
+            'menu-item-title'       => '示例页面',
+            'menu-item-object-id'   => $id,
+            'menu-item-object'      => 'page',  //对应类型 ['page', 'category', 'custom', 'post']
+            'menu-item-status'      => 'publish', // "publish", "future", "draft","pending", "private", "trash", "auto-draft", "inherit", "request-pending", "request-confirmed", "request-failed", "request-completed", "any"
+            'menu-item-url'         => '', //type = custom 填写
+            'menu-item-description' => '', //描述
+            'menu-item-attr-title'  => '', //标签title属性
+            'menu-item-target'      => '', // 是否打开新窗口
+            'menu-item-classes'     => '', //样式class
+        ]; */
+
+
         isset($request['menu-item-title']) && $data['menu-item-title'] = $request['menu-item-title'];
         isset($request['menu-item-object-id']) && $data['menu-item-object-id'] = $id;
         isset($request['menu-item-object']) && $data['menu-item-object'] = $request['menu-item-object'];
         isset($request['menu-item-type']) && $data['menu-item-type'] = $request['menu-item-type'];
         isset($request['menu-item-status']) && $data['menu-item-status'] = $request['menu-item-status'];
+        isset($request['menu-item-parent-id']) && $data['menu-item-parent-id'] = $request['menu-item-parent-id'];
+        isset($request['menu-item-url']) && $data['menu-item-url'] = $request['menu-item-url'];
+        isset($request['menu-item-attr-title']) && $data['menu-item-attr-title'] = $request['menu-item-attr-title'];
+        isset($request['menu-item-target']) && $data['menu-item-target'] = $request['menu-item-target'];
+        isset($request['menu-item-classes']) && $data['menu-item-classes'] = $request['menu-item-classes'];
 
         $result  = wp_update_nav_menu_item($meun_id = 0,$id,$data);
         if(!$result->errors)
@@ -129,7 +139,7 @@ class NavMenuController extends RestController{
             return $this->success('更新成功！',$result );
         }
         else{
-            return $this->success('更新失败！',$result);
+            return $this->error('更新失败！',$result);
         }
     }
 
@@ -144,7 +154,7 @@ class NavMenuController extends RestController{
             return $this->success('删除成功！',$result );
         }
         else{
-            return $this->success('删除失败！',$result);
+            return $this->error('删除失败！',$result);
         }
     }
 

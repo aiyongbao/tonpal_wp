@@ -21,9 +21,3 @@ error_reporting(1);
 
 //启用钩子
 require plugin_dir_path(__FILE__) . 'library/autoload/autoload.php';
-
-add_action('get_course','get_course');
-function get_course(){
-    $caurse = new CourseController();
-    return $caurse->Index();
-}
