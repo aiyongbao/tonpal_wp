@@ -1,8 +1,8 @@
 <?php
 namespace app\admin\controller;
-use library\controller\BaseController;
+use library\controller\RestController;
 
-class SlideController extends BaseController{
+class SlideController extends RestController{
 
     //获取slide的列表
     public function get_list($request = '')

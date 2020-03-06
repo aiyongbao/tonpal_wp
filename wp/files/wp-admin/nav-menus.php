@@ -57,6 +57,7 @@ $action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : 'edit';
  */
 _wp_expand_nav_menu_post_data();
 
+
 switch ( $action ) {
 	case 'add-menu-item':
 		check_admin_referer( 'add-menu_item', 'menu-settings-column-nonce' );
