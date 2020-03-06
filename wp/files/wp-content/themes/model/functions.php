@@ -81,13 +81,7 @@ add_action('after_setup_theme', 'my_theme_setup');
 //添加模板css样式
 function add_theme_scripts()
 {
-  wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/bootstrap.min.css');
-  wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/plugins/slick/slick.css');
-  wp_enqueue_style( 'themify-icons', get_template_directory_uri() . '/assets/plugins/themify-icons/themify-icons.css');
-  wp_enqueue_style( 'animate', get_template_directory_uri() . '/assets/plugins/animate/animate.css');
-  wp_enqueue_style( 'aos', get_template_directory_uri() . '/assets/plugins/aos/aos.css');
-  wp_enqueue_style( 'venobox', get_template_directory_uri() . '/assets/plugins/venobox/venobox.css');
-  wp_enqueue_style( 'style', get_template_directory_uri() . '/assets/css/style.css');
+   
 
     //引入jquery依赖
     wp_enqueue_script('jQuerytest',get_template_directory_uri() . '/assets/plugins/jQuery/jquery.min.js');

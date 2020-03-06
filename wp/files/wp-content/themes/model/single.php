@@ -11,7 +11,7 @@ get_header(); ?>
  
         <?php
             $category = get_category(get_category_root_id($cat));
-            $slug = $category->slug;
+            $slug = $category->name;
             if ( $slug === 'products' ) {
                 include('templates/single/single-products.php');
             }

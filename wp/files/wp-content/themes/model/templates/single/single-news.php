@@ -1,16 +1,19 @@
-<?php
-/**
- * The template for displaying all single posts and attachments
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
- */
- 
-get_header(); ?>
+<!doctype html>
+<title>Educenter</title>
+
+<head>
+  <meta charset="utf-8">
+  <?php get_header() ?>
+</head>
+
+<body>
+  <header>
+    <?php get_template_part('templates/components/nav'); ?>
+  </header>
  
     <main class="container">
         single - news
     </main>
+</body>
  
 <?php get_footer(); ?>

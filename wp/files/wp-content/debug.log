@@ -566,3 +566,975 @@ Stack trace:
 #3 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
 #4 {main}
   thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/themes/model/functions.php on line 179
+[28-Feb-2020 08:29:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:21
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 21
+[28-Feb-2020 08:29:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:21
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/html/w in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 21
+[28-Feb-2020 08:30:13 UTC] PHP Fatal error:  Uncaught Error: Class 'app\admin\controller\SettingController' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php:169
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/plugin.php(531): WP_Hook->do_action(Array)
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp.php(387): do_action_ref_ar in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 169
+[28-Feb-2020 08:31:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:21
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 21
+[28-Feb-2020 08:31:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_mod_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:60
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php(21): app\admin\controller\SettingController->got_url_rewrite()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#5 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 60
+[28-Feb-2020 08:31:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_mod_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:60
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php(21): app\admin\controller\SettingController->got_url_rewrite()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#5 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 60
+[28-Feb-2020 08:31:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_mod_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:60
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php(21): app\admin\controller\SettingController->got_url_rewrite()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#5 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 60
+[28-Feb-2020 08:33:47 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:24
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 24
+[28-Feb-2020 08:38:48 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 08:38:48 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 08:38:48 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 08:38:48 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../wp-admin/admin.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 12
+[28-Feb-2020 08:38:48 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../wp-admin/admin.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 12
+[28-Feb-2020 08:42:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function auth_redirect() in /usr/share/nginx/html/wwwroot/wordpress/wp-admin/admin.php:93
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(9): require_once()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(19): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-admin/admin.php on line 93
+[28-Feb-2020 08:42:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 08:42:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 08:42:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 08:42:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 25
+[28-Feb-2020 08:42:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 25
+[28-Feb-2020 08:42:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 25
+[28-Feb-2020 08:46:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 25
+[28-Feb-2020 08:46:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 25
+[28-Feb-2020 08:47:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function app\admin\controller\got_url_rewrite() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(170): app\admin\controller\SettingController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/setti...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /u in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/SettingController.php on line 25
+[28-Feb-2020 09:26:33 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:26:33 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:26:33 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:26:49 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:26:49 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:26:49 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:27:15 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:27:15 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:27:15 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:27:32 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:27:32 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:27:32 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:17 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:17 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:17 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:21 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:21 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:21 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:33 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:33 UTC] PHP Warning:  require_once(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:33 UTC] PHP Fatal error:  require_once(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:40 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:40 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:30:40 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:08 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:08 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:08 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:15 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:15 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:15 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:34 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:34 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:31:34 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:32:31 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:32:31 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:32:31 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:33:21 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php on line 20
+[28-Feb-2020 09:33:21 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:33:21 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:33:21 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:34:48 UTC] PHP Warning:  Use of undefined constant WEB_ROOT - assumed 'WEB_ROOT' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:34:48 UTC] PHP Warning:  require(WEB_ROOT/wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:34:48 UTC] PHP Fatal error:  require(): Failed opening required 'WEB_ROOT/wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:35:04 UTC] PHP Warning:  Use of undefined constant WP_USE_THEMES - assumed 'WP_USE_THEMES' (this will throw an Error in a future version of PHP) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php on line 31
+[28-Feb-2020 09:39:30 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../../../../wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:39:30 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../../../../wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:39:31 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../../../../wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:39:31 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../../../../wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:39:33 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../../../../wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:39:33 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../../../../wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:40:00 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:40:00 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:40:27 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../wp-admin/includes/misc.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:40:27 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/../../wp-admin/includes/misc.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 9
+[28-Feb-2020 09:42:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 09:42:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[28-Feb-2020 09:42:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 03:10:08 UTC] PHP Fatal error:  Uncaught Error: Cannot access protected property App\Http\Kernel::$middlewareGroups in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:9
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 9
+[03-Mar-2020 03:25:32 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::middleware(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 11 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:19
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(11): middleware->middleware()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 19
+[03-Mar-2020 03:31:02 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::middleware(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 10 and at least 1 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:16
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(10): middleware->middleware()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(1 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 16
+[03-Mar-2020 03:31:18 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::middleware(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 10 and at least 1 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:16
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(10): middleware->middleware()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(1 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 16
+[03-Mar-2020 03:32:52 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 03:33:07 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 03:33:19 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 03:39:23 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\AdminAuth::handle() must be an instance of Closure, string given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 24 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(24): app\http\middleware\AdminAuth->handle('666', 'aaa')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(30): middleware::{closure}('666')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(13): middleware::init(Object(Closure), Array)
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#5 /usr/sh in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 03:40:28 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\AdminAuth::handle() must be an instance of Closure, string given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 24 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(24): app\http\middleware\AdminAuth->handle('aaa', 'aaa')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(14): middleware::{closure}('aaa')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-load. in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 03:49:07 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:23
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(13): middleware::init('aaa', Array)
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 23
+[03-Mar-2020 04:23:14 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 04:28:12 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: middleware::$stacks in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 04:31:20 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: middleware::$stacks in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(25): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#6 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 04:37:04 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: middleware::$stacks in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(22): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 04:39:52 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: middleware::$stacks in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(22): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 04:40:10 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: middleware::$stacks in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:13
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(22): middleware::run()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 13
+[03-Mar-2020 04:43:53 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Kernel' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:5
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(6): require_once()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 5
+[03-Mar-2020 05:26:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method app\http\middleware\AdminAuth::run() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:35
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(26): middleware->{closure}(1111)
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 35
+[03-Mar-2020 05:34:33 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function app\http\middleware\AdminAuth::handle(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 35 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(35): app\http\middleware\AdminAuth->handle()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(24): middleware->{closure}('request')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp- in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 05:35:40 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\AdminAuth::handle() must be an instance of Closure, instance of app\http\middleware\AdminAuth given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 35 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(35): app\http\middleware\AdminAuth->handle('', Object(app\http\middleware\AdminAuth))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(24): middleware->{closure}('request')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-config.p in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 05:35:49 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function app\http\middleware\AdminAuth::handle(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 35 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(35): app\http\middleware\AdminAuth->handle()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(24): middleware->{closure}('request')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp- in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 05:50:39 UTC] PHP Fatal error:  Uncaught Error: Class 'AuthBaseController' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/IndexController.php:5
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(17): require_once()
+#1 [internal function]: {closure}('app\\admin\\contr...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): spl_autoload_call('app\\admin\\contr...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): res in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/IndexController.php on line 5
+[03-Mar-2020 05:57:32 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function AuthBaseController::__construct(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/IndexController.php on line 9 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/controller/AuthBaseController.php:7
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/IndexController.php(9): AuthBaseController->__construct(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): app\admin\controller\IndexController->__construct(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/controller/AuthBaseController.php on line 7
+[03-Mar-2020 06:06:54 UTC] PHP Fatal error:  Uncaught Error: Class 'BaseController' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/IndexController.php:5
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(17): require_once()
+#1 [internal function]: {closure}('app\\admin\\contr...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): spl_autoload_call('app\\admin\\contr...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_ap in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/IndexController.php on line 5
+[03-Mar-2020 06:14:36 UTC] PHP Fatal error:  Uncaught Error: Class 'library\middlewareCore' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(17): require_once()
+#1 [internal function]: {closure}('app\\http\\middle...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(33): spl_autoload_call('app\\http\\middle...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}(Object(WP_REST_Request), 'hello world')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-i in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 06:17:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function middleware() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php:31
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/plugin.php(531): WP_Hook->do_action(Array)
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp.php(387): do_action_ref_array('parse_request', A in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31
+[03-Mar-2020 06:21:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:21:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:21:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:21:37 UTC] PHP Fatal error:  Class app\http\middleware\AdminAuth cannot extend from interface library\middlewareCore in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 16
+[03-Mar-2020 06:22:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:22:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:22:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:22:40 UTC] PHP Fatal error:  Class app\http\middleware\AdminAuth cannot extend from interface library\middlewareCore in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 16
+[03-Mar-2020 06:22:43 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:22:43 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:22:43 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:22:43 UTC] PHP Fatal error:  Class app\http\middleware\AdminAuth cannot extend from interface library\middlewareCore in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 16
+[03-Mar-2020 06:23:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:23:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:23:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:25:00 UTC] PHP Warning:  require_once(/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/../middlewareCore.php): failed to open stream: No such file or directory in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 6
+[03-Mar-2020 06:25:00 UTC] PHP Fatal error:  require_once(): Failed opening required '/usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/../middlewareCore.php' (include_path='.:/usr/local/lib/php') in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php on line 6
+[03-Mar-2020 06:25:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:25:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:25:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:26:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:26:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:26:32 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:27:05 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:27:05 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:27:05 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 06:35:46 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::{closure}(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31 and exactly 1 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:32
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 32
+[03-Mar-2020 06:36:10 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::{closure}(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31 and exactly 1 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:32
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 32
+[03-Mar-2020 06:36:56 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::{closure}(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31 and exactly 1 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:32
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 32
+[03-Mar-2020 06:38:57 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::{closure}(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:31
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}('456')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/ in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 31
+[03-Mar-2020 06:39:48 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function middleware::{closure}(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:31
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}('456')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/ in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 31
+[03-Mar-2020 06:45:06 UTC] PHP Fatal error:  Uncaught Error: Function name must be a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php:31
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/plugin.php(531): WP_Hook->do_action(Array)
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp.php(387): do_action_ref_array('parse_request', Array)
+#7  in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php on line 31
+[03-Mar-2020 07:05:21 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function app\http\middleware\AdminAuth::handle(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 37 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:8
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(37): app\http\middleware\AdminAuth->handle()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}('')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->se in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 8
+[03-Mar-2020 07:06:16 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function app\http\middleware\AdminAuth::handle(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 36 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:8
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(36): app\http\middleware\AdminAuth->handle()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(31): middleware->{closure}('')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->se in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 8
+[03-Mar-2020 08:08:21 UTC] PHP Fatal error:  Uncaught Error: Function name must be a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php:18
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php(40): app\http\middleware\AdminAuth->handle(Object(WP_REST_Request), NULL)
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(30): middleware->init('hello world', Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Obj in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 18
+[03-Mar-2020 08:11:42 UTC] PHP Fatal error:  Uncaught Error: Function name must be a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php:51
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(30): middleware->init('hello world', Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/plugin.ph in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/middleware.php on line 51
+[03-Mar-2020 08:18:44 UTC] PHP Fatal error:  Uncaught Error: Class 'middleware' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/kernel.php:6
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(7): require_once()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/kernel.php on line 6
+[03-Mar-2020 08:20:13 UTC] PHP Fatal error:  Class App\Http\Kernel cannot extend from interface library\middleware in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/kernel.php on line 12
+[03-Mar-2020 08:22:47 UTC] PHP Fatal error:  Uncaught Error: Class 'library\middleware' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/kernel.php:5
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/autoload/autoload.php(7): require_once()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/system-settings.php(23): require('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-settings.php(362): include_once('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-config.php(103): require_once('/usr/share/ngin...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-load.php(37): require_once('/usr/share/ngin...')
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-blog-header.php(13): require_once('/usr/share/ngin...')
+#6 /usr/share/nginx/html/wwwroot/wordpress/index.php(17): require('/usr/share/ngin...')
+#7 {main}
+  thrown in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/kernel.php on line 5
+[03-Mar-2020 08:23:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:23:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:23:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:23:18 UTC] PHP Fatal error:  Interface 'library\middleware' not found in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 6
+[03-Mar-2020 08:24:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:24:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:24:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:25:15 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:25:15 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:25:15 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:26:40 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\TestAuth::handle() must be an instance of Closure, string given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 45 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php:7
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(45): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), 'app\\http\\middle...')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_RE in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php on line 7
+[03-Mar-2020 08:27:06 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\TestAuth::handle() must be an instance of Closure, string given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 45 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php:7
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(45): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), 'app\\http\\middle...')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_RE in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php on line 7
+[03-Mar-2020 08:27:48 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\TestAuth::handle() must be an instance of Closure, string given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 45 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php:7
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(45): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), 'app\\http\\middle...')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_RE in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php on line 7
+[03-Mar-2020 08:30:22 UTC] PHP Fatal error:  Uncaught TypeError: Argument 2 passed to app\http\middleware\TestAuth::handle() must be an instance of Closure, instance of app\http\middleware\TestAuth given, called in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 46 and defined in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php:7
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(46): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), Object(app\http\middleware\TestAuth))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php on line 7
+[03-Mar-2020 08:42:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:42:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:13 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:13 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:13 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:13 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/AdminAuth.php on line 18
+[03-Mar-2020 08:43:17 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:17 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:17 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:26 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:26 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:26 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:43:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:44:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:44:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:44:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:44:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:44:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:44:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:22 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:53 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:53 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:45:53 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:46:29 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:46:29 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:46:29 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:47:13 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:47:13 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:47:13 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:47:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:47:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:47:33 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:14 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:14 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:14 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:27 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:27 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:27 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:48:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:53:31 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:53:31 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:53:31 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:54:00 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:54:00 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:54:00 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:55:04 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:55:04 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:55:04 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:56:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:56:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:56:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:57:01 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:57:01 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:57:01 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:37 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:58:46 UTC] PHP Notice:  Undefined offset: 2 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 35
+[03-Mar-2020 08:58:46 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:35
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php(17): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(38): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), Object(Closure))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/res in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 35
+[03-Mar-2020 08:59:09 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:09 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:09 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:09 UTC] PHP Notice:  Undefined offset: 2 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 35
+[03-Mar-2020 08:59:09 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:35
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php(17): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(38): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), Object(Closure))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/res in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 35
+[03-Mar-2020 08:59:20 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:20 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:20 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:20 UTC] PHP Notice:  Undefined offset: 2 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 35
+[03-Mar-2020 08:59:20 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:35
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php(17): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(38): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), Object(Closure))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/res in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 35
+[03-Mar-2020 08:59:52 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:53 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:53 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 08:59:53 UTC] PHP Notice:  Undefined offset: 2 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 08:59:53 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/http/middleware/TestAuth.php(17): middleware->{closure}()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php(41): app\http\middleware\TestAuth->handle(Object(WP_REST_Request), Object(Closure))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/res in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:03:56 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:03:56 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:03:56 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:03:56 UTC] PHP Notice:  Undefined offset: 0 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 39
+[03-Mar-2020 09:03:56 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:39
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 39
+[03-Mar-2020 09:04:36 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:04:36 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:04:36 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:04:36 UTC] PHP Notice:  Undefined offset: 0 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:04:36 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:04:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:04:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:04:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:04:46 UTC] PHP Notice:  Undefined offset: 0 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:04:46 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:05:03 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:05:03 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:05:03 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:05:03 UTC] PHP Notice:  Undefined offset: 0 in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:05:03 UTC] PHP Fatal error:  Uncaught Error: Class name must be a valid object or a string in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(29): middleware->init('hello world', Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/test')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/html/wwwroot/wordpres in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/middleware.php on line 38
+[03-Mar-2020 09:07:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:07:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:07:18 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:07:47 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:07:47 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:07:47 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:08:10 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:08:10 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:08:10 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:08:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:08:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:08:40 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:09:11 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:09:11 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:09:11 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:09:20 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:09:20 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[03-Mar-2020 09:09:20 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[04-Mar-2020 02:56:06 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function wp_delete_term(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/NavMenuController.php on line 141 and at least 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/taxonomy.php:1748
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/NavMenuController.php(141): wp_delete_term('251')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(164): app\admin\controller\NavMenuController->delete_nav_menu_item(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/taxonomy.php on line 1748
+[04-Mar-2020 04:11:23 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:47
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(42): app\admin\controller\ThemeFileController::recursion('/usr/share/ngin...')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(42): app\admin\controller\ThemeFileController::recursion('/usr/share/ngin...')
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(18): app\admin\controller\ThemeFileController::recursion('/usr/share/ngin...')
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-inclu in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 47
+[04-Mar-2020 04:22:49 UTC] WordPress数据库查询UPDATE `wp_theme_file` SET `more` = '{\"name\":\"\\u9996\\u9875\\u914d\\u7f6e\\u6587\\u4ef6\",\"action\":\"portal\\/home\",\"description\":\"\\u9996\\u9875\\u6a21\\u677f\\u6587\\u4ef6\",\"order\":6,\"more\":{\"vars\":{\"varName1\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}},\"widgets\":{\"widgetName1\":{\"title\":\"\\u6240\\u6709\\u7ec4\\u4ef6\\u6f14\\u793a\",\"name\":\"all_widget\",\"display\":\"1\",\"vars\":{\"text\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}}},\"carousel\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"name\":\"\\u8bf7\\u9009\\u62e9\\u8f6e\\u64ad\\u56fe\",\"display\":\"1\",\"vars\":{\"items\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"value\":[{\"title\":\"Hello my website\",\"desc\":\"Build your website quickly\",\"btn\":\"have a look\",\"link\":\"\"},{\"title\":\"Link my website\",\"desc\":\"Consistent quality\",\"btn\":\"inquiry\",\"link\":\"\"}],\"type\":\"array\",\"item\":{\"title\":{\"title\":\"\\u6807\\u9898\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6807\\u9898\",\"rule\":{\"require\":true}},\"desc\":{\"title\":\"\\u63cf\\u8ff0\",\"value\":\"\",\"type\":\"textarea\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u63cf\\u8ff0\",\"rule\":{\"require\":true}},\"btn\":{\"title\":\"\\u6309\\u94ae\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6309\\u94ae\"},\"link\":{\"title\":\"\\u8df3\\u8f6c\\u94fe\\u63a5\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u94fe\\u63a5\"}},\"tip\":\"\\u8fd9\\u662f\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"rule\":{\"require\":true}},\"bg\":{\"title\":\"\\u9009\\u5219\\u56fe\\u7247\\u80cc\\u666f\",\"value\":\"\",\"type\":\"image\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u56fe\\u7247\",\"rule\":{\"require\":true}}}}}}}', `config_more` = '{\"name\":\"\\u9996\\u9875\\u914d\\u7f6e\\u6587\\u4ef6\",\"action\":\"portal\\/home\",\"description\":\"\\u9996\\u9875\\u6a21\\u677f\\u6587\\u4ef6\",\"order\":6,\"more\":{\"vars\":{\"varName1\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}},\"widgets\":{\"widgetName1\":{\"title\":\"\\u6240\\u6709\\u7ec4\\u4ef6\\u6f14\\u793a\",\"name\":\"all_widget\",\"display\":\"1\",\"vars\":{\"text\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}}},\"carousel\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"name\":\"\\u8bf7\\u9009\\u62e9\\u8f6e\\u64ad\\u56fe\",\"display\":\"1\",\"vars\":{\"items\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"value\":[{\"title\":\"Hello my website\",\"desc\":\"Build your website quickly\",\"btn\":\"have a look\",\"link\":\"\"},{\"title\":\"Link my website\",\"desc\":\"Consistent quality\",\"btn\":\"inquiry\",\"link\":\"\"}],\"type\":\"array\",\"item\":{\"title\":{\"title\":\"\\u6807\\u9898\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6807\\u9898\",\"rule\":{\"require\":true}},\"desc\":{\"title\":\"\\u63cf\\u8ff0\",\"value\":\"\",\"type\":\"textarea\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u63cf\\u8ff0\",\"rule\":{\"require\":true}},\"btn\":{\"title\":\"\\u6309\\u94ae\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6309\\u94ae\"},\"link\":{\"title\":\"\\u8df3\\u8f6c\\u94fe\\u63a5\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u94fe\\u63a5\"}},\"tip\":\"\\u8fd9\\u662f\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"rule\":{\"require\":true}},\"bg\":{\"title\":\"\\u9009\\u5219\\u56fe\\u7247\\u80cc\\u666f\",\"value\":\"\",\"type\":\"image\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u56fe\\u7247\",\"rule\":{\"require\":true}}}}}}}' WHERE 时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:16:29 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function wpdb::query(), 0 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 82 and exactly 1 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php:1855
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php(82): wpdb->query()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(28): library\Db->update(Array)
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 /usr/s in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php on line 1855
+[04-Mar-2020 05:41:29 UTC] WordPress数据库查询UPDATE  wp_theme_file SET  WHERE = id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE = id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:42:55 UTC] WordPress数据库查询UPDATE  wp_theme_file SET more = s%,config_more = s% WHERE = id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'config_more = s% WHERE = id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:46:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method stdClass::toarray() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/theme...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/ht in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 25
+[04-Mar-2020 05:46:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method stdClass::toarray() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/theme...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/ht in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 25
+[04-Mar-2020 05:47:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method stdClass::toarray() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:25
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/theme...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/nginx/ht in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 25
+[04-Mar-2020 05:51:36 UTC] WordPress数据库查询UPDATE  wp_theme_file SET more = s%,config_more = s% WHERE = id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'config_more = s% WHERE = id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:52:02 UTC] WordPress数据库查询UPDATE  wp_theme_file SET more = s%,config_more = s% WHERE = id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'config_more = s% WHERE = id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:52:44 UTC] WordPress数据库查询UPDATE  wp_theme_file SET more = s%,config_more = s% WHERE = id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'config_more = s% WHERE = id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:53:01 UTC] WordPress数据库查询UPDATE  wp_theme_file SET more = s%,config_more = s% WHERE = id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'config_more = s% WHERE = id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 05:53:13 UTC] WordPress数据库查询UPDATE  wp_theme_file SET more = s%,config_more = s% WHERE id = 5时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'config_more = s% WHERE id = 5' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 06:54:01 UTC] WordPress数据库查询        SELECT * FROM wp_theme_file WHERE action = portal/about limit 1;时发生Unknown column 'portal' in 'where clause'错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->find查询的
+[04-Mar-2020 06:54:01 UTC] WordPress数据库查询UPDATE `wp_theme_file` SET more = '',config_more = '' WHERE id = 时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 06:54:01 UTC] WordPress数据库查询        SELECT * FROM wp_theme_file WHERE action = portal/home limit 1;时发生Unknown column 'portal' in 'where clause'错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->find查询的
+[04-Mar-2020 06:54:01 UTC] WordPress数据库查询UPDATE `wp_theme_file` SET more = '',config_more = '' WHERE id = 时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 07:05:39 UTC] WordPress数据库查询        SELECT * FROM wp_theme_file WHERE  limit 1;时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit 1' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->find查询的
+[04-Mar-2020 07:05:39 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function library\Db::where(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 36 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(36): library\Db->where('id = ')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/res in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 38
+[04-Mar-2020 07:06:33 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function library\Db::where(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 36 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(36): library\Db->where('id = 6')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/re in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 38
+[04-Mar-2020 08:07:18 UTC] WordPress数据库查询        SELECT * FROM wp_theme_file WHERE portal/home limit 1;时发生Unknown column 'portal' in 'where clause'错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->find查询的
+[04-Mar-2020 08:07:18 UTC] WordPress数据库查询UPDATE `wp_theme_file` SET more = '{\"vars\":{\"company_name\":{\"title\":\"\\u516c\\u53f8\\u540d\\u79f0\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u516c\\u53f8\\u540d\\u79f0\",\"rule\":{\"require\":true}}},\"widgets\":{\"widgetName1\":{\"title\":\"\\u6240\\u6709\\u7ec4\\u4ef6\\u6f14\\u793a\",\"name\":\"all_widget\",\"display\":\"1\",\"vars\":{\"text\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}}},\"carousel\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"name\":\"\\u8bf7\\u9009\\u62e9\\u8f6e\\u64ad\\u56fe\",\"display\":\"1\",\"vars\":{\"items\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"value\":[{\"title\":\"Hello my website\",\"desc\":\"Build your website quickly\",\"btn\":\"have a look\",\"link\":\"\"},{\"title\":\"Link my website\",\"desc\":\"Consistent quality\",\"btn\":\"inquiry\",\"link\":\"\"}],\"type\":\"array\",\"item\":{\"title\":{\"title\":\"\\u6807\\u9898\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6807\\u9898\",\"rule\":{\"require\":true}},\"desc\":{\"title\":\"\\u63cf\\u8ff0\",\"value\":\"\",\"type\":\"textarea\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u63cf\\u8ff0\",\"rule\":{\"require\":true}},\"btn\":{\"title\":\"\\u6309\\u94ae\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6309\\u94ae\"},\"link\":{\"title\":\"\\u8df3\\u8f6c\\u94fe\\u63a5\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u94fe\\u63a5\"}},\"tip\":\"\\u8fd9\\u662f\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"rule\":{\"require\":true}},\"bg\":{\"title\":\"\\u9009\\u5219\\u56fe\\u7247\\u80cc\\u666f\",\"value\":\"\",\"type\":\"image\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u56fe\\u7247\",\"rule\":{\"require\":true}}}}}}',config_more = '{\"vars\":{\"company_name\":{\"title\":\"\\u516c\\u53f8\\u540d\\u79f0\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u516c\\u53f8\\u540d\\u79f0\",\"rule\":{\"require\":true}}},\"widgets\":{\"widgetName1\":{\"title\":\"\\u6240\\u6709\\u7ec4\\u4ef6\\u6f14\\u793a\",\"name\":\"all_widget\",\"display\":\"1\",\"vars\":{\"text\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}}},\"carousel\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"name\":\"\\u8bf7\\u9009\\u62e9\\u8f6e\\u64ad\\u56fe\",\"display\":\"1\",\"vars\":{\"items\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"value\":[{\"title\":\"Hello my website\",\"desc\":\"Build your website quickly\",\"btn\":\"have a look\",\"link\":\"\"},{\"title\":\"Link my website\",\"desc\":\"Consistent quality\",\"btn\":\"inquiry\",\"link\":\"\"}],\"type\":\"array\",\"item\":{\"title\":{\"title\":\"\\u6807\\u9898\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6807\\u9898\",\"rule\":{\"require\":true}},\"desc\":{\"title\":\"\\u63cf\\u8ff0\",\"value\":\"\",\"type\":\"textarea\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u63cf\\u8ff0\",\"rule\":{\"require\":true}},\"btn\":{\"title\":\"\\u6309\\u94ae\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6309\\u94ae\"},\"link\":{\"title\":\"\\u8df3\\u8f6c\\u94fe\\u63a5\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u94fe\\u63a5\"}},\"tip\":\"\\u8fd9\\u662f\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"rule\":{\"require\":true}},\"bg\":{\"title\":\"\\u9009\\u5219\\u56fe\\u7247\\u80cc\\u666f\",\"value\":\"\",\"type\":\"image\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u56fe\\u7247\",\"rule\":{\"require\":true}}}}}}' WHERE 时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 08:07:18 UTC] WordPress数据库查询SHOW FULL COLUMNS FROM ``时发生Incorrect table name ''错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->delete查询的
+[04-Mar-2020 08:08:20 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function wpdb::delete(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 119 and at least 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php:2279
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php(119): wpdb->delete('table')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(69): library\Db->delete()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php on line 2279
+[04-Mar-2020 08:19:47 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function library\Db::where(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 80 and at least 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php:38
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(80): library\Db->where(Array)
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 38
+[04-Mar-2020 08:19:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method library\Db::deleteAll() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:80
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/theme...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#6 /usr/share/ngin in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 80
+[04-Mar-2020 08:24:15 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function wpdb::prepare(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 134 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php:1295
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php(134): wpdb->prepare('DELETE FROM `` ...')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(80): library\Db->delete()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_RES in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php on line 1295
+[04-Mar-2020 08:24:38 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function wpdb::prepare(), 1 passed in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php on line 133 and exactly 2 expected in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php:1295
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/library/Db.php(133): wpdb->prepare('DELETE FROM `` ...')
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php(80): library\Db->delete()
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(194): app\admin\controller\ThemeFileController->index()
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_RES in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/wp-db.php on line 1295
+[04-Mar-2020 08:25:06 UTC] WordPress数据库查询DELETE FROM `` WHERE WHERE `0` = 'Array'时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `0` = 'Array'' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->delete查询的
+[04-Mar-2020 08:25:42 UTC] WordPress数据库查询DELETE FROM `` WHERE WHERE `0` = 'Array'时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `0` = 'Array'' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->delete查询的
+[04-Mar-2020 08:26:51 UTC] WordPress数据库查询        SELECT * FROM wp_theme_file WHERE  limit 1;时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit 1' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->find查询的
+[04-Mar-2020 08:26:51 UTC] WordPress数据库查询UPDATE `wp_theme_file` SET more = '{\"vars\":{\"company_name\":{\"title\":\"\\u516c\\u53f8\\u540d\\u79f0\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u516c\\u53f8\\u540d\\u79f0\",\"rule\":{\"require\":true}}},\"widgets\":{\"widgetName1\":{\"title\":\"\\u6240\\u6709\\u7ec4\\u4ef6\\u6f14\\u793a\",\"name\":\"all_widget\",\"display\":\"1\",\"vars\":{\"text\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}}},\"carousel\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"name\":\"\\u8bf7\\u9009\\u62e9\\u8f6e\\u64ad\\u56fe\",\"display\":\"1\",\"vars\":{\"items\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"value\":[{\"title\":\"Hello my website\",\"desc\":\"Build your website quickly\",\"btn\":\"have a look\",\"link\":\"\"},{\"title\":\"Link my website\",\"desc\":\"Consistent quality\",\"btn\":\"inquiry\",\"link\":\"\"}],\"type\":\"array\",\"item\":{\"title\":{\"title\":\"\\u6807\\u9898\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6807\\u9898\",\"rule\":{\"require\":true}},\"desc\":{\"title\":\"\\u63cf\\u8ff0\",\"value\":\"\",\"type\":\"textarea\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u63cf\\u8ff0\",\"rule\":{\"require\":true}},\"btn\":{\"title\":\"\\u6309\\u94ae\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6309\\u94ae\"},\"link\":{\"title\":\"\\u8df3\\u8f6c\\u94fe\\u63a5\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u94fe\\u63a5\"}},\"tip\":\"\\u8fd9\\u662f\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"rule\":{\"require\":true}},\"bg\":{\"title\":\"\\u9009\\u5219\\u56fe\\u7247\\u80cc\\u666f\",\"value\":\"\",\"type\":\"image\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u56fe\\u7247\",\"rule\":{\"require\":true}}}}}}',config_more = '{\"vars\":{\"company_name\":{\"title\":\"\\u516c\\u53f8\\u540d\\u79f0\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u516c\\u53f8\\u540d\\u79f0\",\"rule\":{\"require\":true}}},\"widgets\":{\"widgetName1\":{\"title\":\"\\u6240\\u6709\\u7ec4\\u4ef6\\u6f14\\u793a\",\"name\":\"all_widget\",\"display\":\"1\",\"vars\":{\"text\":{\"title\":\"\\u6d4b\\u8bd5 text\",\"value\":\"1\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2atext\",\"rule\":{\"require\":true}}}},\"carousel\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"name\":\"\\u8bf7\\u9009\\u62e9\\u8f6e\\u64ad\\u56fe\",\"display\":\"1\",\"vars\":{\"items\":{\"title\":\"\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"value\":[{\"title\":\"Hello my website\",\"desc\":\"Build your website quickly\",\"btn\":\"have a look\",\"link\":\"\"},{\"title\":\"Link my website\",\"desc\":\"Consistent quality\",\"btn\":\"inquiry\",\"link\":\"\"}],\"type\":\"array\",\"item\":{\"title\":{\"title\":\"\\u6807\\u9898\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6807\\u9898\",\"rule\":{\"require\":true}},\"desc\":{\"title\":\"\\u63cf\\u8ff0\",\"value\":\"\",\"type\":\"textarea\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u63cf\\u8ff0\",\"rule\":{\"require\":true}},\"btn\":{\"title\":\"\\u6309\\u94ae\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u6309\\u94ae\"},\"link\":{\"title\":\"\\u8df3\\u8f6c\\u94fe\\u63a5\",\"value\":\"\",\"type\":\"text\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u94fe\\u63a5\"}},\"tip\":\"\\u8fd9\\u662f\\u8f6e\\u64ad\\u56fe\\u7ec4\\u4ef6\",\"rule\":{\"require\":true}},\"bg\":{\"title\":\"\\u9009\\u5219\\u56fe\\u7247\\u80cc\\u666f\",\"value\":\"\",\"type\":\"image\",\"tip\":\"\\u8fd9\\u662f\\u4e00\\u4e2a\\u56fe\\u7247\",\"rule\":{\"require\":true}}}}}}' WHERE 时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->update查询的
+[04-Mar-2020 08:26:51 UTC] WordPress数据库查询DELETE FROM `` WHERE WHERE 时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->delete查询的
+[04-Mar-2020 08:28:41 UTC] WordPress数据库查询DELETE FROM `` WHERE WHERE `0` = 'Array'时发生You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE `0` = 'Array'' at line 1错误，这是由require('wp-blog-header.php'), wp, WP->main, WP->parse_request, do_action_ref_array('parse_request'), WP_Hook->do_action, WP_Hook->apply_filters, rest_api_loaded, WP_REST_Server->serve_request, WP_REST_Server->dispatch, routes->{closure}, app\admin\controller\ThemeFileController->index, library\Db->delete查询的
+[05-Mar-2020 03:20:42 UTC] PHP Fatal error:  Uncaught Error: Cannot access protected property WP_REST_Request::$params in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:118
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(221): app\admin\controller\ThemeFileController->updateFileItem(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/updat...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->a in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 118
+[05-Mar-2020 03:20:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method WP_REST_Request::params() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:118
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(221): app\admin\controller\ThemeFileController->updateFileItem(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/updat...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_fi in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 118
+[05-Mar-2020 03:22:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method WP_REST_Request::method() in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:118
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(221): app\admin\controller\ThemeFileController->updateFileItem(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/updat...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->apply_fi in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 118
+[05-Mar-2020 03:22:14 UTC] PHP Fatal error:  Uncaught Error: Cannot access protected property WP_REST_Request::$method in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php:118
+Stack trace:
+#0 /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/route/class-system-settings-routes.php(221): app\admin\controller\ThemeFileController->updateFileItem(Object(WP_REST_Request))
+#1 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(946): routes->{closure}(Object(WP_REST_Request))
+#2 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php(329): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#3 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php(309): WP_REST_Server->serve_request('/admin/v1/updat...')
+#4 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(286): rest_api_loaded(Object(WP))
+#5 /usr/share/nginx/html/wwwroot/wordpress/wp-includes/class-wp-hook.php(310): WP_Hook->a in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/ThemeFileController.php on line 118
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:51:46 UTC] PHP Warning:  Invalid argument supplied for foreach() in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php on line 876
+[06-Mar-2020 02:51:46 UTC] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /usr/share/nginx/html/wwwroot/wordpress/wp-content/plugins/system-settings/app/admin/controller/NavMenuController.php on line 121
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:12 UTC] PHP Warning:  Invalid argument supplied for foreach() in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php on line 876
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  array_merge(): Expected parameter 1 to be an array, object given in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api.php on line 83
+[06-Mar-2020 02:52:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /usr/share/nginx/html/wwwroot/wordpress/wp-includes/rest-api/class-wp-rest-server.php on line 876
