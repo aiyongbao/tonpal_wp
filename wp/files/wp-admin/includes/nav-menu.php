@@ -1221,8 +1221,6 @@ function _wp_expand_nav_menu_post_data() {
 
 	$data = json_decode( stripslashes( $_POST['nav-menu-data'] ) );
 
-	print_r($data);
-
 	if ( ! is_null( $data ) && $data ) {
 		foreach ( $data as $post_input_data ) {
 			// For input names that are arrays (e.g. `menu-item-db-id[3][4][5]`),
