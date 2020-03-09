@@ -8,7 +8,7 @@ use app\admin\controller\SettingController;
 use app\admin\controller\SlideItemController;
 use app\admin\controller\ThemeFileController;
 
-class routes {
+class SystemSettingsRoutes {
     
     protected $namespace;
 
@@ -243,10 +243,10 @@ class routes {
     }
 }
 
-add_action( 'rest_api_init', 'system_settings_register_plugins_routes' );
+add_action( 'rest_api_init', 'SystemSettingsRoutes' );
 
-function system_settings_register_plugins_routes()
+function SystemSettingsRoutes()
 {
-    $routes = new routes();
+    $routes = new SystemSettingsRoutes();
     $routes->register_plugins_routes();
 }

@@ -1,6 +1,5 @@
 <?php
 
-use app\home\controller\CourseController;
 
 /*
 Plugin Name: system-settings Plugin
@@ -15,9 +14,27 @@ Text Domain: wporg
 Domain Path: /languages
 */
 
+use app\home\controller\LangController;
+
 define('plugin_dir_path',plugin_dir_path(__FILE__));
 
 error_reporting(1);
 
 //启用钩子
 require plugin_dir_path(__FILE__) . 'library/autoload/autoload.php';
+
+//初始化钩子
+// add_action('init', function(){
+
+//     session_start();
+//     // 存储 lang语种 数据
+//     lang_init();
+// });
+
+add_action( 'lang_loaded', 'lang_init' );
+
+function lang_init()
+{
+    $lang = new LangController();
+    $lang->index();
+}

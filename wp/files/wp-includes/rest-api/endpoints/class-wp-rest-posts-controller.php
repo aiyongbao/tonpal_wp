@@ -46,6 +46,20 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		$this->rest_base = ! empty( $obj->rest_base ) ? $obj->rest_base : $obj->name;
 
 		$this->meta = new WP_REST_Post_Meta_Fields( $this->post_type );
+
+		//多语种接口
+		$lang = isset($_REQUEST['lang']) ? $_REQUEST['lang'] : '';
+        global $wpdb;
+        switch ($lang) {
+            case 'fr':
+                $lang = 'fr';
+                $wpdb->set_prefix('wp_fr_');
+                break;
+            default:
+                $lang = '';
+                break;
+        }
+
 	}
 
 	/**
