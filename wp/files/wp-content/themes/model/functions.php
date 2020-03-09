@@ -19,6 +19,8 @@ if (!function_exists('my_theme_setup')) :
 
     //注册模板初始化json文件
     init_theme_file();
+
+    add_theme_support( 'post-thumbnails' );
   }
 
   function init_theme_file()
@@ -78,11 +80,14 @@ if (!function_exists('my_theme_setup')) :
 endif;
 add_action('after_setup_theme', 'my_theme_setup');
 
+add_action('init', function(){
+  do_action('lang_loaded');
+});
+
+
 //添加模板css样式
 function add_theme_scripts()
 {
-   
-
     //引入jquery依赖
     wp_enqueue_script('jQuerytest',get_template_directory_uri() . '/assets/plugins/jQuery/jquery.min.js');
 }

@@ -1,6 +1,6 @@
 <?php
 
-require_once plugin_dir_path . 'route/class-system-settings-routes.php';
+require_once plugin_dir_path . 'route/SystemSettingsRoutes.php';
 require_once plugin_dir_path(__FILE__) . '../controller/BaseController.php';
 require_once plugin_dir_path(__FILE__) . '../controller/RestController.php';
 require_once plugin_dir_path(__FILE__) . '../Db.php';

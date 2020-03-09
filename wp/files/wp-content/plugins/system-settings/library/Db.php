@@ -6,7 +6,14 @@ use library\controller\BaseController;
 class Db extends BaseController{
 
     protected $db,$sql;
-    protected $name,$field,$conditionArr,$condition = 'WHERE ';
+    protected 
+    $name,
+    $field,
+    $conditionArr,
+    $condition = '',
+    $alias,
+    $joinTables = [],
+    $joins = '';
     public function __construct($name)
     {
         global $wpdb;
@@ -28,6 +35,22 @@ class Db extends BaseController{
         return $db;
     }
 
+    public function alias($alias)
+    {
+        $this->alias = $alias;
+        return $this;
+    }
+
+    public function join($table,$condition,$type = 'INNER')
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix;
+        $joinTables = $this->joinTables;
+        $joinTables[] = "{$type} JOIN {$prefix}{$table} ON {$condition}";
+        $this->joinTables = $joinTables;
+        $this->joins = implode(' ',$this->joinTables);
+        return $this;
+    }
 
     public function field($field)
     {
@@ -56,17 +79,17 @@ class Db extends BaseController{
             $this->conditionArr[]  = "`{$field}` = '{$value}'";
         }
 
-        $this->condition .= implode(' AND ',$this->conditionArr);
+        $this->condition = 'where ' . implode(' AND ',$this->conditionArr);
 
         return $this;
     }
 
     public function select()
     {
-        $field = isset($field) ? $this->field : '*' ;
+        $field = isset($this->field) ? $this->field : '*' ;
         $table_name = $this->name;
         $sql = <<<EOT
-        SELECT {$field} FROM {$table_name};
+        SELECT {$field} FROM {$table_name} {$this->alias} {$this->joins} {$this->condition};
 EOT;
         $result = $this->db->get_results($sql);
         $result = $this->object_array($result);
