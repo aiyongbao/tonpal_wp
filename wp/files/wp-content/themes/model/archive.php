@@ -1,6 +1,6 @@
 <?php
     $category = get_category(get_category_root_id($cat));
-    $slug = $category->name;
+    $slug = $category->slug;
     if ( $slug === 'products' ) {
         include('templates/category/category-products.php');
     }

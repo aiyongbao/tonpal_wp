@@ -1,11 +1,40 @@
 <!doctype html>
 <title>Educenter</title>
 <head>
-  <meta charset="utf-8">
-  <?php get_header()?>
+    <meta charset="utf-8">
+    <link rel="canonical" href="<?php echo home_url();?>" />
+    <?php get_template_part( 'templates/components/head' )?>
+    <style>
+        .hero-section {
+            padding: 300px 0 290px;
+        }
+    </style>
 </head>
 
 <body>
+
+<?php
+// widgets 数据处理
+$theme_widgets = json_config_array(__FILE__,'widgets');
+set_query_var('theme_widgets', $theme_widgets);
+
+// home.json -> vars 数据获取
+$theme_vars = json_config_array(__FILE__,'vars');
+// Array 数据处理
+$home_special_value = ifEmptyArray($theme_vars['special']['value']);
+$home_about_value = ifEmptyArray($theme_vars['about']['value']);
+$home_hotProductTitle_value = ifEmptyArray($theme_vars['hotProductTitle']['value']);
+$home_hotProductItem_value = ifEmptyArray($theme_vars['hotProductItem']['value']);
+$home_modularFour_value = ifEmptyArray($theme_vars['modularFour']['value']);
+$home_modularFive_value = ifEmptyArray($theme_vars['modularFive']['value']);
+$home_modularSixTitle_value = ifEmptyArray($theme_vars['modularSixTitle']['value']);
+$home_modularSixItem_value = ifEmptyArray($theme_vars['modularSixItem']['value']);
+$home_modularSevenItem_value = ifEmptyArray($theme_vars['modularSevenItem']['value']);
+
+// Text 数据处理
+$home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['value'],'Latest News');
+
+?>
     <!-- preloader start -->
     <div class="preloader">
         <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
@@ -13,482 +42,321 @@
     <!-- preloader end -->
 
     <!-- header -->
-    <header class="fixed-top header">
-        <!-- top header -->
-        <div class="top-header py-2 bg-white">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-lg-4 text-center text-lg-left">
-                        <a class="text-color mr-3" href="callto:+443003030266"><strong>CALL</strong> +44 300 303 0266</a>
-                        <ul class="list-inline d-inline">
-                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
-                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-linkedin"></i></a></li>
-                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-8 text-center text-lg-right">
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
-                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
-                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li>    
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <?php get_template_part( 'templates/components/nav' ); ?>
-
-    </header>
+    <?php get_header()?>
     <!-- /header -->
 
+    <!-- carousel -->
+    <?php get_template_part( 'templates/components/carousel' ); ?>
+    <!-- /carousel -->
 
-<!-- hero slider -->  
-<?php  
-$theme_vars = json_config_array(__FILE__,'widgets');
-set_query_var('theme_vars', $theme_vars);
- get_template_part( 'templates/components/carousel' );
-  ?>
-
-<!-- /hero slider -->
-
-<!-- banner-feature -->
-<section class="bg-gray">
-  <div class="container-fluid p-0">
-    <div class="row no-gutters">
-      <div class="col-xl-4 col-lg-5 align-self-end">
-        <img class="img-fluid w-100" src="<?php echo get_template_directory_uri()?>/assets/images/banner/banner-feature.png" alt="banner-feature">
-      </div>
-      <div class="col-xl-8 col-lg-7">
-        <div class="row feature-blocks bg-gray justify-content-between">
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-            <i class="ti-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-            <h3 class="mb-xl-4 mb-lg-3 mb-4">Scholorship News</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad</p>
+    <!-- banner-feature -->
+    <section class="bg-gray">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters">
+          <div class="col-xl-4 col-lg-5 align-self-end">
+            <img class="img-fluid w-100" src="<?php echo get_template_directory_uri()?>/assets/images/banner/banner-feature.png" alt="banner-feature">
           </div>
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-            <i class="ti-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-            <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Notice Board</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad</p>
-          </div>
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-            <i class="ti-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-            <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Achievements</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad</p>
-          </div>
-          <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-            <i class="ti-write mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-            <h3 class="mb-xl-4 mb-lg-3 mb-4">Admission Now</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Ut enim ad</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /banner-feature -->
+          <div class="col-xl-8 col-lg-7">
+            <div class="row feature-blocks bg-gray justify-content-between">
+                <?php
+                    foreach ($home_special_value as $key => $item) {
+                        if ($key <= 3) {
+                        ?>
+                        <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+                            <i class="<?php echo ifEmptyText($item['icon']) ?> mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <?php
+                            if (ifEmptyText($item['link'] !== ''))
+                            {
+                            ?>
+                            <a href="<?php echo ifEmptyText($item['link']) ?>">
+                                <h3 class="mb-xl-4 mb-lg-3 mb-4"><?php echo ifEmptyText($item['title']) ?></h3>
+                            </a>
+                            <?php
+                                } else {
+                            ?>
+                                <h3 class="mb-xl-4 mb-lg-3 mb-4"><?php echo ifEmptyText($item['title']) ?></h3>
+                            <?php
+                            }
+                             ?>
+                            <p><?php echo ifEmptyText($item['desc']) ?></p>
+                        </div>
+                        <?php
 
-<!-- about us -->
-<section class="section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 order-2 order-md-1">
-        <h2 class="section-title">About Educenter</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
-        <p>cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
-        <a href="about.html" class="btn btn-primary-outline">Learn more</a>
-      </div>
-      <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
-        <img class="img-fluid w-100" src="<?php echo get_template_directory_uri()?>/assets/images/about/about-us.jpg" alt="about image">
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /about us -->
-
-<!-- courses -->
-<section class="section-sm">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-center section-title justify-content-between">
-          <h2 class="mb-0 text-nowrap mr-3">Our Course</h2>
-          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-          <div>
-            <a href="courses.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
+                            }
+                    }
+              ?>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- course list -->
-<div class="row justify-content-center">
-  <!-- course item -->
-  <div class="col-lg-4 col-sm-6 mb-5">
-    <div class="card p-0 border-primary rounded-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/courses/course-1.jpg" alt="course thumb">
-      <div class="card-body">
-        <ul class="list-inline mb-2">
-          <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-          <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-        </ul>
-        <a href="course-single.html">
-          <h4 class="card-title">Photography</h4>
-        </a>
-        <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna.</p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-      </div>
-    </div>
-  </div>
-  <!-- course item -->
-  <div class="col-lg-4 col-sm-6 mb-5">
-    <div class="card p-0 border-primary rounded-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/courses/course-2.jpg" alt="course thumb">
-      <div class="card-body">
-        <ul class="list-inline mb-2">
-          <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-          <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-        </ul>
-        <a href="course-single.html">
-          <h4 class="card-title">Programming</h4>
-        </a>
-        <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna.</p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-      </div>
-    </div>
-  </div>
-  <!-- course item -->
-  <div class="col-lg-4 col-sm-6 mb-5">
-    <div class="card p-0 border-primary rounded-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/courses/course-3.jpg" alt="course thumb">
-      <div class="card-body">
-        <ul class="list-inline mb-2">
-          <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-          <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-        </ul>
-        <a href="course-single.html">
-          <h4 class="card-title">Lifestyle Archives</h4>
-        </a>
-        <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna.</p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-      </div>
-    </div>
-  </div>
-  <!-- course item -->
-  <div class="col-lg-4 col-sm-6 mb-5">
-    <div class="card p-0 border-primary rounded-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/courses/course-4.jpg" alt="course thumb">
-      <div class="card-body">
-        <ul class="list-inline mb-2">
-          <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-          <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-        </ul>
-        <a href="course-single.html">
-          <h4 class="card-title">Complete Freelancing</h4>
-        </a>
-        <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna.</p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-      </div>
-    </div>
-  </div>
-  <!-- course item -->
-  <div class="col-lg-4 col-sm-6 mb-5">
-    <div class="card p-0 border-primary rounded-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/courses/course-5.jpg" alt="course thumb">
-      <div class="card-body">
-        <ul class="list-inline mb-2">
-          <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-          <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-        </ul>
-        <a href="course-single.html">
-          <h4 class="card-title">Branding Design</h4>
-        </a>
-        <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna.</p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-      </div>
-    </div>
-  </div>
-  <!-- course item -->
-  <div class="col-lg-4 col-sm-6 mb-5">
-    <div class="card p-0 border-primary rounded-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/courses/course-6.jpg" alt="course thumb">
-      <div class="card-body">
-        <ul class="list-inline mb-2">
-          <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-          <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-        </ul>
-        <a href="course-single.html">
-          <h4 class="card-title">Art Design</h4>
-        </a>
-        <p class="card-text mb-4"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna.</p>
-        <a href="course-single.html" class="btn btn-primary btn-sm">Apply now</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- /course list -->
-    <!-- mobile see all button -->
-    <div class="row">
-      <div class="col-12 text-center">
-        <a href="courses.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /courses -->
+    </section>
+    <!-- /banner-feature -->
 
-<!-- cta -->
-<section class="section bg-primary">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h6 class="text-white font-secondary mb-0">Click to Join the Advance Workshop</h6>
-        <h2 class="section-title text-white">Training In Advannce Networking</h2>
-        <a href="contact.html" class="btn btn-secondary">join now</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /cta -->
 
-<!-- success story -->
-<section class="section bg-cover" data-background="<?php echo get_template_directory_uri()?>/assets/images/backgrounds/success-story.jpg">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-sm-4 position-relative success-video">
-        <a class="play-btn venobox" href="https://youtu.be/nA1Aqp0sPQo" data-vbtype="video">
-          <i class="ti-control-play"></i>
-        </a>
-      </div>
-      <div class="col-lg-6 col-sm-8">
-        <div class="bg-white p-5">
-          <h2 class="section-title">Success Stories</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+    <!-- about us -->
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+             <?php
+                foreach ($home_about_value as $key => $item) {
+                    if ($key == 0) {
+                        ?>
+                        <div class="col-md-6 order-2 order-md-1">
+                            <h2 class="section-title"><?php echo ifEmptyText($item['title'],'About US') ?></h2>
+                            <p><?php echo ifEmptyText($item['desc1']) ?></p>
+                            <p><?php echo ifEmptyText($item['desc2']) ?></p>
+                            <a href="<?php echo ifEmptyText($item['link'],'about.html') ?>" class="btn btn-primary-outline">Learn more</a>
+                        </div>
+                        <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+                            <img class="img-fluid w-100"
+                                 src="<?php echo ifEmptyText($item['icon'],get_template_directory_uri().'/assets/images/about/about-us.jpg') ?>"
+                                 alt="<?php echo ifEmptyText($item['title']) ?>">
+                        </div>
+                        <?php
+                    }
+                }
+          ?>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- /success story -->
+    </section>
+    <!-- /about us -->
 
-<!-- events -->
-<section class="section bg-gray">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-center section-title justify-content-between">
-          <h2 class="mb-0 text-nowrap mr-3">Upcoming Events</h2>
-          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
-          <div>
-            <a href="events.html" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block">see all</a>
+    <!-- courses -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+              <?php
+                foreach ($home_hotProductTitle_value as $key => $item) {
+                    if ($key == 0) {
+                        ?>
+                        <div class="d-flex align-items-center section-title justify-content-between">
+                            <h2 class="mb-0 text-nowrap mr-3"><?php echo ifEmptyText($item['title'], "HOT PRODUCT") ?></h2>
+                            <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                            <div>
+                                <a href="<?php echo ifEmptyText($item['link'], "##") ?>"
+                                   class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block"><?php echo ifEmptyText($item['btn'], "see all") ?></a>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                }
+                ?>
+          </div>
+        </div>
+          <!-- course list -->
+            <div class="row justify-content-center">
+              <!-- course item -->
+                <?php
+                foreach ($home_hotProductItem_value as $key => $item) {
+                    if ($key <= 5) {
+                        ?>
+                        <div class="col-lg-4 col-sm-6 mb-5">
+                            <div class="card p-0 border-primary rounded-0 hover-shadow">
+                                <img class="card-img-top rounded-0"
+                                     src="<?php echo ifEmptyText($item['image']) ?>"
+                                     alt="<?php echo ifEmptyText($item['title']) ?>">
+                                <div class="card-body">
+                                    <a href="<?php echo ifEmptyText($item['link']) ?>">
+                                        <h4 class="card-title"><?php echo ifEmptyText($item['title']) ?></h4>
+                                    </a>
+                                    <p class="card-text mb-4"><?php echo ifEmptyText($item['desc']) ?></p>
+                                    <a href="<?php echo ifEmptyText($item['link']) ?>" class="btn btn-primary btn-sm"><?php echo ifEmptyText($item['btn'],"GET TO") ?></a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php }
+                }
+                ?>
+
+            </div>
+
+          <!-- /course list -->
+        <!-- mobile see all button -->
+        <div class="row">
+          <div class="col-12 text-center">
+              <?php
+                foreach ($home_hotProductTitle_value as $key => $item) {
+                    if ($key == 0) {
+                        ?>
+                            <a href="<?php echo ifEmptyText($item['link'], "##") ?>" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block"><?php echo ifEmptyText($item['btn'], "see all") ?></a>
+                        <?php
+                    }
+                }
+              ?>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-  <!-- event -->
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/events/event-1.jpg" alt="event thumb">
-        <div class="card-date"><span>18</span><br>December</div>
-      </div>
-      <div class="card-body">
-        <!-- location -->
-        <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-        <a href="event-single.html"><h4 class="card-title">Lorem ipsum dolor amet, consectetur adipisicing.</h4></a>
-      </div>
-    </div>
-  </div>
-  <!-- event -->
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/events/event-2.jpg" alt="event thumb">
-        <div class="card-date"><span>21</span><br>December</div>
-      </div>
-      <div class="card-body">
-        <!-- location -->
-        <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-        <a href="event-single.html"><h4 class="card-title">Lorem ipsum dolor amet, consectetur adipisicing.</h4></a>
-      </div>
-    </div>
-  </div>
-  <!-- event -->
-  <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card border-0 rounded-0 hover-shadow">
-      <div class="card-img position-relative">
-        <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/events/event-3.jpg" alt="event thumb">
-        <div class="card-date"><span>23</span><br>December</div>
-      </div>
-      <div class="card-body">
-        <!-- location -->
-        <p><i class="ti-location-pin text-primary mr-2"></i>Dhanmondi Lake, Dhaka</p>
-        <a href="event-single.html"><h4 class="card-title">Lorem ipsum dolor amet, consectetur adipisicing.</h4></a>
-      </div>
-    </div>
-  </div>
-</div>
-    <!-- mobile see all button -->
-    <div class="row">
-      <div class="col-12 text-center">
-        <a href="course.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /events -->
+    </section>
+    <!-- /courses -->
 
-<!-- teachers -->
-<section class="section">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <h2 class="section-title">Our Teachers</h2>
-      </div>
-      <!-- teacher -->
-      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow">
-          <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/teachers/teacher-1.jpg" alt="teacher">
-          <div class="card-body">
-            <a href="teacher-single.html">
-              <h4 class="card-title">Jacke Masito</h4>
-            </a>
-            <p>Teacher</p>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
-            </ul>
+    <!-- cta -->
+    <section class="section bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+               <?php
+                foreach ($home_modularFour_value as $key => $item) {
+                    if ($key == 0) {
+                        ?>
+                        <h6 class="text-white font-secondary mb-0"><?php echo ifEmptyText($item['desc1']) ?></h6>
+                        <h2 class="section-title text-white"><?php echo ifEmptyText($item['desc2']) ?>g</h2>
+                        <a href="<?php echo ifEmptyText($item['link'], "##") ?>" class="btn btn-secondary"><?php echo ifEmptyText($item['btn'], "Join Now") ?></a>
+                        <?php
+                    }
+                }
+               ?>
           </div>
         </div>
       </div>
-      <!-- teacher -->
-      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow">
-          <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/teachers/teacher-2.jpg" alt="teacher">
-          <div class="card-body">
-            <a href="teacher-single.html">
-              <h4 class="card-title">Clark Malik</h4>
-            </a>
-            <p>Teacher</p>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- teacher -->
-      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-        <div class="card border-0 rounded-0 hover-shadow">
-          <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/teachers/teacher-3.jpg" alt="teacher">
-          <div class="card-body">
-            <a href="teacher-single.html">
-              <h4 class="card-title">John Doe</h4>
-            </a>
-            <p>Teacher</p>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-google"></i></a></li>
-              <li class="list-inline-item"><a class="text-color" href="#"><i class="ti-linkedin"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /teachers -->
+    </section>
+    <!-- /cta -->
 
-<!-- blog -->
-<section class="section pt-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2 class="section-title">Latest News</h2>
+    <!-- success story -->
+        <?php
+            foreach ($home_modularFive_value as $key => $item) {
+                if ($key == 0) {
+                    ?>
+                    <section class="section bg-cover" data-background="<?php echo ifEmptyText($item['bg']) ?>">
+                        <div class="container">
+                        <div class="row">
+                          <div class="col-lg-6 col-sm-4 position-relative success-video">
+                            <a class="play-btn venobox" href="<?php echo ifEmptyText($item['video']) ?>" data-vbtype="video">
+                              <i class="ti-control-play"></i>
+                            </a>
+                          </div>
+                          <div class="col-lg-6 col-sm-8">
+                            <div class="bg-white p-5">
+                              <h2 class="section-title"><?php echo ifEmptyText($item['title']) ?></h2>
+                              <p><?php echo ifEmptyText($item['desc1']) ?></p>
+                              <p><?php echo ifEmptyText($item['desc2']) ?></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    <?php
+            }
+        }
+     ?>
+    <!-- /success story -->
+
+    <!-- events -->
+    <section class="section bg-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+               <?php
+                foreach ($home_modularSixTitle_value as $key => $item) {
+                    if ($key == 0) {
+                        ?>
+                        <div class="d-flex align-items-center section-title justify-content-between">
+                          <h2 class="mb-0 text-nowrap mr-3"><?php echo ifEmptyText($item['title']) ?></h2>
+                          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+                          <div>
+                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block"><?php echo ifEmptyText($item['btn'],'see all') ?></a>
+                          </div>
+                        </div>
+                        <?php
+                    }
+                }
+               ?>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <!-- event -->
+            <?php
+                foreach ($home_modularSixItem_value as $key => $item) {
+                    if ($key <= 2) {
+                        ?>
+                      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                        <div class="card border-0 rounded-0 hover-shadow">
+                          <div class="card-img position-relative">
+                            <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['title']) ?>">
+                              <?php
+                              if (ifEmptyText($item['customTop']) !== '' && ifEmptyText($item['customBtm'] !== '' )) {
+                                  ?>
+                                  <div class="card-date">
+                                      <span><?php echo ifEmptyText($item['customTop']) ?></span><br><?php echo ifEmptyText($item['customBtm']) ?>
+                                  </div>
+                                  <?php
+                              }
+                            ?>
+                          </div>
+                          <div class="card-body">
+                            <!-- location -->
+                            <p><i class="ti-location-pin text-primary mr-2"></i><?php echo ifEmptyText($item['title']) ?></p>
+                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>"><h4 class="card-title"><?php echo ifEmptyText($item['title']) ?></h4></a>
+                          </div>
+                        </div>
+                      </div>
+                        <?php
+                    }
+                }
+            ?>
+
+        </div>
+        <!-- mobile see all button -->
+        <div class="row">
+          <div class="col-12 text-center">
+              <?php
+                foreach ($home_modularSixTitle_value as $key => $item) {
+                    if ($key == 0) {
+                        ?>
+                        <a href="<?php echo ifEmptyText($item['link'],'##') ?>" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block"><?php echo ifEmptyText($item['btn'],'see all') ?></a>
+                        <?php
+                    }
+                }
+              ?>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row justify-content-center">
-  <!-- blog post -->
-  <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/blog/post-1.jpg" alt="Post thumb">
-      <div class="card-body">
-        <!-- post meta -->
-        <ul class="list-inline mb-3">
-          <!-- post date -->
-          <li class="list-inline-item mr-3 ml-0">August 28, 2018</li>
-          <!-- author -->
-          <li class="list-inline-item mr-3 ml-0">By Somrat Sorkar</li>
-        </ul>
-        <a href="blog-single.html">
-          <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-        </a>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
+    </section>
+    <!-- /events -->
+
+    <!-- blog -->
+    <section class="section pt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="section-title"><?php echo $home_modularSevenTitle_value ?></h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+      <!-- blog post -->
+            <?php
+                foreach ($home_modularSevenItem_value as $key => $item) {
+                    if ($key <= 2) {
+                        ?>
+                        <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+                         <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+                          <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['title'],'##') ?>">
+                          <div class="card-body">
+                            <!-- post meta -->
+                            <ul class="list-inline mb-3">
+                              <!-- post date -->
+                              <li class="list-inline-item mr-3 ml-0"><?php echo ifEmptyText($item['time']) ?></li>
+                              <!-- author -->
+                              <li class="list-inline-item mr-3 ml-0">By <?php echo ifEmptyText($item['author']) ?></li>
+                            </ul>
+                            <a href="blog-single.html">
+                              <h4 class="card-title"><?php echo ifEmptyText($item['title']) ?></h4>
+                            </a>
+                            <p class="card-text"><?php echo ifEmptyText($item['desc']) ?></p>
+                            <a href="<?php echo ifEmptyText($item['link']) ?>" class="btn btn-primary btn-sm">read more</a>
+                          </div>
+                        </div>
+                      </article>
+                        <?php
+                    }
+                }
+            ?>
+
+        </div>
       </div>
-    </div>
-  </article>
-  <!-- blog post -->
-  <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/blog/post-2.jpg" alt="Post thumb">
-      <div class="card-body">
-        <!-- post meta -->
-        <ul class="list-inline mb-3">
-          <!-- post date -->
-          <li class="list-inline-item mr-3 ml-0">August 13, 2018</li>
-          <!-- author -->
-          <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-        </ul>
-        <a href="blog-single.html">
-          <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-        </a>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-      </div>
-    </div>
-  </article>
-  <!-- blog post -->
-  <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
-    <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-      <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri()?>/assets/images/blog/post-3.jpg" alt="Post thumb">
-      <div class="card-body">
-        <!-- post meta -->
-        <ul class="list-inline mb-3">
-          <!-- post date -->
-          <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
-          <!-- author -->
-          <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
-        </ul>
-        <a href="blog-single.html">
-          <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-        </a>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-        <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-      </div>
-    </div>
-  </article>
-</div>
-  </div>
-</section>
-<!-- /blog -->
+    </section>
+    <!-- /blog -->
 
 <?php
 get_footer();

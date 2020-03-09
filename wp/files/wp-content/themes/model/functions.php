@@ -48,7 +48,7 @@ if (!function_exists('my_theme_setup')) :
                 $wpdb->theme_file = "wp_theme_file";
                 $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->theme_file WHERE file = %s",$filename ) );
                 $data = [
-                  'is_public' =>  0,
+                  'is_public' =>  strpos($item['action'],'public') !==false  ? 1 : 0,
                   'theme' => wp_get_theme()->get('Name'),
                   'name' => $item['name'],
                   'action' => $item['action'],
@@ -119,6 +119,10 @@ function init_menu_items_class($classes, $item, $args) {
 }
 
 add_filter( 'nav_menu_link_attributes', 'init_menu_link_attributes', 2, 3 );
+/**
+
+
+ */
 function init_menu_link_attributes( $atts, $item, $args ) {
   if($args->theme_location == 'primary') {
 
@@ -152,7 +156,7 @@ function get_json_toArray($dir){
 }
 
 //根据当前文件全局获取配置文件变量
-function json_config_array($file,$type = 'vars',$public = 0)
+function json_config_array($file,$type = 'vars',$public = 0,$abbr = '')
 {
 
   $filename = explode('.',basename($file));
@@ -160,12 +164,12 @@ function json_config_array($file,$type = 'vars',$public = 0)
   {    
     $filename = $filename[0];
   }
-  
-  $file = $public ? $file = 'public/'.$filename : 'portal/'.$filename;
-  
-  global $wpdb;
+  $file = $public ? 'public/'.$filename : 'portal/'.$filename;
+
+
+    global $wpdb;
   $wpdb->theme_file = "wp_theme_file";
-  $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->theme_file WHERE file = %s AND is_public = %d", $file, $public ) );
+  $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->theme_file WHERE file = %s AND is_public = %d LIMIT 1", $file, $public ) );
 
   if($result !== false)
   {
@@ -179,3 +183,26 @@ function json_config_array($file,$type = 'vars',$public = 0)
     }    
   }
 }
+/**
+ * ifEmptyText [字符判空]
+ * @param $value [需要进行判空的值] [必传]
+ * @param $default [默认值]
+ * @author zhuoyue
+ */
+function ifEmptyText ($value,$default = '') {
+    $data = isset($value) ? (!empty($value) ? $value : $default) : $default;
+    return $data;
+}
+
+/**
+ * ifEmptyText [数组判空]
+ * @param $value [需要进行判空的值] [必传]
+ * @param $default [默认值]
+ * @author zhuoyue
+ */
+
+function ifEmptyArray ($value,$default = []) {
+    $data = isset($value) ? (!empty($value) ? $value : $default) : $default;
+    return $data;
+}
+
