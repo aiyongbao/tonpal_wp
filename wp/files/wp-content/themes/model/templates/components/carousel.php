@@ -13,9 +13,9 @@
 
 <?php 
 
-$theme_vars = get_query_var('theme_vars');
+$theme_widgets = get_query_var('theme_widgets');
 
-$carousel_vars = $theme_vars['carousel'];
+$carousel_vars = $theme_widgets['carousel'];
 
 if($carousel_vars['display'] == 1)
 {

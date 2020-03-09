@@ -1,8 +1,19 @@
 <!-- navbar -->
+<?php
+
+$theme_vars = json_config_array(__FILE__, 'vars',1);
+$nav_logo = ifEmptyText($theme_vars['logo']['value']);
+$nav_title = ifEmptyText($theme_vars['title']['value']);
+$nav_key_word = ifEmptyText($theme_vars['key_word']['value']);
+
+?>
+
 <div class="navigation w-100">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a class="navbar-brand" href="index.html"><img src="<?php echo get_template_directory_uri()?>/assets/images/logo.png" alt="logo"></a>
+                    <h1 class="header-logo" style="background: url(<?php echo $nav_logo; ?>) left 50% no-repeat;">
+                        <a href="/"><?php echo $nav_title; echo $nav_key_word; ?></a>
+                    </h1>
                 <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

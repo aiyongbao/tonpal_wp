@@ -5,11 +5,609 @@
     "order": 6.0,
     "more": {
         "vars": {
-            "company_name": {
-                "title": "公司名称",
-                "value": "1",
+            "special": {
+                "title": "自定义模块一",
+                "value": [
+                    {
+                        "title": "Scholorship News",
+                        "icon": "ti-book",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "link": "www.baidu.com"
+                    },
+                    {
+                        "title": "Our Notice Board",
+                        "icon": "ti-blackboard",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "link": ""
+                    },
+                    {
+                        "title": "Scholorship News",
+                        "icon": "ti-book",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "link": ""
+                    },
+                    {
+                        "title": "Scholorship News",
+                        "icon": "ti-book",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "link": ""
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请填写标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "icon": {
+                        "title": "图标",
+                        "value": "",
+                        "type": "text",
+                        "tip": "可以在此 https://themify.me/themify-icons 中选取",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "跳转链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这是一个链接"
+                    }
+                },
+                "tip": "此模块最多展示四组数据，多余不显示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "about" : {
+                "title": "自定义模块二",
+                "value": [
+                    {
+                        "title": "",
+                        "desc1": "cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+                        "desc2": "",
+                        "image": ""
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题"
+                    },
+                    "desc1": {
+                        "title": "描述段落一",
+                        "value": "",
+                        "type": "text",
+                        "tip": "控制desc字数，以便美观",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc2": {
+                        "title": "描述段落二",
+                        "value": "",
+                        "type": "text",
+                        "tip": "控制desc字数，以便美观"
+                    },
+                    "image": {
+                        "title": "图片展示",
+                        "value": "",
+                        "type": "image",
+                        "tip": "右侧展示图片"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "",
+                        "tip": "有自定义跳转链接需求填写，默认about.html"
+                    }
+                },
+                "tip": "这里只能展示一组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "hotProductTitle" : {
+                "title": "自定义模块三-标题",
+                "value": [
+                    {
+                        "title": "hot product",
+                        "link": "www.baidu.com",
+                        "btn": "More"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "see all",
+                        "type": "text",
+                        "tip": "控制字数，以便美观",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "这里只能展示一组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "hotProductItem" : {
+                "title": "自定义模块三-列表",
+                "value": [
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-1.jpg",
+                        "link": "www.baidu.com",
+                        "btn": "More"
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-2.jpg",
+                        "link": "www.baidu.com",
+                        "btn": ""
+
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-3.jpg",
+                        "link": "www.baidu.com",
+                        "btn": ""
+
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-4.jpg",
+                        "link": "www.baidu.com",
+                        "btn": "Get To"
+
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-5.jpg",
+                        "link": "www.baidu.com",
+                        "btn": ""
+
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-6.jpg",
+                        "link": "www.baidu.com",
+                        "btn": ""
+
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "image": {
+                        "title": "图片",
+                        "value": "",
+                        "type": "text",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "Apply now",
+                        "type": "text",
+                        "tip": "控制字数，以便美观",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "这里需要六组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "modularFour" : {
+                "title": "自定义模块四",
+                "value": [
+                    {
+                        "desc1": "Click to Join the Advance Workshop",
+                        "desc2": "Training In Advannce Networking",
+                        "link": "www.baidu.com",
+                        "btn": "More"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "desc1": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "自定义描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc2": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "自定义描述"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "Apply now",
+                        "type": "text",
+                        "tip": "控制字数，以便美观",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "这里只能展示一组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "modularFive" : {
+                "title": "自定义模块五",
+                "value": [
+                    {
+                        "title": "Success Stories Video",
+                        "desc1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.",
+                        "desc2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
+                        "video": "https://youtu.be/nA1Aqp0sPQo",
+                        "bg": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc1": {
+                        "title": "第一段描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "自定义描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc2": {
+                        "title": "第二段描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "自定义描述"
+                    },
+                    "video": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "视频链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "bg": {
+                        "title": "背景图片",
+                        "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg",
+                        "type": "text",
+                        "tip": "背景图片",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "这里只能展示一组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "modularSixTitle" : {
+                "title": "自定义模块六-标题",
+                "value": [
+                    {
+                        "title": "Upcoming Events",
+                        "link": "www.baidu.com",
+                        "btn": "More"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "see all",
+                        "type": "text",
+                        "tip": "控制字数，以便美观",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "这里只能展示一组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "modularSixItem" : {
+                "title": "自定义模块六-列表",
+                "value": [
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/events/event-1.jpg",
+                        "link": "www.baidu.com",
+                        "customTop": "18",
+                        "customBtm": "December"
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/events/event-2.jpg",
+                        "link": "www.baidu.com",
+                        "customTop": "",
+                        "customBtm": "December"
+                    },
+                    {
+                        "title": "Photography",
+                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/events/event-3.jpg",
+                        "link": "www.baidu.com",
+                        "customTop": "18",
+                        "customBtm": "December"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "image": {
+                        "title": "图片",
+                        "value": "",
+                        "type": "text",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "customTop": {
+                        "title": "左上角自定义-top",
+                        "value": "",
+                        "type": "text",
+                        "tip": "custom填写才展示"
+                    },
+                    "customBtm": {
+                        "title": "左上角自定义-btm",
+                        "value": "",
+                        "type": "text",
+                        "tip": "custom填写才展示"
+                    }
+                },
+                "tip": "这里需要三组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "modularSevenTitle" : {
+                "title": "自定义模块七-标题",
+                "value": "Latest news",
                 "type": "text",
-                "tip": "这是公司名称",
+                "tip": "这里只能展示一组数据，多余不展示",
+                "rule": {
+                    "require": true
+                }
+            },
+            "modularSevenItem" : {
+                "title": "自定义模块七-列表",
+                "value": [
+                    {
+                        "title": "Lorem ipsum dolor amet, adipisicing eiusmod tempor.",
+                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/blog/post-1.jpg",
+                        "link": "www.baidu.com",
+                        "time": "August 28, 2018",
+                        "author": "Somrat Sorkar"
+                    },
+                    {
+                        "title": "Lorem ipsum dolor amet, adipisicing eiusmod tempor.",
+                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/blog/post-2.jpg",
+                        "link": "www.baidu.com",
+                        "time": "August 28, 2018",
+                        "author": "Somrat Sorkar"
+                    },
+                    {
+                        "title": "Lorem ipsum dolor amet, adipisicing eiusmod tempor.",
+                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
+                        "image": "http://wp.io/wp-content/themes/model/assets/images/blog/post-3.jpg",
+                        "link": "www.baidu.com",
+                        "time": "August 28, 2018",
+                        "author": "Somrat Sorkar"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "image": {
+                        "title": "图片",
+                        "value": "",
+                        "type": "text",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "time": {
+                        "title": "时间",
+                        "value": "",
+                        "type": "text",
+                        "tip": "时间",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "author": {
+                        "title": "作者",
+                        "value": "",
+                        "type": "text",
+                        "tip": "作者",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "这里需要三组数据，多余不展示",
                 "rule": {
                     "require": true
                 }
