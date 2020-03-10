@@ -14,6 +14,7 @@ Text Domain: wporg
 Domain Path: /languages
 */
 
+use app\admin\controller\PostController;
 use app\home\controller\LangController;
 
 define('plugin_dir_path',plugin_dir_path(__FILE__));
@@ -37,4 +38,7 @@ function lang_init()
 {
     $lang = new LangController();
     $lang->index();
+
+    $post = new PostController();
+    $post->index();
 }

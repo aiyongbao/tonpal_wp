@@ -9,7 +9,7 @@ class LangController extends BaseController
     public function Index()
     {
 
-        $lang = $_GET['lang'];
+        $lang = $_REQUEST['lang'];
         if(empty($lang))
         {
             $lang = $_SESSION['lang'];
