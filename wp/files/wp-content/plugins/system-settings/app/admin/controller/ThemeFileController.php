@@ -126,20 +126,12 @@ class ThemeFileController extends RestController{
         {
             return $this->error("配置文件不能为空！");
         }
-    
-        $callback  = $request['callback'];
-        if(empty($callback))
-        {
-            return $this->error("回调url不能为空！");
-        }
 
         $data = ['config_more' => $config_more];
         $res = Db::name('theme_file')->where('id',$id)->update($data);       
         
         if($res != false)
         {
-            //执行回调url,并返回参数
-            $this->callBackRequest($callback, $request->get_params());
             return $this->success('更新成功！');
         }
         else{

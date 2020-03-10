@@ -5,6 +5,7 @@ use app\admin\controller\SlideController;
 use app\admin\controller\ThemeController;
 use app\admin\controller\NavMenuController;
 use app\admin\controller\SettingController;
+use app\admin\controller\CategoryController;
 use app\admin\controller\SlideItemController;
 use app\admin\controller\ThemeFileController;
 
@@ -156,6 +157,18 @@ class SystemSettingsRoutes {
             }
         ) );
 
+         //根据id更新导航栏子项
+         register_rest_route( $this->namespace , '/update_nav_menu_items', array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $navMenu = new NavMenuController();
+                return $navMenu->update_nav_menu_items($request);
+            },
+            'args' => function(){
+                $args = array();
+            }
+        ) );
+
         //根据id删除导航栏子项
         register_rest_route( $this->namespace , '/nav_menu_item/(?P<id>[\d]+)', array(
             'methods'  => WP_REST_Server::DELETABLE,
@@ -239,6 +252,16 @@ class SystemSettingsRoutes {
                 return $settings->store($request);
             }
         ));
+
+        //根据id删除网站分类和子分类
+        register_rest_route($this->namespace , '/category/(?P<id>[\d]+)',array(
+            'methods'  => WP_REST_Server::DELETABLE,
+            'callback' => function($request){
+                $category = new CategoryController();
+                return $category->deleteCategory($request);
+            }
+        ));
+        
 
     }
 }
