@@ -1,13 +1,13 @@
 <?php
 // products.json -> vars 数据获取
-$theme_vars = json_config_array('products','vars');
+$theme_vars = json_config_array('tags','vars');
 // Text 数据处理
-$products_title = ifEmptyText($theme_vars['title']['value'],'products');
-$products_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
-$products_desc = ifEmptyText($theme_vars['desc']['value']);
+$tags_title = ifEmptyText($theme_vars['title']['value'],'tags');
+$tags_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$tags_desc = ifEmptyText($theme_vars['desc']['value']);
 
 // SEO
-$seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$products_title");
+$seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$tags_title");
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 /**
@@ -19,7 +19,7 @@ $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
 ?>
-    <!--nextpage-->
+<!--nextpage-->
 
 <!doctype html>
 <html>
@@ -65,15 +65,15 @@ $max = intval( $wp_query->max_num_pages );
 
 <main>
     <!-- page title -->
-    <section class="page-title-section overlay" data-background="<?php echo $products_bg; ?>">
+    <section class="page-title-section overlay" data-background="<?php echo $tags_bg; ?>">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <ul class="list-inline custom-breadcrumb">
                         <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                        <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $products_title; ?></li>
+                        <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $tags_title; ?></li>
                     </ul>
-                    <p class="text-lighten"><strong><?php echo $products_desc; ?></strong></p>
+                    <p class="text-lighten"><strong><?php echo $tags_desc; ?></strong></p>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@ $max = intval( $wp_query->max_num_pages );
                 <div class="row">
 
                     <?php while ( have_posts() ) : the_post();   ?>
-                    <?php $thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
+                        <?php $thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
                         <article class="col-lg-4 col-sm-6 mb-5">
                             <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
                                 <?php if ( ifEmptyText($thumbnail) !== '' ) { ?>
@@ -109,7 +109,7 @@ $max = intval( $wp_query->max_num_pages );
                         </article>
                     <?php endwhile; ?>
                 </div>
-            <?php wpbeginner_numeric_posts_nav(); ?>
+                <?php wpbeginner_numeric_posts_nav(); ?>
             <?php endif; ?>
 
         </div>

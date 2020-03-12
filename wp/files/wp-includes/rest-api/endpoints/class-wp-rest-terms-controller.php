@@ -62,6 +62,20 @@ class WP_REST_Terms_Controller extends WP_REST_Controller {
 		$this->rest_base = ! empty( $tax_obj->rest_base ) ? $tax_obj->rest_base : $tax_obj->name;
 
 		$this->meta = new WP_REST_Term_Meta_Fields( $taxonomy );
+
+		//多语种接口
+		$lang = isset($_REQUEST['lang']) ? $_REQUEST['lang'] : '';
+		global $wpdb;
+		switch ($lang) {
+			case 'fr':
+				$lang = 'fr';
+				$wpdb->set_prefix('wp_fr_');
+				break;
+			default:
+				$lang = '';
+				break;
+		}
+
 	}
 
 	/**

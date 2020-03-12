@@ -1,17 +1,19 @@
 <!doctype html>
-<title>Educenter</title>
+<html>
 
 <head>
   <meta charset="utf-8">
-  <?php get_header() ?>
+    <title>Educenter</title>
+    <?php get_template_part('templates/components/head'); ?>
 </head>
 
 <body>
-  <header>
-    <?php get_template_part('templates/components/nav'); ?>
-  </header>
+<!-- header -->
+<?php get_header() ?>
+<!-- header -->
 
-  <main>
+
+<main>
     <!-- page title -->
     <section class="page-title-section overlay" data-background="<?php echo get_template_directory_uri() ?>/assets/images/backgrounds/page-title.jpg">
       <div class="container">
@@ -258,7 +260,11 @@
       </div>
     </section>
     <!-- /courses -->
-  </main>
+</main>
+<?php get_template_part( 'templates/components/footer' ); ?>
+
 </body>
 
 <?php get_footer(); ?>
+</html>
+
