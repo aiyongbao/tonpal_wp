@@ -1,18 +1,3 @@
-<!doctype html>
-<title>Educenter</title>
-<head>
-    <meta charset="utf-8">
-    <link rel="canonical" href="<?php echo home_url();?>" />
-    <?php get_template_part( 'templates/components/head' )?>
-    <style>
-        .hero-section {
-            padding: 300px 0 290px;
-        }
-    </style>
-</head>
-
-<body>
-
 <?php
 // widgets 数据处理
 $theme_widgets = json_config_array(__FILE__,'widgets');
@@ -34,7 +19,32 @@ $home_modularSevenItem_value = ifEmptyArray($theme_vars['modularSevenItem']['val
 // Text 数据处理
 $home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['value'],'Latest News');
 
+// SEO
+$seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
+$seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
+$seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 ?>
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- SEO -->
+    <title><?php echo $seo_Title; ?></title>
+    <meta name="keywords" content="<?php echo $seo_Description; ?>" />
+    <meta name="description" content="<?php echo $seo_Keywords; ?>" />
+
+    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
+    <?php get_template_part( 'templates/components/head' )?>
+    <style>
+        .hero-section {
+            padding: 300px 0 290px;
+        }
+    </style>
+</head>
+
+<body>
     <!-- preloader start -->
     <div class="preloader">
         <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
@@ -91,7 +101,6 @@ $home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['va
       </div>
     </section>
     <!-- /banner-feature -->
-
 
     <!-- about us -->
     <section class="section">
@@ -357,6 +366,11 @@ $home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['va
       </div>
     </section>
     <!-- /blog -->
+    <!-- footer -->
+    <?php get_template_part( 'templates/components/footer' ); ?>
 
-<?php
-get_footer();
+</body>
+<?php get_footer(); ?>
+
+</html>
+

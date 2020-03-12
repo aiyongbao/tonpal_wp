@@ -1,13 +1,4 @@
-<?php
-/**
- * 模板单页面模板
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
- */
- 
-get_header(); ?>
+
  
         <?php
             $category = get_the_category();
@@ -26,5 +17,3 @@ get_header(); ?>
                 include('templates/single/single.php');
             }
         ?>
- 
-<?php get_footer(); ?>

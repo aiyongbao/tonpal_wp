@@ -1,11 +1,10 @@
 <!doctype html>
-<title>Educenter</title>
+<html>
 
 <head>
   <meta charset="utf-8">
+    <title>Educenter</title>
     <?php get_template_part('templates/components/head'); ?>
-
-
 </head>
 
 <body>
@@ -261,7 +260,11 @@
       </div>
     </section>
     <!-- /courses -->
-  </main>
+</main>
+<?php get_template_part( 'templates/components/footer' ); ?>
+
 </body>
 
 <?php get_footer(); ?>
+</html>
+
