@@ -2,6 +2,7 @@
 namespace app\admin\controller;
 
 use library\controller\RestController;
+use library\Db;
 
 class CategoryController extends RestController{
 
@@ -10,6 +11,46 @@ class CategoryController extends RestController{
     public function __construct()
     {
 
+    }
+
+    public function index()
+    {
+
+        
+
+        add_action("rest_after_insert_category",function($term,$request,$bool){
+            
+            if($bool && $request['type'] == 'list')
+            {
+                global $wpdb;
+                $item = get_json_toArray(get_template_directory() . '/json/portal/category.json');
+                
+                $data = [
+                    'object_id' => $term->ID,
+                    'is_public' =>  0,
+                    'theme' => wp_get_theme()->get('Name'),
+                    'name' => $item['name'],
+                    'action' => $item['action'],
+                    'file' => 'portal/category',
+                    'description' => $item['description'],
+                    'more' => json_encode($item ),
+                    'config_more' => json_encode($item)
+                  ];
+
+               
+                $res = Db::name('theme_file')->insert( $data );
+                $insert_id = $wpdb->insert_id;
+
+                register_rest_field('category', 'theme_file', [
+                    'get_callback' => function ($params) use ($insert_id) {
+                        return Db::name('theme_file')->where('id',$insert_id)->find();
+                    }
+                ]);
+
+                
+            }
+
+        },10,3);
     }
 
     //根据父级删除子集
