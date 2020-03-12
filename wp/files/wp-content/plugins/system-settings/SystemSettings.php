@@ -16,6 +16,7 @@ Domain Path: /languages
 
 use app\admin\controller\CategoryController;
 use app\admin\controller\PostController;
+use app\admin\controller\ThemeFileController;
 use app\home\controller\LangController;
 
 define('plugin_dir_path',plugin_dir_path(__FILE__));
@@ -25,8 +26,18 @@ error_reporting(1);
 //启用钩子
 require plugin_dir_path(__FILE__) . 'library/autoload/autoload.php';
 
+//插件安装
+register_activation_hook( __FILE__, function(){
+    $themeFile = new ThemeFileController();
+    $themeFile->initSql();
+} );
+
 //初始化钩子
 add_action('init', function(){
+
+    $lang = new LangController();
+    $lang->index();
+
     $post = new PostController('post');
     $post->index();
 
