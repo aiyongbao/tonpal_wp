@@ -1,162 +1,98 @@
+<?php
+// category.json -> vars 数据获取
+$theme_vars = json_config_array('category','vars');
+// Text 数据处理
+$category_title = ifEmptyText($theme_vars['title']['value'],'category');
+$category_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$category_desc = ifEmptyText($theme_vars['desc']['value']);
+
+// SEO
+$seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$category_title");
+$seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
+$seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
+
+
+/**
+ * $wp_query 是全局变量
+ * $paged 当前页数
+ * $max 该分类总页数
+ */
+$paged = get_query_var('paged');
+$max = intval( $wp_query->max_num_pages );
+?>
 <!doctype html>
-<title>Educenter</title>
-
+<html>
 <head>
-  <meta charset="utf-8">
-    <?php get_template_part('templates/components/head'); ?>
+    <meta charset="utf-8">
+    <!-- SEO -->
+    <title><?php echo $seo_title; ?></title>
+    <meta name="keywords" content="<?php echo $seo_description; ?>" />
+    <meta name="description" content="<?php echo $seo_keywords; ?>" />
 
+    <?php if($paged !== 0) { ?>
+        <link rel="prev" href="<?php previous_posts();?>" />
+    <?php } ?>
+    <?php if($paged !== $max) { ?>
+        <link rel="next" href="<?php next_posts(); ?>" />
+    <?php } ?>
+
+    <?php get_template_part('templates/components/head'); ?>
 </head>
 
 <body>
-    <!-- header -->
-        <?php get_header() ?>
-    <!-- header -->
+<!-- header -->
+<?php get_header() ?>
+<!-- header -->
 
-  <main>
+<main>
     <!-- page title -->
-    <section class="page-title-section overlay" data-background="<?php echo get_template_directory_uri() ?>/assets/images/backgrounds/page-title.jpg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <ul class="list-inline custom-breadcrumb">
-              <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">category</a></li>
-              <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
-            </ul>
-            <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
-          </div>
+    <section class="page-title-section overlay" data-background="<?php echo $category_bg; ?>">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="list-inline custom-breadcrumb">
+                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
+                        <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $category_title; ?></li>
+                    </ul>
+                    <p class="text-lighten"><strong><?php echo $category_desc; ?></strong></p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
     <!-- /page title -->
 
-    <!-- blogs -->
+    <!-- notice -->
     <section class="section">
-      <div class="container">
-        <div class="row">
-          <!-- blog post -->
-          <article class="col-lg-4 col-sm-6 mb-5">
-            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-              <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-1.jpg" alt="Post thumb">
-              <div class="card-body">
-                <!-- post meta -->
-                <ul class="list-inline mb-3">
-                  <!-- post date -->
-                  <li class="list-inline-item mr-3 ml-0">August 28, 2018</li>
-                  <!-- author -->
-                  <li class="list-inline-item mr-3 ml-0">By Somrat Sorkar</li>
-                </ul>
-                <a href="blog-single.html">
-                  <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                </a>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-              </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="list-unstyled">
+                        <!-- notice item -->
+                        <?php if ( have_posts() ) : ?>
+                            <div class="row">
+                                <?php while ( have_posts() ) : the_post(); ?>
+                                    <li class="d-md-table mb-4 w-100 border-bottom hover-shadow">
+                                        <div class="d-md-table-cell text-center p-4 bg-primary text-white mb-4 mb-md-0"><span class="h2 d-block">30</span> APR,2019</div>
+                                        <div class="d-md-table-cell px-4 vertical-align-middle mb-4 mb-md-0 new-">
+                                            <a href="<?php the_permalink(); ?>" class="h4 mb-3 d-block"><?php the_title(); ?></a>
+                                            <?php the_excerpt(); ?>
+                                        </div>
+                                        <div class="d-md-table-cell text-right pr-0 pr-md-4"><a href="<?php the_permalink(); ?>" class="btn btn-primary">read more</a></div>
+                                    </li>
+                                <?php endwhile; ?>
+                            </div>
+                            <?php wpbeginner_numeric_posts_nav(); ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
             </div>
-          </article>
-          <!-- blog post -->
-          <article class="col-lg-4 col-sm-6 mb-5">
-            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-              <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-2.jpg" alt="Post thumb">
-              <div class="card-body">
-                <!-- post meta -->
-                <ul class="list-inline mb-3">
-                  <!-- post date -->
-                  <li class="list-inline-item mr-3 ml-0">August 13, 2018</li>
-                  <!-- author -->
-                  <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-                </ul>
-                <a href="blog-single.html">
-                  <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                </a>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-              </div>
-            </div>
-          </article>
-          <!-- blog post -->
-          <article class="col-lg-4 col-sm-6 mb-5">
-            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-              <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-3.jpg" alt="Post thumb">
-              <div class="card-body">
-                <!-- post meta -->
-                <ul class="list-inline mb-3">
-                  <!-- post date -->
-                  <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
-                  <!-- author -->
-                  <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
-                </ul>
-                <a href="blog-single.html">
-                  <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                </a>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-              </div>
-            </div>
-          </article>
-          <!-- blog post -->
-          <article class="col-lg-4 col-sm-6 mb-5">
-            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-              <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-1.jpg" alt="Post thumb">
-              <div class="card-body">
-                <!-- post meta -->
-                <ul class="list-inline mb-3">
-                  <!-- post date -->
-                  <li class="list-inline-item mr-3 ml-0">August 28, 2018</li>
-                  <!-- author -->
-                  <li class="list-inline-item mr-3 ml-0">By Somrat Sorkar</li>
-                </ul>
-                <a href="blog-single.html">
-                  <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                </a>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-              </div>
-            </div>
-          </article>
-          <!-- blog post -->
-          <article class="col-lg-4 col-sm-6 mb-5">
-            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-              <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-2.jpg" alt="Post thumb">
-              <div class="card-body">
-                <!-- post meta -->
-                <ul class="list-inline mb-3">
-                  <!-- post date -->
-                  <li class="list-inline-item mr-3 ml-0">August 13, 2018</li>
-                  <!-- author -->
-                  <li class="list-inline-item mr-3 ml-0">By Jonathon Drew</li>
-                </ul>
-                <a href="blog-single.html">
-                  <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                </a>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-              </div>
-            </div>
-          </article>
-          <!-- blog post -->
-          <article class="col-lg-4 col-sm-6 mb-5">
-            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-              <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-3.jpg" alt="Post thumb">
-              <div class="card-body">
-                <!-- post meta -->
-                <ul class="list-inline mb-3">
-                  <!-- post date -->
-                  <li class="list-inline-item mr-3 ml-0">August 24, 2018</li>
-                  <!-- author -->
-                  <li class="list-inline-item mr-3 ml-0">By Alex Pitt</li>
-                </ul>
-                <a href="blog-single.html">
-                  <h4 class="card-title">Lorem ipsum dolor amet, adipisicing eiusmod tempor.</h4>
-                </a>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicin</p>
-                <a href="blog-single.html" class="btn btn-primary btn-sm">read more</a>
-              </div>
-            </div>
-          </article>
         </div>
-      </div>
     </section>
-    <!-- /blogs -->
-  </main>
+    <!-- /notice -->
+</main>
+<?php get_template_part( 'templates/components/footer' ); ?>
+
 </body>
+
 <?php get_footer(); ?>
+</html>

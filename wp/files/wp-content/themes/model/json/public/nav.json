@@ -12,9 +12,6 @@
                 "tip": "请选择logo",
                 "rule": {
                     "require": true
-                },
-                "message":{
-                    "require":"不能为空"
                 }
             },
             "title": {
@@ -36,9 +33,6 @@
                 "tip": "需要优化特定的关键词",
                 "rule": {
                     "require": false
-                },
-                "message":{
-                    "require":"如果需要优化特定的关键词"
                 }
             }
         }

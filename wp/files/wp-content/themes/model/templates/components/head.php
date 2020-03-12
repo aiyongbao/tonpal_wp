@@ -16,3 +16,4 @@
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/plugins/venobox/venobox.css">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/style.css">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/header.css">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/public.css">
