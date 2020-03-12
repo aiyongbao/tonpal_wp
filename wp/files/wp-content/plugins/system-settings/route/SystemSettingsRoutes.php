@@ -36,7 +36,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $theme = new ThemeController();
-                return middleware::run()->init($theme->index(),$request);
+                return middleware::run('api')->init($theme->index(),$request);
             },
         ) );
 

@@ -117,21 +117,6 @@ class NavMenuController extends RestController{
 
         $data = [];
 
-        /* $data = [
-            'menu-item-position'    => '0', //排序
-            'menu-item-type'        => 'post_type', // ['post_type','taxonomy', 'custom', 'post_type'] 
-            'menu-item-title'       => '示例页面',
-            'menu-item-db-id'   => $id,
-            'menu-item-object'      => 'page',  //对应类型 ['page', 'category', 'custom', 'post']
-            'menu-item-status'      => 'publish', // "publish", "future", "draft","pending", "private", "trash", "auto-draft", "inherit", "request-pending", "request-confirmed", "request-failed", "request-completed", "any"
-            'menu-item-url'         => '', //type = custom 填写
-            'menu-item-description' => '', //描述
-            'menu-item-attr-title'  => '', //标签title属性
-            'menu-item-target'      => '', // 是否打开新窗口
-            'menu-item-classes'     => '', //样式class
-        ]; */
-
-
         $data['menu-item-title'] = isset($request['menu-item-title']) ?  $request['menu-item-title'] : $post->post_title ; 
         $data['menu-item-object-id'] = isset($request['menu-item-object-id']) ? $request['menu-item-object-id'] : $object_id; 
         $data['menu-item-object'] = isset($request['menu-item-object']) ? $request['menu-item-object'] : $object;
