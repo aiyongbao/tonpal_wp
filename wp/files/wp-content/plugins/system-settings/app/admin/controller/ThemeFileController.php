@@ -12,6 +12,31 @@ class ThemeFileController extends RestController{
         
     }
 
+    //初始化sql语句
+    public function initSql($prefix = 'wp_')
+    {
+        $sql = <<<EOT
+            DROP TABLE IF EXISTS `{$prefix}theme_file`;
+            CREATE TABLE `{$prefix}theme_file` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `is_public` tinyint(3) DEFAULT NULL COMMENT '是否公共模块',
+            `theme` varchar(20) DEFAULT NULL,
+            `name` varchar(20) DEFAULT NULL,
+            `action` varchar(20) DEFAULT NULL,
+            `file` varchar(50) DEFAULT NULL,
+            `description` varchar(100) DEFAULT NULL,
+            `more` text,
+            `config_more` text,
+            `list_order` float DEFAULT '10000',
+            `object_id` int(11) DEFAULT NULL,
+            PRIMARY KEY (`id`)
+            ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
+            SET FOREIGN_KEY_CHECKS = 1;
+EOT;
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+    }
+
     public function index()
     {
         $result = [];

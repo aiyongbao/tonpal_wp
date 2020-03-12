@@ -181,24 +181,6 @@ class SystemSettingsRoutes {
             }
         ) );
 
-        //获取轮播播图父列表
-        register_rest_route( $this->namespace , '/slide', array(
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => function($request){
-                $slide = new SlideController($request);
-                return $slide->get_list();
-            }
-        ) );
-
-        //增加轮播图子项
-        register_rest_route( $this->namespace , '/slide_item', array(
-            'methods'  => WP_REST_Server::CREATABLE,
-            'callback' => function($request){
-                $slideItem = new SlideItemController($request);
-                return $slideItem->add_item($request);
-            }
-        ) );
-
         //同步当前主题的json配置文件列表
         register_rest_route($this->namespace , '/theme_file_list',array(
             'methods'  => WP_REST_Server::CREATABLE,
