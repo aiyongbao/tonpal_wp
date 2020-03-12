@@ -34,6 +34,18 @@ class ThemeController extends RestController{
         $theme_name = $request['name'];
         if(!empty($theme_name))
         {
+            //主题路径
+            $themeFilePath = ABSPATH  . 'wp-content/themes/';
+            if(!is_dir($theme_name))
+            {
+                //下载远程主题
+                $next = $this->download($theme_name);
+                if(!$next)
+                {
+                    return $this->error('当前主题不存在！');
+                }
+            }
+
             $theme = wp_get_theme($theme_name);
             if ( ! $theme->exists() || ! $theme->is_allowed() ) {
                 return $this->error('当前主题不存在！');
@@ -42,6 +54,42 @@ class ThemeController extends RestController{
             
             return $this->success('主题切换完成！');
         }
+    }
+
+    //从远程同步主题
+    public function download($theme_name)
+    {
+
+        $remote = "https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/themes/zips/".$theme_name.'.zip';
+
+        try {
+            $file = file_get_contents( $remote );
+        }
+        catch (\Exception $e) {
+            return $this->error('服务器超时！');
+        }
+
+        $themeFilePath = ABSPATH  . 'wp-content/themes/';
+        $themeFile = $themeFilePath . $theme_name . '.zip';
+
+        if (!file_exists($themeFile)) {
+            mkdir($themeFilePath, 0777);
+            @chmod($themeFilePath, 0777);
+        }
+
+        file_put_contents($themeFile, $file);
+
+        $result = false;
+        
+        if(file_exists($themeFile)) {
+            $zip = new \ZipArchive();
+            if($zip->open($themeFile) === true){
+                $result = $zip->extractTo($themeFilePath);
+                $zip->close();
+            }
+        }
+
+        return $result;
     }
 
     //设置导航栏所属类型
