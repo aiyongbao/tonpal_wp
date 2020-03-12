@@ -14,6 +14,7 @@ Text Domain: wporg
 Domain Path: /languages
 */
 
+use app\admin\controller\CategoryController;
 use app\admin\controller\PostController;
 use app\home\controller\LangController;
 
@@ -25,20 +26,31 @@ error_reporting(1);
 require plugin_dir_path(__FILE__) . 'library/autoload/autoload.php';
 
 //初始化钩子
-// add_action('init', function(){
+add_action('init', function(){
+    $post = new PostController('post');
+    $post->index();
 
-//     session_start();
-//     // 存储 lang语种 数据
-//     lang_init();
-// });
+    $page = new PostController('page');
+    $page->index();
 
-add_action( 'lang_loaded', 'lang_init' );
+    $category = new CategoryController();
+    $category->index();
+});
 
-function lang_init()
+//语种钩子
+add_action( 'lang_loaded', function()
 {
     $lang = new LangController();
     $lang->index();
+});
 
-    $post = new PostController();
-    $post->index();
-}
+
+//文章查询钩子
+add_action( 'setup_theme' ,function(){
+    add_action( 'pre_get_posts', function($query)
+    {
+        $post = new app\home\controller\PostController();
+        $query = $post->index($query);
+        return $query;
+    });
+});
