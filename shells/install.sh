@@ -616,7 +616,7 @@ Set_Token(){
         "open": true, 
         "limit_addr": ["121.196.197.45","121.196.217.6","121.196.204.209","47.90.66.54"]
     }'
-    API_POS='/www/server/panel/config/api.json' 
+    API_POS='/www/server/panel/config/api.json'
     echo ${API_JSON} > ${API_POS}
     cd /
 }
