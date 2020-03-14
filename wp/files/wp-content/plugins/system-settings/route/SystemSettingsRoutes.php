@@ -1,12 +1,11 @@
 <?php
 
 use app\admin\controller\IndexController;
-use app\admin\controller\SlideController;
 use app\admin\controller\ThemeController;
 use app\admin\controller\NavMenuController;
 use app\admin\controller\SettingController;
 use app\admin\controller\CategoryController;
-use app\admin\controller\SlideItemController;
+use app\admin\controller\InquiryController;
 use app\admin\controller\ThemeFileController;
 
 class SystemSettingsRoutes {
@@ -241,6 +240,15 @@ class SystemSettingsRoutes {
             'callback' => function($request){
                 $category = new CategoryController();
                 return $category->deleteCategory($request);
+            }
+        ));
+
+        //注册询盘链接
+        register_rest_route($this->namespace , '/inquiry',array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $inquiry = new InquiryController();
+                return $inquiry->index($request);
             }
         ));
         

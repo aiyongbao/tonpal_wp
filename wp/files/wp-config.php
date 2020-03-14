@@ -97,7 +97,7 @@ define( 'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 'On' );
 
 /** 更改访问域名 */
-$domain = ['www.$DOMAIN', '$DOMAIN', '$DOMAIN', '$TEMPDOMAIN']; 
+$domain = ['www.$DOMAIN', '$DOMAIN', 'm.$DOMAIN', '$TEMPDOMAIN']; 
 if(in_array($_SERVER['HTTP_HOST'], $domain)){
     define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
     define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
