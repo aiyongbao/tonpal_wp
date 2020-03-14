@@ -52,7 +52,7 @@
             },
             "bg": {
                 "title": "背景图",
-                "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
+                "value": "/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
                 "type": "text",
                 "tip": "背景图",
                 "rule": {

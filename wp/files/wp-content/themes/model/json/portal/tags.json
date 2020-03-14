@@ -44,7 +44,7 @@
             "bg": {
                 "title": "背景图",
                 "type": "text",
-                "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
+                "value": "/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
                 "tip": "背景图",
                 "rule": {
                     "require": true

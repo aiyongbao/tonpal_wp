@@ -2,9 +2,10 @@
 // products.json -> vars 数据获取
 $theme_vars = json_config_array('products','vars');
 // Text 数据处理
-$products_title = ifEmptyText($theme_vars['title']['value'],'products');
-$products_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
-$products_desc = ifEmptyText($theme_vars['desc']['value']);
+$products_title = ifEmptyText($theme_vars['title']['value'],'Product');
+$products_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
+$products_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
+$products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$products_title");
@@ -15,6 +16,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
+global $wp_query;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
@@ -54,6 +56,9 @@ $max = intval( $wp_query->max_num_pages );
             -webkit-box-orient: vertical;
             text-overflow: ellipsis;
         }
+        .no-product {
+            font-size: 30px;
+        }
     </style>
 
 </head>
@@ -69,10 +74,7 @@ $max = intval( $wp_query->max_num_pages );
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <ul class="list-inline custom-breadcrumb">
-                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                        <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $products_title; ?></li>
-                    </ul>
+                    <?php get_breadcrumbs();?>
                     <p class="text-lighten"><strong><?php echo $products_desc; ?></strong></p>
                 </div>
             </div>
@@ -83,26 +85,25 @@ $max = intval( $wp_query->max_num_pages );
     <!-- blogs -->
     <section class="section">
         <div class="container">
-            <?php if ( have_posts() ) : ?>
+            <?php if ( have_posts() ) { ?>
                 <div class="row">
-
                     <?php while ( have_posts() ) : the_post();   ?>
                     <?php $thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
                         <article class="col-lg-4 col-sm-6 mb-5">
                             <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
                                 <?php if ( ifEmptyText($thumbnail) !== '' ) { ?>
-                                    <img class="card-img-top rounded-0" src="<?php echo $thumbnail ?>" alt="Post thumb">
+                                    <img class="card-img-top rounded-0" src="<?php echo $thumbnail ?>" alt="<?php ifEmptyText(the_title(),'This is title'); ?>">
                                 <?php } else {?>
-                                    <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-1.jpg" alt="Post thumb">
+                                    <img class="card-img-top rounded-0" src="http://iph.href.lu/350x350?text=350x350" alt="占位图">
                                 <?php } ?>
                                 <div class="card-body">
                                     <ul class="list-inline mb-3">
                                         <li class="list-inline-item mr-3 ml-0"><?php echo esc_html( get_the_date() ); ?></li>
                                     </ul>
                                     <a href="<?php the_permalink(); ?>" target="_blank">
-                                        <h4 class="card-title"><?php the_title(); ?></h4>
+                                        <h4 class="card-title"><?php ifEmptyText(the_title(),'This is title'); ?></h4>
                                     </a>
-                                    <?php the_excerpt(); ?>
+                                    <p><?php ifEmptyText(the_excerpt(),'This is excerpt'); ?></p>
                                     <a href="<?php the_permalink(); ?>" target="_blank" class="btn btn-primary btn-sm">read more</a>
                                 </div>
                             </div>
@@ -110,8 +111,11 @@ $max = intval( $wp_query->max_num_pages );
                     <?php endwhile; ?>
                 </div>
             <?php wpbeginner_numeric_posts_nav(); ?>
-            <?php endif; ?>
-
+            <?php } else { ?>
+                <div class="row">
+                    <div class="no-product"><?php echo $products_null_tip; ?></div>
+                </div>
+            <?php } ?>
         </div>
     </section>
     <!-- /blogs -->
