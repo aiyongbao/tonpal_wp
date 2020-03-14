@@ -44,7 +44,7 @@
             "bg": {
                 "title": "背景图",
                 "type": "text",
-                "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
+                "value": "",
                 "tip": "背景图",
                 "rule": {
                     "require": true
@@ -53,8 +53,17 @@
             "desc": {
                 "title": "描述",
                 "type": "text",
-                "value": "desc",
+                "value": "",
                 "tip": "描述",
+                "rule": {
+                    "require": true
+                }
+            },
+            "nullTip": {
+                "title": "提示语",
+                "type": "text",
+                "value": "",
+                "tip": "当前分类下没有内容时的提示语",
                 "rule": {
                     "require": true
                 }

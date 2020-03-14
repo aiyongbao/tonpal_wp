@@ -4,7 +4,7 @@ $post = get_post();
 $theme_vars = json_config_array('product-detail','vars');
 // Text 数据处理
 $product_detail_title = ifEmptyText($theme_vars['title']['value'],'Detail');
-$product_detail_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$product_detail_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $productDetail_desc = ifEmptyText($theme_vars['desc']['value']);
 
 $photos = get_post_meta(get_post()->ID)['photos'];
@@ -13,6 +13,7 @@ $seo_title = ifEmptyText(get_post_meta(get_post()->ID)['seo_title'],"$product_de
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID)['seo_description']);
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID)['seo_keywords']);
 
+global $wp;
 ?>
 
 <!DOCTYPE html>
@@ -48,10 +49,7 @@ $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID)['seo_keywords']);
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <ul class="list-inline custom-breadcrumb">
-                    <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                    <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $post->post_title; ?></li>
-                </ul>
+                <?php get_breadcrumbs();?>
                 <p class="text-lighten"><?php echo $productDetail_desc; ?></p>
             </div>
         </div>
@@ -62,37 +60,44 @@ $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID)['seo_keywords']);
 <!-- blog details -->
 <section class="section-sm bg-gray">
     <div class="container">
-        <div id="demo" class="row carousel slide" data-ride="carousel">
-            <!-- 指示符 -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-            <!-- 轮播图片 -->
-            <div class="carousel-inner" >
-                <?php
-                    foreach ($photos as $key => $item) {
-                        if($key ==0 ) {
-                    ?>
-                        <div class="carousel-item active">
-                            <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
-                        </div>
-                    <?php } else { ?>
-                        <div class="carousel-item">
-                            <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
-                        </div>
+        <?php if ($photos != []) { ?>
+            <div id="demo" class="row carousel slide" data-ride="carousel">
+                <!-- 指示符 -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+                <!-- 轮播图片 -->
+                <div class="carousel-inner" >
+                    <?php
+                        foreach ($photos as $key => $item) {
+                            if($key ==0 ) {
+                        ?>
+                            <div class="carousel-item active">
+                                <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
+                            </div>
+                        <?php } else { ?>
+                            <div class="carousel-item">
+                                <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
+                            </div>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?>
+
+                </div>
+                <!-- 左右切换按钮 -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
             </div>
-            <!-- 左右切换按钮 -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
+        <?php } else { ?>
+            <div class="">
+                <img src="https://iph.href.lu/1110x555?text=1110x555" class="img-fluid w-100">
+            </div>
+        <?php }?>
         <!-- course info -->
         <div class="row align-items-center mb-5">
             <div class="col-xl-6 order-1 col-sm-6 mb-4 mb-xl-0">
@@ -115,7 +120,9 @@ $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID)['seo_keywords']);
             <div class="col-12 mb-4">
                 <?php echo $post->post_content ?>
             </div>
-            <?php the_tags('<li>', '</li><li>', '</li>') ?>
+            <ul>
+                <?php the_tags('<li>', '</li><li>', '</li>') ?>
+            </ul>
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>
             </div>

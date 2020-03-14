@@ -8,7 +8,7 @@ $about_modularFiveItem_value = ifEmptyArray($theme_vars['modularFiveItem']['valu
 
 //Text 数据处理
 $about_title = ifEmptyText($theme_vars['title']['value'],'About');
-$about_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$about_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $about_desc = ifEmptyText($theme_vars['desc']['value']);
 $about_modularTwo_value = ifEmptyText($theme_vars['modularTwo']['value']);
 $about_modularFiveTitle_value = ifEmptyText($theme_vars['modularFiveTitle']['value']);
@@ -44,10 +44,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <ul class="list-inline custom-breadcrumb">
-                            <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                            <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $about_title; ?></li>
-                        </ul>
+                        <?php get_breadcrumbs();?>
                         <p class="text-lighten"><?php echo $about_desc; ?></p>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 $theme_vars = json_config_array('category','vars');
 // Text 数据处理
 $category_title = ifEmptyText($theme_vars['title']['value'],'category');
-$category_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$category_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $category_desc = ifEmptyText($theme_vars['desc']['value']);
 
 // SEO
@@ -17,6 +17,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
+global $wp_query;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 ?>
@@ -50,10 +51,7 @@ $max = intval( $wp_query->max_num_pages );
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <ul class="list-inline custom-breadcrumb">
-                        <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                        <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $category_title; ?></li>
-                    </ul>
+                    <?php get_breadcrumbs();?>
                     <p class="text-lighten"><strong><?php echo $category_desc; ?></strong></p>
                 </div>
             </div>
@@ -75,7 +73,7 @@ $max = intval( $wp_query->max_num_pages );
                                         <div class="d-md-table-cell text-center p-4 bg-primary text-white mb-4 mb-md-0"><span class="h2 d-block">30</span> APR,2019</div>
                                         <div class="d-md-table-cell px-4 vertical-align-middle mb-4 mb-md-0 new-">
                                             <a href="<?php the_permalink(); ?>" class="h4 mb-3 d-block"><?php the_title(); ?></a>
-                                            <?php the_excerpt(); ?>
+                                            <p><?php the_excerpt(); ?></p>
                                         </div>
                                         <div class="d-md-table-cell text-right pr-0 pr-md-4"><a href="<?php the_permalink(); ?>" class="btn btn-primary">read more</a></div>
                                     </li>
