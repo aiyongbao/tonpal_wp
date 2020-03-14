@@ -1,0 +1,127 @@
+{
+    "name": "footer配置文件",
+    "action": "public/footer",
+    "description": "footer配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "message": {
+                "title": "公司信息",
+                "value": [
+                    {
+                        "logo": "http://wp.io/wp-content/themes/model/assets/images/logo.png",
+                        "address": "gaojing,baoshan,shanghai,China",
+                        "Telephone": "400-000-0000",
+                        "mobilePhone": "400-000-0000",
+                        "email": "info@ayongtech.com"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "logo": {
+                        "title": "logo",
+                        "value": "http://wp.io/wp-content/themes/model/assets/images/logo.png",
+                        "type": "image",
+                        "tip": "请选择logo",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "address": {
+                        "title": "地址",
+                        "value": "",
+                        "type": "text",
+                        "tip": "公司地址",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "Telephone": {
+                        "title": "电话号码",
+                        "value": "",
+                        "type": "text",
+                        "tip": "电话号码",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "mobilePhone": {
+                        "title": "手机号",
+                        "value": "",
+                        "type": "text",
+                        "tip": "手机号",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "email": {
+                        "title": "邮箱",
+                        "value": "",
+                        "type": "text",
+                        "tip": "邮箱",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "请填写公司信息",
+                "rule": {
+                    "require": true
+                },
+                "message":{
+                    "require":"不能为空"
+                }
+            },
+            "friendshipLinks": {
+                "title": "友情链接",
+                "value": [
+                    {
+                        "type": "facebook",
+                        "link": "www.baidu.com",
+                        "icon": "ti-facebook"
+                    },
+                    {
+                        "type": "facebook",
+                        "link": "www.baidu.com",
+                        "icon": "ti-twitter-alt"
+                    },
+                    {
+                        "type": "facebook",
+                        "link": "www.baidu.com",
+                        "icon": "ti-linkedin"
+                    },
+                    {
+                        "type": "facebook",
+                        "link": "www.baidu.com",
+                        "icon": "ti-instagram"
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "type": {
+                        "title": "类型",
+                        "value": "",
+                        "type": "text",
+                        "tip": "类型"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "链接"
+                    },
+                    "icon": {
+                        "title": "icon图标",
+                        "value": "",
+                        "type": "text",
+                        "tip": "可以在此 https://themify.me/themify-icons 中选取"
+                    }
+                },
+                "tip": "友情链接",
+                "rule": {
+                    "require": false
+                }
+            }
+        }
+    }
+}

@@ -586,6 +586,24 @@ Get_Ip_Address(){
 	fi
 }
 
+# 安装分析工具
+Install_Analystic(){
+	# 编译安装 GoAccess
+	cd ~
+	yum install GeoIP-devel gcc ncurses* glib2 glib2-devel zlib zlib-devel bzip2-devel -y
+	rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+	yum -y install GeoIP-update
+	wget https://tar.goaccess.io/goaccess-1.3.tar.gz
+	tar -xzvf goaccess-1.3.tar.gz
+	cd goaccess-1.3/
+	./configure --enable-utf8 --enable-geoip=legacy
+	make
+	make install
+	echo 'time-format %T
+date-format %d/%b/%Y
+log-format %h - %^ [%d:%t %^] requesthost:"%v"; "%r" requesttime:"%T"; %s %b "%R" - %^"%u"' > /usr/local/etc/goaccess.conf
+}
+
 # 生成 API KEY ( 手动开启 api 调试模式 )
 Set_Token(){
     cd /www/server/panel/class
@@ -598,7 +616,7 @@ Set_Token(){
         "open": true, 
         "limit_addr": ["121.196.197.45","121.196.217.6","121.196.204.209","47.90.66.54"]
     }'
-    API_POS='/www/server/panel/config/api.json' 
+    API_POS='/www/server/panel/config/api.json'
     echo ${API_JSON} > ${API_POS}
     cd /
 }
@@ -607,19 +625,19 @@ Set_Token(){
 Upload_Data(){
     result=""
     count=0
-    limit=10
+    limit=5
     sign=`echo -n ${ORGANIZATIONID}|md5sum|cut -d ' ' -f1`
-    APIURL="${WEBHOOK}?username=${username}&password=${password}&ip=${getIpAddress}&url=http://${getIpAddress}:10086$auth_path&organization_id=${ORGANIZATIONID}&token=${TOKEN}&sign=${sign}"
-    # while [ "${result}" != "success" ] && [ $count -lt $limit ]
-    # do 
-    #     result=$(curl -s "${APIURL}")
-    #     if [ "${result}" != "success" ]; then
-    #         waitTime=$[2**${count}]
-    #         sleep ${waitTime}
-    #         echo "数据上传失败, 等待 ${waitTime} 秒后重新上传..."
-    #     fi
-    #     count=$( expr $count + 1 )
-    # done
+    APIURL="${WEBHOOK}?btUser=${username}&btPass=${password}&ip=${getIpAddress}&btUrl=http://${getIpAddress}:10086$auth_path&organization_id=${ORGANIZATIONID}&btKey=${TOKEN_ENCRYPT}&sign=${sign}"
+    while [ "${result}" != "success" ] && [ $count -lt $limit ]
+    do 
+        result=$(curl -s "${APIURL}")
+        if [ "${result}" != "success" ]; then
+            waitTime=$[2**${count}]
+            sleep ${waitTime}
+            echo "数据上传失败, 等待 ${waitTime} 秒后重新上传..."
+        fi
+        count=$( expr $count + 1 )
+    done
     echo "数据上传成功, 上传地址为 ${APIURL}"
 }
 
@@ -642,6 +660,7 @@ Install_Main(){
 	Service_Add
 	Set_Firewall
 	Get_Ip_Address
+	Install_Analystic
     Set_Token
     Upload_Data
 }
@@ -657,8 +676,6 @@ Install_Main
 endTime=`date +%s`
 ((outTime=($endTime-$startTime)/60))
 echo -e "Time consumed:\033[32m $outTime \033[0mMinute!"
-rm -f new_install.sh
-
 echo -e "=================================================================="
 echo -e "\033[32mCongratulations! Installed successfully!\033[0m"
 echo -e "=================================================================="

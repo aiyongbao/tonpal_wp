@@ -1,0 +1,12 @@
+.header-logo {
+    margin: 0;
+    padding: 0;
+    height: 6rem;
+    width: 13.5rem;
+    text-indent: -9999px;
+}
+.header-logo a {
+    display: block;
+    height: 100%;
+    outline: none;
+}

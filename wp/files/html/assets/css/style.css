@@ -1,0 +1,66 @@
+/*
+desc:网页基础样式
+author:frank
+date:2020/02/04
+*/
+
+@import url(font.css);
+
+html {
+    font-size: 625%;
+}
+
+body{
+    font-size: 15px;
+    font-family: 'SourceSansProRegular',Arial, Helvetica, sans-serif;
+}
+
+header .topbar {
+    height: 48px;
+    text-align: right;
+    background-color: #22264b;
+}
+
+header .navbar{
+    padding: 0;
+}
+
+header .navbar-wrap{
+    display: inline-block;
+    font-size: 0;
+    margin: 0;
+    padding: 24px 0;
+}
+
+header .navbar .container{
+    align-items: initial;
+}
+
+header .navbar-wrap .navbar-logo img{
+    height: 52px;
+}
+
+header .navbar #navbarSupportedContent{
+    justify-content: inherit;
+    align-items: inherit;
+}
+
+header .navbar .nav-item,header .navbar .nav-item .nav-link{
+    display: flex;
+}
+
+header .navbar .nav-item .nav-link{
+    align-items: center;
+    font-weight: bold;
+    padding: 0 .15rem;
+    text-transform: uppercase;
+    font-size: 0.16rem;
+    color: #222 !important;
+    font-family: 'SourceSansProBlack';
+}
+
+.fixed-nav {
+    box-shadow: 0 0.05rem 0.08rem rgba(0,0,0,.05);
+    border-bottom: 1px solid #ddd;
+}
+
