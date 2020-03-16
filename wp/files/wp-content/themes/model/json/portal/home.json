@@ -35,7 +35,7 @@
             "specialImag": {
                 "title": "自定义模块一图片",
                 "value": "",
-                "type": "text",
+                "type": "image",
                 "tip": "图片",
                 "rule": {
                     "require": true
@@ -83,8 +83,8 @@
                     "icon": {
                         "title": "图标",
                         "value": "",
-                        "type": "text",
-                        "tip": "可以在此 https://themify.me/themify-icons 中选取",
+                        "type": "image",
+                        "tip": "50x50 格式为png",
                         "rule": {
                             "require": true
                         }
@@ -274,7 +274,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true
@@ -403,8 +403,8 @@
                     },
                     "bg": {
                         "title": "背景图片",
-                        "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg",
-                        "type": "text",
+                        "value": "/wp-content/themes/model/assets/images/backgrounds/success-story.jpg",
+                        "type": "image",
                         "tip": "背景图片",
                         "rule": {
                             "require": true
@@ -511,7 +511,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true
@@ -604,7 +604,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true
@@ -721,7 +721,7 @@
                         }
                     },
                     "bg":{
-                        "title": "选则图片背景",
+                        "title": "选择图片背景",
                         "value": "",
                         "type": "image",
                         "tip": "这是一个图片",

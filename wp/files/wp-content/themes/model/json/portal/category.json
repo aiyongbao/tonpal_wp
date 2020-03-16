@@ -43,8 +43,8 @@
             },
             "bg": {
                 "title": "背景图",
-                "type": "text",
-                "value": "/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
+                "type": "image",
+                "value": "",
                 "tip": "背景图",
                 "rule": {
                     "require": true

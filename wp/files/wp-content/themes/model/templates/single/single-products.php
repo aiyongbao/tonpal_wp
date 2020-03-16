@@ -9,9 +9,9 @@ $productDetail_desc = ifEmptyText($theme_vars['desc']['value']);
 
 $photos = get_post_meta(get_post()->ID)['photos'];
 // SEO
-$seo_title = ifEmptyText(get_post_meta(get_post()->ID)['seo_title'],"$product_detail_title");
-$seo_description = ifEmptyText(get_post_meta(get_post()->ID)['seo_description']);
-$seo_keywords = ifEmptyText(get_post_meta(get_post()->ID)['seo_keywords']);
+$seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true),"$product_detail_title");
+$seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
+$seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 
 global $wp;
 ?>
@@ -30,6 +30,42 @@ global $wp;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <?php get_template_part( 'templates/components/head' )?>
+    <style>
+        .nav-tab-box li a{
+            padding: 10px 10px;
+            display: block;
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+            background: #e5e5e5;
+        }
+        .nav-tab-box li a.active {
+            background: #ffbc3b;
+        }
+        .tags-title{
+            border-bottom: 1px solid #dee2e6;
+            padding: 0;
+        }
+        .tags-title>div {
+            float: left;
+            padding: 10px 10px;
+            display: block;
+            color: #fff;
+            border-radius: 10px 10px 0 0;
+            background: #ffbc3b;
+        }
+        .tags-ul li{
+            float: left;
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #e5e5e5;
+        }
+        .tags-ul li a{
+            color: #666;
+        }
+        .tags-ul li:hover a {
+            color: #ffbc3b;
+        }
+    </style>
 </head>
 
 <body>
@@ -101,26 +137,55 @@ global $wp;
         <!-- course info -->
         <div class="row align-items-center mb-5">
             <div class="col-xl-6 order-1 col-sm-6 mb-4 mb-xl-0">
-                <h2><?php echo $post->post_title ?></h2>
+                <h1><?php echo $post->post_title ?></h1>
             </div>
 
             <div class="col-xl-6 text-sm-right text-left order-sm-2 order-3 order-xl-3 col-sm-6 mb-4 mb-xl-0">
-                <a href="#" class="btn btn-primary">Apply now</a>
+                <a href="/contactus" class="btn btn-primary">Apply now</a>
             </div>
             <!-- border -->
-            <div class="col-12 mt-4 order-4">
+            <div class="col-12 mt-2 order-4">
                 <div class="border-bottom border-primary"></div>
             </div>
         </div>
         <!-- course details -->
         <div class="row">
-            <div class="col-12 mb-4">
-                <h3>Details</h3>
+            <?php
+                $newArray=[];
+                $contentArray = json_decode($post->post_content,true);
+                foreach ($contentArray as $key => $item ){
+                    if ($item['content'] !== ''){
+                        $newArray[$key]['tabName'] = $item['tabName'];
+                        $newArray[$key]['content'] = $item['content'];
+                    }
+                }
+            ?>
+            <!-- tab -->
+            <ul class="nav nav-tabs col-12 mb-4 nav-tab-box" role="tablist">
+                <?php foreach ($newArray as $key => $item ){ ?>
+                    <?php if($key == 0){ ?>
+                        <li role="presentation" ><a href="#<?php echo $item['tabName']; ?>" class="active" role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a></li>
+                    <?php } else { ?>
+                        <li role="presentation"><a href="#<?php echo $item['tabName']; ?>"  role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a></li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+            <!-- content -->
+            <div class="tab-content col-12 mb-4">
+                <?php foreach ($newArray as $key => $item ){ ?>
+                    <?php if($key == 0){ ?>
+                        <div role="tabpanel" class="tab-pane active" id="<?php echo $item['tabName']; ?>">
+                            <?php echo $item['content']; ?>
+                        </div>
+                    <?php } else { ?>
+                        <div role="tabpanel" class="tab-pane" id="<?php echo $item['tabName']; ?>"><?php echo $item['content']; ?></div>
+                    <?php } ?>
+                <?php } ?>
             </div>
-            <div class="col-12 mb-4">
-                <?php echo $post->post_content ?>
+            <div class="col-12 mb-4 tags-title">
+                <div>Tags</div>
             </div>
-            <ul>
+            <ul class="col-12 mb-4 tags-ul">
                 <?php the_tags('<li>', '</li><li>', '</li>') ?>
             </ul>
             <div class="col-12">

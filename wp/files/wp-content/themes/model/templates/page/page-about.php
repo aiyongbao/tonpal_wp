@@ -99,18 +99,18 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
         foreach ($about_modularFour_value as $key => $item) {
             if ($key == 0) {
                 ?>
-                <section class="section bg-cover" data-background="<?php echo ifEmptyText($item['bg']) ?>">
+                <section class="section bg-cover" data-background="<?php echo ifEmptyText($item['bg'],'https://iph.href.lu/1280x720?text=1280x720') ?>">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-sm-4 position-relative success-video">
-                                <a class="play-btn venobox" href="<?php echo ifEmptyText($item['video']) ?>" data-vbtype="video">
+                                <a class="play-btn venobox" href="<?php echo ifEmptyText($item['video'],'##') ?>" data-vbtype="video">
                                     <i class="ti-control-play"></i>
                                 </a>
                             </div>
                             <div class="col-lg-6 col-sm-8">
                                 <div class="bg-white p-5">
-                                    <h2 class="section-title"><?php echo ifEmptyText($item['title']) ?></h2>
-                                    <p><?php echo ifEmptyText($item['desc1']) ?></p>
+                                    <h2 class="section-title"><?php echo ifEmptyText($item['title'],'This is title') ?></h2>
+                                    <p><?php echo ifEmptyText($item['desc1'],'This is desc') ?></p>
                                     <p><?php echo ifEmptyText($item['desc2']) ?></p>
                                 </div>
                             </div>
@@ -139,13 +139,13 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                             ?>
                             <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
                                 <div class="card border-0 rounded-0 hover-shadow">
-                                    <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['name']) ?>">
+                                    <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image'],'https://iph.href.lu/350x395?text=350x395') ?>" alt="<?php echo ifEmptyText($item['name']) ?>">
                                     <div class="card-body">
                                         <a href="teacher-single.html">
-                                            <h4 class="card-title"><?php echo ifEmptyText($item['name']) ?></h4>
+                                            <h4 class="card-title"><?php echo ifEmptyText($item['name'],'This is name') ?></h4>
                                         </a>
                                         <div class="d-flex justify-content-between">
-                                            <span><?php echo ifEmptyText($item['position']) ?></span>
+                                            <span><?php echo ifEmptyText($item['position'],'This is position') ?></span>
                                             <ul class="list-inline">
                                                 <?php if (ifEmptyText($item['facebook']) !== '') { ?>
                                                     <li class="list-inline-item"><a class="text-color" href="<?php echo ifEmptyText($item['name']) ?>"><i class="ti-facebook"></i></a></li>
