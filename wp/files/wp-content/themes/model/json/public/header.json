@@ -17,55 +17,29 @@
                     "require":"不能为空"
                 }
             },
-            "friendshipLinks": {
-                "title": "友情链接",
-                "value": [
-                    {
-                        "type": "facebook",
-                        "link": "www.baidu.com",
-                        "icon": "ti-facebook"
-                    },
-                    {
-                        "type": "facebook",
-                        "link": "www.baidu.com",
-                        "icon": "ti-twitter-alt"
-                    },
-                    {
-                        "type": "facebook",
-                        "link": "www.baidu.com",
-                        "icon": "ti-linkedin"
-                    },
-                    {
-                        "type": "facebook",
-                        "link": "www.baidu.com",
-                        "icon": "ti-instagram"
-                    }
-                ],
-                "type": "array",
-                "item": {
-                    "type": {
-                        "title": "类型",
-                        "value": "",
-                        "type": "text",
-                        "tip": "类型"
-                    },
-                    "link": {
-                        "title": "链接",
-                        "value": "",
-                        "type": "text",
-                        "tip": "链接"
-                    },
-                    "icon": {
-                        "title": "icon图标",
-                        "value": "",
-                        "type": "text",
-                        "tip": "可以在此 https://themify.me/themify-icons 中选取"
-                    }
-                },
-                "tip": "友情链接",
-                "rule": {
-                    "require": false
-                }
+            "facebookLink": {
+                "title": "facebook 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "twitterLink": {
+                "title": "twitter 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "linkedinLink": {
+                "title": "linkedin 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "instagramLink": {
+                "title": "instagram 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
             },
             "modular": {
                 "title": "header自定义链接",

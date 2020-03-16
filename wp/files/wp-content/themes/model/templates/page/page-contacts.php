@@ -7,7 +7,7 @@ $theme_vars = json_config_array('contacts','vars');
 //Text 数据处理
 $contacts_title = ifEmptyText($theme_vars['title']['value'],'contacts');
 $contacts_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
-$contacts_desc = ifEmptyText($theme_vars['desc']['value']);
+$contacts_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
 $contacts_modularTwo = ifEmptyText($theme_vars['modularTwo']['value']);
 $contacts_contentDesc= ifEmptyText($theme_vars['contentDesc']['value']);
 $contacts_tel = ifEmptyText($theme_vars['tel']['value']);

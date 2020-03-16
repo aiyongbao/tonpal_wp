@@ -43,7 +43,7 @@
             },
             "bg": {
                 "title": "背景图",
-                "type": "text",
+                "type": "image",
                 "value": "",
                 "tip": "背景图",
                 "rule": {

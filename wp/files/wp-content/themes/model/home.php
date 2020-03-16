@@ -23,8 +23,7 @@ $home_special_imag = ifEmptyText($theme_vars['specialImag']['value'],'https://ip
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
 $seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
-global $wp;
-?>
+global $wp;?>
 
 <!doctype html>
 <html>
@@ -87,7 +86,9 @@ global $wp;
                         if ($key <= 3) {
                         ?>
                         <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-                            <i class="<?php echo ifEmptyText($item['icon'],'ti-book') ?> mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <i class="mb-xl-4 mb-lg-3 mb-4">
+                                <img src="<?php echo ifEmptyText($item['icon'],'ti-book') ?>" width="50" height="50" alt="" />
+                            </i>
                             <?php
                             if (ifEmptyText($item['link'] !== ''))
                             {
@@ -132,7 +133,7 @@ global $wp;
                         </div>
                         <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
                             <img class="img-fluid w-100"
-                                 src="<?php echo ifEmptyText($item['icon'],'https://iph.href.lu/800x450?text=800x450') ?>"
+                                 src="<?php echo ifEmptyText($item['image'],'https://iph.href.lu/800x450?text=800x450') ?>"
                                  alt="<?php echo ifEmptyText($item['title']) ?>">
                         </div>
                         <?php

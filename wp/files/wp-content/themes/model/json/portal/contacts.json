@@ -53,7 +53,7 @@
             "bg": {
                 "title": "背景图",
                 "value": "/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
-                "type": "text",
+                "type": "image",
                 "tip": "背景图",
                 "rule": {
                     "require": true

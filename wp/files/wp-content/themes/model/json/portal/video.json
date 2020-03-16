@@ -1,7 +1,7 @@
 {
-    "name": "page配置文件",
-    "action": "portal/page",
-    "description": "page配置文件",
+    "name": "video配置文件",
+    "action": "portal/video",
+    "description": "video配置文件",
     "order": 6.0,
     "more": {
         "vars": {
@@ -35,7 +35,7 @@
             "title": {
                 "title": "标题",
                 "type": "text",
-                "value": "page",
+                "value": "",
                 "tip": "标题",
                 "rule": {
                     "require": true
@@ -53,10 +53,42 @@
             "desc": {
                 "title": "描述",
                 "type": "text",
-                "value": "desc",
+                "value": "",
                 "tip": "描述",
                 "rule": {
                     "require": true
+                }
+            },
+            "nullTip": {
+                "title": "提示语",
+                "type": "text",
+                "value": "",
+                "tip": "当前分类下没有内容时的提示语",
+                "rule": {
+                    "require": true
+                }
+            },
+            "item": {
+                "title": "video列表",
+                "type": "array",
+                "value": [],
+                "item": {
+                    "iframe": {
+                        "title": "iframe链接",
+                        "type": "text",
+                        "value": "",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "type": "text",
+                        "value": "",
+                        "rule": {
+                            "require": true
+                        }
+                    }
                 }
             }
         }

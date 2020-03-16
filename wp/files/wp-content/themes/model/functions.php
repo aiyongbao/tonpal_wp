@@ -342,7 +342,7 @@ function get_breadcrumbs()
                     if( $ancestor != end($ancestors) ){
                         echo '<li class="list-inline-item text-white h3 font-secondary nasted"><a href="'. get_permalink($ancestor) .'">'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</a></li>';
                     } else {
-                        echo '<li class="list-inline-item text-white h3 font-secondary nasted">'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</li>';
+                        echo '<li class="list-inline-item text-white h3 font-secondary nasted"><h1>'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</h1></li>';
                     }
                 }
             }
