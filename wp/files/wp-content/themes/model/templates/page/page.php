@@ -44,7 +44,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
 
 <!-- page title -->
-<section class="page-title-section overlay" data-background="<?php echo $page_bg; ?>">
+<section class="page-title-section overlay page-bg" data-background="<?php echo $page_bg; ?>">
     <div class="container">
         <div class="row">
             <div class="col-md-8">

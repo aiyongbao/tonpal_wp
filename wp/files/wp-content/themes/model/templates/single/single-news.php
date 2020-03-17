@@ -70,7 +70,7 @@ global $wp;
 
 
 <!-- page title -->
-<section class="page-title-section overlay" data-background="<?php echo $news_detail_bg; ?>">
+<section class="page-title-section overlay page-bg" data-background="<?php echo $news_detail_bg; ?>">
     <div class="container">
         <div class="row">
             <div class="col-md-8">

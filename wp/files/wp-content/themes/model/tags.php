@@ -15,6 +15,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
+global $wp_query;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
@@ -59,13 +60,20 @@ $max = intval( $wp_query->max_num_pages );
 </head>
 
 <body>
+
+<!-- preloader start -->
+<div class="preloader">
+    <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
+</div>
+<!-- preloader end -->
+
 <!-- header -->
 <?php get_header() ?>
 <!-- header -->
 
 <main>
     <!-- page title -->
-    <section class="page-title-section overlay" data-background="<?php echo $tags_bg; ?>">
+    <section class="page-title-section overlay page-bg" data-background="<?php echo $tags_bg; ?>">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">

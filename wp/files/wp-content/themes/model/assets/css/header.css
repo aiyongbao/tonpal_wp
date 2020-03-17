@@ -10,3 +10,11 @@
     height: 100%;
     outline: none;
 }
+.navbar-nav>.nav-item>.sub-menu>.menu-item>.sub-menu {
+    top: 0;
+    left: 140px;
+}
+.page-bg {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

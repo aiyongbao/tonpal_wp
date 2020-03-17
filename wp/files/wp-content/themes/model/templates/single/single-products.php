@@ -7,7 +7,7 @@ $product_detail_title = ifEmptyText($theme_vars['title']['value'],'Detail');
 $product_detail_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $productDetail_desc = ifEmptyText($theme_vars['desc']['value']);
 
-$photos = get_post_meta(get_post()->ID)['photos'];
+$photos = get_post_meta(get_post()->ID,'photos',true);
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true),"$product_detail_title");
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
@@ -81,7 +81,7 @@ global $wp;
 
 
 <!-- page title -->
-<section class="page-title-section overlay" data-background="<?php echo $product_detail_bg; ?>">
+<section class="page-title-section overlay page-bg" data-background="<?php echo $product_detail_bg; ?>">
     <div class="container">
         <div class="row">
             <div class="col-md-8">

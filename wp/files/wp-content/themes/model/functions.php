@@ -18,7 +18,7 @@ if (!function_exists('my_theme_setup')) :
     );
 
     //注册模板初始化json文件
-    init_theme_file();
+//    init_theme_file();
 
     add_theme_support( 'post-thumbnails' );
   }

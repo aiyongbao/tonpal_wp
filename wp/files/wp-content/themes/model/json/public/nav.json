@@ -7,7 +7,7 @@
         "vars": {
             "logo": {
                 "title": "logo",
-                "value": "http://wp.io/wp-content/themes/model/assets/images/logo.png",
+                "value": "",
                 "type": "image",
                 "tip": "请选择logo",
                 "rule": {
@@ -21,19 +21,13 @@
                 "tip": "请填写公司名称",
                 "rule": {
                     "require": true
-                },
-                "message":{
-                    "require":"不能为空"
                 }
             },
             "key_word": {
                 "title": "SEO优化关键词",
                 "value": "特殊需求关键词",
                 "type": "text",
-                "tip": "需要优化特定的关键词",
-                "rule": {
-                    "require": false
-                }
+                "tip": "需要优化特定的关键词"
             }
         }
     }
