@@ -19,34 +19,44 @@
 <script>
     $('#customer_submit_button').on('click', function() {
 
-        $("#customer_submit_button").attr("disabled","disabled");
-
+        $("#customer_submit_button").text("Sending...");
         var aop_param = {};
-
-        aop_param.product_title = $("#product_title").val();
-        aop_param.contact_name = $("#name").val();
-        aop_param.contact_email = $("#email").val();
-        aop_param.contact_subject = $("#phone").val();
-        aop_param.contact_comment = $("#message").val();
-        aop_param.organization_id = $("#organization_id").val();
+        aop_param.post_name = $("#product_title").val();
+        aop_param.name = $("#name").val();
+        aop_param.email = $("#email").val();
+        aop_param.phone = $("#phone").val();
+        aop_param.message = $("#message").val();
+        aop_param.reference = $("#reference").val();
         if(location.href.indexOf('?')>-1){
             aop_param.reference = location.href.split('?')[0];
         }else{
             aop_param.reference = location.href;
         }
         $.ajax({
-            url:"//tonpal.aiyongbao.com/action/savemessage",
-            dataType: 'jsonp',
-            type:'GET',
+            url:"/wp-json/portal/v1/inquiry",
+            type:'POST',
             data: aop_param,
-            success : function(rsp){
-                alert('Sent successfully');
-                $("#customer_submit_button").removeAttr("disabled");
-                location.reload();
+            success : function(res){
+                if(res.code == 0) {
+                    alert(res.msg);
+                    $("#customer_submit_button").text("SEND MESSAGE");
+                    return ;
+                }
+                alert(res.msg);
+                $("#name").val('');
+                $("#email").val('');
+                $("#phone").val('');
+                $("#message").val('');
+                $("#customer_submit_button").text("SEND MESSAGE");
+                // location.reload();
             },
-            error: function(rsp, textStatus, errorThrown){
-                $("#customer_submit_button").removeAttr("disabled");
-                alert('error');
+            error: function(res, textStatus, errorThrown){
+                $("#name").val('');
+                $("#email").val('');
+                $("#phone").val('');
+                $("#message").val('');
+                $("#customer_submit_button").text("SEND MESSAGE");
+                alert('连接失败，请检查是否存在特殊代理');
             }
         });
         return false;
