@@ -17,13 +17,13 @@ $home_modularSixItem_value = ifEmptyArray($theme_vars['modularSixItem']['value']
 $home_modularSevenItem_value = ifEmptyArray($theme_vars['modularSevenItem']['value']);
 
 // Text 数据处理
-$home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['value'],'Latest News');
-
+$home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['value'],'This is title');
+$home_special_imag = ifEmptyText($theme_vars['specialImag']['value'],'https://iph.href.lu/590x700?text=590x700');
 // SEO
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
 $seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
-?>
+global $wp;?>
 
 <!doctype html>
 <html>
@@ -40,6 +40,19 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
     <style>
         .hero-section {
             padding: 300px 0 290px;
+        }
+        .card-title {
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+        }
+        .card-body > p {
+            height: 56px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
         }
     </style>
 </head>
@@ -64,7 +77,7 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
       <div class="container-fluid p-0">
         <div class="row no-gutters">
           <div class="col-xl-4 col-lg-5 align-self-end">
-            <img class="img-fluid w-100" src="<?php echo get_template_directory_uri()?>/assets/images/banner/banner-feature.png" alt="banner-feature">
+            <img class="img-fluid w-100" src="<?php echo $home_special_imag?>" alt="banner-feature">
           </div>
           <div class="col-xl-8 col-lg-7">
             <div class="row feature-blocks bg-gray justify-content-between">
@@ -73,22 +86,24 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                         if ($key <= 3) {
                         ?>
                         <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-                            <i class="<?php echo ifEmptyText($item['icon']) ?> mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+                            <i class="mb-xl-4 mb-lg-3 mb-4">
+                                <img src="<?php echo ifEmptyText($item['icon'],'ti-book') ?>" width="50" height="50" alt="" />
+                            </i>
                             <?php
                             if (ifEmptyText($item['link'] !== ''))
                             {
                             ?>
-                            <a href="<?php echo ifEmptyText($item['link']) ?>">
-                                <h3 class="mb-xl-4 mb-lg-3 mb-4"><?php echo ifEmptyText($item['title']) ?></h3>
+                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>">
+                                <h3 class="mb-xl-4 mb-lg-3 mb-4"><?php echo ifEmptyText($item['title'],'This is title') ?></h3>
                             </a>
                             <?php
                                 } else {
                             ?>
-                                <h3 class="mb-xl-4 mb-lg-3 mb-4"><?php echo ifEmptyText($item['title']) ?></h3>
+                                <h3 class="mb-xl-4 mb-lg-3 mb-4"><?php echo ifEmptyText($item['title'],'This is title') ?></h3>
                             <?php
                             }
                              ?>
-                            <p><?php echo ifEmptyText($item['desc']) ?></p>
+                            <p><?php echo ifEmptyText($item['desc'],'This is desc') ?></p>
                         </div>
                         <?php
 
@@ -111,14 +126,14 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     if ($key == 0) {
                         ?>
                         <div class="col-md-6 order-2 order-md-1">
-                            <h2 class="section-title"><?php echo ifEmptyText($item['title'],'About US') ?></h2>
-                            <p><?php echo ifEmptyText($item['desc1']) ?></p>
-                            <p><?php echo ifEmptyText($item['desc2']) ?></p>
-                            <a href="<?php echo ifEmptyText($item['link'],'about.html') ?>" class="btn btn-primary-outline">Learn more</a>
+                            <h2 class="section-title"><?php echo ifEmptyText($item['title'],'This is title') ?></h2>
+                            <p><?php echo ifEmptyText($item['desc1'],'This is desc') ?></p>
+                            <p><?php echo ifEmptyText($item['desc2'],'') ?></p>
+                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>" class="btn btn-primary-outline">Learn more</a>
                         </div>
                         <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
                             <img class="img-fluid w-100"
-                                 src="<?php echo ifEmptyText($item['icon'],get_template_directory_uri().'/assets/images/about/about-us.jpg') ?>"
+                                 src="<?php echo ifEmptyText($item['image'],'https://iph.href.lu/800x450?text=800x450') ?>"
                                  alt="<?php echo ifEmptyText($item['title']) ?>">
                         </div>
                         <?php
@@ -140,7 +155,7 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     if ($key == 0) {
                         ?>
                         <div class="d-flex align-items-center section-title justify-content-between">
-                            <h2 class="mb-0 text-nowrap mr-3"><?php echo ifEmptyText($item['title'], "HOT PRODUCT") ?></h2>
+                            <h2 class="mb-0 text-nowrap mr-3"><?php echo ifEmptyText($item['title'], "This is title") ?></h2>
                             <div class="border-top w-100 border-primary d-none d-sm-block"></div>
                             <div>
                                 <a href="<?php echo ifEmptyText($item['link'], "##") ?>"
@@ -163,14 +178,14 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                         <div class="col-lg-4 col-sm-6 mb-5">
                             <div class="card p-0 border-primary rounded-0 hover-shadow">
                                 <img class="card-img-top rounded-0"
-                                     src="<?php echo ifEmptyText($item['image']) ?>"
+                                     src="<?php echo ifEmptyText($item['image'],'https://iph.href.lu/350x350?text=350x350') ?>"
                                      alt="<?php echo ifEmptyText($item['title']) ?>">
                                 <div class="card-body">
                                     <a href="<?php echo ifEmptyText($item['link']) ?>">
-                                        <h4 class="card-title"><?php echo ifEmptyText($item['title']) ?></h4>
+                                        <h4 class="card-title"><?php echo ifEmptyText($item['title'],'This is title') ?></h4>
                                     </a>
-                                    <p class="card-text mb-4"><?php echo ifEmptyText($item['desc']) ?></p>
-                                    <a href="<?php echo ifEmptyText($item['link']) ?>" class="btn btn-primary btn-sm"><?php echo ifEmptyText($item['btn'],"GET TO") ?></a>
+                                    <p class="card-text mb-4"><?php echo ifEmptyText($item['desc'],'This is desc') ?></p>
+                                    <a href="<?php echo ifEmptyText($item['link'],'##') ?>" class="btn btn-primary btn-sm"><?php echo ifEmptyText($item['btn'],"GET TO") ?></a>
                                 </div>
                             </div>
                         </div>
@@ -208,8 +223,8 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                 foreach ($home_modularFour_value as $key => $item) {
                     if ($key == 0) {
                         ?>
-                        <h6 class="text-white font-secondary mb-0"><?php echo ifEmptyText($item['desc1']) ?></h6>
-                        <h2 class="section-title text-white"><?php echo ifEmptyText($item['desc2']) ?>g</h2>
+                        <h6 class="text-white font-secondary mb-0"><?php echo ifEmptyText($item['desc1'],'This is desc') ?></h6>
+                        <h2 class="section-title text-white"><?php echo ifEmptyText($item['desc2']) ?></h2>
                         <a href="<?php echo ifEmptyText($item['link'], "##") ?>" class="btn btn-secondary"><?php echo ifEmptyText($item['btn'], "Join Now") ?></a>
                         <?php
                     }
@@ -226,18 +241,18 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             foreach ($home_modularFive_value as $key => $item) {
                 if ($key == 0) {
                     ?>
-                    <section class="section bg-cover" data-background="<?php echo ifEmptyText($item['bg']) ?>">
+                    <section class="section bg-cover" data-background="<?php echo ifEmptyText($item['bg'],'https://iph.href.lu/1280x720?text=1280x720') ?>">
                         <div class="container">
                         <div class="row">
                           <div class="col-lg-6 col-sm-4 position-relative success-video">
-                            <a class="play-btn venobox" href="<?php echo ifEmptyText($item['video']) ?>" data-vbtype="video">
+                            <a class="play-btn venobox" href="<?php echo ifEmptyText($item['video'],'##') ?>" data-vbtype="video">
                               <i class="ti-control-play"></i>
                             </a>
                           </div>
                           <div class="col-lg-6 col-sm-8">
                             <div class="bg-white p-5">
-                              <h2 class="section-title"><?php echo ifEmptyText($item['title']) ?></h2>
-                              <p><?php echo ifEmptyText($item['desc1']) ?></p>
+                              <h2 class="section-title"><?php echo ifEmptyText($item['title'],'This is title') ?></h2>
+                              <p><?php echo ifEmptyText($item['desc1'],'This is desc') ?></p>
                               <p><?php echo ifEmptyText($item['desc2']) ?></p>
                             </div>
                           </div>
@@ -261,7 +276,7 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     if ($key == 0) {
                         ?>
                         <div class="d-flex align-items-center section-title justify-content-between">
-                          <h2 class="mb-0 text-nowrap mr-3"><?php echo ifEmptyText($item['title']) ?></h2>
+                          <h2 class="mb-0 text-nowrap mr-3"><?php echo ifEmptyText($item['title'],'This is title') ?></h2>
                           <div class="border-top w-100 border-primary d-none d-sm-block"></div>
                           <div>
                             <a href="<?php echo ifEmptyText($item['link'],'##') ?>" class="btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block"><?php echo ifEmptyText($item['btn'],'see all') ?></a>
@@ -282,7 +297,7 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                       <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
                         <div class="card border-0 rounded-0 hover-shadow">
                           <div class="card-img position-relative">
-                            <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['title']) ?>">
+                            <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image'],'https://iph.href.lu/350x300?text=350x300') ?>" alt="<?php echo ifEmptyText($item['title']) ?>">
                               <?php
                               if (ifEmptyText($item['customTop']) !== '' && ifEmptyText($item['customBtm'] !== '' )) {
                                   ?>
@@ -295,8 +310,8 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                           </div>
                           <div class="card-body">
                             <!-- location -->
-                            <p><i class="ti-location-pin text-primary mr-2"></i><?php echo ifEmptyText($item['title']) ?></p>
-                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>"><h4 class="card-title"><?php echo ifEmptyText($item['title']) ?></h4></a>
+                            <p><i class="ti-location-pin text-primary mr-2"></i><?php echo ifEmptyText($item['desc'],'This is desc') ?></p>
+                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>"><h4 class="card-title"><?php echo ifEmptyText($item['title'],'This is title') ?></h4></a>
                           </div>
                         </div>
                       </div>
@@ -340,20 +355,20 @@ $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                         ?>
                         <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
                          <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                          <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['title'],'##') ?>">
+                          <img class="card-img-top rounded-0" src="<?php echo ifEmptyText($item['image'],'https://iph.href.lu/350x263?text=350x263') ?>" alt="<?php echo ifEmptyText($item['title'],'##') ?>">
                           <div class="card-body">
                             <!-- post meta -->
                             <ul class="list-inline mb-3">
                               <!-- post date -->
-                              <li class="list-inline-item mr-3 ml-0"><?php echo ifEmptyText($item['time']) ?></li>
+                              <li class="list-inline-item mr-3 ml-0"><?php echo ifEmptyText($item['time'],'This is time') ?></li>
                               <!-- author -->
-                              <li class="list-inline-item mr-3 ml-0">By <?php echo ifEmptyText($item['author']) ?></li>
+                              <li class="list-inline-item mr-3 ml-0">By <?php echo ifEmptyText($item['author'],'This is author') ?></li>
                             </ul>
                             <a href="blog-single.html">
-                              <h4 class="card-title"><?php echo ifEmptyText($item['title']) ?></h4>
+                              <h4 class="card-title"><?php echo ifEmptyText($item['title'],'This is title') ?></h4>
                             </a>
-                            <p class="card-text"><?php echo ifEmptyText($item['desc']) ?></p>
-                            <a href="<?php echo ifEmptyText($item['link']) ?>" class="btn btn-primary btn-sm">read more</a>
+                            <p class="card-text"><?php echo ifEmptyText($item['desc'],'This is desc') ?></p>
+                            <a href="<?php echo ifEmptyText($item['link'],'##') ?>" class="btn btn-primary btn-sm">read more</a>
                           </div>
                         </div>
                       </article>

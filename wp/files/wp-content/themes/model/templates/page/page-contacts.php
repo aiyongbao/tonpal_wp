@@ -1,14 +1,13 @@
 <?php
-$data = get_post();
-$type_title = $data->post_name;
+
 
 // contacts.json -> vars 数据获取
 $theme_vars = json_config_array('contacts','vars');
 
 //Text 数据处理
 $contacts_title = ifEmptyText($theme_vars['title']['value'],'contacts');
-$contacts_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
-$contacts_desc = ifEmptyText($theme_vars['desc']['value']);
+$contacts_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
+$contacts_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
 $contacts_modularTwo = ifEmptyText($theme_vars['modularTwo']['value']);
 $contacts_contentDesc= ifEmptyText($theme_vars['contentDesc']['value']);
 $contacts_tel = ifEmptyText($theme_vars['tel']['value']);
@@ -45,10 +44,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <ul class="list-inline custom-breadcrumb">
-                            <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                            <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $contacts_title; ?></li>
-                        </ul>
+                        <?php get_breadcrumbs();?>
                         <p class="text-lighten"><?php echo $contacts_desc; ?></p>
                     </div>
                 </div>
@@ -68,16 +64,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                 </div>
                 <div class="row">
                     <div class="col-lg-7 mb-4 mb-lg-0">
-                        <div class="send-mewssage">
-                            <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Your Name">
-                            <input type="email" class="form-control mb-3" id="email" name="mail" placeholder="Your Email">
-                            <input type="text" class="form-control mb-3" id="phone" name="phone" placeholder="Your Phone">
-                            <textarea name="message" id="message" class="form-control mb-3" placeholder="Your Message"></textarea>
-                            <input type="hidden" id="organization_id" value="a5168987-eeac-11e6-b0b5-6c92bf2bf11d">
-
-                            <input type="hidden" id="product_title" value="<?php echo ifEmptyText($type_title,'Home');?>">
-                            <button type="submit" value="send" class="btn btn-primary send-message-btn" id="customer_submit_button">SEND MESSAGE</button>
-                        </div>
+                        <?php get_template_part( 'templates/components/sendMessage' )?>
                     </div>
                     <div class="col-lg-5">
                         <p class="mb-5"><?php echo $contacts_contentDesc ?></p>
@@ -107,38 +94,5 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
 <script src="<?php echo get_template_directory_uri() ?>/assets/plugins/google-map/gmap.js"></script>
 <script>
-    $('#customer_submit_button').on('click', function() {
 
-        $("#customer_submit_button").attr("disabled","disabled");
-
-        var aop_param = {};
-
-        aop_param.product_title = $("#product_title").val();
-        aop_param.contact_name = $("#name").val();
-        aop_param.contact_email = $("#email").val();
-        aop_param.contact_subject = $("#phone").val();
-        aop_param.contact_comment = $("#message").val();
-        aop_param.organization_id = $("#organization_id").val();
-        if(location.href.indexOf('?')>-1){
-            aop_param.reference = location.href.split('?')[0];
-        }else{
-            aop_param.reference = location.href;
-        }
-        $.ajax({
-            url:"//tonpal.aiyongbao.com/action/savemessage",
-            dataType: 'jsonp',
-            type:'GET',
-            data: aop_param,
-            success : function(rsp){
-                alert('Sent successfully');
-                $("#customer_submit_button").removeAttr("disabled");
-                location.reload();
-            },
-            error: function(rsp, textStatus, errorThrown){
-                $("#customer_submit_button").removeAttr("disabled");
-                alert('error');
-            }
-        });
-        return false;
-    });
 </script>

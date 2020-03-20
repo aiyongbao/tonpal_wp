@@ -43,7 +43,7 @@
             },
             "desc": {
                 "title": "描述",
-                "value": "Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.",
+                "value": "",
                 "type": "text",
                 "tip": "请输入描述",
                 "rule": {
@@ -52,8 +52,8 @@
             },
             "bg": {
                 "title": "背景图",
-                "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
-                "type": "text",
+                "value": "",
+                "type": "image",
                 "tip": "背景图",
                 "rule": {
                     "require": true
@@ -61,8 +61,8 @@
             },
             "modularTwo": {
                 "title": "自定义模块二",
-                "value": "http://wp.io/wp-content/themes/model/assets/images/about/about-page.jpg",
-                "type": "text",
+                "value": "",
+                "type": "image",
                 "tip": "图片，大图展示",
                 "rule": {
                     "require": true
@@ -119,7 +119,7 @@
                         "desc1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.",
                         "desc2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
                         "video": "https://youtu.be/nA1Aqp0sPQo",
-                        "bg": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg"
+                        "bg": "wp-content/themes/model/assets/images/backgrounds/success-story.jpg"
                     }
                 ],
                 "type": "array",
@@ -159,8 +159,8 @@
                     },
                     "bg": {
                         "title": "背景图片",
-                        "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg",
-                        "type": "text",
+                        "value": "",
+                        "type": "image",
                         "tip": "背景图片",
                         "rule": {
                             "require": true
@@ -174,7 +174,7 @@
             },
             "modularFiveTitle": {
                 "title": "自定义模块五-标题",
-                "value": "Our Teachers",
+                "value": "",
                 "type": "text",
                 "tip": "标题",
                 "rule": {
@@ -185,27 +185,27 @@
                 "title": "自定义模块五-列表",
                 "value": [
                     {
-                        "name": "Photography",
-                        "position": "Sensible",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/teachers/teacher-1.jpg",
+                        "name": "",
+                        "position": "",
+                        "image": "",
                         "facebook": "",
-                        "twitter": "www.baidu.com",
+                        "twitter": "",
                         "google": "",
                         "linkedin": ""
                     },
                     {
-                        "name": "Photography",
-                        "position": "Sensible",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/teachers/teacher-1.jpg",
-                        "facebook": "www.baidu.com",
+                        "name": "",
+                        "position": "",
+                        "image": "",
+                        "facebook": "",
                         "twitter": "",
                         "google": "",
-                        "linkedin": "www.baidu.com"
+                        "linkedin": ""
                     },
                     {
-                        "name": "Photography",
-                        "position": "Sensible",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/teachers/teacher-1.jpg",
+                        "name": "",
+                        "position": "",
+                        "image": "",
                         "facebook": "",
                         "twitter": "",
                         "google": "",
@@ -235,7 +235,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true

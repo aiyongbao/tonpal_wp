@@ -4,7 +4,7 @@ $post = get_post();
 $theme_vars = json_config_array('page','vars');
 // Text 数据处理
 $page_title = ifEmptyText($theme_vars['title']['value'],'page');
-$page_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$page_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $page_desc = ifEmptyText($theme_vars['desc']['value']);
 
 // SEO
@@ -48,10 +48,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <ul class="list-inline custom-breadcrumb">
-                    <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="/">Home</a></li>
-                    <li class="list-inline-item text-white h3 font-secondary nasted"><?php echo $page_title; ?></li>
-                </ul>
+                <?php get_breadcrumbs();?>
                 <p class="text-lighten"><?php echo $page_desc; ?></p>
             </div>
         </div>
@@ -74,20 +71,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             </div>
             <!-- comment box -->
             <div class="col-12">
-                <form action="#" class="row">
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control mb-4" id="name" name="name" placeholder="Full Name">
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="email" class="form-control mb-4" id="mail" name="mail" placeholder="Email Address">
-                    </div>
-                    <div class="col-12">
-                        <textarea name="comment" id="comment" class="form-control mb-4" placeholder="Comment Here..."></textarea>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" value="send" class="btn btn-primary">post comment</button>
-                    </div>
-                </form>
+                <?php get_template_part( 'templates/components/sendMessage' )?>
             </div>
         </div>
     </div>

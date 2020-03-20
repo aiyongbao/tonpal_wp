@@ -32,31 +32,40 @@
                     "require": true
                 }
             },
+            "specialImag": {
+                "title": "自定义模块一图片",
+                "value": "",
+                "type": "image",
+                "tip": "图片",
+                "rule": {
+                    "require": true
+                }
+            },
             "special": {
                 "title": "自定义模块一",
                 "value": [
                     {
-                        "title": "Scholorship News",
-                        "icon": "ti-book",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
-                        "link": "www.baidu.com"
-                    },
-                    {
-                        "title": "Our Notice Board",
-                        "icon": "ti-blackboard",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "title": "",
+                        "icon": "",
+                        "desc": "",
                         "link": ""
                     },
                     {
-                        "title": "Scholorship News",
-                        "icon": "ti-book",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "title": "",
+                        "icon": "",
+                        "desc": "",
                         "link": ""
                     },
                     {
-                        "title": "Scholorship News",
-                        "icon": "ti-book",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad",
+                        "title": "",
+                        "icon": "",
+                        "desc": "",
+                        "link": ""
+                    },
+                    {
+                        "title": "",
+                        "icon": "",
+                        "desc": "",
                         "link": ""
                     }
                 ],
@@ -74,8 +83,8 @@
                     "icon": {
                         "title": "图标",
                         "value": "",
-                        "type": "text",
-                        "tip": "可以在此 https://themify.me/themify-icons 中选取",
+                        "type": "image",
+                        "tip": "50x50 格式为png",
                         "rule": {
                             "require": true
                         }
@@ -106,7 +115,7 @@
                 "value": [
                     {
                         "title": "",
-                        "desc1": "cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+                        "desc1": "",
                         "desc2": "",
                         "image": ""
                     }
@@ -144,7 +153,7 @@
                         "title": "链接",
                         "value": "",
                         "type": "",
-                        "tip": "有自定义跳转链接需求填写，默认about.html"
+                        "tip": "有自定义跳转链接需求填写"
                     }
                 },
                 "tip": "这里只能展示一组数据，多余不展示",
@@ -156,9 +165,9 @@
                 "title": "自定义模块三-标题",
                 "value": [
                     {
-                        "title": "hot product",
-                        "link": "www.baidu.com",
-                        "btn": "More"
+                        "title": "",
+                        "link": "",
+                        "btn": ""
                     }
                 ],
                 "type": "array",
@@ -183,9 +192,9 @@
                     },
                     "btn": {
                         "title": "按钮内容",
-                        "value": "see all",
+                        "value": "",
                         "type": "text",
-                        "tip": "控制字数，以便美观",
+                        "tip": "控制字数，以便美观，默认 see all",
                         "rule": {
                             "require": true
                         }
@@ -200,51 +209,46 @@
                 "title": "自定义模块三-列表",
                 "value": [
                     {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-1.jpg",
-                        "link": "www.baidu.com",
-                        "btn": "More"
-                    },
-                    {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-2.jpg",
-                        "link": "www.baidu.com",
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
                         "btn": ""
-
                     },
                     {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-3.jpg",
-                        "link": "www.baidu.com",
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
                         "btn": ""
-
                     },
                     {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-4.jpg",
-                        "link": "www.baidu.com",
-                        "btn": "Get To"
-
-                    },
-                    {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-5.jpg",
-                        "link": "www.baidu.com",
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
                         "btn": ""
-
                     },
                     {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/courses/course-6.jpg",
-                        "link": "www.baidu.com",
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
                         "btn": ""
-
+                    },
+                    {
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "btn": ""
+                    },
+                    {
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "btn": ""
                     }
                 ],
                 "type": "array",
@@ -270,7 +274,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true
@@ -304,10 +308,10 @@
                 "title": "自定义模块四",
                 "value": [
                     {
-                        "desc1": "Click to Join the Advance Workshop",
-                        "desc2": "Training In Advannce Networking",
-                        "link": "www.baidu.com",
-                        "btn": "More"
+                        "desc1": "",
+                        "desc2": "",
+                        "link": "",
+                        "btn": ""
                     }
                 ],
                 "type": "array",
@@ -355,11 +359,11 @@
                 "title": "自定义模块五",
                 "value": [
                     {
-                        "title": "Success Stories Video",
-                        "desc1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.",
-                        "desc2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-                        "video": "https://youtu.be/nA1Aqp0sPQo",
-                        "bg": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg"
+                        "title": "",
+                        "desc1": "",
+                        "desc2": "",
+                        "video": "",
+                        "bg": ""
                     }
                 ],
                 "type": "array",
@@ -399,8 +403,8 @@
                     },
                     "bg": {
                         "title": "背景图片",
-                        "value": "http://wp.io/wp-content/themes/model/assets/images/backgrounds/success-story.jpg",
-                        "type": "text",
+                        "value": "/wp-content/themes/model/assets/images/backgrounds/success-story.jpg",
+                        "type": "image",
                         "tip": "背景图片",
                         "rule": {
                             "require": true
@@ -416,9 +420,9 @@
                 "title": "自定义模块六-标题",
                 "value": [
                     {
-                        "title": "Upcoming Events",
-                        "link": "www.baidu.com",
-                        "btn": "More"
+                        "title": "",
+                        "link": "",
+                        "btn": ""
                     }
                 ],
                 "type": "array",
@@ -443,7 +447,7 @@
                     },
                     "btn": {
                         "title": "按钮内容",
-                        "value": "see all",
+                        "value": "",
                         "type": "text",
                         "tip": "控制字数，以便美观",
                         "rule": {
@@ -460,28 +464,28 @@
                 "title": "自定义模块六-列表",
                 "value": [
                     {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/events/event-1.jpg",
-                        "link": "www.baidu.com",
-                        "customTop": "18",
-                        "customBtm": "December"
-                    },
-                    {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/events/event-2.jpg",
-                        "link": "www.baidu.com",
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
                         "customTop": "",
-                        "customBtm": "December"
+                        "customBtm": ""
                     },
                     {
-                        "title": "Photography",
-                        "desc": "Lorem ipsum dolor sit amet, consectetur adipisicing.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/events/event-3.jpg",
-                        "link": "www.baidu.com",
-                        "customTop": "18",
-                        "customBtm": "December"
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "customTop": "",
+                        "customBtm": ""
+                    },
+                    {
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "customTop": "",
+                        "customBtm": ""
                     }
                 ],
                 "type": "array",
@@ -507,7 +511,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true
@@ -542,9 +546,9 @@
             },
             "modularSevenTitle" : {
                 "title": "自定义模块七-标题",
-                "value": "Latest news",
+                "value": "",
                 "type": "text",
-                "tip": "这里只能展示一组数据，多余不展示",
+                "tip": "标题",
                 "rule": {
                     "require": true
                 }
@@ -553,28 +557,28 @@
                 "title": "自定义模块七-列表",
                 "value": [
                     {
-                        "title": "Lorem ipsum dolor amet, adipisicing eiusmod tempor.",
-                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/blog/post-1.jpg",
-                        "link": "www.baidu.com",
-                        "time": "August 28, 2018",
-                        "author": "Somrat Sorkar"
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "time": "",
+                        "author": ""
                     },
                     {
-                        "title": "Lorem ipsum dolor amet, adipisicing eiusmod tempor.",
-                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/blog/post-2.jpg",
-                        "link": "www.baidu.com",
-                        "time": "August 28, 2018",
-                        "author": "Somrat Sorkar"
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "time": "",
+                        "author": ""
                     },
                     {
-                        "title": "Lorem ipsum dolor amet, adipisicing eiusmod tempor.",
-                        "desc": "Lorem ipsum dolor amet, consectetur adipisicing.",
-                        "image": "http://wp.io/wp-content/themes/model/assets/images/blog/post-3.jpg",
-                        "link": "www.baidu.com",
-                        "time": "August 28, 2018",
-                        "author": "Somrat Sorkar"
+                        "title": "",
+                        "desc": "",
+                        "image": "",
+                        "link": "",
+                        "time": "",
+                        "author": ""
                     }
                 ],
                 "type": "array",
@@ -600,7 +604,7 @@
                     "image": {
                         "title": "图片",
                         "value": "",
-                        "type": "text",
+                        "type": "image",
                         "tip": "图片",
                         "rule": {
                             "require": true
@@ -717,7 +721,7 @@
                         }
                     },
                     "bg":{
-                        "title": "选则图片背景",
+                        "title": "选择图片背景",
                         "value": "",
                         "type": "image",
                         "tip": "这是一个图片",
