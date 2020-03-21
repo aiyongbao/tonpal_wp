@@ -17,7 +17,7 @@ $home_modularSixItem_value = ifEmptyArray($theme_vars['modularSixItem']['value']
 $home_modularSevenItem_value = ifEmptyArray($theme_vars['modularSevenItem']['value']);
 
 // Text 数据处理
-$home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['value'],'This is title');
+$home_modularSevenTitle_value = ifEmptyText($theme_vars['modularSevenTitle']['value']);
 $home_special_imag = ifEmptyText($theme_vars['specialImag']['value'],'https://iph.href.lu/590x700?text=590x700');
 // SEO
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');

@@ -22,7 +22,7 @@ if($carousel_vars['display'] == 1)
 
 ?>
 
-<section class="hero-section overlay bg-cover" data-background="<?php echo get_template_directory_uri()?>/assets/images/banner/banner-1.jpg">
+<section class="hero-section overlay bg-cover" data-background="<?php echo $carousel_vars['vars']['bg']['value']?>">
   <div class="container">
     <div class="hero-slider">
     <?php

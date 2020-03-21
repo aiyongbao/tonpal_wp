@@ -29,6 +29,7 @@ $max = intval( $wp_query->max_num_pages );
     <title><?php echo $seo_title; ?></title>
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
 
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />

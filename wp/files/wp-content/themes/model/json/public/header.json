@@ -43,20 +43,7 @@
             },
             "modular": {
                 "title": "header自定义链接",
-                "value": [
-                    {
-                        "title": "notice",
-                        "link": "www.baidu.com"
-                    },
-                    {
-                        "title": "research",
-                        "link": "www.baidu.com"
-                    },
-                    {
-                        "title": "SCHOLARSHIP",
-                        "link": "www.baidu.com"
-                    }
-                ],
+                "value": [],
                 "type": "array",
                 "item": {
                     "title": {

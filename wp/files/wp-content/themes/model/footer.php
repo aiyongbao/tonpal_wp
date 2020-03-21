@@ -61,5 +61,8 @@
         });
         return false;
     });
+    $('#link-item>div').click(() => {
+        $('#link-item ul li').toggle('500');
+    })
 </script>
 

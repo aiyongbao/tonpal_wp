@@ -323,7 +323,7 @@ function get_breadcrumbs()
             foreach ( $a_link_array as $item ) {
                 echo '<li class="list-inline-item text-white h3 font-secondary nasted">'.$item."</li>";
             }
-            echo '<li class="list-inline-item text-white h3 font-secondary nasted">'.the_title('','', FALSE)."</li>";
+            echo '<li class="list-inline-item text-white h3 font-secondary nasted"><strong>'.the_title('','', FALSE)."</strong></li>";
         }
         elseif ( is_page() )
         {
@@ -331,7 +331,7 @@ function get_breadcrumbs()
 
             if ( $post->post_parent == 0 ){
 
-                echo "<li class='list-inline-item text-white h3 font-secondary nasted'>".the_title('','', FALSE)."</li>";
+                echo "<li class='list-inline-item text-white h3 font-secondary nasted'><strong>".the_title('','', FALSE)."</strong></li>";
 
             } else {
                 $title = the_title('','', FALSE);
@@ -342,7 +342,7 @@ function get_breadcrumbs()
                     if( $ancestor != end($ancestors) ){
                         echo '<li class="list-inline-item text-white h3 font-secondary nasted"><a href="'. get_permalink($ancestor) .'">'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</a></li>';
                     } else {
-                        echo '<li class="list-inline-item text-white h3 font-secondary nasted"><h1>'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</h1></li>';
+                        echo '<li class="list-inline-item text-white h3 font-secondary nasted"><strong>'. strip_tags( apply_filters( 'single_post_title', get_the_title( $ancestor ) ) ) .'</strong></li>';
                     }
                 }
             }

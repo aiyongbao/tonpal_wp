@@ -78,6 +78,140 @@
                 "type": "text",
                 "tip": "未填写则隐藏"
             },
+            "navOneTitle": {
+                "title": "底部导航1-标题",
+                "value": "",
+                "type": "text",
+                "tip": "不填写则隐藏"
+            },
+            "navOneItem": {
+                "title": "底部导航1-列表",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "链接名称",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "跳转链接",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "底部导航，最多可以自定义四个链接"
+            },
+            "navTwoTitle": {
+                "title": "底部导航2-标题",
+                "value": "",
+                "type": "text",
+                "tip": "不填写则隐藏"
+            },
+            "navTwoItem": {
+                "title": "底部导航2-列表",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "链接名称",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "跳转链接",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "底部导航，最多可以自定义四个链接"
+            },
+            "navThreeTitle": {
+                "title": "底部导航3-标题",
+                "value": "",
+                "type": "text",
+                "tip": "不填写则隐藏"
+            },
+            "navThreeItem": {
+                "title": "底部导航3-列表",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "链接名称",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "跳转链接",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "底部导航，最多可以自定义四个链接"
+            },
+            "navFourTitle": {
+                "title": "底部导航4-标题",
+                "value": "",
+                "type": "text",
+                "tip": "不填写则隐藏"
+            },
+            "navFourItem": {
+                "title": "底部导航4-列表",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "链接名称",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "跳转链接",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "底部导航，最多可以自定义四个链接"
+            },
+            "copyright": {
+                "title": "版权",
+                "value": "TONPAL.COM Copyright ©",
+                "type": "text",
+                "tip": "版权自定义"
+            },
             "twitterLink": {
                 "title": "twitter 链接",
                 "value": "",

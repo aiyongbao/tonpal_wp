@@ -115,11 +115,11 @@
                 "title": "自定义模块四",
                 "value": [
                     {
-                        "title": "Success Stories Video",
-                        "desc1": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.",
-                        "desc2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris",
-                        "video": "https://youtu.be/nA1Aqp0sPQo",
-                        "bg": "wp-content/themes/model/assets/images/backgrounds/success-story.jpg"
+                        "title": "",
+                        "desc1": "",
+                        "desc2": "",
+                        "video": "",
+                        "bg": ""
                     }
                 ],
                 "type": "array",

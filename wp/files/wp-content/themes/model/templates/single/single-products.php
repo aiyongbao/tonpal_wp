@@ -7,11 +7,12 @@ $product_detail_title = ifEmptyText($theme_vars['title']['value'],'Detail');
 $product_detail_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $productDetail_desc = ifEmptyText($theme_vars['desc']['value']);
 
-$photos = get_post_meta(get_post()->ID,'photos',true);
+$photos = get_post_meta(get_post()->ID,'photos');
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true),"$product_detail_title");
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
+
 
 global $wp;
 ?>
@@ -65,6 +66,19 @@ global $wp;
         .tags-ul li:hover a {
             color: #ffbc3b;
         }
+        .products-item .card-title {
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+        }
+        .products-item .card-body > p {
+            height: 56px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 
@@ -107,9 +121,9 @@ global $wp;
                 <!-- 轮播图片 -->
                 <div class="carousel-inner" >
                     <?php
-                        foreach ($photos as $key => $item) {
-                            if($key ==0 ) {
-                        ?>
+                    foreach ($photos as $key => $item) {
+                        if($key ==0 ) {
+                            ?>
                             <div class="carousel-item active">
                                 <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
                             </div>
@@ -131,7 +145,7 @@ global $wp;
             </div>
         <?php } else { ?>
             <div class="">
-                <img src="https://iph.href.lu/1110x555?text=1110x555" class="img-fluid w-100">
+                <img src="https://iph.href.lu/1110x555?text=暂无产品图" class="img-fluid w-100">
             </div>
         <?php }?>
         <!-- course info -->
@@ -151,14 +165,14 @@ global $wp;
         <!-- course details -->
         <div class="row">
             <?php
-                $newArray=[];
-                $contentArray = json_decode($post->post_content,true);
-                foreach ($contentArray as $key => $item ){
-                    if ($item['content'] !== ''){
-                        $newArray[$key]['tabName'] = $item['tabName'];
-                        $newArray[$key]['content'] = $item['content'];
-                    }
+            $newArray=[];
+            $contentArray = json_decode($post->post_content,true);
+            foreach ($contentArray as $key => $item ){
+                if ($item['content'] !== ''){
+                    $newArray[$key]['tabName'] = $item['tabName'];
+                    $newArray[$key]['content'] = $item['content'];
                 }
+            }
             ?>
             <!-- tab -->
             <ul class="nav nav-tabs col-12 mb-4 nav-tab-box" role="tablist">
@@ -188,6 +202,11 @@ global $wp;
             <ul class="col-12 mb-4 tags-ul">
                 <?php the_tags('<li>', '</li><li>', '</li>') ?>
             </ul>
+            <?php get_template_part( 'templates/components/related-products' )?>
+
+            <!-- hot_product -->
+            <?php get_template_part( 'templates/components/hot-products' )?>
+
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>
             </div>
@@ -202,7 +221,45 @@ global $wp;
 </body>
 <?php get_footer() ?>
 
-<script>
-
+<script type="application/ld+json">
+    <?php
+    global  $cat;
+    $parment = get_cat_name(get_category_root_id($cat));;
+    $parment2 =get_category_link(get_category_root_id($cat));
+    $the_url = home_url(add_query_arg(array(),$wp->request));
+    print_r($parment);
+    print_r($parment2);
+    exit();
+    ?>
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@id": "https://www.*.com/listname-第一个层级/",
+                    "name": "顶级分类名"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                    "@id": "https://www.*.com/listname-第二个层级/",
+                    "name": "二级分类名"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                    "@id": "https://www.*.com/listname-第三个层级/",
+                    "name": "三级分类名"
+                }
+            }
+        ]
+    }
 </script>
 </html>

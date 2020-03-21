@@ -100,6 +100,9 @@ global $wp;
             <ul class="col-12 mb-4 tags-ul">
                 <?php the_tags('<li>', '</li><li>', '</li>') ?>
             </ul>
+
+            <!-- hot_product -->
+            <?php get_template_part( 'templates/components/hot-products' )?>
             <!-- comment box -->
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>

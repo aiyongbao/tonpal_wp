@@ -18,3 +18,35 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+.footer {
+    position: relative;
+}
+#link-item {
+    position: absolute;
+    bottom: 90px;
+    right: 50px;
+}
+#link-item div{
+    cursor: pointer;
+
+}
+#link-item span{
+    margin: 8px 0px 0 5px;
+    width: 0;
+    height: 0;
+    display: block;
+    float: right;
+    border-color: #ccc transparent transparent transparent;
+    border-width: 5px;
+    border-style: solid;
+}
+#link-item ul {
+    position: absolute;
+    padding: 0 0 0 10px;
+}
+#link-item ul li {
+    display: none;
+}
+.component-products {
+    width: 100%;
+}
