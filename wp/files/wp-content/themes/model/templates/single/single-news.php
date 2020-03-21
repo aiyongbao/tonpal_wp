@@ -70,7 +70,7 @@ global $wp;
 
 
 <!-- page title -->
-<section class="page-title-section overlay" data-background="<?php echo $news_detail_bg; ?>">
+<section class="page-title-section overlay page-bg" data-background="<?php echo $news_detail_bg; ?>">
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -100,6 +100,9 @@ global $wp;
             <ul class="col-12 mb-4 tags-ul">
                 <?php the_tags('<li>', '</li><li>', '</li>') ?>
             </ul>
+
+            <!-- hot_product -->
+            <?php get_template_part( 'templates/components/hot-products' )?>
             <!-- comment box -->
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>

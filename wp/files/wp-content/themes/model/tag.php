@@ -1,9 +1,9 @@
 <?php
-// products.json -> vars 数据获取
+// tags.json -> vars 数据获取
 $theme_vars = json_config_array('tags','vars');
 // Text 数据处理
 $tags_title = ifEmptyText($theme_vars['title']['value'],'tags');
-$tags_bg = ifEmptyText($theme_vars['bg']['value'],'http://wp.io/wp-content/themes/model/assets/images/backgrounds/page-title.jpg');
+$tags_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $tags_desc = ifEmptyText($theme_vars['desc']['value']);
 
 // SEO
@@ -15,8 +15,30 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
+global $wp_query;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
+
+if ( have_posts() ) {
+    $product_item = [];
+    $news_item = [];
+    while ( have_posts() ) {
+        the_post();
+        $category = get_the_category();
+        $cid = $category[0]->cat_ID;
+        $pid = get_category_root_id($cid);
+        $the_slug = get_category($pid)->slug;
+        if ( $the_slug == 'product' ) {
+            array_push($product_item,$post);
+        } else {
+            array_push($news_item,$post);
+        }
+    }
+
+}
+print_r($product_item);
+print_r($news_item);
+
 
 ?>
 <!--nextpage-->
@@ -59,13 +81,20 @@ $max = intval( $wp_query->max_num_pages );
 </head>
 
 <body>
+
+<!-- preloader start -->
+<div class="preloader">
+    <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
+</div>
+<!-- preloader end -->
+
 <!-- header -->
 <?php get_header() ?>
 <!-- header -->
 
 <main>
     <!-- page title -->
-    <section class="page-title-section overlay" data-background="<?php echo $tags_bg; ?>">
+    <section class="page-title-section overlay page-bg" data-background="<?php echo $tags_bg; ?>">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -87,26 +116,27 @@ $max = intval( $wp_query->max_num_pages );
                 <div class="row">
 
                     <?php while ( have_posts() ) : the_post();   ?>
-                        <?php $thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
-                        <article class="col-lg-4 col-sm-6 mb-5">
-                            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
-                                <?php if ( ifEmptyText($thumbnail) !== '' ) { ?>
-                                    <img class="card-img-top rounded-0" src="<?php echo $thumbnail ?>" alt="Post thumb">
-                                <?php } else {?>
-                                    <img class="card-img-top rounded-0" src="<?php echo get_template_directory_uri() ?>/assets/images/blog/post-1.jpg" alt="Post thumb">
-                                <?php } ?>
-                                <div class="card-body">
-                                    <ul class="list-inline mb-3">
-                                        <li class="list-inline-item mr-3 ml-0"><?php echo esc_html( get_the_date() ); ?></li>
-                                    </ul>
-                                    <a href="<?php the_permalink(); ?>" target="_blank">
-                                        <h4 class="card-title"><?php the_title(); ?></h4>
-                                    </a>
-                                    <?php the_excerpt(); ?>
-                                    <a href="<?php the_permalink(); ?>" target="_blank" class="btn btn-primary btn-sm">read more</a>
-                                </div>
-                            </div>
-                        </article>
+                    <?php print_r(666); ?>
+<!--                        --><?php //$thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
+<!--                        <article class="col-lg-4 col-sm-6 mb-5">-->
+<!--                            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">-->
+<!--                                --><?php //if ( ifEmptyText($thumbnail) !== '' ) { ?>
+<!--                                    <img class="card-img-top rounded-0" src="--><?php //echo $thumbnail ?><!--_thumb_262x262.jpg" alt="--><?php //the_title(); ?><!--">-->
+<!--                                --><?php //} else {?>
+<!--                                    <img class="card-img-top rounded-0" src="https://iph.href.lu/350x350?text=350x350" alt="Post thumb">-->
+<!--                                --><?php //} ?>
+<!--                                <div class="card-body">-->
+<!--                                    <ul class="list-inline mb-3">-->
+<!--                                        <li class="list-inline-item mr-3 ml-0">--><?php //echo esc_html( get_the_date() ); ?><!--</li>-->
+<!--                                    </ul>-->
+<!--                                    <a href="--><?php //the_permalink(); ?><!--" target="_blank">-->
+<!--                                        <h4 class="card-title">--><?php //the_title(); ?><!--</h4>-->
+<!--                                    </a>-->
+<!--                                    --><?php //the_excerpt(); ?>
+<!--                                    <a href="--><?php //the_permalink(); ?><!--" target="_blank" class="btn btn-primary btn-sm">read more</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </article>-->
                     <?php endwhile; ?>
                 </div>
                 <?php wpbeginner_numeric_posts_nav(); ?>

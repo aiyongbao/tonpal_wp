@@ -88,7 +88,8 @@
             },
             "email": {
                 "title": "邮箱",
-                "type": "info@ayongtech.com",
+                "value": "info@ayongtech.com",
+                "type": "text",
                 "tip": "邮箱",
                 "rule": {
                     "require": true
@@ -96,7 +97,8 @@
             },
             "address": {
                 "title": "地址",
-                "type": "gaojing,baoshan,shanghai,China",
+                "value": "gaojing,baoshan,shanghai,China",
+                "type": "text",
                 "tip": "地址",
                 "rule": {
                     "require": true
@@ -104,7 +106,8 @@
             },
             "latitude": {
                 "title": "纬度",
-                "type": "13523511",
+                "value": "13523511",
+                "type": "text",
                 "tip": "纬度",
                 "rule": {
                     "require": true
@@ -112,7 +115,8 @@
             },
             "longitude": {
                 "title": "经度",
-                "type": "3653151",
+                "value": "3653151",
+                "type": "text",
                 "tip": "经度",
                 "rule": {
                     "require": true

@@ -74,8 +74,8 @@
                 "value": [],
                 "item": {
                     "iframe": {
-                        "title": "iframe链接",
-                        "type": "text",
+                        "title": "image图片",
+                        "type": "image",
                         "value": "",
                         "rule": {
                             "require": true

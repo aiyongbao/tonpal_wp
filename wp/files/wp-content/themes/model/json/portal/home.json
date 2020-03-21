@@ -622,7 +622,7 @@
                     "time": {
                         "title": "时间",
                         "value": "",
-                        "type": "text",
+                        "type": "date",
                         "tip": "时间",
                         "rule": {
                             "require": true
@@ -645,22 +645,6 @@
             }
         },
         "widgets": {
-            "widgetName1": {
-                "title": "所有组件演示",
-                "name": "all_widget",
-                "display": "1",
-                "vars": {
-                    "text": {
-                        "title": "测试 text",
-                        "value": "1",
-                        "type": "text",
-                        "tip": "这是一个text",
-                        "rule": {
-                            "require": true
-                        }
-                    }
-                }
-            },
             "carousel": {
                 "title": "轮播图组件",
                 "name": "请选择轮播图",

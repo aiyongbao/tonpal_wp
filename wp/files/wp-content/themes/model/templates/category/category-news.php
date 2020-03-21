@@ -31,6 +31,7 @@ $max = intval( $wp_query->max_num_pages );
     <title><?php echo $seo_title; ?></title>
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
 
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
@@ -43,13 +44,20 @@ $max = intval( $wp_query->max_num_pages );
 </head>
 
 <body>
+
+<!-- preloader start -->
+<div class="preloader">
+    <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
+</div>
+<!-- preloader end -->
+
 <!-- header -->
 <?php get_header() ?>
 <!-- header -->
 
 <main>
     <!-- page title -->
-    <section class="page-title-section overlay" data-background="<?php echo $news_bg; ?>">
+    <section class="page-title-section overlay page-bg" data-background="<?php echo $news_bg; ?>">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">

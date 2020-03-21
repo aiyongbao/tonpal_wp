@@ -1,11 +1,25 @@
 <?php
 // footer.json -> vars 数据获取
 $theme_vars = json_config_array(__FILE__,'vars',1);
+// array
 $footer_message = ifEmptyArray($theme_vars['message']['value']);
+$nav_one_item = ifEmptyArray($theme_vars['navOneItem']['value']);
+$nav_two_item = ifEmptyArray($theme_vars['navTwoItem']['value']);
+$nav_three_item = ifEmptyArray($theme_vars['navThreeItem']['value']);
+$nav_four_item = ifEmptyArray($theme_vars['navFourItem']['value']);
+
+// text
+$footer_copyright = ifEmptyText($theme_vars['copyright']['value']);
 $footer_facebook_link = ifEmptyText($theme_vars['facebookLink']['value']);
 $footer_twitter_link = ifEmptyText($theme_vars['twitterLink']['value']);
 $footer_linkedin_link = ifEmptyText($theme_vars['linkedinLink']['value']);
 $footer_instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
+
+$nav_one_title = ifEmptyText($theme_vars['navOneTitle']['value']);
+$nav_two_title = ifEmptyText($theme_vars['navTwoTitle']['value']);
+$nav_three_title = ifEmptyText($theme_vars['navThreeTitle']['value']);
+$nav_four_title = ifEmptyText($theme_vars['navFourTitle']['value']);
+
 ?>
 <footer>
     <!-- footer content -->
@@ -30,46 +44,60 @@ $footer_instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
                     }
                 }
                 ?>
-                <!-- company -->
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                    <h4 class="text-white mb-5">COMPANY</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="about.html">About Us</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="teacher.html">Our Teacher</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="contact.html">Contact</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="blog.html">Blog</a></li>
-                    </ul>
-                </div>
-                <!-- links -->
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                    <h4 class="text-white mb-5">LINKS</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="courses.html">Courses</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="event.html">Events</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="gallary.html">Gallary</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="faqs.html">FAQs</a></li>
-                    </ul>
-                </div>
-                <!-- support -->
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                    <h4 class="text-white mb-5">SUPPORT</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">Forums</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">Documentation</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">Language</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">Release Status</a></li>
-                    </ul>
-                </div>
-                <!-- support -->
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                    <h4 class="text-white mb-5">RECOMMEND</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">WordPress</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">LearnPress</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">WooCommerce</a></li>
-                        <li class="mb-3"><a class="text-color" rel="nofollow" href="#">bbPress</a></li>
-                    </ul>
-                </div>
+                <!-- // -->
+                <?php if ($nav_one_title !== '') { ?>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5"><?php echo $nav_one_title; ?></h4>
+                        <ul class="list-unstyled">
+                            <?php foreach ($nav_one_item as $item) { ?>
+                                <li class="mb-3"><a class="text-color" rel="nofollow" href="<?php echo $item['link']; ?>"><?php echo $item['name']; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+                <!-- // -->
+                <?php if ($nav_two_title !== '') { ?>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5"><?php echo $nav_two_title; ?></h4>
+                        <ul class="list-unstyled">
+                            <?php foreach ($nav_two_item as $item) { ?>
+                                <li class="mb-3"><a class="text-color" rel="nofollow" href="<?php echo $item['link']; ?>"><?php echo $item['name']; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+                <!-- // -->
+                <?php if ($nav_three_title !== '') { ?>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5"><?php echo $nav_three_title; ?></h4>
+                        <ul class="list-unstyled">
+                            <?php foreach ($nav_three_item as $item) { ?>
+                                <li class="mb-3"><a class="text-color" rel="nofollow" href="<?php echo $item['link']; ?>"><?php echo $item['name']; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+                <!-- // -->
+                <?php if ($nav_four_title !== '') { ?>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
+                        <h4 class="text-white mb-5"><?php echo $nav_four_title; ?></h4>
+                        <ul class="list-unstyled">
+                            <?php foreach ($nav_four_item as $item) { ?>
+                                <li class="mb-3"><a class="text-color" rel="nofollow" href="<?php echo $item['link']; ?>"><?php echo $item['name']; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                <?php } ?>
+            </div>
+            <div id="link-item">
+                <div>links<span></span></div>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -78,11 +106,13 @@ $footer_instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
         <div class="container">
             <div class="row">
                 <div class="col-sm-7 text-sm-left text-center">
-                    <p class="mb-0">TONPAL.COM Copyfight ©
-                        <script>
-                            var CurrentYear = new Date().getFullYear()
-                            document.write(CurrentYear)
-                        </script>
+                    <p class="mb-0"><?php echo $footer_copyright;?>
+                        <?php if (ifEmptyText($footer_copyright) !== '') : ?>
+                            <script>
+                                var CurrentYear = new Date().getFullYear()
+                                document.write(CurrentYear)
+                            </script>
+                        <?php endif; ?>
                     </p>
                 </div>
                 <div class="col-sm-5 text-sm-right text-center">
@@ -117,6 +147,7 @@ $footer_instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
                         <?php } ?>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>

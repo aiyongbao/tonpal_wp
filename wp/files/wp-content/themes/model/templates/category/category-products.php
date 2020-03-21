@@ -1,4 +1,7 @@
 <?php
+global $wp_query,$wp;
+
+
 // products.json -> vars 数据获取
 $theme_vars = json_config_array('products','vars');
 // Text 数据处理
@@ -7,6 +10,9 @@ $products_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x
 $products_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
+$subName = ""; // 小标题
+$category = get_the_category($cat);
+$name = $category[0]->name; //当前分类名
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$products_title");
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
@@ -16,7 +22,6 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
-global $wp_query;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
@@ -33,7 +38,7 @@ $max = intval( $wp_query->max_num_pages );
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
 
-    <link rel="canonical" href="<?php echo home_url("$seo_title");?><?php if ( $paged > 1 ) printf('/page/%s',$paged); ?>" />
+    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
     <?php } ?>
@@ -43,12 +48,15 @@ $max = intval( $wp_query->max_num_pages );
 
     <?php get_template_part('templates/components/head'); ?>
     <style>
-        .card-title {
+        .products .section {
+            padding-top: 30px;
+        }
+        .products-item .card-title {
             overflow: hidden;
             text-overflow:ellipsis;
             white-space: nowrap;
         }
-        .card-body > p {
+        .products-item .card-body > p {
             height: 56px;
             overflow: hidden;
             display: -webkit-box;
@@ -64,13 +72,17 @@ $max = intval( $wp_query->max_num_pages );
 </head>
 
 <body>
+<!-- preloader start -->
+<div class="preloader">
+    <img src="<?php echo get_template_directory_uri()?>/assets/images/preloader.gif" alt="preloader">
+</div>
+<!-- preloader end -->
 <!-- header -->
 <?php get_header() ?>
 <!-- header -->
 
-<main>
-    <!-- page title -->
-    <section class="page-title-section overlay" data-background="<?php echo $products_bg; ?>">
+<main class="products">
+    <section class="page-title-section overlay page-bg" data-background="<?php echo $products_bg; ?>">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -80,26 +92,31 @@ $max = intval( $wp_query->max_num_pages );
             </div>
         </div>
     </section>
-    <!-- /page title -->
+    <!-- title -->
+    <div class="page-title container mt-2 mb-1">
+        <?php if ($subName == '') { ?>
+            <h1><?php echo $name; ?></h1>
+        <?php } else { ?>
+            <h3><?php echo $name; ?></h3><h1><?php $subName; ?></h1>
+        <?php } ?>
+    </div>
+    <!-- /title -->
 
     <!-- blogs -->
-    <section class="section">
+    <section class="section ">
         <div class="container">
             <?php if ( have_posts() ) { ?>
-                <div class="row">
+                <div class="row products-item">
                     <?php while ( have_posts() ) : the_post();   ?>
                     <?php $thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
                         <article class="col-lg-4 col-sm-6 mb-5">
                             <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
                                 <?php if ( ifEmptyText($thumbnail) !== '' ) { ?>
-                                    <img class="card-img-top rounded-0" src="<?php echo $thumbnail ?>" alt="<?php ifEmptyText(the_title(),'This is title'); ?>">
+                                    <img class="card-img-top rounded-0" src="<?php echo $thumbnail ?>_thumb_262x262.jpg" alt="<?php ifEmptyText(the_title(),'This is title'); ?>">
                                 <?php } else {?>
                                     <img class="card-img-top rounded-0" src="http://iph.href.lu/350x350?text=350x350" alt="占位图">
                                 <?php } ?>
                                 <div class="card-body">
-                                    <ul class="list-inline mb-3">
-                                        <li class="list-inline-item mr-3 ml-0"><?php echo esc_html( get_the_date() ); ?></li>
-                                    </ul>
                                     <a href="<?php the_permalink(); ?>" target="_blank">
                                         <h4 class="card-title"><?php ifEmptyText(the_title(),'This is title'); ?></h4>
                                     </a>
@@ -125,5 +142,41 @@ $max = intval( $wp_query->max_num_pages );
 </body>
 
 <?php get_footer(); ?>
+
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "@id": "https://www.*.com/listname-第一个层级/",
+                "name": "顶级分类名"
+            }
+        },{
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "@id": "https://www.*.com/listname-第二个层级/",
+                "name": "二级分类名"
+            }
+        },{
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "@id": "https://www.*.com/listname-第三个层级/",
+                "name": "三级分类名"
+            }
+        },{
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+                "@id": "https://www.*.com/listname-第四个层级",
+                "name": "四级分类名"
+            }
+        }]
+    }
+</script>
 </html>
 

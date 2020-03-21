@@ -1,7 +1,7 @@
 <?php
     $category = get_category(get_category_root_id($cat));
     $slug = $category->slug;
-    if ( $slug === 'products' ) {
+    if ( $slug === 'product' ) {
         include('templates/category/category-products.php');
     }
     else if ( $slug === 'news' ) {
@@ -10,5 +10,3 @@
     else{
         include('templates/category/category.php');
     }
-    
-?>
