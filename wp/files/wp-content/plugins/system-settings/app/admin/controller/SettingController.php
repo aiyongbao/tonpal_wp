@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use library\controller\RestController;
+use app\portal\controller\InquiryController;
 
 class SettingController extends RestController
 {
@@ -10,6 +11,16 @@ class SettingController extends RestController
     public function __construct()
     {
         
+    }
+
+    public function init()
+    {
+        //初始化sql
+        $themeFile = new ThemeFileController();
+        $themeFile->initSql();
+
+        $inquiry = new InquiryController();
+        $inquiry->initSql();
     }
 
     public function index()
@@ -103,9 +114,6 @@ class SettingController extends RestController
         else{
             return $this->error("请稍后再试！");
         }
-
-        
-
 
     }
 }
