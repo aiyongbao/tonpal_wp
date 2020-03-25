@@ -36,7 +36,8 @@ class ThemeController extends RestController{
         {
             //主题路径
             $themeFilePath = ABSPATH  . 'wp-content/themes/';
-            if(!is_dir($theme_name))
+            
+            if(!file_exists( $themeFilePath . $theme_name))
             {
                 //下载远程主题
                 $next = $this->download($theme_name);
@@ -73,8 +74,8 @@ class ThemeController extends RestController{
         $themeFile = $themeFilePath . $theme_name . '.zip';
 
         if (!file_exists($themeFile)) {
-            mkdir($themeFilePath, 0777);
-            @chmod($themeFilePath, 0777);
+            mkdir($themeFilePath, 0755);
+            @chmod($themeFilePath, 0755);
         }
 
         file_put_contents($themeFile, $file);
@@ -99,6 +100,7 @@ class ThemeController extends RestController{
         $menu_locations = get_nav_menu_locations();
 
         foreach ( $locations as $location => $description ) {
+
 			if ( ( empty( $_POST['menu-locations'] ) || empty( $_POST['menu-locations'][ $location ] ) ) && isset( $menu_locations[ $location ] ) && $menu_locations[ $location ] == $nav_menu_selected_id ) {
 				unset( $menu_locations[ $location ] );
 			}

@@ -17,8 +17,22 @@ class CategoryController extends RestController{
     {
 
         
+        register_rest_field('category', 'meta' ,array(
+            'get_callback'    => function ( $term, $request) {
+
+                $display = get_term_meta($term['id'],'display',true);
+
+                if(empty($display)){
+                    $display = "show";
+                }
+
+                return ['display' => $display];
+            }
+        ));
+        
 
         add_action("rest_after_insert_category",function($term,$request,$bool){
+            
             
             if($bool && $request['type'] == 'list')
             {
@@ -46,9 +60,9 @@ class CategoryController extends RestController{
                         return Db::name('theme_file')->where('id',$insert_id)->find();
                     }
                 ]);
-
-                
             }
+
+            $res = update_term_meta( $term->term_id, 'display', $request['display'] );
 
         },10,3);
     }

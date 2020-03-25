@@ -107,7 +107,7 @@ class PostController extends RestController{
                     'more' => json_encode($item ),
                     'config_more' => json_encode($item)
                   ];
-               
+
                 $res = Db::name('theme_file')->insert( $data );
                 $insert_id = $wpdb->insert_id;
 
