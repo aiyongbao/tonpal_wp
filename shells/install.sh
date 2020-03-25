@@ -599,9 +599,10 @@ Install_Analystic(){
 	./configure --enable-utf8 --enable-geoip=legacy
 	make
 	make install
-	echo 'time-format %T
+	echo '
+time-format %T
 date-format %d/%b/%Y
-log-format %h - %^ [%d:%t %^] requesthost:"%v"; "%r" requesttime:"%T"; %s %b "%R" - %^"%u"' > /usr/local/etc/goaccess.conf
+log-format %h %^[%d:%t %^] "%r" %s %b "%R" "%u" "%^" "%^"' > /usr/local/etc/goaccess.conf
 }
 
 # 生成 API KEY ( 手动开启 api 调试模式 )
