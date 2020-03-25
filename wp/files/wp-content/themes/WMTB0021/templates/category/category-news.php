@@ -16,10 +16,12 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
-global $wp_query;
+global $wp_query,$wp;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
+// 当前页面url
+$page_url = get_lang_page_url();
 ?>
 
 
@@ -31,7 +33,7 @@ $max = intval( $wp_query->max_num_pages );
     <title><?php echo $seo_title; ?></title>
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
-    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
+    <link rel="canonical" href="<?php echo $page_url; ?>" />
 
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
@@ -68,6 +70,16 @@ $max = intval( $wp_query->max_num_pages );
         </div>
     </section>
     <!-- /page title -->
+
+    <!-- title -->
+    <div class="page-title container mt-2 mb-1">
+        <?php if ($subName == '') { ?>
+            <h1><?php echo $the_products_name; ?></h1>
+        <?php } else { ?>
+            <h3><?php echo $the_products_name; ?></h3><h1><?php $subName; ?></h1>
+        <?php } ?>
+    </div>
+    <!-- /title -->
 
     <!-- notice -->
     <section class="section">
@@ -108,4 +120,6 @@ $max = intval( $wp_query->max_num_pages );
 </body>
 
 <?php get_footer(); ?>
+<!--微数据-->
+<?php get_template_part( 'templates/components/microdata' )?>
 </html>

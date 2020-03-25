@@ -2,7 +2,7 @@
 global $wp;
 $data = get_post();
 $type_title = $data->post_name;
-$page_url = home_url(add_query_arg(array(),$wp->request));
+$page_url = get_lang_page_url();
 ?>
 
 <div class="send-mewssage">

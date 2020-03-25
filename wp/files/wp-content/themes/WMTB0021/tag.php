@@ -15,10 +15,12 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
-global $wp_query;
+global $wp_query,$wp;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
+// 当前页面url
+$page_url = get_lang_page_url();
 if ( have_posts() ) {
     $product_item = [];
     $news_item = [];
@@ -36,8 +38,8 @@ if ( have_posts() ) {
     }
 
 }
-print_r($product_item);
-print_r($news_item);
+//print_r($product_item);
+//print_r($news_item);
 
 
 ?>
@@ -53,7 +55,7 @@ print_r($news_item);
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
 
-    <link rel="canonical" href="<?php echo home_url("$seo_title");?><?php if ( $paged > 1 ) printf('/page/%s',$paged); ?>" />
+    <link rel="canonical" href="<?php echo $page_url;?>" />
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
     <?php } ?>
@@ -151,5 +153,7 @@ print_r($news_item);
 </body>
 
 <?php get_footer(); ?>
+<!--微数据-->
+<?php get_template_part( 'templates/components/microdata' )?>
 </html>
 

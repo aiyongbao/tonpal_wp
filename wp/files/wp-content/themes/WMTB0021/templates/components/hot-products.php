@@ -3,22 +3,20 @@
 $category = get_the_category();
 $parent = $category[0]->parent;// 当前上上级id
 $the_id = $post->ID; // 当前id 用于排除
-$the_slug= get_category(ROOT_CATEGORY_PID)->slug;// 当前顶级分类别名
-if($the_slug == 'product') {
+if(ROOT_CATEGORY_SLUG == 'product') {
     if($parent == ROOT_CATEGORY_PID ) {
-        $hot_product_id = $cid;
+        $hot_product_id = ROOT_CATEGORY_CID;
     } else {
         $hot_product_id = $parent;
     }
-} else {
+} elseif ( ROOT_CATEGORY_SLUG == 'news' ) {
     $hot_product_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
     $the_id = '';
 }
-
 $args = array(
     'numberposts' => 3, // 显示个数
     'offset' => 0,
-    'category' => $hot_product_id,
+    'category' => $hot_product_id, // 指定需要返回哪个分类的文章
     'orderby' => 'post_date',
     'order' => 'DESC',
     'include' => '',

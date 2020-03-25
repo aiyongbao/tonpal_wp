@@ -23,7 +23,10 @@ $home_special_imag = ifEmptyText($theme_vars['specialImag']['value'],'https://ip
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
 $seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
-global $wp;?>
+global $wp;
+// 当前页面url
+$page_url = get_lang_page_url();
+?>
 
 <!doctype html>
 <html>
@@ -35,7 +38,7 @@ global $wp;?>
     <meta name="keywords" content="<?php echo $seo_Description; ?>" />
     <meta name="description" content="<?php echo $seo_Keywords; ?>" />
 
-    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
+    <link rel="canonical" href="<?php echo $page_url;?>" />
     <?php get_template_part( 'templates/components/head' )?>
     <style>
         .hero-section {
@@ -87,7 +90,7 @@ global $wp;?>
                         ?>
                         <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
                             <i class="mb-xl-4 mb-lg-3 mb-4">
-                                <img src="<?php echo ifEmptyText($item['icon'],'ti-book') ?>" width="50" height="50" alt="" />
+                                <img src="<?php echo ifEmptyText($item['icon']) ?>" width="50" height="50" alt="" />
                             </i>
                             <?php
                             if (ifEmptyText($item['link'] !== ''))

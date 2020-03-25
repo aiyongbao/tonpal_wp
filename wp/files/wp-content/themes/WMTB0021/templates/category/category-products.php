@@ -1,5 +1,5 @@
 <?php
-global $wp_query,$wp;
+global $wp_query,$wp,$cat;
 
 
 // products.json -> vars 数据获取
@@ -10,9 +10,9 @@ $products_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x
 $products_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
-$subName = ""; // 小标题
+$subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
 $category = get_the_category($cat);
-$name = $category[0]->name; //当前分类名
+$the_products_name = $category[0]->name; //当前分类名称
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$products_title");
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
@@ -25,6 +25,8 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
+// 当前页面url
+$page_url = get_lang_page_url();
 ?>
     <!--nextpage-->
 
@@ -38,7 +40,7 @@ $max = intval( $wp_query->max_num_pages );
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
 
-    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
+    <link rel="canonical" href="<?php echo $page_url;?>" />
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
     <?php } ?>
@@ -95,9 +97,9 @@ $max = intval( $wp_query->max_num_pages );
     <!-- title -->
     <div class="page-title container mt-2 mb-1">
         <?php if ($subName == '') { ?>
-            <h1><?php echo $name; ?></h1>
+            <h1><?php echo $the_products_name; ?></h1>
         <?php } else { ?>
-            <h3><?php echo $name; ?></h3><h1><?php $subName; ?></h1>
+            <h3><?php echo $the_products_name; ?></h3><h1><?php $subName; ?></h1>
         <?php } ?>
     </div>
     <!-- /title -->
@@ -108,7 +110,7 @@ $max = intval( $wp_query->max_num_pages );
             <?php if ( have_posts() ) { ?>
                 <div class="row products-item">
                     <?php while ( have_posts() ) : the_post();   ?>
-                    <?php $thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
+                    <?php $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true); ?>
                         <article class="col-lg-4 col-sm-6 mb-5">
                             <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
                                 <?php if ( ifEmptyText($thumbnail) !== '' ) { ?>
@@ -143,40 +145,7 @@ $max = intval( $wp_query->max_num_pages );
 
 <?php get_footer(); ?>
 
-<script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-            "@type": "ListItem",
-            "position": 1,
-            "item": {
-                "@id": "https://www.*.com/listname-第一个层级/",
-                "name": "顶级分类名"
-            }
-        },{
-            "@type": "ListItem",
-            "position": 2,
-            "item": {
-                "@id": "https://www.*.com/listname-第二个层级/",
-                "name": "二级分类名"
-            }
-        },{
-            "@type": "ListItem",
-            "position": 3,
-            "item": {
-                "@id": "https://www.*.com/listname-第三个层级/",
-                "name": "三级分类名"
-            }
-        },{
-            "@type": "ListItem",
-            "position": 4,
-            "item": {
-                "@id": "https://www.*.com/listname-第四个层级",
-                "name": "四级分类名"
-            }
-        }]
-    }
-</script>
+<!--微数据-->
+<?php get_template_part( 'templates/components/microdata' )?>
 </html>
 
