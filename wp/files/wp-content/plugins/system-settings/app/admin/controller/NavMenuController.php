@@ -28,6 +28,31 @@ class NavMenuController extends RestController{
         );
 
         $result = wp_update_nav_menu_object($menu_id,$menu_data);
+        $lang = $_REQUEST['lang'];
+        if(!isset($result->errors) && isset($lang))
+        {
+            global $wpdb;
+            $wpdb->set_prefix = 'wp_';
+
+            //多语种保存信息到设置表
+            $sql = <<<EOT
+                SELECT option_value FROM `wp_options` WHERE `option_name` = '{$lang}_primary' limit 1;
+EOT;
+            $primary = $wpdb->get_row($sql);
+            
+            if(empty($primary))
+            {
+                $res = $wpdb->insert('wp_options',[
+                    'option_name' => $lang.'_primary', 'option_value' => $result
+                ],[]);
+            }
+            else{
+                $res = $wpdb->query(
+                    "UPDATE `wp_options` SET `option_value` = '{$result}' WHERE option_name = '{$lang}_primary'"
+                );
+            }
+
+        }
         
         return $this->success('添加成功',['id' => $result ]);
     }
@@ -108,7 +133,7 @@ class NavMenuController extends RestController{
     //根据id更新导航栏详情
     public function update_nav_menu_item($request)
     {
-
+        
         $id = $request['id'];
         $post = get_post($id);
         $object_id = get_post_meta( $post->ID, '_menu_item_object_id', true );
@@ -221,6 +246,45 @@ class NavMenuController extends RestController{
                 $this->recursive_delete_nav_menu_item($value['post_id']);
             }
         }
+    }
+
+    //根据导航id删除全部导航子项
+    public function delete_nav_all($request)
+    {
+        $id = $request['id'];
+        
+        if(empty($id))
+        {
+            return $this->error("id不能为空！");
+        }
+
+        $unsorted_menu_items = wp_get_nav_menu_items(
+            $id,
+            array(
+                'orderby'     => 'ID',
+                'output'      => ARRAY_A,
+                'output_key'  => 'ID',
+                'post_status' => 'draft,publish',
+            )
+        );
+
+        $menu_items          = array();
+        // Index menu items by db ID
+        foreach ( $unsorted_menu_items as $_item ) {
+            $menu_items[ $_item->db_id ] = $_item;
+        }
+
+        	// Remove menu items from the menu that weren't in $_POST
+        if ( ! empty( $menu_items ) ) {
+            foreach ( array_keys( $menu_items ) as $menu_item_id ) {
+                if ( is_nav_menu_item( $menu_item_id ) ) {
+                    wp_delete_post( $menu_item_id );
+                }
+            }
+        }
+
+        return $this->success("操作成功！");
+
     }
 
 }
