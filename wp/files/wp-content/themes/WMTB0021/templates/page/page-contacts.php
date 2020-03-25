@@ -22,7 +22,7 @@ $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 ?>
     <!doctype html>
-
+<html>
     <head>
         <meta charset="utf-8">
         <title><?php echo $seo_title; ?></title>
@@ -84,12 +84,6 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
         </section>
         <!-- /contact -->
 
-        <!-- gmap -->
-        <section class="section pt-0">
-            <!-- Google Map -->
-            <div id="map_canvas" data-latitude="<?php echo $contacts_latitude ?>" data-longitude="<?php echo $contacts_longitude ?>"></div>
-        </section>
-        <!-- /gmap -->
     </main>
     <!-- google map -->
     <?php get_template_part( 'templates/components/footer' ); ?>
@@ -98,8 +92,6 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
     </body>
 <?php get_footer(); ?>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script>
-<script src="<?php echo get_template_directory_uri() ?>/assets/plugins/google-map/gmap.js"></script>
-<script>
-
-</script>
+    <!--微数据-->
+    <?php get_template_part( 'templates/components/microdata' )?>
+</html>

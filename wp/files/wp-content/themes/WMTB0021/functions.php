@@ -94,6 +94,7 @@ function add_theme_scripts()
 
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
+// 获取根分类id
 function get_category_root_id($cat)
 {
   $this_category = get_category($cat); // 取得当前分类
@@ -102,6 +103,32 @@ function get_category_root_id($cat)
     $this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
   }
   return $this_category->term_id; // 返回根分类的id号
+}
+
+/**
+ * 获取各级分类url 和 slug
+ * $cat 当前id
+ * @author zhuoyue
+ */
+function get_category_url_and_slug($cat)
+{
+    $category_url_array = [];
+    $this_category = get_category($cat); // 取得当前分类
+    array_push($category_url_array,array(
+        'name' => $this_category->slug,
+        'link' => get_category_link($this_category->term_id)
+    ));
+
+    while ($this_category->category_parent) // 若当前分类有上级分类时，循环
+    {
+        $this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
+        array_push($category_url_array,array(
+            'name' => $this_category->slug,
+            'link' => get_category_link($this_category->term_id)
+        ));
+
+    }
+    return $category_url_array; // 返回根分类的id号
 }
 
 add_filter('nav_menu_css_class','init_menu_items_class',1,3);
@@ -161,7 +188,7 @@ function get_json_toArray($dir){
 }
 
 //根据当前文件全局获取配置文件变量
-function json_config_array($file,$type = 'vars',$public = 0,$abbr = '')
+function json_config_array($file,$type = 'vars',$public = 0)
 {
 
   $filename = explode('.',basename($file));
@@ -352,6 +379,45 @@ function get_breadcrumbs()
         echo "</ul>";
     }
 }
+
+/**
+ * 获取站点域名 不带.com
+ * $_SERVER php超全局变量
+ * eg ：www.tonpal.com | tonpal.com
+ * echo : tonpal
+ * @author zhuoyue
+ */
+function get_host_name () {
+    $host = explode('.',$_SERVER['HTTP_HOST']);
+    if(count($host) == 2){
+        $host = $host[0];
+    } elseif ( count($host) >2 ) {
+        $host = $host[1];
+    }
+    echo $host;
+}
+/**
+ * 获取首页url
+ * 因为本站涉及多语种 需要对home_url() 做二次封装
+ * @author zhuoyue
+ */
+function get_lang_home_url () {
+    $home_url = home_url();
+    $home_url  .= empty(get_query_var('lang')) ? '' : '/' . get_query_var('lang');
+    return $home_url;
+}
+/**
+ * 获取当前页面url
+ * 多语种所需
+ * @author zhuoyue
+ */
+function get_lang_page_url () {
+    global $wp;
+    $lang = empty(get_query_var('lang')) ? array() : array('lang'=>get_query_var('lang'));
+    $page_url = home_url(add_query_arg($lang,$wp->request));
+    return $page_url;
+}
+
 
 // 祛除摘要自动添加分段
 remove_filter( 'the_excerpt', 'wpautop' );

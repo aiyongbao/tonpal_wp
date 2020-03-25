@@ -7,8 +7,8 @@ $nav_title = ifEmptyText($theme_vars['title']['value']);
 $nav_key_word = ifEmptyText($theme_vars['key_word']['value']);
 
 global $wp;
-$home_url = home_url();
-$page_url = home_url(add_query_arg(array(),$wp->request));
+$home_url = get_lang_home_url();
+$page_url = get_lang_page_url();
 ?>
 
 <div class="navigation w-100">

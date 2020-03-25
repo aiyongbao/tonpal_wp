@@ -13,6 +13,8 @@ $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true),"$produc
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 
+// 当前页面url
+$page_url = get_lang_page_url();
 
 global $wp;
 ?>
@@ -26,10 +28,30 @@ global $wp;
     <meta name="keywords" content="<?php echo $seo_description; ?>" />
     <meta name="description" content="<?php echo $seo_keywords; ?>" />
 
-    <link rel="canonical" href="<?php echo home_url(add_query_arg(array(),$wp->request));?>" />
+    <link rel="canonical" href="<?php echo $page_url; ?>" />
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- OG -->
+    <meta property="og:title" content="<?php echo $post->post_title; ?>" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="<?php echo $page_url; ?>" />
+    <meta property="og:description" content="<?php the_excerpt(); ?>" />
+    <meta property="og:image" content="<?php echo $photos[0]; ?>" />
+    <meta property="og:site_name" content="<?php get_host_name(); ?>" />
+    <!-- itemprop -->
+    <meta itemprop="name" content="<?php echo $post->post_title; ?>" />
+    <meta itemprop="description" content="<?php the_excerpt(); ?>" />
+    <meta property="image" content="<?php echo $photos[0]; ?>" />
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@affiliate_<?php get_host_name();; ?>" />
+    <meta name="twitter:creator" content="@affiliate_<?php get_host_name(); ?>" />
+    <meta name="twitter:title" content="<?php echo $post->post_title; ?>" />
+    <meta name="twitter:description" content="<?php echo $post->post_title; ?>" />
+    <meta name="twitter:image" content="<?php echo $photos[0]; ?>" />
+
+
     <?php get_template_part( 'templates/components/head' )?>
     <style>
         .nav-tab-box li a{
@@ -125,11 +147,11 @@ global $wp;
                         if($key ==0 ) {
                             ?>
                             <div class="carousel-item active">
-                                <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
+                                <img src="<?php echo ifEmptyText($item)?>" class="img-fluid w-100">
                             </div>
                         <?php } else { ?>
                             <div class="carousel-item">
-                                <img src="<?php echo ifEmptyText($item[$key])?>" class="img-fluid w-100">
+                                <img src="<?php echo ifEmptyText($item)?>" class="img-fluid w-100">
                             </div>
                         <?php } ?>
                     <?php } ?>
@@ -220,46 +242,6 @@ global $wp;
 
 </body>
 <?php get_footer() ?>
-
-<script type="application/ld+json">
-    <?php
-    global  $cat;
-    $parment = get_cat_name(get_category_root_id($cat));;
-    $parment2 =get_category_link(get_category_root_id($cat));
-    $the_url = home_url(add_query_arg(array(),$wp->request));
-    print_r($parment);
-    print_r($parment2);
-    exit();
-    ?>
-    {
-        "@context": "http://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@id": "https://www.*.com/listname-第一个层级/",
-                    "name": "顶级分类名"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                    "@id": "https://www.*.com/listname-第二个层级/",
-                    "name": "二级分类名"
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                    "@id": "https://www.*.com/listname-第三个层级/",
-                    "name": "三级分类名"
-                }
-            }
-        ]
-    }
-</script>
+<!--微数据-->
+<?php get_template_part( 'templates/components/microdata' )?>
 </html>
