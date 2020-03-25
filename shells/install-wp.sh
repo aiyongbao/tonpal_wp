@@ -110,14 +110,18 @@ Insert_Db(){
     wget -O init-wp.sql.des3 https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/sql/init-wp.sql.des3
     # 进行解密
     dd if=init-wp.sql.des3 |openssl des3 -d -k ${SQLDEPASS} | tar zxf -
-    sed -i 's/$WPPASS/'${WPPASS}'/g' /www/wwwroot/${DOMAIN}/custom-install.php
-    WPPASS=$(php custom-install.php)
-    # 生成密码
     # 替换sql语句中域名, 替换成客户的域名
-    sed -i 's/$DOMAIN/'${DOMAIN}'/g' /www/wwwroot/${DOMAIN}/init-wp.sql
-    sed -i 's/$ORGANIZATION_ID/'${ORGANIZATIONID}'/g' /www/wwwroot/${DOMAIN}/init-wp.sql
-    sed -i 's/$WPUSER/'${WPUSER}'/g' /www/wwwroot/${DOMAIN}/init-wp.sql
-    sed -i 's/$WPPASS/'${WPPASS}'/g' /www/wwwroot/${DOMAIN}/init-wp.sql
+    sed -i 's#$DOMAIN#'${DOMAIN}'#g' /www/wwwroot/${DOMAIN}/init-wp.sql
+    sed -i 's#ORGANIZATION_ID#'${ORGANIZATIONID}'#g' /www/wwwroot/${DOMAIN}/init-wp.sql
+    sed -i 's#$WPUSER#'${WPUSER}'#g' /www/wwwroot/${DOMAIN}/init-wp.sql
+    # 生成密码
+    ENWPPASS=""
+    while [ "${ENWPPASS}" == "" ]
+    do 
+        ENWPPASS=$(php custom-install.php ${WPPASS})
+        sleep 1
+    done
+    sed -i 's#$WPPASS#'${ENWPPASS}'#g' /www/wwwroot/${DOMAIN}/init-wp.sql
     # 进入数据库，运行sql语句
     mysql -u${DBUSER} -p${DBPASS} ${DBNAME} < init-wp.sql
 }

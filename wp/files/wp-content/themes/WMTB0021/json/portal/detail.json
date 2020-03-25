@@ -1,0 +1,37 @@
+{
+    "name": "detail配置文件",
+    "action": "portal/detail",
+    "description": "detail配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "detail",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "bg": {
+                "title": "背景图",
+                "type": "image",
+                "value": "/wp-content/themes/model/assets/images/backgrounds/page-title.jpg",
+                "tip": "背景图",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "type": "text",
+                "value": "desc",
+                "tip": "描述",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}
