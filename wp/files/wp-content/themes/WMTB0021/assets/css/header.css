@@ -50,3 +50,10 @@
 .component-products {
     width: 100%;
 }
+.dropdown-toggle::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    margin: auto;
+}

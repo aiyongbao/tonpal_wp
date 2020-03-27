@@ -1,6 +1,6 @@
 <?php
 $post = get_post();
-// productDetail.json -> vars 数据获取
+// product-detail.json -> vars 数据获取
 $theme_vars = json_config_array('product-detail','vars');
 // Text 数据处理
 $product_detail_title = ifEmptyText($theme_vars['title']['value'],'Detail');
@@ -20,7 +20,7 @@ global $wp;
 ?>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
@@ -225,13 +225,13 @@ global $wp;
                 <?php the_tags('<li>', '</li><li>', '</li>') ?>
             </ul>
             <?php get_template_part( 'templates/components/related-products' )?>
-
-            <!-- hot_product -->
-            <?php get_template_part( 'templates/components/hot-products' )?>
-
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>
             </div>
+            <!-- hot_product -->
+            <?php get_template_part( 'templates/components/hot-products' )?>
+            <!-- tags-assembly -->
+            <?php get_template_part( 'templates/components/tags-assembly' )?>
         </div>
     </div>
 </section>

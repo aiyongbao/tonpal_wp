@@ -83,5 +83,6 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
 </body>
 <?php get_footer() ?>
-
+<!-- 微数据 -->
+<?php get_template_part( 'templates/components/microdata' )?>
 </html>

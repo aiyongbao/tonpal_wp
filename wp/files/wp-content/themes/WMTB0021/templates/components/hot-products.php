@@ -28,11 +28,14 @@ $args = array(
     'suppress_filters' => true
 );
 $recent_posts = wp_get_recent_posts($args,'ARRAY_A');
+
 if(ifEmptyArray($recent_posts) !== []){
 ?>
-<div class="col-12 mb-4 tags-title">
-    <div>HOT PRODUCTS</div>
-</div>
+    <?php if ( is_single()) : ?>
+        <div class="col-12 mb-4 mt-2 tags-title">
+            <div>HOT PRODUCTS</div>
+        </div>
+    <?php endif;?>
     <section class="component-products">
     <div class="container">
         <div class="row products-item">

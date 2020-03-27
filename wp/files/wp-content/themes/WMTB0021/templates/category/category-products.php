@@ -11,8 +11,9 @@ $products_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
 $subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
-$category = get_the_category($cat);
-$the_products_name = $category[0]->name; //当前分类名称
+$category = get_category($cat);
+$the_category_name = $category->name; //当前分类名称
+
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$products_title");
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
@@ -97,9 +98,9 @@ $page_url = get_lang_page_url();
     <!-- title -->
     <div class="page-title container mt-2 mb-1">
         <?php if ($subName == '') { ?>
-            <h1><?php echo $the_products_name; ?></h1>
+            <h1><?php echo $the_category_name; ?></h1>
         <?php } else { ?>
-            <h3><?php echo $the_products_name; ?></h3><h1><?php $subName; ?></h1>
+            <h3><?php echo $the_category_name; ?></h3><h1><?php $subName; ?></h1>
         <?php } ?>
     </div>
     <!-- /title -->
@@ -135,6 +136,10 @@ $page_url = get_lang_page_url();
                     <div class="no-product"><?php echo $products_null_tip; ?></div>
                 </div>
             <?php } ?>
+
+            <?php get_template_part( 'templates/components/tags-assembly' ); ?>
+
+            
         </div>
     </section>
     <!-- /blogs -->
