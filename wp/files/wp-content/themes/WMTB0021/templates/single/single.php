@@ -33,28 +33,7 @@ $page_url = get_lang_page_url();
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <?php get_template_part( 'templates/components/head' )?>
-    <style>
-        .tags-title>div {
-            float: left;
-            padding: 10px 10px;
-            display: block;
-            color: #fff;
-            border-radius: 10px 10px 0 0;
-            background: #ffbc3b;
-        }
-        .tags-ul li{
-            float: left;
-            margin: 5px;
-            padding: 5px;
-            border: 1px solid #e5e5e5;
-        }
-        .tags-ul li a{
-            color: #666;
-        }
-        .tags-ul li:hover a {
-            color: #ffbc3b;
-        }
-    </style>
+
 </head>
 
 <body>

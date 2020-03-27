@@ -47,21 +47,7 @@ $page_url = get_lang_page_url();
         <link rel="next" href="<?php next_posts(); ?>" />
     <?php } ?>
     <?php get_template_part('templates/components/head'); ?>
-    <style>
-        .products-item .card-title {
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-        }
-        .products-item .card-body > p {
-            height: 56px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            text-overflow: ellipsis;
-        }
-    </style>
+
 </head>
 
 <body>

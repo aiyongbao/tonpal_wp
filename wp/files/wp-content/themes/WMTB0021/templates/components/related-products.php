@@ -25,7 +25,7 @@ $related_posts = query_posts($args);
 if(ifEmptyArray($related_posts) !== []){
 ?>
 
-<div class="col-12 mb-4 tags-title">
+<div class="col-12 mb-4 component-products-title">
     <div>RELATED PRODUCTS</div>
 </div>
 <section class="component-products">
@@ -54,11 +54,9 @@ if(ifEmptyArray($related_posts) !== []){
                         </div>
                     </div>
                 </article>
-                <?php
-            }
-            wp_reset_query(); // 重置query 防止影响其他query查询
-            ?>
+                <?php } ?>
         </div>
     </div>
 </section>
-<?php } ?>
+<?php } wp_reset_query(); // 重置query 防止影响其他query查询 ?>
+
