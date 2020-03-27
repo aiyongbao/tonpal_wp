@@ -109,6 +109,72 @@ EOT;
 
     }
 
+     //初始化主题
+     function theme_file_init()
+     {
+       $jsonDir = get_template_directory() . '/json';
+       $temp = scandir($jsonDir);
+       foreach($temp as $key => $parentDir)
+       {
+           if($parentDir != '.' && $parentDir != '..'){
+   
+             if(is_dir($jsonDir.'/'.$parentDir)){
+               $sonTemp = scandir($jsonDir.'/'.$parentDir);
+               
+               foreach($sonTemp as $k => $value)
+               {
+                 $json_dir = $jsonDir.'/'.$parentDir.'/'.$value;
+                 if(is_file($json_dir))
+                 {
+                   $item = $this->get_json_toArray($json_dir);
+                   $filename = explode('.',$value);
+                   if(is_array($filename) && count($filename) > 0)
+                   {
+                     $filename = $filename[0];
+                   }
+                   $filename = $parentDir. '/' .$filename;
+                   global $wpdb;
+                   $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}_theme_file WHERE file = %s",$filename ) );
+                   $data = [
+                     'is_public' =>  strpos($item['action'],'public') !==false  ? 1 : 0,
+                     'theme' => wp_get_theme()->get('Name'),
+                     'name' => $item['name'],
+                     'action' => $item['action'],
+                     'file' => $filename,
+                     'description' => $item['description'],
+                     'more' => json_encode($item ),
+                     'config_more' => json_encode($item)
+                   ];
+                   
+                   if(empty($result))
+                   {
+                     //新增
+                     $res = $wpdb->insert( $wpdb->prefix .'_theme_file' ,$data);
+                   }
+                   else{
+                     $res = $wpdb->update( $wpdb->prefix .'_theme_file' ,$data,['id' => $result->id]);
+                   }
+ 
+                   //print_r($wpdb);
+                   
+                 }
+   
+               }
+             }
+           }
+       }
+
+       $theme_file = Db::name('theme_file')->select();
+
+       return $this->success('操作完成！',$theme_file);
+     }
+
+     function get_json_toArray($dir){
+        $json = file_get_contents($dir);
+        $data = json_decode($json,true);
+        return $data;
+    }
+
     //读取文件列表json
     public function fileList(){
         $theme_file = Db::name('theme_file')->select();
