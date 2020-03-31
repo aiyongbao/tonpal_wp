@@ -1,7 +1,7 @@
 <!-- navbar -->
 <?php
 
-$theme_vars = json_config_array(__FILE__, 'vars',1);
+$theme_vars = json_config_array('header', 'vars',1);
 $nav_logo = ifEmptyText($theme_vars['logo']['value'],'https://iph.href.lu/200x100?text=logo');
 $nav_title = ifEmptyText($theme_vars['title']['value']);
 $nav_key_word = ifEmptyText($theme_vars['key_word']['value']);
@@ -45,4 +45,4 @@ $page_url = get_lang_page_url();
             </div>
         </nav>
     </div>
-    </div>
+</div>

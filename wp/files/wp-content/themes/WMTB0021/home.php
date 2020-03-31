@@ -1,11 +1,11 @@
 <?php
-// widgets 数据处理
+// home.json -> widgets 数据获取
 $theme_widgets = json_config_array(__FILE__,'widgets');
 set_query_var('home_carousel', $theme_widgets['carousel']);
 
 // home.json -> vars 数据获取
 $theme_vars = json_config_array(__FILE__,'vars');
-// Array 数据处理
+// widgets 数据处理
 $home_special = $theme_widgets['special'];
 $home_about = $theme_widgets['about'];
 $home_hotProduct = $theme_widgets['hotProduct'];

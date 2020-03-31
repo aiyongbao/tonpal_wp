@@ -1,7 +1,7 @@
 <?php
 
-$theme_vars = json_config_array('links', 'vars',1);
-$link = ifEmptyArray($theme_vars['link']['value']);
+$theme_vars = json_config_array('footer', 'vars',1);
+$link = ifEmptyArray($theme_vars['links']['value']);
 
 ?>
 <?php if ($link !== []) : ?>

@@ -555,6 +555,7 @@
                             }
                         },
                         "tip": "这里需要三组数据",
+                        "maxNumber": 3,
                         "rule": {
                             "require": true
                         }

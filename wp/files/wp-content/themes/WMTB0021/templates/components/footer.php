@@ -10,10 +10,10 @@ $nav_four_item = ifEmptyArray($theme_vars['navFourItem']['value']);
 
 // text
 $footer_copyright = ifEmptyText($theme_vars['copyright']['value']);
-$footer_facebook_link = ifEmptyText($theme_vars['facebookLink']['value']);
-$footer_twitter_link = ifEmptyText($theme_vars['twitterLink']['value']);
-$footer_linkedin_link = ifEmptyText($theme_vars['linkedinLink']['value']);
-$footer_instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
+$footer_facebook_link = get_query_var('facebook_link');
+$footer_twitter_link = get_query_var('twitter_link');
+$footer_linkedin_link = get_query_var('linkedin_link');
+$footer_instagram_link = get_query_var('instagram_link');
 
 $nav_one_title = ifEmptyText($theme_vars['navOneTitle']['value']);
 $nav_two_title = ifEmptyText($theme_vars['navTwoTitle']['value']);
@@ -153,4 +153,4 @@ $nav_four_title = ifEmptyText($theme_vars['navFourTitle']['value']);
     </div>
 </footer>
 <!-- /footer -->
-<!-- jQuery -->
+

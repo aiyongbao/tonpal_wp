@@ -7,22 +7,14 @@
         "vars": {
             "message": {
                 "title": "公司信息",
-                "value": [
-                    {
-                        "logo": "",
-                        "address": "gaojing,baoshan,shanghai,China",
-                        "Telephone": "400-000-0000",
-                        "mobilePhone": "400-000-0000",
-                        "email": "info@ayongtech.com"
-                    }
-                ],
+                "value": [],
                 "type": "array",
                 "item": {
                     "logo": {
-                        "title": "logo",
+                        "title": "大图logo",
                         "value": "",
                         "type": "image",
-                        "tip": "请选择logo",
+                        "tip": "大图logo",
                         "rule": {
                             "require": true
                         }
@@ -71,12 +63,6 @@
                 "message":{
                     "require":"不能为空"
                 }
-            },
-            "facebookLink": {
-                "title": "facebook 链接",
-                "value": "",
-                "type": "text",
-                "tip": "未填写则隐藏"
             },
             "navOneTitle": {
                 "title": "底部导航1-标题",
@@ -212,23 +198,25 @@
                 "type": "text",
                 "tip": "版权自定义"
             },
-            "twitterLink": {
-                "title": "twitter 链接",
-                "value": "",
-                "type": "text",
-                "tip": "未填写则隐藏"
-            },
-            "linkedinLink": {
-                "title": "linkedin 链接",
-                "value": "",
-                "type": "text",
-                "tip": "未填写则隐藏"
-            },
-            "instagramLink": {
-                "title": "instagram 链接",
-                "value": "",
-                "type": "text",
-                "tip": "未填写则隐藏"
+            "links": {
+                "title": "链轮系统",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "锚文本"
+                    },
+                    "link": {
+                        "title": "固定链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "固定链接"
+                    }
+                },
+                "tip": " 默认不显示， 但点击图标时，则会展示其所有的信息"
             }
         }
     }

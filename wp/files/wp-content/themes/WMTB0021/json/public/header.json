@@ -60,6 +60,30 @@
                     }
                 },
                 "tip": "header自定义链接"
+            },
+            "logo": {
+                "title": "logo",
+                "value": "",
+                "type": "image",
+                "tip": "请选择logo",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "公司名称",
+                "value": "外贸通宝",
+                "type": "text",
+                "tip": "请填写公司名称",
+                "rule": {
+                    "require": true
+                }
+            },
+            "key_word": {
+                "title": "SEO优化关键词",
+                "value": "特殊需求关键词",
+                "type": "text",
+                "tip": "需要优化特定的关键词"
             }
         }
     }
