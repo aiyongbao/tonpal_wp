@@ -1,0 +1,9 @@
+.logo-img {
+    width: 200px;
+    height: 100px;
+    text-indent: -9999px; /* 这个一定要加上 */
+}
+.logo-img a {
+    display: block;
+    height: 100px;/* 同高 */
+}

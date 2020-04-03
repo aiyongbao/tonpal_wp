@@ -1,0 +1,65 @@
+<?php
+global $wp_query;
+// 因为后台系统限制 类目级别为  /顶级 /一级 /二级
+$category = get_the_category();
+$parent = $category[0]->parent;// 当前上上级id
+$the_id = $post->ID; // 当前id 用于排除
+if(ROOT_CATEGORY_SLUG == 'product') {
+    if($parent == ROOT_CATEGORY_PID ) {
+        $hot_product_id = ROOT_CATEGORY_CID;
+    } else {
+        $hot_product_id = $parent;
+    }
+} else {
+    $hot_product_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
+    $the_id = '';
+}
+$args = array(
+    'numberposts' => 5, // 显示个数
+    'offset' => 0,
+    'category' => $hot_product_id, // 指定需要返回哪个分类的文章
+    'orderby' => 'post_date',
+    'order' => 'DESC',
+    'include' => '',
+    'exclude' => $the_id,// 排除
+    'meta_key' => '',
+    'meta_value' =>'',
+    'post_type' => 'post',
+    'post_status' => 'publish',// 公开的文章
+    'suppress_filters' => true
+);
+$recent_posts = wp_get_recent_posts($args,'ARRAY_A');
+
+if(ifEmptyArray($recent_posts) !== []){
+?>
+    <div class="side-tit-bar">
+        <h2 class="side-tit">HOT PRODUCTS</h2>
+    </div>
+    <div class="side-product-items">
+        <span class="btn-prev"></span>
+        <div class="items_content">
+            <ul class="gm-sep">
+                <?php
+                foreach( $recent_posts as $recent ){
+                    $sub_name = '';// 产品副标题
+                    $thumbnail=get_post_meta($recent["ID"],'thumbnail',true);
+                    ?>
+                    <li class="side_product_item">
+                        <figure>
+                            <a href="<?php echo get_permalink($recent["ID"]); ?>" class="item-img">
+                                <img src="<?php echo $thumbnail ?>_thumb_262x262.jpg" alt="<?php echo $recent["post_title"]; ?>" />
+                            </a>
+                            <figcaption>
+                                <a href="<?php echo get_permalink($recent["ID"]); ?>" title="<?php echo $recent["post_title"]; ?>">
+                                    <?php echo $recent["post_title"]; ?>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <span class="btn-next"></span>
+    </div>
+</section>
+<?php } wp_reset_query(); // 重置query 防止影响其他query查询 ?>

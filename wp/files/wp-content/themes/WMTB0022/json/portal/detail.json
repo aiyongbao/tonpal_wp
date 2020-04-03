@@ -1,0 +1,11 @@
+{
+    "name": "detail配置文件",
+    "action": "portal/detail",
+    "description": "detail配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+
+        }
+    }
+}

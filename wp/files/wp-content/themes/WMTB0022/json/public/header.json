@@ -1,0 +1,67 @@
+{
+    "name": "header配置文件",
+    "action": "public/header",
+    "description": "header配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "facebookLink": {
+                "title": "facebook 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "twitterLink": {
+                "title": "twitter 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "youtubeLink": {
+                "title": "youtube 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "instagramLink": {
+                "title": "instagram 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "logo": {
+                "title": "logo",
+                "value": "",
+                "type": "image",
+                "tip": "请选择logo",
+                "rule": {
+                    "require": true
+                }
+            },
+            "icon": {
+                "title": "icon",
+                "value": "",
+                "type": "image",
+                "tip": "建议50*50 png图片",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "公司名称",
+                "value": "外贸通宝",
+                "type": "text",
+                "tip": "请填写公司名称",
+                "rule": {
+                    "require": true
+                }
+            },
+            "key_word": {
+                "title": "SEO优化关键词",
+                "value": "特殊需求关键词",
+                "type": "text",
+                "tip": "需要优化特定的关键词"
+            }
+        }
+    }
+}

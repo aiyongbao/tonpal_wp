@@ -1,0 +1,71 @@
+{
+    "name": "picturewell配置文件",
+    "action": "portal/picturewell",
+    "description": "picturewell配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "item": {
+                "title": "picturewell列表",
+                "type": "array",
+                "value": [],
+                "item": {
+                    "image": {
+                        "title": "image图片",
+                        "type": "image",
+                        "value": "",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "title": {
+                        "title": "标题",
+                        "type": "text",
+                        "value": "",
+                        "tip": "",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
