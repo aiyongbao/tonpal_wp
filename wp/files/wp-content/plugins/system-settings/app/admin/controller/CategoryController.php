@@ -16,12 +16,9 @@ class CategoryController extends RestController{
     public function index()
     {
 
-        
         register_rest_field('category', 'meta' ,array(
             'get_callback'    => function ( $term, $request) {
-
                 $display = get_term_meta($term['id'],'display',true);
-
                 if(empty($display)){
                     $display = "show";
                 }
@@ -30,7 +27,6 @@ class CategoryController extends RestController{
             }
         ));
         
-
         add_action("rest_after_insert_category",function($term,$request,$bool){
             
             
@@ -63,6 +59,8 @@ class CategoryController extends RestController{
             }
 
             $res = update_term_meta( $term->term_id, 'display', $request['display'] );
+
+            update_option('category_children','');
 
         },10,3);
     }

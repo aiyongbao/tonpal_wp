@@ -5,29 +5,22 @@ namespace app\portal\controller;
 use library\controller\BaseController;
 use library\Db;
 
-class PostController extends BaseController
+class CategoryController extends BaseController
 {
-    //设置排序规则
     public function index($query)
     {
-        //$query->set('meta_key', 'list_order');
-    
-        $hide_category = $query->query_vars['category__not_in'];
-
-        //筛选出隐藏的内容
+        $hide_category = [];
         $data = Db::name('termmeta')->where('meta_key','display')->where('meta_value','hide')->select();
-
-        
         if(!empty($data))
         {
             foreach($data as $key => $value)
             {
-                $hide_category[] = $value['term_id'];
+                $hide_category[] = intval($value['term_id']);
             }
         }
-
-        $query->query_vars['category__not_in'] =  $hide_category;
-
+        $query->query_vars['exclude'] =  $hide_category;
+        $query->query_vars['hide_empty'] = 0;
+        
         return $query;
     }
 }

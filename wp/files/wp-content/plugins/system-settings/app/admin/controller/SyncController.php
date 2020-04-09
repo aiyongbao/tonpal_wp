@@ -29,7 +29,17 @@ class syncController extends RestController
     //初始化语种数据库
     public function init($abbr)
     {
+
+        //新增一条语种记录到语言表
+        $res = Db::table('wp_language')->where('abbr',$abbr)->where('status',1)->find();
+
+        if(empty($res))
+        {
+         
         $sql = <<<EOT
+        
+        UPDATE `wp_language` set `status` = 1 WHERE abbr = '{$abbr}';
+
         CREATE TABLE IF NOT EXISTS `wp_{$abbr}_postmeta` (
         `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
         `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -70,6 +80,7 @@ class syncController extends RestController
         KEY `post_parent` (`post_parent`),
         KEY `post_author` (`post_author`)
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+        
         CREATE TABLE IF NOT EXISTS `wp_{$abbr}_term_relationships` (
         `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
         `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -88,6 +99,7 @@ class syncController extends RestController
         UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
         KEY `taxonomy` (`taxonomy`)
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+       
         CREATE TABLE IF NOT EXISTS `wp_{$abbr}_termmeta` (
         `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
         `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -97,6 +109,7 @@ class syncController extends RestController
         KEY `term_id` (`term_id`),
         KEY `meta_key` (`meta_key`(191))
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+        
         CREATE TABLE IF NOT EXISTS `wp_{$abbr}_terms` (
         `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
         `name` varchar(200) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
@@ -106,6 +119,7 @@ class syncController extends RestController
         KEY `slug` (`slug`(191)),
         KEY `name` (`name`(191))
         ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+        
         CREATE TABLE IF NOT EXISTS `wp_{$abbr}_theme_file` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `is_public` tinyint(3) DEFAULT NULL COMMENT '是否公共模块',
@@ -121,12 +135,14 @@ class syncController extends RestController
         PRIMARY KEY (`id`)
         );
 EOT;
-        
+        }
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if (mysqli_connect_errno($conn)) {
             echo "连接 MySQL 失败: " . mysqli_connect_error();
         }
+
         $res = $conn->multi_query($sql);
+
         mysqli_close($conn);
         $this->init_theme_file($abbr);
         return $res;
@@ -177,8 +193,6 @@ EOT;
                   else{
                     $res = $wpdb->update( $wpdb->prefix . $abbr .'_theme_file' ,$data,['id' => $result->id]);
                   }
-
-                  //print_r($wpdb);
                   
                 }
   

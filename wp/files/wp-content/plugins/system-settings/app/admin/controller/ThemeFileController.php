@@ -79,7 +79,7 @@ EOT;
             }
 
             else{
-
+                
                 $res = Db::name('theme_file')->insert(['more' => $item['more'] , 'config_more' => $item['more']]);
                 $result_mark[] = [
                     'id' => $res['id'],
@@ -149,14 +149,11 @@ EOT;
                    if(empty($result))
                    {
                      //新增
-                     $res = $wpdb->insert( $wpdb->prefix .'_theme_file' ,$data);
+                     $res = $wpdb->insert( $wpdb->prefix .'theme_file' ,$data);
                    }
                    else{
-                     $res = $wpdb->update( $wpdb->prefix .'_theme_file' ,$data,['id' => $result->id]);
-                   }
- 
-                   //print_r($wpdb);
-                   
+                     $res = $wpdb->update( $wpdb->prefix .'theme_file' ,$data,['id' => $result->id]);
+                   }                   
                  }
    
                }
@@ -202,6 +199,22 @@ EOT;
         }
     }
 
+    //根据id删除文件单项
+    public function delete($request)
+    {
+        $id = $request['id'];
+        $theme_result = Db::name('theme_file')->where('id',$id)->delete();
+        
+        if($theme_result !== null)
+        {
+            return $this->success('删除成功！');
+        }
+        else{
+            return $this->error('删除失败,数据不存在！');
+        }
+    }
+
+
     //更新文件单项
     public function updateFileItem($request)
     {
@@ -221,7 +234,7 @@ EOT;
         $data = ['config_more' => $config_more];
         $res = Db::name('theme_file')->where('id',$id)->update($data);       
         
-        if($res != false)
+        if($res !== false)
         {
             return $this->success('更新成功！');
         }
