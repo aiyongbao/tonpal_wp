@@ -28,6 +28,7 @@ set_query_var('mobile', $mobile);
 set_query_var('email', $email);
 set_query_var('address', $address);
 
+$languagesArray = ifEmptyArray(get_query_var('languagesArray'));
 $footer_news_item = ifEmptyArray($theme_vars['newsItem']['value']);
 $footer_product_item = ifEmptyArray($theme_vars['productItem']['value']);
 
@@ -103,16 +104,16 @@ $google_extantion = '';
     </div>
 </footer>
 
-<!--{% if language is not empty %}-->
-<!--<ul class="prisna-wp-translate-seo" id="prisna-translator-seo">-->
-<!--    <li class="language-flag language-flag-en"> <a title="English" href="javascript:changeLanguage('en');"><span>English</span> </a> </li>-->
-<!--    {% for sub in language %}-->
-<!--    <li class="cart-menu-item index-li">-->
-<!--        <a data-language="{{ sub['websiteurl'] }}"  value="{{ sub['abbr'] }}" href="{{ sub['websiteurl'] }}">{{ sub['ename'] }}</a>-->
-<!--    </li>-->
-<!--    {% endfor %}-->
-<!--</ul>-->
-<!--{% endif %}-->
+<?php if ( !empty($languagesArray)) { ?>
+    <ul class="prisna-wp-translate-seo" id="prisna-translator-seo">
+        <li class="language-flag language-flag-en"> <a title="English" href="javascript:changeLanguage('en');"><span>English</span> </a> </li>
+        <?php foreach ($languagesArray as $item) { ?>
+        <li class="cart-menu-item index-li">
+            <a data-language="<?php echo $item['link'] ?>"  value="<?php echo $item['abbr'] ?>" href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a>
+        </li>
+        <?php } ?>
+    </ul>
+<?php } ?>
 
 <div class="fixed-bottom">
     <?php if ($footer_contact_phone !== '' ) { ?>

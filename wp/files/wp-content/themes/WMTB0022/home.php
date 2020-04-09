@@ -48,7 +48,7 @@ $page_url = get_lang_page_url();
         <?php if ($home_modularOne['display'] == 1) {
         $home_modularOne_title = ifEmptyText($home_modularOne['vars']['title']['value']);
         $home_modularOne_desc = ifEmptyText($home_modularOne['vars']['desc']['value']);
-        $home_modularOne_item = ifEmptyArray($home_modularOne['vars']['item']['value']);
+        $home_modularOne_item = ifEmptyArray($home_modularOne['vars']['items']['value']);
         ?>
         <section class="lead-panel">
             <div class="layout">
@@ -93,7 +93,7 @@ $page_url = get_lang_page_url();
         <!-- company synopses -->
         <?php if ($home_special['display'] == 1) {
         $home_special_title = ifEmptyText($home_special['vars']['title']['value']);
-        $home_special_item = ifEmptyArray($home_special['vars']['item']['value']);
+        $home_special_item = ifEmptyArray($home_special['vars']['items']['value']);
         ?>
         <section class="gd-layer company-synopses">
             <div class="layout">
@@ -152,7 +152,7 @@ $page_url = get_lang_page_url();
         <!-- featured products -->
         <?php if ($home_hotProduct['display'] == 1) {
         $home_hotProduct_title = ifEmptyText($home_hotProduct['vars']['title']['value']);
-        $home_hotProduct_item = ifEmptyArray($home_hotProduct['vars']['item']['value']);
+        $home_hotProduct_item = ifEmptyArray($home_hotProduct['vars']['items']['value']);
         ?>
             <section class="gd-layer product-items layer-featured">
                 <div class="layout">
@@ -210,7 +210,7 @@ $page_url = get_lang_page_url();
         <!-- news -->
         <?php if ($home_news['display'] == 1) {
             $home_news_title = ifEmptyText($home_news['vars']['title']['value']);
-            $home_news_item = ifEmptyText($home_news['vars']['item']['value']);
+            $home_news_item = ifEmptyText($home_news['vars']['items']['value']);
         ?>
         <section class="gd-layer promote-banners">
             <div class="layout">

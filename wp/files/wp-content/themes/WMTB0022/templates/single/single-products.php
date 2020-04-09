@@ -3,11 +3,16 @@ global $wp;
 
 $post = get_post();
 // product-detail.json -> vars 数据获取
-$theme_vars = json_config_array('product-detail','vars');
+$theme_vars = json_config_array('header','vars',1);
 // Text 数据处理
 $productDetail_download_btn = ifEmptyText($theme_vars['downloadBtn']['value']);
 $productDetail_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value']);
 $photos = ifEmptyArray(get_post_meta(get_post()->ID,'photos'));
+
+$photosArray = [];
+foreach ($photos as $key=>$item){
+    array_push($photosArray,json_decode($photos[$key],true));
+}
 $pdf = ifEmptyText(get_post_meta(get_post()->ID,'pdf',true));
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));
@@ -51,11 +56,11 @@ $page_url = get_lang_page_url();
     <meta name="twitter:description" content="<?php echo $post->post_title; ?>" />
     <meta name="twitter:image" content="<?php echo $photos[0]; ?>" />
 
-
-    <?php get_template_part( 'templates/components/head' )?>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <?php get_template_part( 'templates/components/head' )?>
+
     <style>
         .tab-panel a {
             margin-right: 12px;
@@ -113,15 +118,15 @@ $page_url = get_lang_page_url();
                 <div class="product-intro">
                     <div class="product-view" style="width:300px;">
                         <div class="product-image" style="width:300px;height:300px;background-color:white;border:1px solid white;">
-                            <a class="certificate-fancy" href="<?php echo ifEmptyText($photos[0]['url'])?>">
-                                <img src="<?php echo ifEmptyText($photos[0]['url'])?>" alt="<?php echo ifEmptyText($photos[0]['alt'])?>" style="width:100%" />
+                            <a class="certificate-fancy" target="_blank" href="<?php echo ifEmptyText($photosArray[0]['url'])?>">
+                                <img src="<?php echo ifEmptyText($photosArray[0]['url'])?>" alt="<?php echo ifEmptyText($photosArray[0]['alt'])?>" style="width:100%" />
                             </a>
                         </div>
                         <div class="image-additional">
                             <ul class="image-items">
-                                <?php foreach ($photos as $key => $item) { ?>
+                                <?php foreach ($photosArray as $key => $item) { ?>
                                     <li class="image-item">
-                                        <a href='<?php echo ifEmptyText($item['url'])?>' class='fancy-item' href="javascript:;">
+                                        <a href='<?php echo ifEmptyText($item['url'])?>' class='fancy-item' target="_blank" href="javascript:;">
                                             <img src="<?php echo ifEmptyText($item['url'])?>" alt="<?php echo ifEmptyText($item['alt'])?>" />
                                         </a>
                                     </li>
@@ -162,32 +167,46 @@ $page_url = get_lang_page_url();
                         }
                     ?>
                     <div class="gm-sep tab-title-bar detail-tabs">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <?php foreach ($newArray as $key => $item ){ ?>
-                                <?php if($key == 0){ ?>
-                                    <li role="presentation" class="active">
-                                        <a href="#detail_tab<?php echo $key ?>" aria-controls="product-tab" role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a>
-                                    </li>
-                                <?php } else { ?>
-                                    <li role="presentation">
-                                        <a href="#detail_tab<?php echo $key ?>" aria-controls="product-tab" role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a>
-                                    </li>
-                                <?php } ?>
-                            <?php } ?>
-                        </ul>
+                        <h2 class="tab-title  title current"><span>PRODUCTS DETAILS</span></h2>
+                    </div>
+                    <div class="gm-sep tab-title-bar detail-tabs">
+
                     </div>
                     <div class="tab-panel-wrap mb0">
                         <div class="tab-panel disabled">
                             <div class="tab-panel-content entry">
                                 <div class="fl-rich-text">
-                                    <?php foreach ($newArray as $key => $item ){ ?>
-                                        <?php if($key == 0){ ?>
-                                            <div role="tabpanel" class="tab-pane active" id="detail_tab<?php echo $key ?>">
-                                                <?php echo $item['content']; ?>
+                                    <?php if (count($newArray) != 1){ ?>
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <?php foreach ($newArray as $key => $item ){ ?>
+                                                <?php if($key == 0){ ?>
+                                                    <li role="presentation" class="active">
+                                                        <a href="#detail_tab<?php echo $key ?>" aria-controls="product-tab" role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a>
+                                                    </li>
+                                                <?php } else { ?>
+                                                    <li role="presentation">
+                                                        <a href="#detail_tab<?php echo $key ?>" aria-controls="product-tab" role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a>
+                                                    </li>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <?php foreach ($newArray as $key => $item ){ ?>
+                                                <?php if($key == 0){ ?>
+                                                    <div role="tabpanel" class="tab-pane active" id="detail_tab<?php echo $key ?>">
+                                                        <?php echo $item['content']; ?>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div role="tabpanel" class="tab-pane" id="detail_tab<?php echo $key ?>"><?php echo $item['content']; ?></div>
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } else {?>
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active">
+                                                <?php echo $newArray[0]['content']; ?>
                                             </div>
-                                        <?php } else { ?>
-                                            <div role="tabpanel" class="tab-pane" id="detail_tab<?php echo $key ?>"><?php echo $item['content']; ?></div>
-                                        <?php } ?>
+                                        </div>
                                     <?php } ?>
                                 </div>
                             </div>

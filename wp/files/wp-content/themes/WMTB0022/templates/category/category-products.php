@@ -114,7 +114,7 @@ $page_url = get_lang_page_url();
                     <?php } ?>
                 </div>
                 <?php if($products_footer_desc != ''){ ?>
-                    <p class="class-desc" style="margin-bottom:30px;"><?php echo $products_footer_desc; ?></p>
+                    <p class="class-desc" style="margin:15px 0;"><?php echo $products_footer_desc; ?></p>
                 <?php } ?>
                 <!-- sendMessage -->
                 <?php get_template_part( 'templates/components/sendMessage' ); ?>

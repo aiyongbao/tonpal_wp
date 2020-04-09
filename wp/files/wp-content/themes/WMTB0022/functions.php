@@ -1,4 +1,6 @@
 <?php
+use library\Db;
+
 if (!function_exists('my_theme_setup')) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.
@@ -102,7 +104,7 @@ function get_category_root_id($cat)
 }
 
 /**
- * 获取各级分类url 和 slug
+ * 获取各级父级url 和 slug
  * $cat 当前id
  * @author zhuoyue
  */
@@ -139,7 +141,7 @@ function init_menu_items_class($classes, $item, $args) {
 
         if(in_array('menu-item-has-children',$classes))
         {
-            $classes[] = 'dropdown view';
+            $classes[] = 'view';
         }
 
     }
@@ -172,7 +174,7 @@ function init_menu_link_attributes( $atts, $item, $args ) {
 
 add_filter( 'nav_menu_submenu_css_class', 'init_submenu_class', 3, 3 );
 function init_submenu_class( $classes, $item, $args ) {
-    $classes[] = 'dropdown-menu';
+    $classes[] = 'subnav';
     return $classes;
 }
 
@@ -417,8 +419,9 @@ function get_lang_page_url () {
 }
 
 //获取全部语言数据
-function getLanguages(){
+function get_languages(){
     $data = Db::table('wp_language')->where('status','1')->select();
+    return $data;
 }
 // 祛除摘要自动添加分段
 remove_filter( 'the_excerpt', 'wpautop' );

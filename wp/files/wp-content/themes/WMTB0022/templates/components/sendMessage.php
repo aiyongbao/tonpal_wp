@@ -1,13 +1,15 @@
 <?php
 global $wp;
+$theme_vars = json_config_array('header','vars',1);
 $data = get_post();
 $type_title = $data->post_name;
-$message_title = 'LEAVE YOUR MESSAGES';
-$message_btn = 'SEND MESSAGE';
-$placeholder_name = 'name';
-$placeholder_email = 'email';
-$placeholder_phone = 'phone';
-$placeholder_message = 'message';
+
+$message_title = ifEmptyText($theme_vars['sendMessageTitle']['value']);
+$message_btn = ifEmptyText($theme_vars['sendMessageBtn']['value']);
+$placeholder_name = ifEmptyText($theme_vars['sendMessagePlaName']['value']);
+$placeholder_email = ifEmptyText($theme_vars['sendMessagePlaEmail']['value']);
+$placeholder_phone = ifEmptyText($theme_vars['sendMessagePlaPhone']['value']);
+$placeholder_content = ifEmptyText($theme_vars['sendMessagePlaContent']['value']);
 ?>
 
 <section class="inquiry-form-wrap ct-inquiry-form mt50" id="myform">
@@ -33,7 +35,7 @@ $placeholder_message = 'message';
                 </li>
                 <li class="form-item">
                     <textarea id="message" name="message" class="form-text form-input-massage"
-                              placeholder="<?php echo $placeholder_message ?>"></textarea>
+                              placeholder="<?php echo $placeholder_content ?>"></textarea>
                 </li>
             </ul>
             <div class="form-btn-wrapx">

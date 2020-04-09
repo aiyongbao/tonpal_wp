@@ -385,13 +385,13 @@ function changeLanguage(e) {
                                             }
                                         ),
                                         e(
-                                            '.mobile-head-items .nav-ul>li.arrow'
+                                            '.mobile-head-items .nav>li.arrow'
                                         ).click(function() {
                                             e(
-                                                '.mobile-head-items .nav-ul>li.arrow'
+                                                '.mobile-head-items .nav>li.arrow'
                                             ).toggleClass('on'),
                                                 e(
-                                                    '.mobile-head-items .nav-ul>li.arrow .subnav'
+                                                    '.mobile-head-items .nav>li.arrow .subnav'
                                                 ).slideToggle();
                                         });
                                 }
@@ -407,7 +407,7 @@ function changeLanguage(e) {
                         .appendTo(
                             '.mobile-head-item.mobile-head-search .main-content-wrap .content-wrap'
                         ),
-                    e('.nav-box .nav-ul')
+                    e('.nav-bar .nav')
                         .clone()
                         .appendTo(
                             '.mobile-head-item.mobile-head-nav .main-content-wrap .content-wrap'
@@ -658,7 +658,7 @@ function changeLanguage(e) {
         };
     })(jQuery),
     $(function() {
-        var e = $('.nav-box').offset().top,
+        var e = $('.nav-bar').offset().top,
             i = $('<span class="gotop"></span>')
                 .appendTo($('body'))
                 .text('top')

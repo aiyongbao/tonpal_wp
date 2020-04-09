@@ -86,7 +86,7 @@
                         "type": "textarea",
                         "tip": "自定义描述"
                     },
-                    "item": {
+                    "items": {
                         "title": "链接",
                         "value": [],
                         "type": "array",
@@ -140,7 +140,7 @@
                             "require": true
                         }
                     },
-                    "item": {
+                    "items": {
                         "title": "公司特色-列表",
                         "value": [],
                         "type": "array",
@@ -242,7 +242,7 @@
                             "require": true
                         }
                     },
-                    "item": {
+                    "items": {
                         "title": "热门产品列表",
                         "value": [],
                         "type": "array",
@@ -338,7 +338,7 @@
                             "require": true
                         }
                     },
-                    "item": {
+                    "items": {
                         "title": "news-列表",
                         "value": [],
                         "type": "array",

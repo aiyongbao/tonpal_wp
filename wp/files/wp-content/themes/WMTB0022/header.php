@@ -1,5 +1,13 @@
 <?php
 global $wp;
+$languages = get_languages();
+$languagesArray = [];
+foreach ($languages as $item ){
+    $name = $item['e_name'];
+    $link = home_url(add_query_arg(array('lang'=>$item['abbr']),$wp->request));
+    array_push($languagesArray,array('name'=>$name,'link'=>$link,'abbr'=> $item['abbr']));
+}
+set_query_var('languagesArray',$languagesArray);
 
 // header.json -> vars 数据获取
 $theme_vars = json_config_array('header','vars',1);
@@ -15,7 +23,13 @@ $instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
 $youtube_link = ifEmptyText($theme_vars['youtubeLink']['value']);
 
 $icon = ifEmptyText($theme_vars['icon']['value']);
+$sideBarMenu = ifEmptyText($theme_vars['sideBarMenu']['value']);
+$sideBarHotProduct = ifEmptyText($theme_vars['sideBarHotProduct']['value']);
+$sideBarTags = ifEmptyText($theme_vars['sideBarTags']['value']);
 set_query_var('icon',$icon);
+set_query_var('sideBarMenu',$sideBarMenu);
+set_query_var('sideBarHotProduct',$sideBarHotProduct);
+set_query_var('sideBarTags',$sideBarTags);
 $home_url = get_lang_home_url();
 $page_url = get_lang_page_url();
 $googleplus_link = '';
@@ -28,51 +42,58 @@ $googleplus_link = '';
         <div class="layout head-layout">
             <div class="logo">
                 <?php if ($home_url == $page_url) { ?>
-                    <h1 class="logo-img" style="background: url(<?php echo $header_logo; ?>) left 50% no-repeat;">
-                        <a href="<?php echo $home_url; ?>"><?php echo $header_title; echo $header_key_word; ?></a>
+                    <h1 class="logo-img">
+                        <a href="<?php echo $home_url; ?>">
+                            <img src="<?php echo $header_logo; ?>" alt="<?php echo $header_title; echo $header_key_word; ?>" />
+                            <span><?php echo $header_title; echo $header_key_word; ?></span>
+                        </a>
                     </h1>
                 <?php } else { ?>
-                    <div class="logo-img" style="background: url(<?php echo $header_logo; ?>) left 50% no-repeat;">
-                        <a href="<?php echo $home_url; ?>"><?php echo $header_title; echo $header_key_word; ?></a>
+                    <div class="logo-img">
+                        <a href="<?php echo $home_url; ?>">
+                            <img src="<?php echo $header_logo; ?>" alt="<?php echo $header_title; echo $header_key_word; ?>" />
+                            <span><?php echo $header_title; echo $header_key_word; ?></span>
+                        </a>
                     </div>
                 <?php } ?>
             </div>
             <div class="change-language ensemble">
                 <div class="change-language-info">
-<!--                    {% if language is not empty %}-->
-<!--                    <div class="change-language-title medium-title">-->
-<!--                        {% if prefix is defined and prefix is not empty %}-->
-<!--                        --><?php //$abbrname = substr($prefix, 0, 2); ?>
-<!--                        {% for sub in language %}-->
-<!--                        {% if sub['abbr'] == abbrname %}-->
-<!--                        <div class="language-flag language-flag-en"><a title="{{ sub['ename'] }}" href="javascript:;"><span>{{ sub['ename'] }}</span> </a> </div>-->
-<!--                        {% endif %}-->
-<!--                        {% endfor %}-->
-<!--                        {% else %}-->
-<!--                        <div class="language-flag language-flag-en" onclick="changeLanguage('en');"><a title="English" href="javascript:;"><span>English</span> </a> </div>-->
-<!--                        {% endif %}-->
-<!---->
-<!---->
-<!--                        <b class="language-icon"></b>-->
-<!--                    </div>-->
-<!--                    <div class="change-language-cont sub-content"> </div>-->
-<!--                    {% endif %}-->
+                    <?php if (!empty($languagesArray)) { ?>
+                        <div class="change-language-title medium-title">
+                            <?php if (!empty(get_query_var('lang'))) { ?>
+                                <?php foreach ($languagesArray as $item ) {
+                                    if ( $item['abbr'] == get_query_var('lang') ) {
+                                    ?>
+                                    <div class="language-flag language-flag-en"><a title="<?php echo $item['e_name'] ?>" href="javascript:;"><span><?php echo $item['e_name'] ?></span></a></div>
+                                <?php } } ?>
+                            <?php } else { ?>
+                                <div class="language-flag language-flag-en" onclick="changeLanguage('en');"><a title="English" href="javascript:;"><span>English</span> </a> </div>
+                            <?php } ?>
+
+
+                            <b class="language-icon"></b>
+                        </div>
+                        <div class="change-language-cont sub-content"> </div>
+                    <?php } ?>
                 </div>
             </div>
             <!-- nav start -->
-            <nav class="nav-box">
+            <nav class="nav-bar">
+                <div class="nav-wrap">
                     <?php if ( has_nav_menu( 'primary' ) ) : ?>
                         <?php
                         wp_nav_menu(
                             array(
                                 'theme_location' => 'primary',
-                                'menu_class' => 'nav-ul',
+                                'menu_class' => 'nav',
                                 'container' => 'ul',
-                                'container_class' => 'nav-li'
+                                'container_class' => 'nav-current'
                             )
                         )
                         ?>
                     <?php endif; ?>
+                </div>
             </nav>
             <!-- /nav end-->
             <div class="topr">
@@ -96,9 +117,10 @@ $googleplus_link = '';
                 <div class="head-search">
                     <div class="head-search-form">
                         <!-- <form action="//www.google.com.hk/search" id='search' target="_blank" method="get"> -->
-                        <input class="search-ipt" type="text" placeholder="search" id="search-ipt" />
-                        <button class="search-btn" type="submit" onclick="search()"></button>
-                        <!-- </form> -->
+                        <form id="search" action="<?php bloginfo('url'); ?>/" target="_blank">
+                            <input class="search-ipt" name="s" id="s" type="text" placeholder="search" />
+                            <button class="search-btn" type="submit" ></button>
+                         </form>
                     </div>
                     <span class="search-toggle"></span>
                 </div>

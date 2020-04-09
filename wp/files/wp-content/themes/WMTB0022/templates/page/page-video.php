@@ -7,7 +7,7 @@ $video_item = ifEmptyArray($theme_vars['item']['value']);
 
 // Text 数据处理
 $video_title = ifEmptyText($theme_vars['title']['value'],'video');
-$video_desc = ifEmptyText($theme_vars['desc']['value'],'This is desc');
+$video_desc = ifEmptyText($theme_vars['desc']['value']);
 
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$video_title");
@@ -58,7 +58,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     <h1 class="title"><?php echo $video_title ?></h1>
                 </header>
                 <?php if($video_desc != ''){ ?>
-                    <p class="class-desc" style="margin-bottom:20px;margin-top: -20px;line-height:1.5"><?php echo $video_desc ?></p>
+                    <p class="class-desc" style="margin-bottom:20px;line-height:1.5"><?php echo $video_desc ?></p>
                 <?php } ?>
                 <div class="items_list">
                     <ul class="gm-sep">

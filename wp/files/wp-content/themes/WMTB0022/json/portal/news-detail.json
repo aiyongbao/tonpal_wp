@@ -1,9 +1,0 @@
-{
-    "name": "news-detail配置文件",
-    "action": "portal/news-detail",
-    "description": "news-detail配置文件",
-    "order": 6.0,
-    "more": {
-        "vars": {}
-    }
-}

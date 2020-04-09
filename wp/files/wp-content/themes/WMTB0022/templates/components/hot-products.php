@@ -1,23 +1,32 @@
 <?php
 global $wp_query;
+$sideBarHotProduct = ifEmptyText(get_query_var('sideBarHotProduct'));
+
 // 因为后台系统限制 类目级别为  /顶级 /一级 /二级
-$category = get_the_category();
-$parent = $category[0]->parent;// 当前上上级id
-$the_id = $post->ID; // 当前id 用于排除
-if(ROOT_CATEGORY_SLUG == 'product') {
-    if($parent == ROOT_CATEGORY_PID ) {
-        $hot_product_id = ROOT_CATEGORY_CID;
+if ( is_category()||is_single()) {
+    $category = get_the_category();
+    $parent = $category[0]->parent;// 当前上上级id
+    $the_id = $post->ID; // 当前id 用于排除
+    if(ROOT_CATEGORY_SLUG == 'product') {
+        if($parent == ROOT_CATEGORY_PID ) {
+            $hot_product_id = ROOT_CATEGORY_CID;
+        } else {
+            $hot_product_id = $parent;
+        }
     } else {
-        $hot_product_id = $parent;
+        $hot_product_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
+        $the_id = '';
     }
-} else {
+} elseif (is_page()) {
     $hot_product_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
     $the_id = '';
+
 }
+
 $args = array(
     'numberposts' => 5, // 显示个数
     'offset' => 0,
-    'category' => $hot_product_id, // 指定需要返回哪个分类的文章
+    'category' => 1, // 指定需要返回哪个分类的文章
     'orderby' => 'post_date',
     'order' => 'DESC',
     'include' => '',
@@ -33,7 +42,7 @@ $recent_posts = wp_get_recent_posts($args,'ARRAY_A');
 if(ifEmptyArray($recent_posts) !== []){
 ?>
     <div class="side-tit-bar">
-        <h2 class="side-tit">HOT PRODUCTS</h2>
+        <h2 class="side-tit"><?php echo $sideBarHotProduct ?></h2>
     </div>
     <div class="side-product-items">
         <span class="btn-prev"></span>

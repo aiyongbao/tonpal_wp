@@ -15,7 +15,7 @@ $seo_keywords = '';
 global $wp_query,$wp,$post;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
-
+$tagName = single_tag_title('',false);
 // 当前页面url
 $page_url = get_lang_page_url();
 if ( have_posts() ) {
@@ -81,59 +81,41 @@ if ( have_posts() ) {
             <!-- main begin -->
             <section class="main">
                 <header class="main-tit-bar tags-title">
-                    <h1 class="title border"><?php echo $post->title; ?></h1>
-
+                    <h1 class="title border"><?php echo $tagName; ?></h1>
                 </header>
                 <div class="blog_list">
-                    <ul>
-                        <?php foreach ($product_item as $item ) { ?>
-<!--                            <li class="blog-item tags-item">-->
-<!--                                <figure class="item-wrap">-->
-<!--                                    <a href="/{{ product_single['url'] }}"class="item-img"><img src="{{ product_single['product_main_img'] }}_thumb_220x220.jpg" alt="{{ product_single['product_main_img_alt'] }}" /></a>-->
-<!--                                    <figcaption class="item-info">-->
-<!--                                        <h3 class="item-title"><a href="/{{ product_single['url'] }}">{{product_single["title"]}}</a></h3>-->
-<!--                                        <div class="item-detail">{{ product_single["abstract"] }}</div>-->
-<!--                                        <div class="tags">-->
-<!--                                            {{product_single["tags_cloud_special_html"]}}-->
-<!--                                        </div>-->
-<!--                                    </figcaption>-->
-<!--                                </figure>-->
-<!--                            </li>-->
-                        <?php } ?>
-                    </ul>
+                    <?php if ( have_posts() ) { ?>
+                        <ul>
+                            <?php while ( have_posts() ) {
+                                the_post();
+                                $category = get_the_category();
+                                $cid = $category[0]->cat_ID;
+                                $pid = get_category_root_id($cid);
+                                $the_slug = get_category($pid)->slug;
+                                if ( $the_slug == 'product' ) {
+                                    $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true);
+                                    $tags = get_the_tags( $post->ID );
+
+                               ?>
+                                <li class="blog-item tags-item">
+                                    <figure class="item-wrap">
+                                        <a href="<?php the_permalink()  ?>"class="item-img"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
+                                        <figcaption class="item-info">
+                                            <h3 class="item-title"><a href="<?php the_permalink()  ?>"><?php the_title(); ?></a></h3>
+                                            <div class="item-detail"><?php the_excerpt(); ?></div>
+                                            <div class="tags">
+                                                <?php foreach ($tags as $item ) { ?>
+                                                    <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
+                                                <?php } ?>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            <?php } }?>
+                        </ul>
+                        <?php wpbeginner_numeric_posts_nav(); ?>
+                    <?php } ?>
                 </div>
-
-
-                <header class="main-tit-bar tags-title">
-                    <h2 class="title">News:<span>{{tag}}</span></h2>
-                </header>
-                <div class="blog_list">
-                    <ul>
-                        <?php foreach ($news_item as $item ) { ?>
-<!--                        <li class="blog-item tags-item tags-news">-->
-<!--                            <figure class="item-wrap">-->
-<!--                                <a href="/{{ news_single['url'] }}"class="item-img"><img style='width:220px;    height:100px;' src="{{ news_single['product_main_img'] }}_thumb_262x135.jpg" alt="{{ news_single['product_main_img_alt'] }}" /></a>-->
-<!--                                <figcaption class="item-info">-->
-<!--                                    <h3 class="item-title"><a href="/{{ news_single["url"] }}">{{news_single["title"]}}</a></h3>-->
-<!--                                    <div class="item-detail">{{ news_single["abstract"] }}</div>-->
-<!--                                </figcaption>-->
-<!--                            </figure>-->
-<!--                        </li>-->
-                        <?php } ?>
-                    </ul>
-                </div>
-
-
-<!--                {% if relevant_tag is defined and relevant_tag is not empty %}-->
-<!--                <header class="main-tit-bar tags-title">-->
-<!--                    <h2 class="title">{{tag}}</h2>-->
-<!--                </header>-->
-<!--                <div class="tags-related clearfix">-->
-<!--                    {% for relevant_tag_single in relevant_tag %}-->
-<!--                    <a href="{{relevant_tag_single['url']}}">{{relevant_tag_single['name']}}</a>-->
-<!--                    {% endfor %}-->
-<!--                </div>-->
-<!--                {% endif %}-->
             </section>
             <!--// main end -->
         </div>
