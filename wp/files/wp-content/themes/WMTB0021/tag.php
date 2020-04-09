@@ -118,7 +118,7 @@ if ( have_posts() ) {
                 <div class="row">
 
                     <?php while ( have_posts() ) : the_post();   ?>
-                    <?php print_r(666); ?>
+                    <?php print_r('数据处理完毕，分为产品和新闻，具体展示等产品图'); ?>
 <!--                        --><?php //$thumbnail=get_post_meta(get_post()->ID)['thumbnail'][0]; ?>
 <!--                        <article class="col-lg-4 col-sm-6 mb-5">-->
 <!--                            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">-->

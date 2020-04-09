@@ -1,4 +1,5 @@
 <?php
+global $wp_query;
 // 因为后台系统限制 类目级别为  /顶级 /一级 /二级
 $category = get_the_category();
 $parent = $category[0]->parent;// 当前上上级id
@@ -28,11 +29,14 @@ $args = array(
     'suppress_filters' => true
 );
 $recent_posts = wp_get_recent_posts($args,'ARRAY_A');
+
 if(ifEmptyArray($recent_posts) !== []){
 ?>
-<div class="col-12 mb-4 tags-title">
-    <div>HOT PRODUCTS</div>
-</div>
+    <?php if ( is_single() ) { ?>
+        <div class="col-12 mb-4 mt-2 component-products-title">
+            <div>HOT PRODUCTS</div>
+        </div>
+    <?php }?>
     <section class="component-products">
     <div class="container">
         <div class="row products-item">
@@ -59,11 +63,8 @@ if(ifEmptyArray($recent_posts) !== []){
                         </div>
                     </div>
                 </article>
-            <?php
-                }
-            wp_reset_query();
-                ?>
+            <?php } ?>
         </div>
     </div>
 </section>
-<?php } ?>
+<?php } wp_reset_query(); // 重置query 防止影响其他query查询 ?>

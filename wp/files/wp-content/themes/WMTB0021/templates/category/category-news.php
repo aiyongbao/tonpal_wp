@@ -11,6 +11,11 @@ $seo_title = ifEmptyText($theme_vars['seoTitle']['value'],"$news_title");
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
+
+$subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
+$category = get_category($cat);
+$the_category_name = $category->name; //当前分类名称
+
 /**
  * $wp_query 是全局变量
  * $paged 当前页数
@@ -74,9 +79,9 @@ $page_url = get_lang_page_url();
     <!-- title -->
     <div class="page-title container mt-2 mb-1">
         <?php if ($subName == '') { ?>
-            <h1><?php echo $the_products_name; ?></h1>
+            <h1><?php echo $the_category_name; ?></h1>
         <?php } else { ?>
-            <h3><?php echo $the_products_name; ?></h3><h1><?php $subName; ?></h1>
+            <h3><?php echo $the_category_name; ?></h3><h1><?php $subName; ?></h1>
         <?php } ?>
     </div>
     <!-- /title -->
@@ -111,6 +116,8 @@ $page_url = get_lang_page_url();
                     </ul>
                 </div>
             </div>
+
+            <?php get_template_part( 'templates/components/hot-products' ); ?>
         </div>
     </section>
     <!-- /notice -->

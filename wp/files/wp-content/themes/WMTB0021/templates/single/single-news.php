@@ -7,8 +7,6 @@ $news_detail_title = ifEmptyText($theme_vars['title']['value'],'Detail');
 $news_detail_bg = ifEmptyText($theme_vars['bg']['value'],'https://iph.href.lu/1600x500?text=1600x500');
 $news_detail_desc = ifEmptyText($theme_vars['desc']['value']);
 
-
-
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true),"$news_detail_title");
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
@@ -34,28 +32,7 @@ $page_url = get_lang_page_url();
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <?php get_template_part( 'templates/components/head' )?>
-    <style>
-        .tags-title>div {
-            float: left;
-            padding: 10px 10px;
-            display: block;
-            color: #fff;
-            border-radius: 10px 10px 0 0;
-            background: #ffbc3b;
-        }
-        .tags-ul li{
-            float: left;
-            margin: 5px;
-            padding: 5px;
-            border: 1px solid #e5e5e5;
-        }
-        .tags-ul li a{
-            color: #666;
-        }
-        .tags-ul li:hover a {
-            color: #ffbc3b;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -95,19 +72,17 @@ $page_url = get_lang_page_url();
                     <?php echo $post->post_content ?>
                 </div>
             </div>
-            <div class="col-12 mb-4 tags-title">
-                <div>Tags</div>
-            </div>
-            <ul class="col-12 mb-4 tags-ul">
-                <?php the_tags('<li>', '</li><li>', '</li>') ?>
-            </ul>
 
-            <!-- hot_product -->
-            <?php get_template_part( 'templates/components/hot-products' )?>
+            <?php get_template_part( 'templates/components/related-products' ); ?>
+
             <!-- comment box -->
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>
             </div>
+            <!-- hot_product -->
+            <?php get_template_part( 'templates/components/hot-products' )?>
+            <!-- tags-assembly -->
+            <?php get_template_part( 'templates/components/tags-assembly' )?>
         </div>
     </div>
 </section>

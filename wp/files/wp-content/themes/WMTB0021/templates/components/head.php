@@ -7,7 +7,7 @@
 <!--Favicon-->
 <link rel="shortcut icon" href="<?php echo get_template_directory_uri()?>/assets/images/favicon.png" type="image/x-icon">
 <link rel="icon" href="<?php echo get_template_directory_uri()?>/assets/images/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="http://q.zvk9.com/plugins/tinymce.20170727.css"  >
+<link rel="stylesheet" href="//q.zvk9.com/plugins/tinymce.20170727.css"  >
 <link rel="stylesheet" href=" <?php echo get_template_directory_uri()?>/assets/plugins/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/plugins/slick/slick.css">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/plugins/themify-icons/themify-icons.css">
