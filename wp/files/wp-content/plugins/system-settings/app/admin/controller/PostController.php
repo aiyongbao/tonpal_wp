@@ -68,6 +68,15 @@ class PostController extends RestController{
             'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
         ));
 
+        register_meta($this->post_type, 'pdf' ,array(
+            'type'      => 'string', // Validate and sanitize the meta value as a string.
+                // Default: 'string'.  
+                // In 4.7 one of 'string', 'boolean', 'integer', 'number' must be used as 'type'. 
+            'single'        => true,
+            'description'    => 'A meta key associated with a string meta value.', // Shown in the schema for the meta key.
+            'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
+        ));
+
         add_action("rest_after_insert_{$this->post_type}",function($post,$request,$bool){
 
             $thumbnail = $request['thumbnail']; 
@@ -78,11 +87,16 @@ class PostController extends RestController{
             //存入postmeta属性
             $photos = json_decode($photos,true);
 
+            $pdf = $request['pdf'];
+
             delete_post_meta($post->ID,'photos');
             update_post_meta( $post->ID, 'thumbnail', $thumbnail );
+
+            update_post_meta( $post->ID, 'pdf', $pdf );
+
             foreach($photos as $key => $value)
             {
-                add_post_meta( $post->ID, 'photos', $value );
+                add_post_meta( $post->ID, 'photos', json_encode($value) );
             }
 
             $seo_title = $request['seo_title'];
