@@ -1,6 +1,6 @@
 <?php
 $post = get_post();
-// productDetail.json -> vars 数据获取
+// product-detail.json -> vars 数据获取
 $theme_vars = json_config_array('product-detail','vars');
 // Text 数据处理
 $product_detail_title = ifEmptyText($theme_vars['title']['value'],'Detail');
@@ -20,7 +20,7 @@ global $wp;
 ?>
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html>
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
@@ -64,43 +64,7 @@ global $wp;
         .nav-tab-box li a.active {
             background: #ffbc3b;
         }
-        .tags-title{
-            border-bottom: 1px solid #dee2e6;
-            padding: 0;
-        }
-        .tags-title>div {
-            float: left;
-            padding: 10px 10px;
-            display: block;
-            color: #fff;
-            border-radius: 10px 10px 0 0;
-            background: #ffbc3b;
-        }
-        .tags-ul li{
-            float: left;
-            margin: 5px;
-            padding: 5px;
-            border: 1px solid #e5e5e5;
-        }
-        .tags-ul li a{
-            color: #666;
-        }
-        .tags-ul li:hover a {
-            color: #ffbc3b;
-        }
-        .products-item .card-title {
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-        }
-        .products-item .card-body > p {
-            height: 56px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            text-overflow: ellipsis;
-        }
+
     </style>
 </head>
 
@@ -218,20 +182,22 @@ global $wp;
                     <?php } ?>
                 <?php } ?>
             </div>
-            <div class="col-12 mb-4 tags-title">
-                <div>Tags</div>
-            </div>
-            <ul class="col-12 mb-4 tags-ul">
-                <?php the_tags('<li>', '</li><li>', '</li>') ?>
-            </ul>
+<!--            <div class="col-12 mb-4 tags-title">-->
+<!--                <div>Tags</div>-->
+<!--            </div>-->
+<!--            <ul class="col-12 mb-4 tags-ul">-->
+<!--                --><?php //the_tags('<li>', '</li><li>', '</li>') ?>
+<!--            </ul>-->
             <?php get_template_part( 'templates/components/related-products' )?>
-
-            <!-- hot_product -->
-            <?php get_template_part( 'templates/components/hot-products' )?>
 
             <div class="col-12">
                 <?php get_template_part( 'templates/components/sendMessage' )?>
             </div>
+
+            <!-- hot_product -->
+            <?php get_template_part( 'templates/components/hot-products' )?>
+            <!-- tags-assembly -->
+            <?php get_template_part( 'templates/components/tags-assembly' )?>
         </div>
     </div>
 </section>

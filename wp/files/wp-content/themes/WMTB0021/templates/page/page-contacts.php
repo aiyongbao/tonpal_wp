@@ -85,7 +85,6 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
         <!-- /contact -->
 
     </main>
-    <!-- google map -->
     <?php get_template_part( 'templates/components/footer' ); ?>
 
 
