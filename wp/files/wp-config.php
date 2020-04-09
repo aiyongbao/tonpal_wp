@@ -60,6 +60,9 @@ define( 'NONCE_SALT',       'NzXM0_M>8.OOE2;,VHh3{v2K0}l_.`SUdoLtgr8L}?Mg3^%tMH 
 define('JWT_AUTH_SECRET_KEY', '=i``G+H|} fSLR f,$8~&N#paMfPzrk6,e]Dg.-<|jip(H8C%) ^uO/ l~$3},fC');
 define('JWT_AUTH_CORS_ENABLE', true);
 
+//定义wordPress Nginx缓存路径
+define( 'RT_WP_NGINX_HELPER_CACHE_PATH','/www/server/nginx/fastcgi_temp');
+
 /**#@-*/
 
 /**
