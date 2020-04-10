@@ -1,0 +1,48 @@
+.logo-img span {
+    position: absolute;
+    text-indent: -9999px; /* 这个一定要加上 */
+}
+/*.fixed-nav .nav-bar .nav ul {*/
+/*    top: 0;*/
+/*}*/
+.nav-bar .nav ul ul {
+    margin-left: 0;
+}
+.fixed-nav .nav-bar .nav ul ul {
+    top: 0px;
+}
+#link-item {
+    position: absolute;
+    top: 52px;
+    right: 15px;
+}
+#link-item div{
+    cursor: pointer;
+
+}
+#link-item span{
+    margin: 8px 0px 0 5px;
+    width: 0;
+    height: 0;
+    display: block;
+    float: right;
+    border-color: #ccc transparent transparent transparent;
+    border-width: 5px;
+    border-style: solid;
+}
+#link-item ul {
+    position: absolute;
+    padding: 0 0 0 10px;
+}
+#link-item ul li {
+    display: none;
+}
+#link-item div,#link-item ul a {
+    color: #e5e5e5;
+}
+.foot-wrapper .layout {
+    position: relative;
+}
+.nav-bar {
+    padding-top: 0;
+}
