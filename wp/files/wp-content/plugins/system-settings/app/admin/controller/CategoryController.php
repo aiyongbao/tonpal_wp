@@ -29,19 +29,17 @@ class CategoryController extends RestController{
         
         add_action("rest_after_insert_category",function($term,$request,$bool){
             
-            
             if($bool && $request['type'] == 'list')
             {
                 global $wpdb;
-                $item = get_json_toArray(get_template_directory() . '/json/portal/category.json');
-                
+                $item = $this->get_json_toArray(get_template_directory() . '/json/portal/category.json');
                 $data = [
-                    'object_id' => $term->ID,
+                    'object_id' => $term->term_id,
                     'is_public' =>  0,
                     'theme' => wp_get_theme()->get('Name'),
                     'name' => $item['name'],
                     'action' => $item['action'],
-                    'file' => 'portal/category',
+                    'file' => $item['action'],
                     'description' => $item['description'],
                     'more' => json_encode($item ),
                     'config_more' => json_encode($item)
@@ -60,9 +58,13 @@ class CategoryController extends RestController{
 
             $res = update_term_meta( $term->term_id, 'display', $request['display'] );
 
-            update_option('category_children','');
-
         },10,3);
+    }
+
+    public function get_json_toArray($dir){
+        $json = file_get_contents($dir);
+        $data = json_decode($json,true);
+        return $data;
     }
 
     //根据父级删除子集

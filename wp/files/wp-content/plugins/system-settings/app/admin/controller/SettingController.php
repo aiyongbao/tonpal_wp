@@ -92,28 +92,17 @@ class SettingController extends RestController
     public function store($request)
     {
 
-        $key = 'site_title';
-        $value = '外贸通宝建站';
+        $key = $request['key'];
+        $value = $request['value'];
 
-        $options = [
-            'site_title' => 'blogname',
-            'site_desc' => 'blogdescription'
-        ];
-
-        if(isset($options[$key]))
-        {
-           $res = update_option($options[$key],$value);
+        $res = update_option($key,$value);
            if($res !== false)
            {
                return $this->success("设置成功！");
            }
            else{
-            return $this->error("未做任何修改！");
+            return $this->error("出现错误！");
            }
-        }
-        else{
-            return $this->error("请稍后再试！");
-        }
 
     }
 }
