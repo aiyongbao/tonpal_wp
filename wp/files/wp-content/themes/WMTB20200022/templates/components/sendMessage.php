@@ -1,5 +1,6 @@
 <?php
-global $wp;
+global $wp; // Class_Reference/WP 类实例
+
 $theme_vars = json_config_array('header','vars',1);
 $data = get_post();
 $type_title = $data->post_name;

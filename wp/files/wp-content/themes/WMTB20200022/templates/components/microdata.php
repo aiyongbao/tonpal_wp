@@ -8,7 +8,9 @@
  * get_post() 全局方法
  * @author zhuoyue
  */
-global $wp,$cat;
+global $wp; // Class_Reference/WP 类实例
+global $cat; // 当前页面id
+
 // 先判断当前页面类型
 if( is_category() ) { // 列表页
     $category_url_array = get_category_url_and_slug($cat);

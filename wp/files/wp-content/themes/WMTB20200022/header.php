@@ -1,5 +1,5 @@
 <?php
-global $wp;
+global $wp; // Class_Reference/WP 类实例
 $languages = get_languages();
 $languagesArray = [];
 foreach ($languages as $item ){

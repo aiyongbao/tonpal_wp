@@ -1,4 +1,5 @@
 <?php
+global $wp; // Class_Reference/WP 类实例
 
 $post = get_post();
 
@@ -8,7 +9,6 @@ $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 
-global $wp;
 // 当前页面url
 $page_url = get_lang_page_url();
 

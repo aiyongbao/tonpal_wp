@@ -44,7 +44,7 @@ if (!function_exists('my_theme_setup')) :
                                 $filename = $filename[0];
                             }
                             $filename = $parentDir. '/' .$filename;
-                            global $wpdb;
+                            global $wpdb; // Class_Reference/wpdb 类实例
                             $abbr = get_query_var('lang') ? get_query_var('lang'). '_' : '';
                             $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}{$abbr}theme_file WHERE file = %s ",$filename ) );
                             $data = [
@@ -197,7 +197,7 @@ function json_config_array($file,$type = 'vars',$public = 0)
     $file = $public ? 'public/'.$filename : 'portal/'.$filename;
 
 
-    global $wpdb;
+    global $wpdb; // Class_Reference/wpdb 类实例
     $abbr = get_query_var('lang') ? get_query_var('lang'). '_' : '';
     $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}{$abbr}theme_file WHERE file = %s AND is_public = %d LIMIT 1",$file, $public ) );
 
@@ -242,7 +242,7 @@ function wpbeginner_numeric_posts_nav() {
     if( is_singular() )
         return;
 
-    global $wp_query;
+    global $wp_query; // Class_Reference/WP_Query 类实例
 
     /** Stop execution if there's only 1 page */
     if( $wp_query->max_num_pages <= 1 )
@@ -309,7 +309,7 @@ function wpbeginner_numeric_posts_nav() {
 // 面包屑
 function get_breadcrumbs()
 {
-    global $wp_query;
+    global $wp_query; // Class_Reference/WP_Query 类实例
 
     if ( !is_home() ){
 
@@ -412,7 +412,7 @@ function get_lang_home_url () {
  * @author zhuoyue
  */
 function get_lang_page_url () {
-    global $wp;
+    global $wp; // Class_Reference/WP 类实例
     $page_url = add_query_arg($wp->request);
     return $page_url;
 }

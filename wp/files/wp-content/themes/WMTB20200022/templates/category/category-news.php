@@ -1,5 +1,7 @@
 <?php
-global $wp_query,$wp,$cat;
+global $wp_query; // Class_Reference/WP_Query 类实例
+global $wp; // Class_Reference/WP 类实例
+global $cat; // 当前页面id
 
 // news.json -> vars 数据获取
 $theme_vars = json_config_array('news','vars');

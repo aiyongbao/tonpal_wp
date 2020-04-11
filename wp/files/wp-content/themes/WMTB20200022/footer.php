@@ -1,5 +1,5 @@
 <?php
-$goole_id = set_query_var('gooldId');
+$gooleId = set_query_var('gooldId');
 ?>
 <script src="//q.zvk9.com/Model15/assets/js/jquery.min.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/language.js"></script>
@@ -20,6 +20,6 @@ $goole_id = set_query_var('gooldId');
 <script>
 
 </script>
-<?php if( ifEmptyText($goole_id) !== '') {
-    echo $goole_id;
+<?php if( ifEmptyText($gooleId) !== '') {
+    echo $gooleId;
 }?>

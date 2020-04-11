@@ -31,9 +31,9 @@ $footer_product_item = ifEmptyArray($theme_vars['productItem']['value']);
 $footer_friend_links = ifEmptyArray($theme_vars['friendLinks']['value']);
 
 
-$google_extantion = get_option('google_extantion');
-$goole_id = get_option('goole_id');
-set_query_var('gooleId', $goole_id);
+$googleExtantion = get_option('google_extantion');
+$gooleId = get_option('goole_id');
+set_query_var('gooleId', $gooleId);
 
 ?>
 <!--  footer start -->
@@ -134,8 +134,8 @@ set_query_var('gooleId', $goole_id);
     <?php } ?>
     <a href="<?php echo $footer_mobile_link ?>"><img src="//q.zvk9.com/Model15/assets/images/btm2.png"></a>
 </div>
-<?php if ( ifEmptyText($google_extantion) !== '' ) {
-    echo $google_extantion;
+<?php if ( ifEmptyText($googleExtantion) !== '' ) {
+    echo $googleExtantion;
 } ?>
 <!-- /footer -->
 

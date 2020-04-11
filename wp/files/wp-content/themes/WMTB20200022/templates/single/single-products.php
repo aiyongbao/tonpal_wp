@@ -1,5 +1,5 @@
 <?php
-global $wp;
+global $wp; // Class_Reference/WP 类实例
 
 $post = get_post();
 // product-detail.json -> vars 数据获取
@@ -43,18 +43,18 @@ $page_url = get_lang_page_url();
     <meta property="og:type" content="product" />
     <meta property="og:url" content="<?php echo $page_url; ?>" />
     <meta property="og:description" content="<?php the_excerpt(); ?>" />
-    <meta property="og:image" content="<?php echo $photosArray[0]['url']; ?>" />
+    <meta property="og:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
     <meta property="og:site_name" content="<?php get_host_name(); ?>" />
     <!-- itemprop -->
     <meta itemprop="name" content="<?php echo $post->post_title; ?>" />
     <meta itemprop="description" content="<?php the_excerpt(); ?>" />
-    <meta property="image" content="<?php echo $photosArray[0]['url']; ?>" />
+    <meta property="image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
     <!-- Twitter -->
     <meta name="twitter:site" content="@affiliate_<?php get_host_name();; ?>" />
     <meta name="twitter:creator" content="@affiliate_<?php get_host_name(); ?>" />
     <meta name="twitter:title" content="<?php echo $post->post_title; ?>" />
     <meta name="twitter:description" content="<?php echo $post->post_title; ?>" />
-    <meta name="twitter:image" content="<?php echo $photosArray[0]; ?>" />
+    <meta name="twitter:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>

@@ -1,5 +1,7 @@
 <?php
-global $wp_query,$wp,$cat;
+global $wp_query; // Class_Reference/WP_Query 类实例
+global $wp; // Class_Reference/WP 类实例
+global $cat; // 当前页面id
 // category.json -> vars 数据获取
 $theme_vars = json_config_array('category','vars');
 // Text 数据处理
@@ -17,7 +19,6 @@ $subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意�
  * $paged 当前页数
  * $max 该分类总页数
  */
-global $wp_query,$wp;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 

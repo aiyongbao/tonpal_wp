@@ -1,4 +1,6 @@
 <?php
+global $wp; // Class_Reference/WP 类实例
+
 // home.json -> widgets 数据获取
 $theme_widgets = json_config_array(__FILE__,'widgets');
 set_query_var('home_carousel', $theme_widgets['carousel']);
@@ -18,7 +20,6 @@ $home_news = $theme_widgets['news'];
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
 $seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
-global $wp;
 // 当前页面url
 $page_url = get_lang_page_url();
 ?>
