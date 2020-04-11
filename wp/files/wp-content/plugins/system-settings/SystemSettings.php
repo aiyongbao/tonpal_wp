@@ -123,6 +123,9 @@ add_action('setup_theme', function () {
                 $url = str_replace($old_href_arr[0]."//".$old_href, '/' . $lang , $url);
             }
         }
+        else{
+            $url = str_replace($old_href_arr[0]."//".$old_href, '' , $url);
+        }
         return $url;
     },10,4);
 });
