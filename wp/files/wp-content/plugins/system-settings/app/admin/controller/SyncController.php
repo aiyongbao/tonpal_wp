@@ -30,7 +30,6 @@ class syncController extends RestController
     //初始化语种数据库
     public function init($abbr)
     {
-        $this->init_theme_file($abbr);
         update_option('category_children','');
     }
 
@@ -192,8 +191,8 @@ class syncController extends RestController
         $accept_param = $request['json'];
 
         $lang = isset($request['lang']) ? $request['lang'] : 'en';
-        $lang = new LangController();
-        $lang->index( $request['lang'] );
+        $langObj = new LangController();
+        $langObj->index( $request['lang'] );
 
         $param = json_decode($accept_param, true);
         

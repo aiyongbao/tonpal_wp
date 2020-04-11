@@ -261,8 +261,7 @@ EOT;
         }
 
         $data = ['config_more' => $config_more];
-        $res = Db::name('theme_file')->where('id',$id)->update($data);       
-        
+        $res = Db::name('theme_file')->where('id',$id)->update($data);        
         if($res !== false)
         {
             return $this->success('更新成功！');

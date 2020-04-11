@@ -51,6 +51,11 @@ add_action('init', function () {
 
 });
 
+// add_action('admin_init' ,function(){
+//     $lang = new LangController();
+//     $lang->index($_REQUEST['lang']);
+// });
+
 add_filter('init', function () {
     $rules = get_option('rewrite_rules');
     add_rules();
@@ -61,10 +66,10 @@ add_filter('init', function () {
 function add_rules()
 {
     $match = "(zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af)";
-    //$match_lang = str_replace('|', '\/|', $match);
+    $match_lang = str_replace('|', '\/|', $match);
     add_rewrite_rule($match, 'index.php?lang=$matches[1]', 'bottom');
-    add_rewrite_rule($match .'/(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
-    add_rewrite_rule($match .'/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
+    add_rewrite_rule($match_lang . '(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
+    add_rewrite_rule($match_lang . '([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
 }
 
 //文章查询钩子
@@ -108,13 +113,16 @@ add_action('setup_theme', function () {
         $lang = get_query_var('lang');
         $old_href_arr = explode('/',$url);
         $old_href = $old_href_arr[2];
-        /* if(get_query_var('pagename') || get_query_var('name'))
-        {
-            $lang = str_replace('/','',$lang);
-        } */
 
-        $url = str_replace($old_href_arr[0]."//".$old_href, '/' . $lang , $url);
+        if( $lang ){
+            if($schame != 'rest'){
+                if(get_query_var('pagename') || get_query_var('page') ){
+                    $lang = str_replace( '/' ,'',$lang); 
+                }
         
+                $url = str_replace($old_href_arr[0]."//".$old_href, '/' . $lang , $url);
+            }
+        }
         return $url;
     },10,4);
 });
