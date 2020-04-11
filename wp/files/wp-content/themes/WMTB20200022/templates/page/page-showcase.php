@@ -56,7 +56,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                                 <img src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['title']) ?>"/>
                                 </a>
                                 <figcaption class="item-info">
-                                    <h3 class="item-title"><?php echo ifEmptyText($item['image']) ?></h3>
+                                    <h3 class="item-title"><?php echo ifEmptyText($item['title']) ?></h3>
                                 </figcaption>
                             </figure>
                         </li>

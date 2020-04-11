@@ -324,7 +324,7 @@ function get_breadcrumbs()
             preg_match_all('/<a href=\"(.*?)\".*?>(.*?)<\/a>/i',get_category_parents( $cat, TRUE, "" ),$a_link_array);
             $a_link_array=$a_link_array[0];
             foreach ( $a_link_array as $item ) {
-                echo '<li">'.$item."</li>";
+                echo '<li>'.$item.'</li>';
             }
         }
         elseif ( is_archive() && !is_category() )
