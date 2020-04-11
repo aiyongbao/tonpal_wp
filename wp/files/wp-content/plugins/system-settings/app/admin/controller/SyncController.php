@@ -30,7 +30,6 @@ class syncController extends RestController
     //初始化语种数据库
     public function init($abbr)
     {
-        $this->init_theme_file($abbr);
         update_option('category_children','');
     }
 
