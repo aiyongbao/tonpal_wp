@@ -6,7 +6,7 @@ define('ABSPATH', dirname(__FILE__) . '/');
 
 require_once ABSPATH . "async-task/autoload.php";
 
-$host = "http://wp.io";
+$host = WP_SITEURL;
 // $host = "http://121.196.197.45";
 
 $container = $argv[1];
