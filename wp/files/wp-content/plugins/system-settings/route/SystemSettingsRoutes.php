@@ -36,7 +36,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $theme = new ThemeController();
-                return middleware::run('api')->init( $theme->set_theme($request),$request);
+                return $theme->set_theme($request);
             },
         ) );
 
