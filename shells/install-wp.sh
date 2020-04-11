@@ -94,7 +94,7 @@ fi
 Init_Wp(){
     yum install -y wget
     # 下载wp目录文件
-    wget -O wp.zip https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/wp/wp.zip
+    wget -O wp.zip https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/wp/wp.zip
     unzip -o wp.zip
     # 替换文本中的 php 内容（将数据库信息进行替换）
     sed -i 's/$TEMPDOMAIN/'${TEMPDOMAIN}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
@@ -107,7 +107,7 @@ Init_Wp(){
 # 插入数据库一些内容
 Insert_Db(){
     # 获取SQL文件
-    wget -O init-wp.sql.des3 https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/sql/init-wp.sql.des3
+    wget -O init-wp.sql.des3 https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/sql/init-wp.sql.des3
     # 进行解密
     dd if=init-wp.sql.des3 |openssl des3 -d -k ${SQLDEPASS} | tar zxf -
     # 替换sql语句中域名, 替换成客户的域名
