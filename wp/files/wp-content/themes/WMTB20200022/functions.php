@@ -45,8 +45,8 @@ if (!function_exists('my_theme_setup')) :
                             }
                             $filename = $parentDir. '/' .$filename;
                             global $wpdb; // Class_Reference/wpdb 类实例
-                            $abbr = get_query_var('lang') ? get_query_var('lang'). '_' : '';
-                            $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}{$abbr}theme_file WHERE file = %s ",$filename ) );
+                            $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}theme_file WHERE file = %s ",$filename ) );
+
                             $data = [
                                 'is_public' =>  strpos($item['action'],'public') !==false  ? 1 : 0,
                                 'theme' => wp_get_theme()->get('Name'),
@@ -198,9 +198,7 @@ function json_config_array($file,$type = 'vars',$public = 0)
 
 
     global $wpdb; // Class_Reference/wpdb 类实例
-    $abbr = get_query_var('lang') ? get_query_var('lang'). '_' : '';
-    $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}{$abbr}theme_file WHERE file = %s AND is_public = %d LIMIT 1",$file, $public ) );
-
+    $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}theme_file WHERE file = %s AND is_public = %d LIMIT 1",$file, $public ) );
 
     if($result !== false)
     {
