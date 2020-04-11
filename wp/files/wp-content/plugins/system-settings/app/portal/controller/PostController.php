@@ -15,7 +15,7 @@ class PostController extends BaseController
         $hide_category = $query->query_vars['category__not_in'];
 
         //筛选出隐藏的内容
-        $data = Db::name('termmeta')->where('meta_key','display')->where('meta_value','true')->select();
+        $data = Db::name('termmeta')->where('meta_key','display')->where('meta_value','hide')->select();
 
         
         if(!empty($data))

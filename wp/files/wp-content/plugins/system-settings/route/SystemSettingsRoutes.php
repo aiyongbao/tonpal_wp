@@ -45,17 +45,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $theme = new ThemeController();
-                return $theme->set_menu_locations($request);
-            },
-            'permission_callback' => function(){
-                
-                if(!current_user_can( 'edit_theme_options' ))
-                {
-                    return new WP_Error( 'rest_forbidden', esc_html__( '您没有权限进行此操作！'), array( 'status' => 403 ) );
-                }
-
-                return true;
-
+                return middleware::run('api')->init($theme->set_menu_locations($request),$request);
             }
         ) );
 
@@ -65,7 +55,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->add_nav($request);
+                return middleware::run('api')->init($navMenu->add_nav($request),$request);
             },
             'args' => function(){
                 $args = array();
@@ -97,9 +87,9 @@ class SystemSettingsRoutes {
         //获取父类导航栏列表
         register_rest_route( $this->namespace , '/nav_menu', array(
             'methods'  => WP_REST_Server::READABLE,
-            'callback' => function(){
+            'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->get_nav();
+                return middleware::run('api')->init($navMenu->get_nav(),$request);
             },
         ) );
 
@@ -108,7 +98,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::DELETABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->delete_nav($request);
+                return middleware::run('api')->init($navMenu->delete_nav($request),$request);
             },
         ) );
 
@@ -117,7 +107,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::DELETABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->delete_nav_all($request);
+                return middleware::run('api')->init($navMenu->delete_nav_all($request),$request);
             },
         ) );
 
@@ -127,7 +117,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->get_nav_item($request);
+                return middleware::run('api')->init($navMenu->get_nav_item($request),$request);
             },
             'args' => function(){
                 $args = array();
@@ -139,7 +129,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->add_nav_item($request);
+                return middleware::run('api')->init($navMenu->add_nav_item($request),$request);
             },
             'args' => function(){
                 $args = array();
@@ -151,10 +141,19 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->update_nav_menu_item($request);
+                return middleware::run('api')->init($navMenu->update_nav_menu_item($request),$request);
             },
             'args' => function(){
                 $args = array();
+            }
+        ) );
+        
+        //批量更新导航
+        register_rest_route( $this->namespace , '/update_nav_menu_items', array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $navMenu = new NavMenuController();
+                return middleware::run('api')->init($navMenu->update_nav_menu_items($request),$request);
             }
         ) );
 
@@ -163,7 +162,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::DELETABLE,
             'callback' => function($request){
                 $navMenu = new NavMenuController();
-                return $navMenu->delete_nav_menu_item($request);
+                return middleware::run('api')->init($navMenu->delete_nav_menu_item($request),$request);
             },
             'args' => function(){
                 $args = array();
@@ -203,7 +202,24 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $themeFile = new ThemeFileController();
-                return $themeFile->fileItem($request);
+                return middleware::run('api')->init( $themeFile->fileItem($request) , $request);
+            }
+        ));
+
+        //根据id获取主题的json单个配置文件列表
+        register_rest_route($this->namespace , '/theme_file_item',array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return middleware::run('api')->init( $themeFile->fileItemObject($request) , $request);
+            }
+        ));
+
+        register_rest_route($this->namespace , '/theme_file_item/(?P<id>[\d]+)',array(
+            'methods'  => WP_REST_Server::DELETABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return middleware::run('api')->init( $themeFile->delete($request) , $request);
             }
         ));
 
@@ -212,7 +228,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $themeFile = new ThemeFileController();
-                return $themeFile->updateFileItem($request);
+                return middleware::run('api')->init( $themeFile->updateFileItem($request) , $request);
             }
         ));
 
@@ -221,25 +237,16 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $settings = new SettingController();
-                return $settings->index();
+                return middleware::run('api')->init( $settings->index() , $request);
             }
         ));
 
-        //获取站点的基本配置文件
-        register_rest_route($this->namespace , '/settings_init',array(
-            'methods'  => WP_REST_Server::READABLE,
+        //添加系统基本设置
+        register_rest_route($this->namespace , '/settings/store',array(
+            'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $settings = new SettingController();
-                return $settings->index();
-            }
-        ));
-
-        //获取站点的设置文件
-        register_rest_route($this->namespace , '/store',array(
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => function($request){
-                $settings = new SettingController();
-                return $settings->store($request);
+                return middleware::run('api')->init( $settings->store($request) , $request);
             }
         ));
 
@@ -248,7 +255,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::DELETABLE,
             'callback' => function($request){
                 $category = new CategoryController();
-                return $category->deleteCategory($request);
+                return middleware::run('api')->init( $category->deleteCategory($request) , $request);
             }
         ));
 
@@ -257,7 +264,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $inquiry = new InquiryController();
-                return $inquiry->index($request);
+                return middleware::run('api')->init( $inquiry->index($request) , $request);
             }
         ));
         
@@ -266,7 +273,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return $sync->dbExecute($request);
+                $sync->dbExecute($request);
             }
         ));
 
@@ -275,7 +282,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return $sync->taxonomy($request);
+                return middleware::run('api')->init( $sync->taxonomy($request) , $request);
             }
         ));
 
@@ -284,10 +291,11 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return $sync->post($request);
+                return middleware::run('api')->init( $sync->post($request) , $request);
             }
         ));
 
+        //同步接口
         register_rest_route($this->namespace, '/async_post' ,array(
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){

@@ -105,9 +105,6 @@ EOT;
 EOT;
         $result = $this->db->get_row($sql);
         $result = $this->object_array($result);
-
-  
-
         return $result;
     }
 

@@ -61,11 +61,8 @@ EOT;
                 'reference' => $reference,
                 'organization_id' => get_option('organization_id')
             ];
-
             $params = http_build_query($params);
-
             $res = wp_remote_get($url. '?'.$params);
-
             return $this->success("提交成功");
         }
         else{

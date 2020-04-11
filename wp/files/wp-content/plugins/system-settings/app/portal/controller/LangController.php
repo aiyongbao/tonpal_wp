@@ -23,6 +23,5 @@ class LangController extends BaseController
         }
         
         $wpdb->set_prefix($prefix);
-
     }
 }
