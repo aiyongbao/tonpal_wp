@@ -188,8 +188,37 @@ EOT;
     public function fileItem($request)
     {
         $id = $request['id'];
-        $theme_file = Db::name('theme_file')->where('id',$id)->find();
-        
+
+        if(!empty($id))
+        {
+            $theme_file = Db::name('theme_file')->where('id',$id)->find();
+        }
+        else{
+            return $this->error('参数错误！');
+        }
+
+        if($theme_file !== null)
+        {
+            return $this->success('获取成功！',$theme_file);
+        }
+        else{
+            return $this->error('获取失败,数据不存在！',$theme_file);
+        }
+    }
+
+    //根据object_id获取文件列表
+    public function fileItemObject($request)
+    {
+        $action = $request['action'];
+        $object_id = $request['object_id'];
+
+        if(!empty($action) && !empty($object_id)){
+            $theme_file = Db::name('theme_file')->where('action',$action)->where('object_id',$object_id)->find();
+        }
+        else{
+            return $this->error('参数错误！');
+        }
+
         if($theme_file !== null)
         {
             return $this->success('获取成功！',$theme_file);

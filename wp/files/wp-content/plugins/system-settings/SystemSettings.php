@@ -49,36 +49,22 @@ add_action('init', function () {
     $category = new CategoryController();
     $category->index();
 
-    $data = get_categories(
-        [
-            "taxonomy" => "category",
-            "parent" => 87,
-            "hide_empty" => 0
-        ]
-    );
-
 });
 
 add_filter('init', function () {
-
     $rules = get_option('rewrite_rules');
-
     add_rules();
     global $wp_rewrite;
-
     $wp_rewrite->flush_rules();
 });
 
 function add_rules()
 {
-
     $match = "(zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af)";
-
-    $match_lang = str_replace('|', '\/|', $match);
-
+    //$match_lang = str_replace('|', '\/|', $match);
     add_rewrite_rule($match, 'index.php?lang=$matches[1]', 'bottom');
-    add_rewrite_rule($match_lang . '(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
-    add_rewrite_rule($match_lang . '([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
+    add_rewrite_rule($match .'/(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
+    add_rewrite_rule($match .'/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
 }
 
 //文章查询钩子
@@ -117,6 +103,20 @@ add_action('setup_theme', function () {
         }
         return $args;
     });
+
+    add_filter("home_url",function($url, $path, $schame, $blog_id){
+        $lang = get_query_var('lang');
+        $old_href_arr = explode('/',$url);
+        $old_href = $old_href_arr[2];
+        /* if(get_query_var('pagename') || get_query_var('name'))
+        {
+            $lang = str_replace('/','',$lang);
+        } */
+
+        $url = str_replace($old_href_arr[0]."//".$old_href, '/' . $lang , $url);
+        
+        return $url;
+    },10,4);
 });
 
 add_filter('category_rewrite_rules', function ($category_rewrite) {
@@ -150,11 +150,11 @@ add_filter('category_rewrite_rules', function ($category_rewrite) {
 
 add_filter('query_vars', function ($public_query_vars) {
     $public_query_vars[] = 'lang';
+    $public_query_vars[] ='is_admin';
     return $public_query_vars;
 });
 
 add_filter('request', function ($query_vars) {
-
     $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
     if (isset($_REQUEST['lang']) && strpos($match, $_REQUEST['lang'])) {
         if (isset($query_vars['category_name'])) {
@@ -163,27 +163,18 @@ add_filter('request', function ($query_vars) {
             $catlink = trailingslashit(get_option('home')) . $_REQUEST['lang'] . '/' . $query_vars['pagename'];
         } elseif (isset($query_vars['rest_route'])) {
             return $query_vars;
-        } else {
+        } 
+        else {
             $catlink = trailingslashit(get_option('home')) . $_REQUEST['lang'] . '/';
         }
-        status_header(301);
-        header("Location: $catlink");
-        exit();
+
+        if(!isset($query_vars['is_admin'])){
+            status_header(301);
+            header("Location: $catlink");
+            exit();
+        }
+
+        
     }
     return $query_vars;
 });
-
-add_filter('nav_menu_link_attributes', function ($atts, $item, $args) {
-
-    $abbr = explode('/', $_SERVER['REQUEST_URI']);
-    $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
-
-    if (isset($abbr[1]) && strpos($match, $abbr[1])) {
-        $old_href = $atts['href'];
-        if ($old_href != "") {
-            $atts['href'] = str_replace($old_href, $old_href . '/' . $abbr[1] . '/', $atts['href']);
-        }
-    }
-
-    return $atts;
-}, 10, 3);

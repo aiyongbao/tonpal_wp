@@ -206,6 +206,15 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //根据id获取主题的json单个配置文件列表
+        register_rest_route($this->namespace , '/theme_file_item',array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return middleware::run('api')->init( $themeFile->fileItemObject($request) , $request);
+            }
+        ));
+
         register_rest_route($this->namespace , '/theme_file_item/(?P<id>[\d]+)',array(
             'methods'  => WP_REST_Server::DELETABLE,
             'callback' => function($request){
@@ -232,6 +241,14 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //添加系统基本设置
+        register_rest_route($this->namespace , '/settings/store',array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->store($request) , $request);
+            }
+        ));
 
         //根据id删除网站分类和子分类
         register_rest_route($this->namespace , '/category/(?P<id>[\d]+)',array(
@@ -256,7 +273,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return middleware::run('api')->init( $sync->dbExecute($request) , $request);
+                $sync->dbExecute($request);
             }
         ));
 
@@ -278,11 +295,12 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //同步接口
         register_rest_route($this->namespace, '/async_post' ,array(
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return middleware::run('api')->init( $sync->asyncPostJson($request) , $request);
+                return $sync->asyncPostJson($request);
             }
         ));
 
