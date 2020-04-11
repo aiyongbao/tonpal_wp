@@ -1,5 +1,5 @@
 <?php
-$gooleId = set_query_var('gooldId');
+$gooleId = ifEmptyText(get_query_var('gooldId'));
 ?>
 <script src="//q.zvk9.com/Model15/assets/js/jquery.min.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/language.js"></script>

@@ -87,7 +87,7 @@ $page_url = get_lang_page_url();
                                                 alt="<?php the_title(); ?>"/></a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title"><a
-                                                        href="/<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                                        href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                             <time datetime="<?php echo esc_html( get_the_date() ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
                                             <div class="item-detail"><?php the_excerpt(); ?></div>
                                             <a href="<?php the_permalink(); ?>" class="item-more"><?php echo $news_read_more; ?></a>
