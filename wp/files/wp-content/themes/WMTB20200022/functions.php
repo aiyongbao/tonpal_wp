@@ -316,7 +316,7 @@ function get_breadcrumbs()
         echo '<nav class="path-bar">';
         echo '<ul class="path-nav">';
 // Add the Home link
-        echo '<li><a class="home" href="'. get_option('home') .'">Home</a></li>';
+        echo '<li><a class="home" href="'. get_lang_home_url() .'">Home</a></li>';
 
         if ( is_category() )
         {
@@ -403,7 +403,6 @@ function get_host_name () {
  */
 function get_lang_home_url () {
     $home_url = home_url();
-    $home_url  .= empty(get_query_var('lang')) ? '' : '/' . get_query_var('lang');
     return $home_url;
 }
 /**
@@ -413,8 +412,7 @@ function get_lang_home_url () {
  */
 function get_lang_page_url () {
     global $wp;
-    $lang = empty(get_query_var('lang')) ? array() : array('lang'=>get_query_var('lang'));
-    $page_url = home_url(add_query_arg($lang,$wp->request));
+    $page_url = add_query_arg($wp->request);
     return $page_url;
 }
 /**

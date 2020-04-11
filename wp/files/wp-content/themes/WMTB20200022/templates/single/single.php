@@ -1,8 +1,6 @@
 <?php
 
 $post = get_post();
-// detail.json -> vars 数据获取
-$theme_vars = json_config_array('detail', 'vars');
 
 
 // SEO

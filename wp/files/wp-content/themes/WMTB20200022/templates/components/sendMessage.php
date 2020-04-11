@@ -39,7 +39,6 @@ $placeholder_content = ifEmptyText($theme_vars['sendMessagePlaContent']['value']
                 </li>
             </ul>
             <div class="form-btn-wrapx">
-                <input type="hidden" name="organization_id" value="{{ organization_id }}">
 
                 <input type="hidden" name="product_title" value="<?php echo $type_title;?>">
                 <div class="alert-success hidden" id="MessageSent">

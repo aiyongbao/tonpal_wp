@@ -4,7 +4,7 @@ $languages = get_languages();
 $languagesArray = [];
 foreach ($languages as $item ){
     $name = $item['e_name'];
-    $link = home_url(add_query_arg(array('lang'=>$item['abbr']),$wp->request));
+    $link = '/'.$item['abbr'];
     array_push($languagesArray,array('name'=>$name,'link'=>$link,'abbr'=> $item['abbr']));
 }
 set_query_var('languagesArray',$languagesArray);
@@ -114,8 +114,7 @@ $googleplus_link = '';
                 </ul>
                 <div class="head-search">
                     <div class="head-search-form">
-                        <!-- <form action="//www.google.com.hk/search" id='search' target="_blank" method="get"> -->
-                        <form id="search" action="<?php bloginfo('url'); ?>/" target="_blank">
+                        <form id="search" action="<?php echo get_lang_home_url(); ?>/" target="_blank">
                             <input class="search-ipt" name="s" id="s" type="text" placeholder="search" />
                             <button class="search-btn" type="submit" ></button>
                          </form>

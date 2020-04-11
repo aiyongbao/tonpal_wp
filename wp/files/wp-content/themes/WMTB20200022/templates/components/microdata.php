@@ -14,7 +14,7 @@ if( is_category() ) { // 列表页
     $category_url_array = get_category_url_and_slug($cat);
 } elseif ( is_single() ) { // 详情页
     $category_url_array = get_category_url_and_slug(ROOT_CATEGORY_CID);
-} elseif ( is_page() ) { // 单页面
+} else { // 单页面
     // 当前页面url
     $page_url = get_lang_page_url();
     // 首页url

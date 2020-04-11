@@ -25,7 +25,6 @@ if(!empty($data)){
         array_push($list ,array('name' => $name,'link' => $links,'child'=>$childArray));
     }
 }
-//wp_reset_query(); // 重置query 防止影响其他query查询
 if(ifEmptyArray($list) != []){
 ?>
 

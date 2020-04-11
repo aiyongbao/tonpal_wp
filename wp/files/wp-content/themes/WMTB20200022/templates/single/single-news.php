@@ -1,7 +1,5 @@
 <?php
 $post = get_post();
-// newsDetail.json -> vars 数据获取
-$theme_vars = json_config_array('news-detail','vars');
 
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));

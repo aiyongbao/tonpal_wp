@@ -8,7 +8,7 @@ $icon = ifEmptyText(get_query_var('icon'));
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <link href="//q.zvk9.com/Model15/assets/css/main.css" rel="stylesheet">
-<link rel="shortcut icon" href="<?php echo $icon; ?>>" />
+<link rel="shortcut icon" href="<?php echo $icon; ?>" />
 <link href="//q.zvk9.com/Model15/assets/css/style.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="//q.zvk9.com/Model15/assets/css/language.css" />
 <link type="text/css" rel="stylesheet" href="//q.zvk9.com/Model15/assets/css/custom_service_on.css" />
