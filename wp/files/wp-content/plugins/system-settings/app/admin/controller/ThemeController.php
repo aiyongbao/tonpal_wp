@@ -61,7 +61,7 @@ class ThemeController extends RestController{
     public function download($theme_name)
     {
 
-        $remote = "https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/themes/zips/".$theme_name.'.zip';
+        $remote = "https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/themes/zips/".$theme_name.'.zip';
 
         try {
             $file = file_get_contents( $remote );
