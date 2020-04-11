@@ -191,8 +191,8 @@ class syncController extends RestController
         $accept_param = $request['json'];
 
         $lang = isset($request['lang']) ? $request['lang'] : 'en';
-        $lang = new LangController();
-        $lang->index( $request['lang'] );
+        $langObj = new LangController();
+        $langObj->index( $request['lang'] );
 
         $param = json_decode($accept_param, true);
         
