@@ -19,7 +19,7 @@ $header_key_word = ifEmptyText($theme_vars['key_word']['value']);
 
 $facebook_link = ifEmptyText($theme_vars['facebookLink']['value']);
 $twitter_link = ifEmptyText($theme_vars['twitterLink']['value']);
-$instagram_link = ifEmptyText($theme_vars['instagramLink']['value']);
+$linkedin_link = ifEmptyText($theme_vars['linkedinLink']['value']);
 $youtube_link = ifEmptyText($theme_vars['youtubeLink']['value']);
 
 $icon = ifEmptyText($theme_vars['icon']['value']);
@@ -100,13 +100,13 @@ $googleplus_link = '';
                     <li><a href="<?php echo $facebook_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns01.png"/></i></a></li>
                     <?php } ?>
                     <?php if ($twitter_link !== '') { ?>
-                    <li><a href="<?php echo $facebook_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns02.png" alt="" /></i></a></li>
+                    <li><a href="<?php echo $twitter_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns02.png" alt="" /></i></a></li>
                     <?php } ?>
                     <?php if ($googleplus_link !== '') { ?>
                     <li><a href="<?php echo $googleplus_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns04.png" alt="" /></i></a></li>
                     <?php } ?>
-                    <?php if ($instagram_link !== '') { ?>
-                    <li><a href="<?php echo $instagram_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns03.png" alt="" /></i></a></li>
+                    <?php if ($linkedin_link !== '') { ?>
+                    <li><a href="<?php echo $linkedin_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns03.png" alt="" /></i></a></li>
                     <?php } ?>
                     <?php if ($youtube_link !== '') { ?>
                     <li><a href="<?php echo $youtube_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns05.png" alt="" /></i></a></li>

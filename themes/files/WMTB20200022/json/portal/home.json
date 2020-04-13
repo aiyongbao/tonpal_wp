@@ -113,10 +113,7 @@
                                 "title": "链接",
                                 "value": "",
                                 "type": "text",
-                                "tip": "请填写全链接 https/http://...",
-                                "rule": {
-                                    "require": true
-                                }
+                                "tip": "请填写全链接 https/http://..."
                             }
                         },
                         "tip": "建议填满四组数据",

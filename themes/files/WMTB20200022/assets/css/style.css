@@ -43,3 +43,6 @@
 .foot-wrapper .layout {
     position: relative;
 }
+.foot-wrapper .foot-item ul a {
+    word-break: break-word;
+}
