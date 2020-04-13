@@ -73,13 +73,13 @@ $page_url = get_lang_page_url();
                         <?php foreach ($home_modularOne_item as $item) { ?>
                             <li class="product-item indexproduct">
                                 <figure class="item-wrap">
-                                    <a href="<?php echo ifEmptyText($item['link']) ?>" class="item-img"
+                                    <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" class="item-img"
                                        style="width:280px;height:280px;display:table-cell;vertical-align:middle;">
-                                        <img src="<?php echo ifEmptyText($item['image']) ?>"/>
+                                        <img width="50" height="50" src="<?php echo ifEmptyText($item['image']) ?>"/>
                                     </a>
                                     <figcaption class="item-info">
                                         <h3 class="item-title">
-                                            <a href="<?php echo ifEmptyText($item['link']) ?>" title="<?php echo ifEmptyText($item['title']) ?>">
+                                            <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>">
                                                 <?php echo ifEmptyText($item['title']) ?>
                                             </a>
                                         </h3>
@@ -128,7 +128,7 @@ $page_url = get_lang_page_url();
         $home_about_desc = ifEmptyText($home_about['vars']['desc']['value']);
         $home_about_image = ifEmptyText($home_about['vars']['image']['value']);
         $home_about_btn = ifEmptyText($home_about['vars']['btn']['value']);
-        $home_about_link = ifEmptyText($home_about['vars']['link']['value'],'##');
+        $home_about_link = ifEmptyText($home_about['vars']['link']['value'],'javascript:;');
         ?>
             <section class="gd-layer about-us">
                 <div class="layout">
@@ -166,15 +166,15 @@ $page_url = get_lang_page_url();
                             <?php foreach ($home_hotProduct_item as $item) { ?>
                                 <li class="product-item indexproduct">
                                     <figure class="item-wrap">
-                                        <a href="<?php echo $item['link'] ?>" title="<?php echo $item['title'] ?>"
+                                        <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"
                                         class="item-img">
-                                        <img src="<?php echo $item['image'] ?>_thumb_262x262.jpg"
-                                             alt="<?php echo $item['title'] ?>"/>
+                                        <img src="<?php echo ifEmptyText($item['image']) ?>_thumb_262x262.jpg"
+                                             alt="<?php echo ifEmptyText($item['title']) ?>"/>
                                         </a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title">
-                                                <a href="<?php echo $item['link'] ?>" title="<?php echo $item['link'] ?>">
-                                                    <?php echo $item['title'] ?>
+                                                <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>">
+                                                    <?php echo ifEmptyText($item['title']) ?>
                                                 </a>
                                             </h3>
                                         </figcaption>
@@ -202,7 +202,7 @@ $page_url = get_lang_page_url();
                         </div>
                         <div class="layer-ft">
                             <div class="gd-btn-box">
-                                <a href="<?php echo $home_modularTwo_link ?>" class="gd-btn"><?php echo $home_modularTwo_btn ?></a>
+                                <a href="<?php echo ifEmptyText($home_modularTwo_link,'javascript:;') ?>" class="gd-btn"><?php echo $home_modularTwo_btn ?></a>
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@ $page_url = get_lang_page_url();
         <!-- news -->
         <?php if ($home_news['display'] == 1) {
             $home_news_title = ifEmptyText($home_news['vars']['title']['value']);
-            $home_news_item = ifEmptyText($home_news['vars']['items']['value']);
+            $home_news_item = ifEmptyArray($home_news['vars']['items']['value']);
         ?>
         <section class="gd-layer promote-banners">
             <div class="layout">
@@ -223,15 +223,15 @@ $page_url = get_lang_page_url();
                     <div class="banner-list">
                         <?php foreach ($home_news_item as $item ) { ?>
                             <div class="banner-item">
-                                <a href="<?php echo $item['link'] ?>" class="item-inner">
+                                <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" class="item-inner">
                                     <figure class="banner-img" style="width:387px;height:199px">
                                         <img style="width:387px;height:199px"
-                                             src="<?php echo $item['image'] ?>"
-                                             alt="<?php echo $item['title'] ?>">
+                                             src="<?php echo ifEmptyText($item['image']) ?>"
+                                             alt="<?php echo ifEmptyText($item['title']) ?>">
                                     </figure>
                                     <figcaption class="banner-info">
-                                        <h4 class="item-tit"><?php echo $item['title'] ?></h4>
-                                        <div class="item-desc"><?php echo $item['desc'] ?></div>
+                                        <h4 class="item-tit"><?php echo ifEmptyText($item['title']) ?></h4>
+                                        <div class="item-desc"><?php echo ifEmptyText($item['desc']) ?></div>
                                     </figcaption>
                                 </a>
                             </div>
