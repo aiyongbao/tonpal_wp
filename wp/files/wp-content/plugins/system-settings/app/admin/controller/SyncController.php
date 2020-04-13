@@ -30,7 +30,6 @@ class syncController extends RestController
     //初始化语种数据库
     public function init($abbr)
     {
-        $this->init_theme_file($abbr);
         update_option('category_children','');
     }
 
@@ -192,8 +191,8 @@ class syncController extends RestController
         $accept_param = $request['json'];
 
         $lang = isset($request['lang']) ? $request['lang'] : 'en';
-        $lang = new LangController();
-        $lang->index( $request['lang'] );
+        $langObj = new LangController();
+        $langObj->index( $request['lang'] );
 
         $param = json_decode($accept_param, true);
         
@@ -282,11 +281,28 @@ class syncController extends RestController
 
             $result = $http->request( 'http://tonpaladmin.aiyongbao.com/action/syncCallback',['method' => 'POST', 'body' => $body] );
 
+            $this->deldir(RT_WP_NGINX_HELPER_CACHE_PATH);
             return $this->success("操作成功",$returnResult);
 
         }
         return $this->error("操作失败");
     }
+
+    public function deldir($dir) {
+        //先删除目录下的文件：
+        $dh=opendir($dir);
+        while ($file=readdir($dh)) {
+           if($file!="." && $file!="..") {
+              $fullpath=$dir."/".$file;
+              if(!is_dir($fullpath)) {
+                 unlink($fullpath);
+              } else {
+                 $this->deldir($fullpath);
+              }
+           }
+        }
+        closedir($dh);
+     }
 
     //同步分类
     public function syncCategory($data = [], $type)
