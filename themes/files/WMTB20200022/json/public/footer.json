@@ -1,0 +1,250 @@
+{
+    "name": "footer配置文件",
+    "action": "public/footer",
+    "description": "footer配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "aboutTitle": {
+                "title": "标题",
+                "value": "ABOUT US",
+                "type": "text",
+                "tip": "eg:ABOUT US"
+            },
+            "aboutAbstract": {
+                "title": "公司描述",
+                "value": "",
+                "type": "text",
+                "tip": "公司描述"
+            },
+            "contactTitle": {
+                "title": "标题",
+                "value": "CONTACT US",
+                "type": "text",
+                "tip": "eg:CONTACT US"
+            },
+            "newsTitle": {
+                "title": "标题",
+                "value": "RECENT NEWS",
+                "type": "text",
+                "tip": "eg:RECENT NEWS"
+            },
+            "newsItem": {
+                "title": "底部新闻列表",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "锚文本"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请填写全链接 https/http://..."
+                    }
+                }
+            },
+            "productTitle": {
+                "title": "标题",
+                "value": "NEW PRODUCTS",
+                "type": "text",
+                "tip": "eg:NEW PRODUCTS"
+            },
+            "productItem": {
+                "title": "底部产品列表",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "锚文本"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请填写全链接 https/http://..."
+                    },
+                    "image": {
+                        "title": "图片",
+                        "value": "",
+                        "type": "image",
+                        "tip": "建议1:1"
+                    }
+                }
+            },
+            "copyright": {
+                "title": "版权",
+                "value": "TONPAL.COM",
+                "type": "text",
+                "tip": "版权自定义"
+            },
+            "mobileLink": {
+                "title": "移动端时，底部右边的跳转链接",
+                "value": "",
+                "type": "text",
+                "tip": "请填写全链接 https/http://..."
+            },
+            "friendLinks": {
+                "title": "链轮系统",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "锚文本"
+                    },
+                    "link": {
+                        "title": "固定链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "固定链接"
+                    }
+                },
+                "tip": " 默认不显示， 但点击图标时，则会展示其所有的信息"
+            }
+        },
+        "widgets": {
+            "phone": {
+                "title": "手机",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "手机信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "",
+                                "type": "text",
+                                "tip": "phone",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "mobile": {
+                "title": "电话",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "电话信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "",
+                                "type": "text",
+                                "tip": "phone",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "email": {
+                "title": "邮箱",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "邮箱信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "",
+                                "type": "text",
+                                "tip": "phone",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "address": {
+                "title": "地址",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "地址信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "",
+                                "type": "text",
+                                "tip": "phone",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
