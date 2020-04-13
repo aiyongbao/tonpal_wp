@@ -9,7 +9,6 @@
  * @author zhuoyue
  */
 global $wp; // Class_Reference/WP 类实例
-global $cat; // 当前页面id
 
 // 先判断当前页面类型
 if( is_category() ) { // 列表页

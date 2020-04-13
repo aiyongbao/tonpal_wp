@@ -1,5 +1,4 @@
 <?php
-global $cat; // 当前页面id
 $sideBarTags = ifEmptyText(get_query_var('sideBarTags'));
 
 $the_name = '';
