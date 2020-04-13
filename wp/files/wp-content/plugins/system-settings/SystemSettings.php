@@ -189,3 +189,29 @@ add_filter('request', function ($query_vars) {
     }
     return $query_vars;
 });
+
+function recursiveDelete($dir)
+{    
+     // 打开指定目录
+   if ($handle = @opendir($dir))
+   {
+     while (($file = readdir($handle)) !== false)
+     {
+         if (($file == ".") || ($file == ".."))
+         {
+           continue;
+         }
+         if (is_dir($dir . '/' . $file))
+         {
+           // 递归
+           recursiveDelete($dir . '/' . $file);
+         }
+         else
+         {
+           unlink($dir . '/' . $file); // 删除文件
+         }
+     }
+     @closedir($handle);
+     rmdir ($dir); 
+   }
+}

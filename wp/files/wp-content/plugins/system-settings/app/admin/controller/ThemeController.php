@@ -37,14 +37,11 @@ class ThemeController extends RestController{
             //主题路径
             $themeFilePath = ABSPATH  . 'wp-content/themes/';
             
-            if(!file_exists( $themeFilePath . $theme_name))
+            //下载远程主题
+            $next = $this->download($theme_name);
+            if(!$next)
             {
-                //下载远程主题
-                $next = $this->download($theme_name);
-                if(!$next)
-                {
-                    return $this->error('当前主题不存在！');
-                }
+                return $this->error('当前主题不存在！');
             }
 
             $theme = wp_get_theme($theme_name);
@@ -77,11 +74,10 @@ class ThemeController extends RestController{
             mkdir($themeFilePath, 0755);
             @chmod($themeFilePath, 0755);
         }
-
         file_put_contents($themeFile, $file);
-
-        $result = false;
-        
+        //删除当前文件下文件
+        recursiveDelete($themeFilePath.$theme_name); 
+      
         if(file_exists($themeFile)) {
             $zip = new \ZipArchive();
             if($zip->open($themeFile) === true){
@@ -89,7 +85,6 @@ class ThemeController extends RestController{
                 $zip->close();
             }
         }
-
         return $result;
     }
 
