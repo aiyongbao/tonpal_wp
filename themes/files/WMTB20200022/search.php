@@ -1,5 +1,4 @@
 <?php
-global $cat; // 当前页面id
 $category = get_category($cat);
 $the_category_name = $category->name; //当前分类名称
 
