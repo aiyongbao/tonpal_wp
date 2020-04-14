@@ -8,6 +8,13 @@
 .nav-bar .nav ul ul {
     margin-left: 0;
 }
+.nav-bar .nav > li > ul li a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
 .fixed-nav .nav-bar .nav ul ul {
     top: 0px;
 }
@@ -45,4 +52,10 @@
 }
 .foot-wrapper .foot-item ul a {
     word-break: break-word;
+}
+.main-tit-bar {
+    margin: 0;
+}
+.entry {
+    padding: 0;
 }
