@@ -1,17 +1,16 @@
 #!/bin/bash
-# vps wordpress 安装脚本
+# vps wordpress 数据库 安装脚本
 # 接受参数
 while [ -n "$1" ]  
 do  
     case "$1" in
+        -uid)
+            ORGANIZATIONID=$2 
+            shift  
+            ;;
         # 生成的域名名称
         -domain)
             DOMAIN=$2
-            shift
-            ;;
-        # 临时域名
-        -tempdomain)
-            TEMPDOMAIN=$2
             shift
             ;;
         # wp 数据库名称
@@ -29,17 +28,32 @@ do
             DBPASS=$2
             shift
             ;;
+        # wpuser
+        -wpuser)
+            WPUSER=$2
+            shift
+            ;;
+        # wppass
+        -wppass)
+            WPPASS=$2
+            shift
+            ;;
+        # wp SQL解压密码
+        -sqldepass)
+            SQLDEPASS=$2
+            shift
+            ;;
     esac  
     shift  
 done
 
 # 参数判空
-if [ "${DOMAIN}" = "" ]; then
-    echo '-domain is necessary'
+if [ "${ORGANIZATIONID}" = "" ]; then
+    echo '-uid is necessary'
     exit 1
 fi
-if [ "${TEMPDOMAIN}" = "" ]; then
-    echo '-tempdomain is necessary'
+if [ "${DOMAIN}" = "" ]; then
+    echo '-domain is necessary'
     exit 1
 fi
 if [ "${DBNAME}" = "" ]; then
@@ -54,25 +68,45 @@ if [ "${DBPASS}" = "" ]; then
     echo '-dbpass is necessary'
     exit 1
 fi
+if [ "${WPUSER}" = "" ]; then
+    echo '-wpuser is necessary'
+    exit 1
+fi
+if [ "${WPPASS}" = "" ]; then
+    echo '-wppass is necessary'
+    exit 1
+fi
+if [ "${SQLDEPASS}" = "" ]; then
+    echo '-sqldepass is necessary'
+    exit 1
+fi
 
-# 初始化 wordpress 信息
-Install_Wp(){
-    yum install -y wget
-    # 下载wp目录文件
-    wget -O wp.zip https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/wp/wp.zip
-    unzip -o wp.zip
-    # 替换文本中的 php 内容（将数据库信息进行替换）
-    sed -i 's/$TEMPDOMAIN/'${TEMPDOMAIN}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
-    sed -i 's/$DOMAIN/'${DOMAIN}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
-    sed -i 's/$DBNAME/'${DBNAME}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
-    sed -i 's/$DBUSER/'${DBUSER}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
-    sed -i 's/$DBPASS/'${DBPASS}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
+# 插入数据库一些内容
+Install_Db(){
+    # 获取SQL文件
+    wget -O install-db.sql.des3 https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/sql/install-db.sql.des3
+    # 进行解密
+    dd if=install-db.sql.des3 |openssl des3 -d -k ${SQLDEPASS} | tar zxf -
+    # 替换sql语句中域名, 替换成客户的域名
+    sed -i 's#$DOMAIN#'${DOMAIN}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
+    sed -i 's#ORGANIZATION_ID#'${ORGANIZATIONID}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
+    sed -i 's#$WPUSER#'${WPUSER}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
+    # 生成密码
+    ENWPPASS=""
+    while [ "${ENWPPASS}" == "" ]
+    do 
+        ENWPPASS=$(php custom-install.php ${WPPASS})
+        sleep 1
+    done
+    sed -i 's#$WPPASS#'${ENWPPASS}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
+    # 进入数据库，运行sql语句
+    mysql -u${DBUSER} -p${DBPASS} ${DBNAME} < install-db.sql
 }
 
 # 安装主方法
 Install_Main(){
     cd /www/wwwroot/${DOMAIN}
-    Install_Wp
+	Install_Db
 }
 
 echo "

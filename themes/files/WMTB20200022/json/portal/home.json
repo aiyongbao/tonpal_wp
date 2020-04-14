@@ -113,10 +113,7 @@
                                 "title": "链接",
                                 "value": "",
                                 "type": "text",
-                                "tip": "请填写全链接 https/http://...",
-                                "rule": {
-                                    "require": true
-                                }
+                                "tip": "请填写全链接 https/http://..."
                             }
                         },
                         "tip": "建议填满四组数据",
@@ -157,7 +154,7 @@
                             "icon": {
                                 "title": "图标",
                                 "value": "",
-                                "type": "image",
+                                "type": "icon",
                                 "tip": "建议30x30 格式为png",
                                 "rule": {
                                     "require": true
@@ -215,7 +212,7 @@
                     "link": {
                         "title": "链接",
                         "value": "",
-                        "type": "",
+                        "type": "text",
                         "tip": "请填写全链接 https/http://..."
                     },
                     "btn": {

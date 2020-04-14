@@ -3,10 +3,10 @@
 $theme_vars = json_config_array('footer','vars',1);
 $theme_widgets = json_config_array('footer','widgets',1);
 
-$phone = ifEmptyText($theme_widgets['phone']['vars']['value'][0]);
-$mobile = ifEmptyText($theme_widgets['mobile']['vars']['value'][0]);
-$email = ifEmptyText($theme_widgets['email']['vars']['value'][0]);
-$address = ifEmptyText($theme_widgets['address']['vars']['value'][0]);
+$phone = ifEmptyArray($theme_widgets['phone']['vars']['items']['value'][0]);
+$mobile = ifEmptyArray($theme_widgets['mobile']['vars']['items']['value'][0]);
+$email = ifEmptyArray($theme_widgets['email']['vars']['items']['value'][0]);
+$address = ifEmptyArray($theme_widgets['address']['vars']['items']['value'][0]);
 
 $footer_about_title = ifEmptyText($theme_vars['aboutTitle']['value']);
 $footer_about_abstract = ifEmptyText($theme_vars['aboutAbstract']['value']);
@@ -20,10 +20,6 @@ $footer_product_title = ifEmptyText($theme_vars['productTitle']['value']);
 $footer_copyright = ifEmptyText($theme_vars['copyright']['value']);
 $footer_mobile_link = ifEmptyText($theme_vars['mobileLink']['value']);
 
-set_query_var('phone', $phone);
-set_query_var('mobile', $mobile);
-set_query_var('email', $email);
-set_query_var('address', $address);
 
 $languagesArray = ifEmptyArray(get_query_var('languagesArray'));
 $footer_news_item = ifEmptyArray($theme_vars['newsItem']['value']);
@@ -60,7 +56,7 @@ set_query_var('gooleId', $gooleId);
                                 <li class="foot_tel has-mobile-link"><a class="link" href="tel:<?php echo $footer_contact_mobile ?>"><?php echo $footer_contact_mobile ?></a></li>
                             <?php } ?>
                             <?php if ($footer_contact_email !== '' ) { ?>
-                                <li class="foot_email"><label><?php echo $footer_contact_email ?>:</label><a href="mailto:<?php echo $footer_contact_email ?>"><?php echo $footer_contact_email ?></a></li>
+                                <li class="foot_email"><label>Email:</label><a href="mailto:<?php echo $footer_contact_email ?>"><?php echo $footer_contact_email ?></a></li>
                             <?php } ?>
                             <?php if ($footer_contact_address !== '' ) { ?>
                                 <li class="foot_addr"><?php echo $footer_contact_address ?></li>
@@ -74,7 +70,7 @@ set_query_var('gooleId', $gooleId);
                         <ul class="foot-txt-list news-list">
                             <?php foreach ($footer_news_item as $item ) { ?>
                                 <li>
-                                    <a href="<?php echo ifEmptyText($item['link']) ?>"><?php echo ifEmptyText($item['title']) ?></a>
+                                    <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"><?php echo ifEmptyText($item['title']) ?></a>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -85,9 +81,9 @@ set_query_var('gooleId', $gooleId);
                     <div class="foot-cont">
                         <?php foreach ($footer_product_item as $item ) { ?>
                             <div class="new-item">
-                                <span class="img"><a href="<?php echo ifEmptyText($item['link']) ?>" title="<?php echo ifEmptyText($item['title']) ?>"><img src="<?php echo ifEmptyText($item['image']) ?>_thumb_262x262.jpg" alt="<?php echo ifEmptyText($item['title']) ?>"></a></span>
+                                <span class="img"><a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"><img src="<?php echo ifEmptyText($item['image']) ?>_thumb_262x262.jpg" alt="<?php echo ifEmptyText($item['title']) ?>"></a></span>
                                 <figcaption class="item-info">
-                                    <h3 class="title"><a href="<?php echo ifEmptyText($item['link']) ?>" title="<?php echo ifEmptyText($item['title']) ?>"><?php echo ifEmptyText($item['title']) ?></a></h3>
+                                    <h3 class="title"><a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"><?php echo ifEmptyText($item['title']) ?></a></h3>
                                 </figcaption>
                             </div>
                         <?php } ?>
@@ -99,7 +95,7 @@ set_query_var('gooleId', $gooleId);
                     <div>links<span></span></div>
                     <ul>
                         <?php foreach ($footer_friend_links as $item) { ?>
-                            <li><a href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a></li>
+                            <li><a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"><?php echo ifEmptyText($item['name']) ?></a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -120,7 +116,7 @@ set_query_var('gooleId', $gooleId);
         <li class="language-flag language-flag-en"> <a title="English" href="javascript:changeLanguage('en');"><span>English</span> </a> </li>
         <?php foreach ($languagesArray as $item) { ?>
         <li class="cart-menu-item index-li">
-            <a data-language="<?php echo $item['link'] ?>"  value="<?php echo $item['abbr'] ?>" href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a>
+            <a data-language="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"  value="<?php echo ifEmptyText($item['abbr']) ?>" href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"><?php echo ifEmptyText($item['name']) ?></a>
         </li>
         <?php } ?>
     </ul>

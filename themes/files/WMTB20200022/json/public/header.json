@@ -23,8 +23,8 @@
                 "type": "text",
                 "tip": "未填写则隐藏"
             },
-            "instagramLink": {
-                "title": "instagram 链接",
+            "linkedinLink": {
+                "title": "linkedin 链接",
                 "value": "",
                 "type": "text",
                 "tip": "未填写则隐藏"

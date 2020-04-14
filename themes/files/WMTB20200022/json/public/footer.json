@@ -6,7 +6,7 @@
     "more": {
         "vars": {
             "aboutTitle": {
-                "title": "标题",
+                "title": "底部标题一",
                 "value": "ABOUT US",
                 "type": "text",
                 "tip": "eg:ABOUT US"
@@ -14,17 +14,17 @@
             "aboutAbstract": {
                 "title": "公司描述",
                 "value": "",
-                "type": "text",
+                "type": "textarea",
                 "tip": "公司描述"
             },
             "contactTitle": {
-                "title": "标题",
+                "title": "底部标题二",
                 "value": "CONTACT US",
                 "type": "text",
                 "tip": "eg:CONTACT US"
             },
             "newsTitle": {
-                "title": "标题",
+                "title": "底部标题三",
                 "value": "RECENT NEWS",
                 "type": "text",
                 "tip": "eg:RECENT NEWS"
@@ -49,7 +49,7 @@
                 }
             },
             "productTitle": {
-                "title": "标题",
+                "title": "底部标题四",
                 "value": "NEW PRODUCTS",
                 "type": "text",
                 "tip": "eg:NEW PRODUCTS"

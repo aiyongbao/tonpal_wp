@@ -72,13 +72,8 @@ $page_url = get_lang_page_url();
                     <?php if ( have_posts() ) { ?>
                         <ul>
                             <?php while ( have_posts() ) : the_post();   ?>
-                                <?php $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true); ?>
                                 <li class="blog-item news-list-item">
                                     <figure class="item-wrap">
-                                        <a href="<?php the_permalink(); ?>" class="item-img">
-                                            <img style="width:262px;height:135px;"
-                                                 src="<?php echo $thumbnail ?>"
-                                                 alt="<?php the_title(); ?>"/></a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title"><a
                                                         href="/<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
