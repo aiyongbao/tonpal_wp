@@ -362,6 +362,9 @@ class syncController extends RestController
             //新增扩展数据
             add_term_meta($arr['term_id'], $object_key, $value['id'], true);
 
+            $display = $value['display'] == 'hide' ? 'hide' : 'show';
+            update_term_meta( $arr['term_id'] , 'display', $display );
+
             //保存对应关系
             $parentArr[$value['id']] = $arr['term_id'];
 
