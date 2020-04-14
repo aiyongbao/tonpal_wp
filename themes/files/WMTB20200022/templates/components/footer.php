@@ -20,10 +20,6 @@ $footer_product_title = ifEmptyText($theme_vars['productTitle']['value']);
 $footer_copyright = ifEmptyText($theme_vars['copyright']['value']);
 $footer_mobile_link = ifEmptyText($theme_vars['mobileLink']['value']);
 
-set_query_var('phone', $phone);
-set_query_var('mobile', $mobile);
-set_query_var('email', $email);
-set_query_var('address', $address);
 
 $languagesArray = ifEmptyArray(get_query_var('languagesArray'));
 $footer_news_item = ifEmptyArray($theme_vars['newsItem']['value']);
