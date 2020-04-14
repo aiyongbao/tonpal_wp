@@ -1,17 +1,9 @@
 <?php
 $sideBarTags = ifEmptyText(get_query_var('sideBarTags'));
-
 $the_name = '';
 $tag = [];
 if( is_single() ) {
-    $tags = get_the_tags( $post->ID );
-    $tags_array = [];
-    if(!empty($tags)) {
-        foreach ($tags as $item ) {
-            array_push($tags_array,$item->name);
-        }
-        $the_name = $tags_array[ mt_rand(0, count($tags_array) - 1) ]; // 随机读取一个tag name
-    }
+    $tag = get_the_tags( $post->ID );
 } elseif ( is_category() ) {
     $category = get_category($cat);
     $the_name = $category->name; //当前分类名称
@@ -19,9 +11,8 @@ if( is_single() ) {
     $tagName = single_tag_title('',false);
     $the_name = $tagName; //当前分类名称
 }
-if (ifEmptyText($the_name)) {
+if (!empty($the_name)) {
     $tag = get_terms('post_tag', array('name__like'=> "$the_name",'fields'=>'all'));
-
 }
 if ( ifEmptyArray($tag) !== [] ) {
 ?>
