@@ -3,13 +3,15 @@
 
 // contacts.json -> vars 数据获取
 $theme_vars = json_config_array('contacts','vars');
+$theme_widgets_footer = json_config_array('footer','widgets',1);
 
 //Text 数据处理
 $contacts_title = ifEmptyText($theme_vars['title']['value']);
-$phone = get_query_var('phone');
-$mobile = get_query_var('mobile');
-$email = get_query_var('email');
-$address = get_query_var('address');
+
+$phone = ifEmptyArray($theme_widgets_footer['phone']['vars']['items']['value'][0]);
+$mobile = ifEmptyArray($theme_widgets_footer['mobile']['vars']['items']['value'][0]);
+$email = ifEmptyArray($theme_widgets_footer['email']['vars']['items']['value'][0]);
+$address = ifEmptyArray($theme_widgets_footer['address']['vars']['items']['value'][0]);
 
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value']);
