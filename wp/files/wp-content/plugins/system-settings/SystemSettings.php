@@ -54,17 +54,18 @@ add_filter('init', function () {
     $rules = get_option('rewrite_rules');
     add_rules();
     global $wp_rewrite;
+    //print_r($wp_rewrite);
     $wp_rewrite->flush_rules();
 });
 
 function add_rules()
 {
-    $match = "(zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af)";
-    $match_lang = str_replace('|', '\/|', $match);
-    add_rewrite_rule($match, 'index.php?lang=$matches[1]', 'bottom');
-    add_rewrite_rule($match . '/(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
-    add_rewrite_rule($match . '/product/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
-    add_rewrite_rule($match . '/news/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
+    $match = "(zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af)$";
+    //$match_lang = str_replace('|', '\/|', $match);
+    add_rewrite_rule($match, 'index.php?lang=$matches[1]', 'top');
+    add_rewrite_rule($match . '(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
+    add_rewrite_rule($match. 'product/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
+    add_rewrite_rule($match . 'news/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
 }
 
 //文章查询钩子
@@ -110,7 +111,7 @@ add_action('setup_theme', function () {
             $permalink = '/product'.$permalink;
         }
 
-        if(strpos($_SERVER['REQUEST_URI'],'news' !== false)){
+        if(strpos($_SERVER['REQUEST_URI'],'news') !== false){
             $permalink = '/news'.$permalink;
         }
 
@@ -136,6 +137,14 @@ add_action('setup_theme', function () {
         return $url;
     }, 10, 4);
 });
+
+add_filter('get_pagenum_link',function($result,$pagenum){
+    
+    $result = rtrim($result, "/");
+
+    return $result;
+
+},10,2);
 
 add_filter('category_rewrite_rules', function ($category_rewrite) {
 
@@ -180,6 +189,9 @@ add_filter('query_vars', function ($public_query_vars) {
 });
 
 add_filter('request', function ($query_vars) {
+
+    //print_r($query_vars);
+
     $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
     if (isset($_REQUEST['lang']) && strpos($match, $_REQUEST['lang'])) {
         if (isset($query_vars['category_name'])) {

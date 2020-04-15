@@ -273,7 +273,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                $sync->dbExecute($request);
+                return $sync->dbExecute($request);
             }
         ));
 

@@ -19,7 +19,6 @@ class syncController extends RestController
         }
         $res = $conn->multi_query($sql);
         mysqli_close($conn);
-
         if ($res !== false) {
             return $this->success("执行成功");
         } else {
@@ -226,7 +225,6 @@ class syncController extends RestController
                     return $this->error("分类不存在！",['category_id'=>$value['category_id']]);
                 }
                 
-
                 $add_post = [
                     'post_title'       => $value['title'],
                     'post_name'        => $value['slug'],
@@ -252,6 +250,7 @@ class syncController extends RestController
                 if(empty($post))
                 {
                     $post_id = wp_insert_post( wp_slash( (array) $add_post),true );
+                    $post['ID'] =  $post_id;
                     
                 }else{
                     $add_post['ID'] = $post['ID'];
@@ -364,6 +363,31 @@ class syncController extends RestController
 
             $display = $value['display'] == 'hide' ? 'hide' : 'show';
             update_term_meta( $arr['term_id'] , 'display', $display );
+
+            $value['header_desc'] = empty($value['header_desc']) ?  '' : $value['header_desc'];
+            $value['footer_desc'] = empty($value['footer_desc']) ?  '' : $value['footer_desc'];
+            $value['background'] = empty($value['background']) ?  '' : $value['background'];
+
+            update_term_meta($arr['term_id'], 'header_desc', $value['header_desc'],true);
+            update_term_meta($arr['term_id'], 'footer_desc', $value['footer_desc'],true);
+            update_term_meta($arr['term_id'], 'background', $value['background'],true);
+
+            //更新排序
+            // $object_ids = (array) $wpdb->get_row("SELECT object_id FROM $wpdb->term_relationships order by `object_id` desc LIMIT 1", ARRAY_A);
+            // $object_id = ++$object_ids['object_id'];
+            // wp_set_object_terms($object_id,$arr['term_id'],$taxonomy);
+
+            // $list_order = $value['list_order'];
+            // $list_order = empty($list_order) ? 0 : $list_order;
+            // $wpdb->update(
+            //     $wpdb->term_relationships,
+            //     array(
+            //         'term_order'        => $list_order
+            //     ),
+            //     array(
+            //         'object_id'        => $object_id
+            //     )
+            // );
 
             //保存对应关系
             $parentArr[$value['id']] = $arr['term_id'];
