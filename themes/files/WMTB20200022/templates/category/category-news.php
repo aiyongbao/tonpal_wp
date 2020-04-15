@@ -25,7 +25,9 @@ $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
 // 当前页面url
-$page_url = get_lang_page_url();
+$category = get_category($cat);
+$get_full_path = get_full_path();
+$page_url = $get_full_path.get_category_link($category->term_id);
 ?>
 
 

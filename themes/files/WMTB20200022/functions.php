@@ -104,25 +104,26 @@ function get_category_root_id($cat)
 }
 
 /**
- * 获取各级父级url 和 slug
+ * 获取各级父级url 和 name
  * $cat 当前id
  * @author zhuoyue
  */
-function get_category_url_and_slug($cat)
+function get_category_url_and_name($cat)
 {
     $category_url_array = [];
+    $get_full_path = get_full_path();
     $this_category = get_category($cat); // 取得当前分类
     array_push($category_url_array,array(
-        'name' => $this_category->slug,
-        'link' => get_category_link($this_category->term_id)
+        'name' => $this_category->name,
+        'link' => $get_full_path.get_category_link($this_category->term_id)
     ));
 
     while ($this_category->category_parent) // 若当前分类有上级分类时，循环
     {
         $this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
         array_push($category_url_array,array(
-            'name' => $this_category->slug,
-            'link' => get_category_link($this_category->term_id)
+            'name' => $this_category->name,
+            'link' => $get_full_path.get_category_link($this_category->term_id)
         ));
 
     }
@@ -249,59 +250,42 @@ function wpbeginner_numeric_posts_nav() {
     $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
     $max   = intval( $wp_query->max_num_pages );
 
-    /** Add current page to the array */
-    if ( $paged >= 1 )
-        $links[] = $paged;
-
-    /** Add the pages around the current page to the array */
-    if ( $paged >= 3 ) {
-        $links[] = $paged - 1;
-        $links[] = $paged - 2;
+    if ($max <= 10 ) {
+        for ($i = 1;$i<=$max;$i+=1) {
+            $links[] = $i;
+        }
+    } else {
+        if ($paged > 6) {
+            $add = $paged + 4;
+            $dec = $paged - 5;
+            $min_num = $max >= $add ? ($dec > 1 ? $dec : 1 ) : $max - 9;
+            $max_num = $max >= $add ? $add : $max ;
+            for ($i = $min_num;$i<=$max_num;$i+=1) {
+                $links[] = $i;
+            }
+        }else{
+            for ($i = 1;$i<=10;$i+=1) {
+                $links[] = $i;
+            }
+        }
     }
 
-    if ( ( $paged + 2 ) <= $max ) {
-        $links[] = $paged + 2;
-        $links[] = $paged + 1;
-    }
 
     echo '<div class="page-bar"><div class="pages">' . "\n";
+    // 首页
+    echo '<a href="'.get_pagenum_link(1).'">Head</a>'. "\n";
+    // 上一页
+    if ( get_previous_posts_link() ) printf( get_previous_posts_link('Prev') );
 
-    /** Previous Post Link */
-    if ( get_previous_posts_link() )
-        printf( get_previous_posts_link('Prev') );
-
-    /** Link to first page, plus ellipses if necessary */
-    if ( ! in_array( 1, $links ) ) {
-        $class = 1 == $paged ? ' class="active"' : '';
-
-        printf( '<a %s href="%s">%s</a>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
-
-        if ( ! in_array( 2, $links ) )
-
-            echo '<a href="javascript:;"> ... </a>';
+    foreach ( (array) $links as $item ) {
+        $class = $paged == $item ? ' class="active"' : '';
+        printf( '<a %s href="%s">%s</a>' . "\n", $class, esc_url( get_pagenum_link( $item ) ), $item );
     }
 
-    /** Link to current page, plus 2 pages in either direction if necessary */
-    sort( $links );
-    foreach ( (array) $links as $link ) {
-        $class = $paged == $link ? ' class="active"' : '';
-        printf( '<a %s href="%s">%s</a>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
-    }
-
-    /** Link to last page, plus ellipses if necessary */
-    if ( ! in_array( $max, $links ) ) {
-        if ( ! in_array( $max - 1, $links ) )
-            // $next = next_posts();
-            echo '<a href="javascript:;"> ... </a>';
-
-        $class = $paged == $max ? ' class="active"' : '';
-        printf( '<a %s href="%s">%s</a>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
-    }
-
-    /** Next Post Link */
-    if ( get_next_posts_link() )
-        printf( get_next_posts_link('Next') );
-
+    // 下一页
+    if ( get_next_posts_link() ) printf( get_next_posts_link('Next') );
+    // 尾页
+    echo '<a href="'.get_pagenum_link($max).'">Foot</a>'. "\n";
     echo '</div></div>' . "\n";
 
 }
@@ -380,7 +364,24 @@ function get_breadcrumbs()
         echo "</nav>";
     }
 }
+/**
+ * 获取home_path
+ * $abbr [是否需要abbr] 1需要 0不需要
+ * @author zhuoyue
+ */
+function get_full_path ($abbr = 0) {
+    $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+    $domain = $_SERVER['HTTP_HOST'];
 
+    $path = $http_type.$domain;
+    if($abbr = 1) {
+        $abbr = ifEmptyText(get_query_var('lang'));
+        if(!empty($abbr)) {
+            $path .= '/'.$abbr;
+        }
+    }
+    return $path;
+}
 /**
  * 获取站点域名 不带.com
  * $_SERVER php超全局变量
@@ -397,6 +398,7 @@ function get_host_name () {
     }
     echo $host;
 }
+
 /**
  * 获取首页url
  * 因为本站涉及多语种 需要对home_url() 做二次封装
@@ -413,8 +415,7 @@ function get_lang_home_url () {
  */
 function get_lang_page_url () {
     global $wp; // Class_Reference/WP 类实例
-    $page_url = add_query_arg($wp->request);
-    return $page_url;
+    return get_full_path().add_query_arg($wp->request);
 }
 /**
  * 获取语言数据
@@ -426,3 +427,26 @@ function get_languages(){
 }
 // 祛除摘要自动添加分段
 remove_filter( 'the_excerpt', 'wpautop' );
+
+function get_category_objects($parent_id)
+{
+    $object = get_term_children($parent_id,'category');
+
+    $condition = [];
+    foreach($object as $id){
+        $condition[] = 'term_taxonomy_id = '.$id;
+    }
+
+    $condition_str = implode(' OR ',$condition);
+
+    global $wpdb;
+
+
+    $result = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE ($condition_str)");
+
+    $object_arr= [];
+    foreach($result as $object){
+        $object_arr[] = $object->object_id;
+    }
+    return $object_arr;
+}

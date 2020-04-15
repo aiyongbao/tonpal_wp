@@ -50,13 +50,13 @@ set_query_var('gooleId', $gooleId);
                     <div class="foot-cont">
                         <ul class="contact-list">
                             <?php if ($footer_contact_phone !== '' ) { ?>
-                                <li class="foot_tel has-mobile-link"><a class="link" href="tel:<?php echo $footer_contact_phone ?>"><?php echo $footer_contact_phone ?></a></li>
+                                <li class="foot_tel has-mobile-link"><a class="link" href="tel:<?php echo $footer_contact_phone ?>" rel="nofollow" ><?php echo $footer_contact_phone ?></a></li>
                             <?php } ?>
                             <?php if ($footer_contact_mobile !== '' ) { ?>
-                                <li class="foot_tel has-mobile-link"><a class="link" href="tel:<?php echo $footer_contact_mobile ?>"><?php echo $footer_contact_mobile ?></a></li>
+                                <li class="foot_tel has-mobile-link"><a class="link" href="tel:<?php echo $footer_contact_mobile ?>" rel="nofollow" ><?php echo $footer_contact_mobile ?></a></li>
                             <?php } ?>
                             <?php if ($footer_contact_email !== '' ) { ?>
-                                <li class="foot_email"><label>Email:</label><a href="mailto:<?php echo $footer_contact_email ?>"><?php echo $footer_contact_email ?></a></li>
+                                <li class="foot_email"><label>Email:</label><a href="mailto:<?php echo $footer_contact_email ?>" rel="nofollow" ><?php echo $footer_contact_email ?></a></li>
                             <?php } ?>
                             <?php if ($footer_contact_address !== '' ) { ?>
                                 <li class="foot_addr"><?php echo $footer_contact_address ?></li>
@@ -81,7 +81,7 @@ set_query_var('gooleId', $gooleId);
                     <div class="foot-cont">
                         <?php foreach ($footer_product_item as $item ) { ?>
                             <div class="new-item">
-                                <span class="img"><a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"><img src="<?php echo ifEmptyText($item['image']) ?>_thumb_262x262.jpg" alt="<?php echo ifEmptyText($item['title']) ?>"></a></span>
+                                <span class="img"><a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"><img src="<?php echo ifEmptyText($item['image']) ?>_thumb_262x262.jpg" alt="<?php echo ifEmptyText($item['title']) ?>" title="<?php echo ifEmptyText($item['title']) ?>" /></a></span>
                                 <figcaption class="item-info">
                                     <h3 class="title"><a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"><?php echo ifEmptyText($item['title']) ?></a></h3>
                                 </figcaption>
@@ -128,7 +128,7 @@ set_query_var('gooleId', $gooleId);
     <?php } else { ?>
     <a href="tel:<?php echo $footer_contact_mobile ?>" rel="nofollow"><img src="//q.zvk9.com/Model15/assets/images/btm1.png"></a>
     <?php } ?>
-    <a href="<?php echo $footer_mobile_link ?>"><img src="//q.zvk9.com/Model15/assets/images/btm2.png"></a>
+    <a href="<?php echo $footer_mobile_link ?>" rel="nofollow" ><img src="//q.zvk9.com/Model15/assets/images/btm2.png"></a>
 </div>
 <?php if ( ifEmptyText($googleExtantion) !== '' ) {
     echo $googleExtantion;
