@@ -42,7 +42,7 @@ $page_url = get_lang_page_url();
     <meta property="og:title" content="<?php echo $post->post_title; ?>" />
     <meta property="og:type" content="product" />
     <meta property="og:url" content="<?php echo $page_url; ?>" />
-    <meta property="og:description" content="<?php the_excerpt(); ?>" />
+    <meta property="og:description" content="<?php echo $seo_description; ?>" />
     <meta property="og:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
     <meta property="og:site_name" content="<?php get_host_name(); ?>" />
     <!-- itemprop -->
@@ -53,7 +53,7 @@ $page_url = get_lang_page_url();
     <meta name="twitter:site" content="@affiliate_<?php get_host_name();; ?>" />
     <meta name="twitter:creator" content="@affiliate_<?php get_host_name(); ?>" />
     <meta name="twitter:title" content="<?php echo $post->post_title; ?>" />
-    <meta name="twitter:description" content="<?php echo $post->post_title; ?>" />
+    <meta name="twitter:description" content="<?php echo $seo_description; ?>" />
     <meta name="twitter:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">

@@ -4,9 +4,9 @@ global $wp; // Class_Reference/WP 类实例
 // products.json -> vars 数据获取
 $theme_vars = json_config_array('products','vars');
 // Text 数据处理
-$products_bg = ifEmptyText($theme_vars['bg']['value']);
-$products_header_desc = ifEmptyText($theme_vars['headerDesc']['value']);
-$products_footer_desc = ifEmptyText($theme_vars['footerDesc']['value']);
+$products_bg = ifEmptyText(get_term_meta($cat,'background',true));
+$products_header_desc = ifEmptyText(get_term_meta($cat,'header_desc',true));
+$products_footer_desc =ifEmptyText(get_term_meta($cat,'footer_desc',true));
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
 $subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
@@ -26,7 +26,8 @@ $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
 // 当前页面url
-$page_url = get_lang_page_url();
+$get_full_path = get_full_path();
+$page_url = $get_full_path.get_category_link($category->term_id);
 ?>
     <!--nextpage-->
 
