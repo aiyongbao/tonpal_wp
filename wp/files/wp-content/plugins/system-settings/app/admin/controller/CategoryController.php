@@ -22,16 +22,42 @@ class CategoryController extends RestController{
                 if(empty($display)){
                     $display = "show";
                 }
-
                 return ['display' => $display];
+            }
+        ));
+
+        register_rest_field('category', 'header_desc' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'header_desc', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'footer_desc' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'footer_desc', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'background' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'background', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
             }
         ));
         
         add_action("rest_after_insert_category",function($term,$request,$bool){
             
+            global $wpdb;
             if($bool && $request['type'] == 'list')
             {
-                global $wpdb;
                 $item = $this->get_json_toArray(get_template_directory() . '/json/portal/category.json');
                 $data = [
                     'object_id' => $term->term_id,
@@ -43,8 +69,7 @@ class CategoryController extends RestController{
                     'description' => $item['description'],
                     'more' => json_encode($item ),
                     'config_more' => json_encode($item)
-                  ];
-
+                ];
                
                 $res = Db::name('theme_file')->insert( $data );
                 $insert_id = $wpdb->insert_id;
@@ -56,7 +81,37 @@ class CategoryController extends RestController{
                 ]);
             }
 
-            $res = update_term_meta( $term->term_id, 'display', $request['display'] );
+            $header_desc = $request['header_desc'];
+            $footer_desc = $request['footer_desc'];
+            $background = $request['background'];
+
+            //删除原来的数据
+            delete_term_meta($term->term_id,'header_desc');
+            delete_term_meta($term->term_id,'footer_desc');
+            delete_term_meta($term->term_id,'background');
+
+            //新增或更新
+            update_term_meta($term->term_id, 'header_desc', $header_desc);
+            update_term_meta($term->term_id, 'header_desc', $footer_desc);
+            update_term_meta($term->term_id, 'background', $background);
+            update_term_meta($term->term_id, 'display', $request['display']);
+
+            //更新排序
+            // $object_ids = (array) $wpdb->get_row("SELECT object_id FROM $wpdb->term_relationships order by `object_id` desc LIMIT 1", ARRAY_A);
+            // $object_id = ++$object_ids['object_id'];
+            // wp_set_object_terms($object_id,$term->term_id,'category');
+
+            // $list_order = $request['list_order'];
+            // $list_order = empty($list_order) ? 0 : $list_order;
+            // $wpdb->update(
+            //     $wpdb->term_relationships,
+            //     array(
+            //         'term_order'        => $list_order
+            //     ),
+            //     array(
+            //         'object_id'        => $object_id
+            //     )
+            // );
 
         },10,3);
     }

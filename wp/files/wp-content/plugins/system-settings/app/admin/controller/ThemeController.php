@@ -76,7 +76,7 @@ class ThemeController extends RestController{
         }
         file_put_contents($themeFile, $file);
         //删除当前文件下文件
-        recursiveDelete($themeFilePath.$theme_name); 
+        //recursiveDelete($themeFilePath.$theme_name); 
       
         if(file_exists($themeFile)) {
             $zip = new \ZipArchive();
