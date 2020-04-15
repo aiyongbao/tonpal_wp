@@ -75,7 +75,7 @@ $page_url = get_lang_page_url();
                                 <figure class="item-wrap">
                                     <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" class="item-img"
                                        style="width:280px;height:280px;display:table-cell;vertical-align:middle;">
-                                        <img width="50" height="50" src="<?php echo ifEmptyText($item['image']) ?>"/>
+                                        <img src="<?php echo ifEmptyText($item['image']) ?>"/>
                                     </a>
                                     <figcaption class="item-info">
                                         <h3 class="item-title">
@@ -108,7 +108,7 @@ $page_url = get_lang_page_url();
                             <?php foreach ($home_special_item as $item) { ?>
                                 <li class="synopsis-item">
                                     <div class="item-wrap">
-                                        <figure class="item-img"><img src="<?php echo ifEmptyText($item['icon']) ?>" alt="icon"></figure>
+                                        <figure class="item-img"><img  width="50" height="50" src="<?php echo ifEmptyText($item['icon']) ?>" alt="icon"></figure>
                                         <figcaption class="item-info">
                                             <h2 class="item-title"><?php echo ifEmptyText($item['title']) ?></h2>
                                             <div class="item-desc"><?php echo ifEmptyText($item['desc']) ?></div>
