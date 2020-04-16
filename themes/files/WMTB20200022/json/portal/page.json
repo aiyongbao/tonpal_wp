@@ -35,7 +35,7 @@
             "title": {
                 "title": "标题",
                 "type": "text",
-                "value": "page",
+                "value": "Page",
                 "tip": "标题",
                 "rule": {
                     "require": true

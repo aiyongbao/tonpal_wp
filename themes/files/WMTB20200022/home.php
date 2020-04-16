@@ -18,18 +18,19 @@ $home_news = $theme_widgets['news'];
 
 // SEO
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
-$seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
-$seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
+$seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
+$seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 // 当前页面url
 $page_url = get_full_path();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 <head>
     <meta charset="utf-8">
     <title><?php echo $seo_Title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_Description; ?>" />
-    <meta name="description" content="<?php echo $seo_Keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />
 
     <link rel="canonical" href="<?php echo $page_url;?>" />
     <?php get_template_part( 'templates/components/head' )?>

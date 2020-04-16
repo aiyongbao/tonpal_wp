@@ -1,12 +1,4 @@
 <?php
-
-// Text 数据处理
-$tags_title = 'tags';
-
-// SEO
-$seo_title = '';
-$seo_description = '';
-$seo_keywords = '';
 /**
  * $wp_query 是全局变量
  * $paged 当前页数
@@ -23,14 +15,12 @@ $page_url = get_lang_page_url();
 <!--nextpage-->
 
 <!doctype html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
 
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
-    <title><?php echo $seo_title; ?><?php if ( $paged > 1 ) printf('–%s',$paged); ?></title>
-    <meta name="keywords" content="<?php echo $seo_description; ?>" />
-    <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <title><?php echo $tagName; ?><?php if ( $paged > 1 ) printf('–%s',$paged); ?></title>
 
     <link rel="canonical" href="<?php echo $page_url;?>" />
     <?php if($paged !== 0) { ?>

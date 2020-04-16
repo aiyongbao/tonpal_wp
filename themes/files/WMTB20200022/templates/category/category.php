@@ -2,9 +2,9 @@
 global $wp_query; // Class_Reference/WP_Query 类实例
 global $wp; // Class_Reference/WP 类实例
 // category.json -> vars 数据获取
-$theme_vars = json_config_array('category','vars');
+$theme_vars = json_config_array_category('category','vars',$cat);
 // Text 数据处理
-$category_title = ifEmptyText($theme_vars['title']['value'],'category');
+$category_title = ifEmptyText($theme_vars['title']['value']);
 $category_read_more = ifEmptyText($theme_vars['readMore']['value']);
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value']);
@@ -27,13 +27,14 @@ $get_full_path = get_full_path();
 $page_url = $get_full_path.get_category_link($category->term_id);
 ?>
 <!doctype html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
     <title><?php echo $seo_title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_description; ?>" />
-    <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />
     <link rel="canonical" href="<?php echo $page_url;?>" />
 
     <?php if($paged !== 0) { ?>
@@ -77,11 +78,14 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                 <li class="blog-item news-list-item">
                                     <figure class="item-wrap">
                                         <figcaption class="item-info">
-                                            <h3 class="item-title"><a
-                                                        href="/<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                            <h3 class="item-title">
+                                                <a href="<?php echo get_lang_home_url().'/list'.get_permalink( 0 ); ?>">
+                                                    <?php the_title(); ?>
+                                                </a>
+                                            </h3>
                                             <time datetime="<?php echo esc_html( get_the_date() ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
                                             <div class="item-detail"><?php the_excerpt(); ?></div>
-                                            <a href="<?php the_permalink(); ?>" class="item-more"><?php echo $category_read_more; ?></a>
+                                            <a href="<?php echo get_lang_home_url().'/list'.get_permalink( 0 ); ?>" class="item-more"><?php echo $category_read_more; ?></a>
                                         </figcaption>
                                     </figure>
                                 </li>
