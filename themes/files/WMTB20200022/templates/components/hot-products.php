@@ -40,7 +40,6 @@ $args = array(
 );
 $recent_posts = wp_get_recent_posts($args,'ARRAY_A');
 wp_reset_query(); // 重置query 防止影响其他query查询
-$path = get_query_var('lang') ? '/'.get_query_var('lang').'/product' : '/product';
 if(ifEmptyArray($recent_posts) !== []){
 ?>
     <div class="side-tit-bar">
@@ -57,11 +56,11 @@ if(ifEmptyArray($recent_posts) !== []){
                     ?>
                     <li class="side_product_item">
                         <figure>
-                            <a href="<?php echo $path.get_permalink($recent["ID"]); ?>" class="item-img">
+                            <a href="<?php echo get_permalink($recent["ID"]); ?>" class="item-img">
                                 <img src="<?php echo $thumbnail ?>_thumb_262x262.jpg" alt="<?php echo $recent["post_title"]; ?>" />
                             </a>
                             <figcaption>
-                                <a href="<?php echo $path.get_permalink($recent["ID"]); ?>" title="<?php echo $recent["post_title"]; ?>">
+                                <a href="<?php echo get_permalink($recent["ID"]); ?>" title="<?php echo $recent["post_title"]; ?>">
                                     <?php echo $recent["post_title"]; ?>
                                 </a>
                             </figcaption>
