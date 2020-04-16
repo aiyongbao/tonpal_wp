@@ -14,13 +14,14 @@ $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 ?>
 <!doctype html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 
 <head>
     <meta charset="utf-8">
     <title><?php echo $seo_title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_description; ?>" />
-    <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />
 
     <?php get_template_part('templates/components/head'); ?>
 </head>

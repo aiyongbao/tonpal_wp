@@ -25,18 +25,21 @@ $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
 // 当前页面url
-$page_url = get_lang_page_url();
+$category = get_category($cat);
+$get_full_path = get_full_path();
+$page_url = $get_full_path.get_category_link($category->term_id);
 ?>
 
 
 <!doctype html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
     <title><?php echo $seo_title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_description; ?>" />
-    <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />>
     <link rel="canonical" href="<?php echo $page_url; ?>" />
 
     <?php if($paged !== 0) { ?>

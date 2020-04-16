@@ -32,24 +32,6 @@
                     "require": true
                 }
             },
-            "bg": {
-                "title": "背景图",
-                "type": "image",
-                "value": "",
-                "tip": "未填则隐藏"
-            },
-            "headerDesc": {
-                "title": "头部描述",
-                "type": "textarea",
-                "value": "",
-                "tip": "未填则隐藏"
-            },
-            "footerDesc": {
-                "title": "底部描述",
-                "type": "textarea",
-                "value": "",
-                "tip": "未填则隐藏"
-            },
             "nullTip": {
                 "title": "提示语",
                 "type": "text",

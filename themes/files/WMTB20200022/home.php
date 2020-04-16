@@ -18,18 +18,19 @@ $home_news = $theme_widgets['news'];
 
 // SEO
 $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
-$seo_Description = ifEmptyText($theme_vars['seoDescription']['value']);
-$seo_Keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
+$seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
+$seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 // 当前页面url
-$page_url = get_lang_page_url();
+$page_url = get_full_path();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 <head>
     <meta charset="utf-8">
     <title><?php echo $seo_Title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_Description; ?>" />
-    <meta name="description" content="<?php echo $seo_Keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />
 
     <link rel="canonical" href="<?php echo $page_url;?>" />
     <?php get_template_part( 'templates/components/head' )?>
@@ -75,7 +76,7 @@ $page_url = get_lang_page_url();
                                 <figure class="item-wrap">
                                     <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" class="item-img"
                                        style="width:280px;height:280px;display:table-cell;vertical-align:middle;">
-                                        <img src="<?php echo ifEmptyText($item['image']) ?>"/>
+                                        <img src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['title']) ?>" title="<?php echo ifEmptyText($item['title']) ?>" />
                                     </a>
                                     <figcaption class="item-info">
                                         <h3 class="item-title">
@@ -145,7 +146,7 @@ $page_url = get_lang_page_url();
                             </div>
                         </div>
                         <div class="about-img">
-                            <img src="<?php echo $home_about_image ?>" alt="<?php echo $home_about_title ?>"/>
+                            <img src="<?php echo $home_about_image ?>" alt="<?php echo $home_about_title ?>" title="<?php echo $home_about_title ?>" />
                         </div>
                     </div>
                 </div>
@@ -169,7 +170,7 @@ $page_url = get_lang_page_url();
                                         <a href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>" title="<?php echo ifEmptyText($item['title']) ?>"
                                         class="item-img">
                                         <img src="<?php echo ifEmptyText($item['image']) ?>_thumb_262x262.jpg"
-                                             alt="<?php echo ifEmptyText($item['title']) ?>"/>
+                                             alt="<?php echo ifEmptyText($item['title']) ?>" title="<?php echo ifEmptyText($item['title']) ?>" />
                                         </a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title">
@@ -227,7 +228,7 @@ $page_url = get_lang_page_url();
                                     <figure class="banner-img" style="width:387px;height:199px">
                                         <img style="width:387px;height:199px"
                                              src="<?php echo ifEmptyText($item['image']) ?>"
-                                             alt="<?php echo ifEmptyText($item['title']) ?>">
+                                             alt="<?php echo ifEmptyText($item['title']) ?>" title="<?php echo ifEmptyText($item['title']) ?>" />
                                     </figure>
                                     <figcaption class="banner-info">
                                         <h4 class="item-tit"><?php echo ifEmptyText($item['title']) ?></h4>

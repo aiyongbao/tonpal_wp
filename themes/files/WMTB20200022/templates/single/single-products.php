@@ -25,13 +25,14 @@ $page_url = get_lang_page_url();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
     <title><?php echo $seo_title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_description; ?>" />
-    <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />
 
     <link rel="canonical" href="<?php echo $page_url; ?>" />
     <!-- mobile responsive meta -->
@@ -42,7 +43,7 @@ $page_url = get_lang_page_url();
     <meta property="og:title" content="<?php echo $post->post_title; ?>" />
     <meta property="og:type" content="product" />
     <meta property="og:url" content="<?php echo $page_url; ?>" />
-    <meta property="og:description" content="<?php the_excerpt(); ?>" />
+    <meta property="og:description" content="<?php echo $seo_description; ?>" />
     <meta property="og:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
     <meta property="og:site_name" content="<?php get_host_name(); ?>" />
     <!-- itemprop -->
@@ -53,7 +54,7 @@ $page_url = get_lang_page_url();
     <meta name="twitter:site" content="@affiliate_<?php get_host_name();; ?>" />
     <meta name="twitter:creator" content="@affiliate_<?php get_host_name(); ?>" />
     <meta name="twitter:title" content="<?php echo $post->post_title; ?>" />
-    <meta name="twitter:description" content="<?php echo $post->post_title; ?>" />
+    <meta name="twitter:description" content="<?php echo $seo_description; ?>" />
     <meta name="twitter:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">

@@ -1,7 +1,7 @@
 <?php
 $post = get_post();
 // page.json -> vars 数据获取
-$theme_vars = json_config_array('page','vars');
+$theme_vars = json_config_array_category('page','vars',$post->ID);
 // Text 数据处理
 $page_title = ifEmptyText($theme_vars['title']['value']);
 $page_rich_text = ifEmptyText($theme_vars['richText']['value']);
@@ -13,14 +13,15 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 
 <head>
     <meta charset="utf-8">
     <!-- SEO -->
     <title><?php echo $seo_title; ?></title>
-    <meta name="keywords" content="<?php echo $seo_description; ?>" />
-    <meta name="description" content="<?php echo $seo_keywords; ?>" />
+    <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+    <meta name="description" content="<?php echo $seo_description; ?>" />
 
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,28 +37,10 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             width: 100% !important;
         }
 
-        /* .product-image {
-             width: 381px;
-             height: 381px;
-             display: flex;
-             justify-content: center;
-             align-items: center;
-         }*/
-
         .product-view .image-additional li a {
             width: 65.75px;
             height: 65.75px;
         }
-
-        /*@media only screen and (max-width: 950px) {
-            .product-image {
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }*/
     </style>
 </head>
 
