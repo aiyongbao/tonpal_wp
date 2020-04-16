@@ -26,6 +26,15 @@ class CategoryController extends RestController{
             }
         ));
 
+        register_rest_field('category', 'list_order' ,array(
+            'get_callback' => function ($params) {
+                return Db::name('terms')->where('term_id',$params['id'])->value('list_order');
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                //return get_term_field('list_order',$object->ID,'category');
+            }
+        ));
+
         register_rest_field('category', 'header_desc' ,array(
             'get_callback' => function ($params) {
                 return get_term_meta($params['id'], 'header_desc', true);
@@ -96,22 +105,11 @@ class CategoryController extends RestController{
             update_term_meta($term->term_id, 'background', $background);
             update_term_meta($term->term_id, 'display', $request['display']);
 
-            //更新排序
-            // $object_ids = (array) $wpdb->get_row("SELECT object_id FROM $wpdb->term_relationships order by `object_id` desc LIMIT 1", ARRAY_A);
-            // $object_id = ++$object_ids['object_id'];
-            // wp_set_object_terms($object_id,$term->term_id,'category');
+            
 
-            // $list_order = $request['list_order'];
-            // $list_order = empty($list_order) ? 0 : $list_order;
-            // $wpdb->update(
-            //     $wpdb->term_relationships,
-            //     array(
-            //         'term_order'        => $list_order
-            //     ),
-            //     array(
-            //         'object_id'        => $object_id
-            //     )
-            // );
+            //更新排序
+            $list_order = isset($request['list_order']) ? $request['list_order'] :0;
+            Db::name('terms')->where('term_id',$term->term_id)->update(['list_order' => $list_order]);
 
         },10,3);
     }
