@@ -2,11 +2,11 @@
 $sideBarMenu = ifEmptyText(get_query_var('sideBarMenu'));
 $product_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
 $object_ids = get_category_objects($product_id);
+// 获取一级类目
 $data = get_categories( [
     'taxonomy' => 'category',
     'parent' => $product_id,
-    'object_ids' => $object_ids,
-    'orderby' => 'term_order',
+    'orderby' => 'list_order',
     'order' => 'desc',
 ] );
 $list = [];
@@ -14,11 +14,11 @@ if(!empty($data)){
     foreach ($data as $item) {
         $links=get_category_link($item->term_id);
         $name = $item->name;
+        // 获取二级类目
         $child = get_categories( [
             'taxonomy' => 'category',
             'parent' => $item->term_id,
-            'object_ids' => $object_ids,
-            'orderby' => 'term_order',
+            'orderby' => 'list_order',
             'order' => 'desc'
         ] );
         $childArray=[];

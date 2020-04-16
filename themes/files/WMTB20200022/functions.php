@@ -213,6 +213,24 @@ function json_config_array($file,$type = 'vars',$public = 0)
         }
     }
 }
+//根据当前文件全局获取配置文件变量
+function json_config_array_category($file,$type = 'vars',$object_id)
+{
+    $file = 'portal/'.$file;
+    global $wpdb; // Class_Reference/wpdb 类实例
+    $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}theme_file WHERE file = %s AND is_public = %d AND object_id = %d LIMIT 1",$file, 0, $object_id ) );
+    if($result !== false)
+    {
+        $result = (array)$result;
+        $more = json_decode($result['more'],true);
+        $config_more = json_decode($result['config_more'],true);
+
+        if(isset($config_more['more'][$type])){
+            $data = $config_more['more'][$type];
+            return $data;
+        }
+    }
+}
 /**
  * ifEmptyText [字符判空]
  * @param $value [需要进行判空的值] [必传]
@@ -345,7 +363,6 @@ function get_breadcrumbs()
                 echo "<li><strong>".the_title('','', FALSE)."</strong></li>";
 
             } else {
-                $title = the_title('','', FALSE);
                 $ancestors = array_reverse( get_post_ancestors( $post->ID ) );
                 array_push($ancestors, $post->ID);
 
@@ -425,8 +442,6 @@ function get_languages(){
     $data = Db::table('wp_language')->where('status','1')->select();
     return $data;
 }
-// 祛除摘要自动添加分段
-remove_filter( 'the_excerpt', 'wpautop' );
 
 function get_category_objects($parent_id)
 {
@@ -450,3 +465,32 @@ function get_category_objects($parent_id)
     }
     return $object_arr;
 }
+function custom_posts_per_page($query){
+    if(is_archive()){
+        global $wp;
+        $slug = $wp->request;
+        $slug = explode('/',$slug);
+
+        if (empty(get_query_var('lang'))) {
+            $slug = $slug[0];
+        } else {
+            $slug = $slug[1];
+        }
+        if ( $slug === 'product' ) {
+            $query->set('posts_per_page',12);
+        }
+        else if ( $slug === 'news' ) {
+            $query->set('posts_per_page',10);
+        }
+    }
+}
+add_action('pre_get_posts','custom_posts_per_page');
+
+
+// 祛除摘要自动添加分段
+remove_filter( 'the_excerpt', 'wpautop' );
+
+// WordPress 标题中的横线“-”被转义成“–”的问题
+remove_filter('the_title', 'wptexturize');
+remove_filter('wp_title', 'wptexturize');
+remove_filter('single_post_title', 'wptexturize');

@@ -2,7 +2,7 @@
 // 数据获取
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?php echo get_query_var('lang') ? get_query_var('lang') : 'en' ?>">
 <head>
     <meta charset="utf-8">
     <title>index</title>
