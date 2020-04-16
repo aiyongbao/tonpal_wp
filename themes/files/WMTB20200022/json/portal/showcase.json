@@ -68,7 +68,16 @@
                         "title": "标题",
                         "type": "text",
                         "value": "",
-                        "tip": "",
+                        "tip": "标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "type": "textarea",
+                        "value": "",
+                        "tip": "描述",
                         "rule": {
                             "require": true
                         }

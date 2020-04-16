@@ -25,7 +25,8 @@ if ( have_posts() ) {
 <!--nextpage-->
 
 <!doctype html>
-<html>
+<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+
 
 <head>
     <meta charset="utf-8">

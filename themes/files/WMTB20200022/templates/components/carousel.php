@@ -10,7 +10,7 @@ if($carousel_vars['display'] == 1) {
             <?php foreach ( $carousel_vars['vars']['items']['value'] as $item ) { ?>
                 <div class="swiper-slide">
                     <img src="<?php echo $item['image'] ?>"
-                         alt="<?php echo $item['title'] ?>">
+                         alt="<?php echo $item['title'] ?>" title="<?php echo ifEmptyText($item['title']) ?>" />
                 </div>
             <?php } ?>
         </div>

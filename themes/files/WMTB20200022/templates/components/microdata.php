@@ -9,27 +9,25 @@
  * @author zhuoyue
  */
 global $wp; // Class_Reference/WP 类实例
-
 // 先判断当前页面类型
 if( is_category() ) { // 列表页
-    $category_url_array = get_category_url_and_slug($cat);
+    $category_url_array = get_category_url_and_name($cat);
 } elseif ( is_single() ) { // 详情页
-    $category_url_array = get_category_url_and_slug(ROOT_CATEGORY_CID);
+    $category_url_array = get_category_url_and_name(ROOT_CATEGORY_CID);
 } else { // 单页面
     // 当前页面url
     $page_url = get_lang_page_url();
     // 首页url
-    $home_url = get_lang_home_url();
-    $page_name = get_post()->post_name;
+    $page_name = get_post()->post_title;
     $category_url_array = array(
-            array(
-                'link' => $page_url,
-                'name' => $page_name
-            ),
-            array(
-                'link' => $home_url,
-                'name' => 'home'
-            )
+        array(
+            'link' => $page_url,
+            'name' => $page_name
+        ),
+        array(
+            'link' => get_full_path(1),
+            'name' => 'Home'
+        )
     );
 }
 // 统计数量
@@ -46,7 +44,7 @@ $count = count($category_url_array);
                     "position": '.$i.',
                     "item": {
                         "@id": "'.$category_url_array[$count-$i]['link'].'",
-                        "name": "'.$category_url_array[$count-$i]['name'].'"
+                        "name": "'.ucfirst($category_url_array[$count-$i]['name']).'"
                     }
                 }
             ';if ($i < $count) { echo ',' ; }
