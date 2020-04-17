@@ -151,8 +151,12 @@ add_filter("pre_post_link",function($permalink,$post,$leavename){
         $permalink = '/product'.$permalink;
     }
 
-    if(strpos($_SERVER['REQUEST_URI'],'news') !== false){
+    elseif(strpos($_SERVER['REQUEST_URI'],'news') !== false){
         $permalink = '/news'.$permalink;
+    }
+
+    else{
+        $permalink = '/list'.$permalink;
     }
 
     return $permalink;
