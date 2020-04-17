@@ -50,7 +50,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                             <li class="product-item certificate-item">
                                 <figure class="item-wrap">
                                     <a href="<?php echo ifEmptyText($item['image'])?>" rel="<?php echo ifEmptyText($item['title'])?>" title="<?php echo ifEmptyText($item['title'])?>" class="item-img certificate-fancy">
-                                    <img src="<?php echo ifEmptyText($item['image'])?>" alt="<?php echo ifEmptyText($item['title'])?>"/>
+                                    <img src="<?php echo ifEmptyText($item['image'])?>" alt="<?php echo ifEmptyText($item['desc'])?>" title="<?php echo ifEmptyText($item['title'])?>" />
                                     </a>
                                     <figcaption class="item-info">
                                         <h3 class="item-title"><?php echo ifEmptyText($item['title'])?></h3>
