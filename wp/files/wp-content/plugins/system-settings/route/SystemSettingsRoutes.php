@@ -264,7 +264,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $inquiry = new InquiryController();
-                return middleware::run('api')->init( $inquiry->index($request) , $request);
+                return middleware::run('api')->init( $inquiry->index($request), $request);
             }
         ));
         
@@ -273,7 +273,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return $sync->dbExecute($request);
+                return middleware::run('api')->init($sync->dbExecute($request), $request);
             }
         ));
 

@@ -373,21 +373,8 @@ class syncController extends RestController
             update_term_meta($arr['term_id'], 'background', $value['background'],true);
 
             //更新排序
-            // $object_ids = (array) $wpdb->get_row("SELECT object_id FROM $wpdb->term_relationships order by `object_id` desc LIMIT 1", ARRAY_A);
-            // $object_id = ++$object_ids['object_id'];
-            // wp_set_object_terms($object_id,$arr['term_id'],$taxonomy);
-
-            // $list_order = $value['list_order'];
-            // $list_order = empty($list_order) ? 0 : $list_order;
-            // $wpdb->update(
-            //     $wpdb->term_relationships,
-            //     array(
-            //         'term_order'        => $list_order
-            //     ),
-            //     array(
-            //         'object_id'        => $object_id
-            //     )
-            // );
+            $list_order = isset($value['list_order']) ? $value['list_order'] : 0 ;
+            Db::name('terms')->where('term_id',$arr['term_id'])->update(['list_order' => $list_order]);
 
             //保存对应关系
             $parentArr[$value['id']] = $arr['term_id'];
