@@ -79,13 +79,13 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                     <figure class="item-wrap">
                                         <figcaption class="item-info">
                                             <h3 class="item-title">
-                                                <a href="<?php echo get_lang_home_url().'/list'.get_permalink( 0 ); ?>">
+                                                <a href="<?php echo get_permalink( 0 ); ?>">
                                                     <?php the_title(); ?>
                                                 </a>
                                             </h3>
                                             <time datetime="<?php echo esc_html( get_the_date() ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
                                             <div class="item-detail"><?php the_excerpt(); ?></div>
-                                            <a href="<?php echo get_lang_home_url().'/list'.get_permalink( 0 ); ?>" class="item-more"><?php echo $category_read_more; ?></a>
+                                            <a href="<?php echo get_permalink( 0 ); ?>" class="item-more"><?php echo $category_read_more; ?></a>
                                         </figcaption>
                                     </figure>
                                 </li>
