@@ -111,7 +111,7 @@ $page_url = get_full_path();
                                     <div class="item-wrap">
                                         <figure class="item-img"><img  width="50" height="50" src="<?php echo ifEmptyText($item['icon']) ?>" alt="icon"></figure>
                                         <figcaption class="item-info">
-                                            <h2 class="item-title"><?php echo ifEmptyText($item['title']) ?></h2>
+                                            <h2 class="item-title"><a href="<?php echo fEmptyText($item['link'],'javascript:;') ?>"></a><?php echo ifEmptyText($item['title']) ?></h2>
                                             <div class="item-desc"><?php echo ifEmptyText($item['desc']) ?></div>
                                         </figcaption>
                                     </div>

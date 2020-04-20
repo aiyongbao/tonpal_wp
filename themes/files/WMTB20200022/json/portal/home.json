@@ -113,7 +113,7 @@
                                 "title": "链接",
                                 "value": "",
                                 "type": "text",
-                                "tip": "请填写全链接 https/http://..."
+                                "tip": "请填入相应链接"
                             }
                         },
                         "tip": "建议填满四组数据",
@@ -168,6 +168,12 @@
                                 "rule": {
                                     "require": true
                                 }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "链接"
                             }
                         },
                         "tip": "建议填满四组数据",
@@ -213,7 +219,7 @@
                         "title": "链接",
                         "value": "",
                         "type": "text",
-                        "tip": "请填写全链接 https/http://..."
+                        "tip": "请填入相应链接"
                     },
                     "btn": {
                         "title": "按钮内容",
@@ -266,7 +272,7 @@
                                 "title": "链接",
                                 "value": "",
                                 "type": "text",
-                                "tip": "请填写全链接 https/http://...",
+                                "tip": "请填入相应链接",
                                 "rule": {
                                     "require": true
                                 }
@@ -306,7 +312,7 @@
                         "title": "链接",
                         "value": "",
                         "type": "text",
-                        "tip": "请填写全链接 https/http://...",
+                        "tip": "请填入相应链接",
                         "rule": {
                             "require": true
                         }
@@ -371,7 +377,7 @@
                                 "title": "链接",
                                 "value": "",
                                 "type": "text",
-                                "tip": "请填写全链接 https/http://...",
+                                "tip": "请填入相应链接",
                                 "rule": {
                                     "require": true
                                 }

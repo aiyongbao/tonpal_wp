@@ -124,7 +124,7 @@
                         "item": {
                             "name": {
                                 "title": "名称",
-                                "value": "",
+                                "value": "Phone",
                                 "type": "text",
                                 "tip": "phone",
                                 "rule": {
@@ -157,9 +157,9 @@
                         "item": {
                             "name": {
                                 "title": "名称",
-                                "value": "",
+                                "value": "Tel",
                                 "type": "text",
-                                "tip": "phone",
+                                "tip": "Tel",
                                 "rule": {
                                     "require": true
                                 }
@@ -190,9 +190,9 @@
                         "item": {
                             "name": {
                                 "title": "名称",
-                                "value": "",
+                                "value": "Email",
                                 "type": "text",
-                                "tip": "phone",
+                                "tip": "Email",
                                 "rule": {
                                     "require": true
                                 }
@@ -223,9 +223,9 @@
                         "item": {
                             "name": {
                                 "title": "名称",
-                                "value": "",
+                                "value": "Address",
                                 "type": "text",
-                                "tip": "phone",
+                                "tip": "address",
                                 "rule": {
                                     "require": true
                                 }
