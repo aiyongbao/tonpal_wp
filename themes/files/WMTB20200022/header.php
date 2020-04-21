@@ -17,6 +17,10 @@ $header_logo = ifEmptyText($theme_vars['logo']['value']);
 $header_title = ifEmptyText($theme_vars['title']['value']);
 $header_key_word = ifEmptyText($theme_vars['key_word']['value']);
 
+$facebook_link = ifEmptyText($theme_vars['facebookLink']['value']);
+$twitter_link = ifEmptyText($theme_vars['twitterLink']['value']);
+$linkedin_link = ifEmptyText($theme_vars['linkedinLink']['value']);
+$youtube_link = ifEmptyText($theme_vars['youtubeLink']['value']);
 
 $icon = ifEmptyText($theme_vars['icon']['value']);
 $sideBarMenu = ifEmptyText($theme_vars['sideBarMenu']['value']);
@@ -91,6 +95,23 @@ $googleplus_link = '';
             </nav>
             <!-- /nav end-->
             <div class="topr">
+                <ul class="social-list">
+                    <?php if ($facebook_link !== '') { ?>
+                    <li><a href="<?php echo $facebook_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns01.png"/></i></a></li>
+                    <?php } ?>
+                    <?php if ($twitter_link !== '') { ?>
+                    <li><a href="<?php echo $twitter_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns02.png" alt="" /></i></a></li>
+                    <?php } ?>
+                    <?php if ($googleplus_link !== '') { ?>
+                    <li><a href="<?php echo $googleplus_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns04.png" alt="" /></i></a></li>
+                    <?php } ?>
+                    <?php if ($linkedin_link !== '') { ?>
+                    <li><a href="<?php echo $linkedin_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns03.png" alt="" /></i></a></li>
+                    <?php } ?>
+                    <?php if ($youtube_link !== '') { ?>
+                    <li><a href="<?php echo $youtube_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns05.png" alt="" /></i></a></li>
+                    <?php } ?>
+                </ul>
                 <div class="head-search">
                     <div class="head-search-form">
                         <form id="search" action="<?php echo get_lang_home_url(); ?>/" target="_blank">

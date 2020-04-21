@@ -89,7 +89,7 @@ Install_Db(){
     dd if=install-db.sql.des3 |openssl des3 -d -k ${SQLDEPASS} | tar zxf -
     # 替换sql语句中域名, 替换成客户的域名
     sed -i 's#$DOMAIN#'${DOMAIN}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
-    sed -i 's#ORGANIZATION_ID#'${ORGANIZATIONID}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
+    sed -i 's#$ORGANIZATION_ID#'${ORGANIZATIONID}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
     sed -i 's#$WPUSER#'${WPUSER}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
     # 生成密码
     ENWPPASS=""
