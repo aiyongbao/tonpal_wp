@@ -5,6 +5,30 @@
     "order": 6.0,
     "more": {
         "vars": {
+            "facebookLink": {
+                "title": "facebook 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "twitterLink": {
+                "title": "twitter 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "youtubeLink": {
+                "title": "youtube 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "linkedinLink": {
+                "title": "linkedin 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
             "logo": {
                 "title": "logo",
                 "value": "",
