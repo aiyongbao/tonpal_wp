@@ -134,7 +134,7 @@ EOT;
                    }
                    $filename = $parentDir. '/' .$filename;
                    global $wpdb;
-                   $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}_theme_file WHERE file = %s",$filename ) );
+                   $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}theme_file WHERE file = %s",$filename ) );
                    $data = [
                      'is_public' =>  strpos($item['action'],'public') !==false  ? 1 : 0,
                      'theme' => wp_get_theme()->get('Name'),

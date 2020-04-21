@@ -304,6 +304,23 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //开启nginx缓存路由
+        register_rest_route($this->namespace, '/purge' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function(){
+                $settings = new SettingController();
+                return $settings->enable();
+            }
+        ));
+
+        register_rest_route($this->namespace, '/plugin' ,array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->plugin($request) , $request);
+            }
+        ));
+
     }
 }
 
