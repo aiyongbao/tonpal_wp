@@ -46,7 +46,8 @@
                         "type": "text",
                         "tip": "请填写全链接 https/http://..."
                     }
-                }
+                },
+                "maxNumber": 3
             },
             "productTitle": {
                 "title": "底部标题四",
@@ -77,7 +78,8 @@
                         "type": "image",
                         "tip": "建议1:1"
                     }
-                }
+                },
+                "maxNumber": 2
             },
             "copyright": {
                 "title": "版权",
