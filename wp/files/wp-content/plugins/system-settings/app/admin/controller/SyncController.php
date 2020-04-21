@@ -203,9 +203,16 @@ class syncController extends RestController
             foreach ($data as $key => $value) {
 
                 //转换√_id为系统的分类id
-                $category_data = Db::name('termmeta')->field('term_id')->where('meta_key', 'tonpal_cid')->where('meta_value', $value['category_id'])->find();
-                
-                $category_id = $category_data['term_id'];
+
+                if($value['category_id'] == 1 || $value['category_id'] == 1){
+                    $category_id = $value['category_id'];
+                }
+                else{
+                    $category_data = Db::name('termmeta')->field('term_id')->where('meta_key', 'tonpal_cid')->where('meta_value', $value['category_id'])->find();
+                    $category_id = $category_data['term_id'];
+                }
+
+               
 
                 //转换tags_id为系统的tag_id
                 
@@ -216,7 +223,8 @@ class syncController extends RestController
                     $tag_result = Db::name('termmeta')->field('term_id')->where('meta_key', 'tonpal_tid')->where('meta_value', $tag)->find();
                     if(!empty($tag_result))
                     {
-                        $tag_ids[] = $tag_result['term_id'];
+                        $tag = get_term($tag_result['term_id'],'post_tag');
+                        $tag_ids[] = $tag->slug;
                     }
                 }
                 
@@ -231,6 +239,10 @@ class syncController extends RestController
                     'post_content'     => is_array($value['content']) ? json_encode($value['content']) : $value['content'],
                     'post_status'      => 'publish',
                     'post_excerpt'     => $value['excerpt'],
+                    'post_date' => empty($value['date']) ? '' : $value['date'],
+                    'post_date_gmt' => empty($value['date_gmt']) ? '' : $value['date_gmt'],
+                    'post_modified' => empty($value['modified']) ? '' : $value['modified'],
+                    'post_modified_gmt' => empty($value['modified_gmt']) ? '' : $value['modified_gmt'],
                     'meta_input' => [
                         'seo_title' => $value['seo_title'],
                         'seo_description' => $value['seo_description'],
