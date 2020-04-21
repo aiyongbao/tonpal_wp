@@ -39,7 +39,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
     <!-- SEO -->
     <title><?php echo $seo_title; ?></title>
     <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
-    <meta name="description" content="<?php echo $seo_description; ?>" />>
+    <meta name="description" content="<?php echo $seo_description; ?>" />
     <link rel="canonical" href="<?php echo $page_url; ?>" />
 
     <?php if($paged !== 0) { ?>
