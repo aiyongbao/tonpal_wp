@@ -47,7 +47,7 @@
                         "tip": "请填写全链接 https/http://..."
                     }
                 },
-                "maxNumber": 2
+                "maxNumber": 3
             },
             "productTitle": {
                 "title": "底部标题四",
