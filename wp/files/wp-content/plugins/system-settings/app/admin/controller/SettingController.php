@@ -105,4 +105,65 @@ class SettingController extends RestController
            }
 
     }
+
+    public function enable()
+    {
+        
+        $nginx_settings = [
+            'enable_purge' => '1',
+            'cache_method' => 'enable_fastcgi',
+            'purge_method' => 'unlink_files',
+            'redis_hostname' => '1',
+            'redis_port' => '1',
+            'redis_prefix' => '1',
+            'purge_homepage_on_edit' => '1',
+            'purge_homepage_on_del' => '1',
+            'purge_page_on_mod' => '1',
+            'purge_page_on_new_comment' => '1', 
+            'purge_page_on_deleted_comment' => '1',
+            'purge_archive_on_edit' => '1',
+            'purge_archive_on_del' => '1',
+            'purge_url' => '',
+            'log_level' => 'INFO'
+        ];
+
+        update_site_option( 'rt_wp_nginx_helper_options', $nginx_settings );
+
+        return get_option('rt_wp_nginx_helper_options');
+    }
+
+    public function plugin($request)
+    {
+
+        $plugin = $request['plugin'];
+        include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' ); //for plugins_api..
+        $api = \plugins_api(
+			'plugin_information',
+			array(
+				'slug'   => $plugin,
+				'fields' => array(
+					'sections' => false,
+				),
+			)
+		);
+
+		if ( is_wp_error( $api ) ) {
+			wp_die( $api );
+		}
+
+        require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+
+        $type = 'web'; //Install plugin type, From Web or an Upload.
+		$upgrader = new \Plugin_Upgrader();
+
+        //下载安装插件
+        $upgrader->install( $api->download_link );
+        
+        //启用全部插件
+        $data = get_plugins();
+        foreach($data as $key => $plugin)
+        {
+            activate_plugin( $key );
+        }
+    }
 }
