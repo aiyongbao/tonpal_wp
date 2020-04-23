@@ -59,3 +59,20 @@
 .entry {
     padding: 0;
 }
+.footer-info{
+    float: right;
+    color: #999;
+}
+.copyright {
+    line-height: 24px;
+}
+.footer-info a{
+    font-size: .12rem;
+    color: #999;
+}
+.mb-35 {
+    margin-bottom: 0.35rem;
+}
+.mt-15 {
+    margin-top: .15rem;
+}

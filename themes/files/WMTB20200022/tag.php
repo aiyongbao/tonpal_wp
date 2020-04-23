@@ -26,7 +26,7 @@ $page_url = get_lang_page_url();
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
     <?php } ?>
-    <?php if($paged !== $max) { ?>
+    <?php if($max > 1 && $paged !== $max) { ?>
         <link rel="next" href="<?php next_posts(); ?>" />
     <?php } ?>
 

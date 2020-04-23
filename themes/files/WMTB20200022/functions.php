@@ -231,10 +231,12 @@ function json_config_array_category($file,$type = 'vars',$object_id)
         }
     }
 }
+
 /**
  * ifEmptyText [字符判空]
  * @param $value [需要进行判空的值] [必传]
  * @param $default [默认值]
+ * @return string
  * @author zhuoyue
  */
 function ifEmptyText ($value,$default = '') {
@@ -246,6 +248,7 @@ function ifEmptyText ($value,$default = '') {
  * ifEmptyText [数组判空]
  * @param $value [需要进行判空的值] [必传]
  * @param $default [默认值]
+ * @return array
  * @author zhuoyue
  */
 
@@ -443,28 +446,11 @@ function get_languages(){
     return $data;
 }
 
-function get_category_objects($parent_id)
-{
-    $object = get_term_children($parent_id,'category');
-
-    $condition = [];
-    foreach($object as $id){
-        $condition[] = 'term_taxonomy_id = '.$id;
-    }
-
-    $condition_str = implode(' OR ',$condition);
-
-    global $wpdb;
-
-
-    $result = $wpdb->get_results("SELECT object_id FROM $wpdb->term_relationships WHERE ($condition_str)");
-
-    $object_arr= [];
-    foreach($result as $object){
-        $object_arr[] = $object->object_id;
-    }
-    return $object_arr;
-}
+/**
+ * 用于控制列表页展示个数
+ * 系统自调用
+ * @author zhuoyue
+ */
 function custom_posts_per_page($query){
     if(is_archive()){
         global $wp;
@@ -478,13 +464,40 @@ function custom_posts_per_page($query){
         }
         if ( $slug === 'product' ) {
             $query->set('posts_per_page',12);
-        }
-        else if ( $slug === 'news' ) {
+        } else if ( $slug === 'news' || $slug === 'info-product' || $slug === 'info-news') {
             $query->set('posts_per_page',10);
         }
+
     }
 }
 add_action('pre_get_posts','custom_posts_per_page');
+
+/**
+ * 随机获取当前分类的tags
+ * @param $term_id [当前分类id]
+ * @param $num [展示个数]
+ * @return array
+ * @author zhuoyue
+ */
+function get_random_tags ($term_id,$num) {
+    global $wpdb;
+    $sql = "
+        select o.* from (select DISTINCT(tr.term_taxonomy_id) as term_taxonomy_id, wp_term_taxonomy.taxonomy,wp_term_taxonomy.term_id, t.name from (
+        SELECT wp_posts.ID
+        FROM wp_posts LEFT JOIN wp_term_relationships ON wp_posts.ID = wp_term_relationships.object_id
+        INNER JOIN wp_terms ON wp_terms.term_id = wp_term_relationships.term_taxonomy_id
+        INNER JOIN wp_term_taxonomy ON wp_term_taxonomy.term_id = wp_terms.term_id
+        where wp_terms.term_id in (".$term_id.") AND wp_term_taxonomy.taxonomy = 'category'
+        ) as test 
+        INNER JOIN wp_term_relationships tr ON tr.object_id = test.ID 
+        INNER JOIN wp_terms t ON tr.term_taxonomy_id = t.term_id
+        INNER JOIN wp_term_taxonomy ON wp_term_taxonomy.term_taxonomy_id = t.term_id
+        where taxonomy = 'post_tag'
+        ORDER BY rand() LIMIT ".$num." ) o order by o.term_id asc
+    ";
+
+    return $wpdb->get_results($sql);
+}
 
 
 // 祛除摘要自动添加分段

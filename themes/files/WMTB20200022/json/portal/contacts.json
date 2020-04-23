@@ -34,9 +34,18 @@
             },
             "title": {
                 "title": "标题",
-                "value": "contacts",
+                "value": "CONTACT",
                 "type": "text",
                 "tip": "请填写标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "value": "",
+                "type": "textarea",
+                "tip": "描述",
                 "rule": {
                     "require": true
                 }

@@ -7,7 +7,8 @@ $theme_widgets_footer = json_config_array('footer','widgets',1);
 
 //Text 数据处理
 $contacts_title = ifEmptyText($theme_vars['title']['value']);
-
+$contacts_desc = ifEmptyText($theme_vars['desc']['value']);
+set_query_var('contactsDesc',$contacts_desc);
 $phone = ifEmptyArray($theme_widgets_footer['phone']['vars']['items']['value'][0]);
 $mobile = ifEmptyArray($theme_widgets_footer['mobile']['vars']['items']['value'][0]);
 $email = ifEmptyArray($theme_widgets_footer['email']['vars']['items']['value'][0]);
@@ -46,7 +47,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <!--// aside end -->
             <!-- main begin -->
             <section class="main">
-                <header class="main-tit-bar">
+                <header class="main-tit-bar mb-35">
                     <h1 class="title"><?php echo $contacts_title?></h1>
                 </header>
                 <article class="blog-article">
