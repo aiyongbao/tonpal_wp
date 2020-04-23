@@ -107,6 +107,10 @@ set_query_var('gooleId', $gooleId);
             <?php if (ifEmptyText($footer_copyright) !== '') : ?>
                 <div class="copyright">Copyright&nbsp;©&nbsp;<span class="get-cur-year"><?php echo date('Y') ?>&nbsp;</span><?php echo $footer_copyright ?></div>
             <?php endif; ?>
+            <div class="footer-info">
+                <a href="/info-product">INFO PRODUCT</a>
+                <a href="/info-news">INFO NEWS</a>
+            </div>
         </div>
     </div>
 </footer>

@@ -7,6 +7,12 @@
     else if ( $slug === 'news' ) {
         include('templates/category/category-news.php');
     }
+    else if ( $slug === 'info-product' ) {
+        include('templates/category/category-info-product.php');
+    }
+    else if ( $slug === 'info-news' ) {
+        include('templates/category/category-info-news.php');
+    }
     else{
         include('templates/category/category.php');
     }
