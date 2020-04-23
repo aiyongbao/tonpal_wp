@@ -200,11 +200,14 @@ class syncController extends RestController
 
             $returnResult = [];
 
+            //执行回调
+            $http = new WP_Http;
+
             foreach ($data as $key => $value) {
 
                 //转换√_id为系统的分类id
 
-                if($value['category_id'] == 1 || $value['category_id'] == 1){
+                if($value['category_id'] == 1 || $value['category_id'] == 2){
                     $category_id = $value['category_id'];
                 }
                 else{
@@ -230,6 +233,7 @@ class syncController extends RestController
                 
                 if(empty($category_id))
                 {
+                    $result = $http->request( 'http://tonpaladmin.aiyongbao.com/action/syncCallback',['method' => 'POST', ['msg' => '分类不存在！','data' => ''] ] );
                     return $this->error("分类不存在！",['category_id'=>$value['category_id']]);
                 }
                 
@@ -283,10 +287,10 @@ class syncController extends RestController
 
             }
 
-            //执行回调
-            $http = new WP_Http;
+           
             $body = [
                 'data' => json_encode($returnResult),
+                'msg' => '操作成功',
                 'lang' => $lang
             ];
 
