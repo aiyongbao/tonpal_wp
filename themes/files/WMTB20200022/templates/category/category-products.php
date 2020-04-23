@@ -28,6 +28,7 @@ $max = intval( $wp_query->max_num_pages );
 // 当前页面url
 $get_full_path = get_full_path();
 $page_url = $get_full_path.get_category_link($category->term_id);
+
 ?>
     <!--nextpage-->
 
@@ -84,7 +85,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                         <img src="<?php echo $products_bg; ?>" style="width:912px;height:312px;margin-bottom: 30px;">
                     </div>
                 <?php } elseif($products_header_desc !== '') { ?>
-                    <p class="class-desc" style="margin-bottom:30px;"><?php echo $products_header_desc; ?></p>
+                    <p class="class-desc mt-15" style="margin-bottom:15px;"><?php echo $products_header_desc; ?></p>
                 <?php } ?>
                 <!-- product list -->
                 <div class="items_list">

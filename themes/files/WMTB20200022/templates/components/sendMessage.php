@@ -11,10 +11,16 @@ $placeholder_name = ifEmptyText($theme_vars['sendMessagePlaName']['value']);
 $placeholder_email = ifEmptyText($theme_vars['sendMessagePlaEmail']['value']);
 $placeholder_phone = ifEmptyText($theme_vars['sendMessagePlaPhone']['value']);
 $placeholder_content = ifEmptyText($theme_vars['sendMessagePlaContent']['value']);
+
+
+$contacts_desc = ifEmptyText(get_query_var('contactsDesc'));
 ?>
 
 <section class="inquiry-form-wrap ct-inquiry-form mt50" id="myform">
     <h4 class="inquiry-form-title" style="text-transform:uppercase"><?php echo $message_title ?></h4>
+    <?php if(!empty($contacts_desc)) { ?>
+    <p class="text-center contact-margin" style="padding-top:10px; padding-bottom: 10px"><?php echo $contacts_desc ?></p>
+    <?php } ?>
     <form id="contact-form" role="form">
         <section class="inquiry-form">
             <div class="inquiry-form-ico">
