@@ -498,6 +498,58 @@ function get_random_tags ($term_id,$num) {
 
     return $wpdb->get_results($sql);
 }
+/**
+ * 根据tag获取相关产品
+ * @param int $tag_id [tag的term_id]
+ * @param array $exclude [需要排除的id]
+ * @param int $category [分类slug]
+ * @param int $num [显示个数]
+ * @return array
+ * @author zhuoyue
+ */
+function get_tags_relevant_product ($tag_id,$exclude = array(),$category, $num = 5) {
+    $category_id = get_category_by_slug($category)->term_id; // 获取分类id
+    $args = array(
+        'tag__in' => array($tag_id),  // 限定条件 包含所有的tags的id
+        'cat' => $category_id,   // 指定分类ID
+        'post__not_in' => $exclude, // 祛除当前id
+        'showposts' => $num,   // 显示相关文章数量
+        'orderby'=>'rand',  // 随机获取
+        'caller_get_posts' => 1 // 清除置顶
+    );
+    $related_posts = query_posts($args);
+    wp_reset_query(); // 重置query 防止影响其他query查询
+    return $related_posts;
+}
+/**
+ * 根据category_id获取最新产品
+ * @param int $category [分类slug]
+ * @param array $exclude [需要排除的id]
+ * @param int $num [显示个数]
+ * @param string $output [返回类型] ARRAY_A | OBJECT
+ * @return array
+ * @author zhuoyue
+ */
+function get_category_new_product ($category,$exclude = array(),$num = 5,$output = 'ARRAY_A') {
+    $category_id = get_category_by_slug($category)->term_id; // 获取分类id
+    $args = array(
+        'numberposts' => $num, // 显示个数
+        'offset' => 0,
+        'category' => $category_id, // 指定需要返回哪个分类的文章
+        'orderby' => 'post_date',
+        'order' => 'DESC',
+        'include' => '',
+        'exclude' => $exclude,// 排除
+        'meta_key' => '',
+        'meta_value' =>'',
+        'post_type' => 'post',
+        'post_status' => 'publish',// 公开的文章
+        'suppress_filters' => true
+    );
+    $recent_posts = wp_get_recent_posts($args,$output);
+    wp_reset_query(); // 重置query 防止影响其他query查询
+    return $recent_posts;
+}
 
 
 // 祛除摘要自动添加分段

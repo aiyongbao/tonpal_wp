@@ -25,6 +25,10 @@
     {
         include('templates/page/page-picturewell.php');
     }
+    elseif(strtolower($data->post_name) == 'rec-product')
+    {
+        include('templates/page/rec-product.php');
+    }
 	else{
 		include('templates/page/page.php');
 	}

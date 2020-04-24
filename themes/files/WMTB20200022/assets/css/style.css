@@ -50,7 +50,7 @@
 .foot-wrapper .layout {
     position: relative;
 }
-.foot-wrapper .foot-item ul a {
+.foot-wrapper .foot-item ul a,.foot-cont>ul>li {
     word-break: break-word;
 }
 .main-tit-bar {

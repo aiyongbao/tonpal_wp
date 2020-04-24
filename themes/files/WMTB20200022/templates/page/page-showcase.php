@@ -46,7 +46,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     <h1 class="title"><?php echo $showcase_title ?></h1>
                 </header>
                 <?php if($showcase_desc != ''){ ?>
-                    <p class="class-desc" style="margin-bottom:20px;margin-top: -20px;line-height:1.5"><?php echo $showcase_desc ?></p>
+                    <p class="class-desc" style="margin-top: 10px;line-height:1.5"><?php echo $showcase_desc ?></p>
                 <?php } ?>
                 <div class="items_list">
                     <ul class="gm-sep showcase-list">
