@@ -29,67 +29,59 @@ class syncController extends RestController
     //初始化语种数据库
     public function init($abbr)
     {
-        update_option('category_children','');
+        update_option('category_children', '');
     }
 
     //初始化主题
     function init_theme_file($abbr)
     {
-      $jsonDir = get_template_directory() . '/json';
-      $temp = scandir($jsonDir);
-      foreach($temp as $key => $parentDir)
-      {
-          if($parentDir != '.' && $parentDir != '..'){
-  
-            if(is_dir($jsonDir.'/'.$parentDir)){
-              $sonTemp = scandir($jsonDir.'/'.$parentDir);
-              
-              foreach($sonTemp as $k => $value)
-              {
-                $json_dir = $jsonDir.'/'.$parentDir.'/'.$value;
-                if(is_file($json_dir))
-                {
-                  $item = $this->get_json_toArray($json_dir);
-                  $filename = explode('.',$value);
-                  if(is_array($filename) && count($filename) > 0)
-                  {
-                    $filename = $filename[0];
-                  }
-                  $filename = $parentDir. '/' .$filename;
-                  global $wpdb;
-                  $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}{$abbr}_theme_file WHERE file = %s",$filename ) );
-                  $data = [
-                    'is_public' =>  strpos($item['action'],'public') !==false  ? 1 : 0,
-                    'theme' => wp_get_theme()->get('Name'),
-                    'name' => $item['name'],
-                    'action' => $item['action'],
-                    'file' => $filename,
-                    'description' => $item['description'],
-                    'more' => json_encode($item ),
-                    'config_more' => json_encode($item)
-                  ];
-                  
-                  if(empty($result))
-                  {
-                    //新增
-                    $res = $wpdb->insert( $wpdb->prefix . $abbr .'_theme_file' ,$data);
-                  }
-                  else{
-                    $res = $wpdb->update( $wpdb->prefix . $abbr .'_theme_file' ,$data,['id' => $result->id]);
-                  }
-                  
+        $jsonDir = get_template_directory() . '/json';
+        $temp = scandir($jsonDir);
+        foreach ($temp as $key => $parentDir) {
+            if ($parentDir != '.' && $parentDir != '..') {
+
+                if (is_dir($jsonDir . '/' . $parentDir)) {
+                    $sonTemp = scandir($jsonDir . '/' . $parentDir);
+
+                    foreach ($sonTemp as $k => $value) {
+                        $json_dir = $jsonDir . '/' . $parentDir . '/' . $value;
+                        if (is_file($json_dir)) {
+                            $item = $this->get_json_toArray($json_dir);
+                            $filename = explode('.', $value);
+                            if (is_array($filename) && count($filename) > 0) {
+                                $filename = $filename[0];
+                            }
+                            $filename = $parentDir . '/' . $filename;
+                            global $wpdb;
+                            $result = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}{$abbr}_theme_file WHERE file = %s", $filename));
+                            $data = [
+                                'is_public' =>  strpos($item['action'], 'public') !== false  ? 1 : 0,
+                                'theme' => wp_get_theme()->get('Name'),
+                                'name' => $item['name'],
+                                'action' => $item['action'],
+                                'file' => $filename,
+                                'description' => $item['description'],
+                                'more' => json_encode($item),
+                                'config_more' => json_encode($item)
+                            ];
+
+                            if (empty($result)) {
+                                //新增
+                                $res = $wpdb->insert($wpdb->prefix . $abbr . '_theme_file', $data);
+                            } else {
+                                $res = $wpdb->update($wpdb->prefix . $abbr . '_theme_file', $data, ['id' => $result->id]);
+                            }
+                        }
+                    }
                 }
-  
-              }
             }
-          }
-      }
-  
+        }
     }
 
-    function get_json_toArray($dir){
+    function get_json_toArray($dir)
+    {
         $json = file_get_contents($dir);
-        $data = json_decode($json,true);
+        $data = json_decode($json, true);
         return $data;
     }
 
@@ -122,7 +114,7 @@ class syncController extends RestController
         $param = $accept_param['data'];
 
         $lang = new LangController();
-        $lang->index( $accept_param['lang'] );
+        $lang->index($accept_param['lang']);
 
         $type =  $accept_param['type'];
 
@@ -144,11 +136,10 @@ class syncController extends RestController
 
         //将参数保存到本地
 
-        $data_json_file = ABSPATH . "async-task/data/" . date("Y-m-d H:i:s"). "-" . rand(0,1000) . '.json';
+        $data_json_file = ABSPATH . "async-task/data/" . date("Y-m-d H:i:s") . "-" . rand(0, 1000) . '.json';
 
-        if(!is_dir(ABSPATH . "async-task/data/"))
-        {
-            mkdir(ABSPATH . "async-task/data/",0777);
+        if (!is_dir(ABSPATH . "async-task/data/")) {
+            mkdir(ABSPATH . "async-task/data/", 0755);
         }
 
 
@@ -161,25 +152,27 @@ class syncController extends RestController
 
         $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 
-        $url = $http_type . $_SERVER['HTTP_HOST'];
+        //$url = $http_type . $_SERVER['HTTP_HOST'];
+
+        $url = "http://127.0.0.1";
 
         $cli = "php {$task} {$url} post '{$data_json_file}'";
 
         $filepath = ABSPATH . "post.log";
-        
+
         $myfile = fopen($filepath, "a");
 
-        fwrite($myfile, date('Y-m-d H:i:s')." --". $cli . "\r\n");
+        fwrite($myfile, date('Y-m-d H:i:s') . " --" . $cli . "\r\n");
 
         $file = popen($cli, "r");
 
         pclose($file);
 
         fclose($data_json);
-        chmod($data_json_file, 0777);
+        chmod($data_json_file, 0755);
 
         fclose($myfile);
-        chmod($filepath, 0777);
+        chmod($filepath, 0755);
 
         return $this->success("发起成功！");
     }
@@ -187,56 +180,88 @@ class syncController extends RestController
     //模拟进行异步调用
     public function asyncPostJson($request)
     {
+
+        $t1 = microtime(true);
+        $m1 = memory_get_usage();
+
+        $syfilepath = ABSPATH . "sync-data.log";
+        $symyfile = fopen($syfilepath, "a");
+        fwrite($symyfile, "t1：" . $syfilepath . "\r\n");
+        fwrite($symyfile, "m1：" . $m1 . "\r\n");
+
         $accept_param = $request['json'];
+
+        $filepath = ABSPATH . "sync-accept.log";
+
+        $myfile = fopen($filepath, "a");
+        fwrite($myfile, $$accept_param . "\r\n");
+        fclose($myfile);
 
         $lang = isset($request['lang']) ? $request['lang'] : 'en';
         $langObj = new LangController();
-        $langObj->index( $request['lang'] );
+        $langObj->index($request['lang']);
 
         $param = json_decode($accept_param, true);
-        
+
+        unset($accept_param);
+
         if (!empty($param)) {
             $data = $param['data'];
 
             $returnResult = [];
 
-            //执行回调
             $http = new WP_Http;
 
-            foreach ($data as $key => $value) {
+            foreach ($data as $key => &$value) {
 
-                //转换√_id为系统的分类id
+                $t2 = microtime("true");
+                $m2 = memory_get_usage();
+                fwrite($symyfile, "t2：" . $t2 . "\r\n");
+                fwrite($symyfile, "m2：" . $m2 . "\r\n");
+                fwrite($symyfile, "消耗时间：" . $t2 - $t1 . "\r\n");
+                fwrite($symyfile, "循环：" . json_decode($value) . "\r\n");
 
-                if($value['category_id'] == 1 || $value['category_id'] == 2){
+                fclose($symyfile);
+                //转换category_id为系统的分类id
+
+                if ($value['category_id'] == 1 || $value['category_id'] == 2) {
                     $category_id = $value['category_id'];
-                }
-                else{
+                } else {
                     $category_data = Db::name('termmeta')->field('term_id')->where('meta_key', 'tonpal_cid')->where('meta_value', $value['category_id'])->find();
                     $category_id = $category_data['term_id'];
+                    unset($category_data);
                 }
 
-               
+
 
                 //转换tags_id为系统的tag_id
-                
+
                 $tag_ids = [];
-                
-                foreach($value['tags'] as $k => $tag)
-                {
+
+                foreach ($value['tags'] as $k => $tag) {
                     $tag_result = Db::name('termmeta')->field('term_id')->where('meta_key', 'tonpal_tid')->where('meta_value', $tag)->find();
-                    if(!empty($tag_result))
-                    {
-                        $tag = get_term($tag_result['term_id'],'post_tag');
+                    if (!empty($tag_result)) {
+                        $tag = get_term($tag_result['term_id'], 'post_tag');
                         $tag_ids[] = $tag->slug;
                     }
                 }
-                
-                if(empty($category_id))
-                {
-                    $result = $http->request( 'http://tonpaladmin.aiyongbao.com/action/syncCallback',['method' => 'POST', ['msg' => '分类不存在！','data' => ''] ] );
-                    return $this->error("分类不存在！",['category_id'=>$value['category_id']]);
+
+                if (empty($category_id)) {
+
+
+                    $filepath = ABSPATH . '/sync-error.log';
+
+                    $myfile = fopen($filepath, "a");
+
+                    fwrite($myfile, '分类不存在！:' . $value['category_id'] . '产品id：' . $value['id'] . '\r\n');
+
+                    fclose($myfile);
+
+
+                    $result = $http->request('http://tonpaladmin.aiyongbao.com/action/syncCallback', ['method' => 'POST', ['msg' => '分类不存在！:' . $value['category_id'] . '产品id：' . $value['id'], 'data' => '']]);
+                    return $this->error("分类不存在！", ['category_id' => $value['category_id']]);
                 }
-                
+
                 $add_post = [
                     'post_title'       => $value['title'],
                     'post_name'        => $value['slug'],
@@ -260,45 +285,52 @@ class syncController extends RestController
                     'tags_input' => $tag_ids
                 ];
 
-                $post = Db::name('posts')->where('post_title',$value['title'])->find();
-                
+                unset($tag_ids);
+
+                $post = Db::name('posts')->where('post_title', $value['title'])->find();
+
                 remove_all_filters("content_save_pre");
-                if(empty($post))
-                {
-                    $post_id = wp_insert_post( wp_slash( (array) $add_post),true );
+                if (empty($post)) {
+                    $post_id = wp_insert_post(wp_slash((array) $add_post), true);
                     $post['ID'] =  $post_id;
-                    
-                }else{
+                } else {
                     $add_post['ID'] = $post['ID'];
-                    $post_id = wp_update_post(wp_slash( (array) $add_post),true );
+                    $post_id = wp_update_post(wp_slash((array) $add_post), true);
                 }
 
-                add_post_meta($post['ID'], 'tonpal_post_id', $value['id'], true );
+                unset($add_post);
+
+                add_post_meta($post['ID'], 'tonpal_post_id', $value['id'], true);
                 $photos = $value['photos'];
-                
-                delete_post_meta($post['ID'],'photos');
-                
-                foreach($photos as $key => $photo)
-                {
-                    $res = add_post_meta($post['ID'], 'photos', $photo ,false );
+
+                delete_post_meta($post['ID'], 'photos');
+
+                foreach ($photos as $key => $photo) {
+                    add_post_meta($post['ID'], 'photos', $photo, false);
                 }
 
+                unset($post);
+                unset($photos);
                 $returnResult[$value['id']] = $post_id;
-
             }
+            unset($data);
+            //执行回调
 
-           
             $body = [
                 'data' => json_encode($returnResult),
-                'msg' => '操作成功',
                 'lang' => $lang
             ];
 
-            $result = $http->request( 'http://tonpaladmin.aiyongbao.com/action/syncCallback',['method' => 'POST', 'body' => $body] );
+            unset($returnResult);
+
+            unset($body);
+
+            $result = $http->request('http://tonpaladmin.aiyongbao.com/action/syncCallback', ['method' => 'POST', 'body' => $body]);
+
+            unset($result);
 
             recursiveDelete(RT_WP_NGINX_HELPER_CACHE_PATH);
-            return $this->success("操作成功",$returnResult);
-
+            return $this->success("操作成功", $returnResult);
         }
         return $this->error("操作失败");
     }
@@ -355,47 +387,46 @@ class syncController extends RestController
                     'action' => $item['action'],
                     'file' => $item['action'],
                     'description' => $item['description'],
-                    'more' => json_encode($item ),
+                    'more' => json_encode($item),
                     'config_more' => json_encode($item)
-                  ];
+                ];
 
-               
-                $res = Db::name('theme_file')->insert( $data );
+
+                $res = Db::name('theme_file')->insert($data);
                 $wpdb->insert_id;
-
             } else {
                 $args['name'] = $value['name'];
 
-                if($value['slug'] ==  $args['slug'])
-                {
-                    unset( $args['slug'] );
-                }                
+                if ($value['slug'] ==  $args['slug']) {
+                    unset($args['slug']);
+                }
                 $arr = wp_update_term($result['term_id'], $taxonomy, $args);
             };
 
-            
+
             //新增扩展数据
             add_term_meta($arr['term_id'], $object_key, $value['id'], true);
 
             $display = $value['display'] == 'hide' ? 'hide' : 'show';
-            update_term_meta( $arr['term_id'] , 'display', $display );
+            update_term_meta($arr['term_id'], 'display', $display);
 
             $value['header_desc'] = empty($value['header_desc']) ?  '' : $value['header_desc'];
             $value['footer_desc'] = empty($value['footer_desc']) ?  '' : $value['footer_desc'];
             $value['background'] = empty($value['background']) ?  '' : $value['background'];
 
-            update_term_meta($arr['term_id'], 'header_desc', $value['header_desc'],true);
-            update_term_meta($arr['term_id'], 'footer_desc', $value['footer_desc'],true);
-            update_term_meta($arr['term_id'], 'background', $value['background'],true);
+            update_term_meta($arr['term_id'], 'header_desc', $value['header_desc'], true);
+            update_term_meta($arr['term_id'], 'footer_desc', $value['footer_desc'], true);
+            update_term_meta($arr['term_id'], 'background', $value['background'], true);
 
             //更新排序
-            $list_order = isset($value['list_order']) ? $value['list_order'] : 0 ;
-            Db::name('terms')->where('term_id',$arr['term_id'])->update(['list_order' => $list_order]);
+            $list_order = isset($value['list_order']) ? $value['list_order'] : 0;
+            Db::name('terms')->where('term_id', $arr['term_id'])->update(['list_order' => $list_order]);
 
             //保存对应关系
             $parentArr[$value['id']] = $arr['term_id'];
 
             $returnResult[$value['id']] = $arr['term_id'];
+            usleep(0.1);
         }
 
         return $this->success("更新成功", $returnResult);
