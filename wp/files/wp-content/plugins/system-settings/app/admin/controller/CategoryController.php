@@ -61,6 +61,33 @@ class CategoryController extends RestController{
                 return update_post_meta($object->ID, $fieldName, $value);
             }
         ));
+
+        register_rest_field('category', 'seo_title' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'seo_title', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'seo_desc' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'seo_desc', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'seo_keywords' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'seo_keywords', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
         
         add_action("rest_after_insert_category",function($term,$request,$bool){
             
@@ -94,15 +121,45 @@ class CategoryController extends RestController{
             $footer_desc = $request['footer_desc'];
             $background = $request['background'];
 
-            //删除原来的数据
-            delete_term_meta($term->term_id,'header_desc');
-            delete_term_meta($term->term_id,'footer_desc');
-            delete_term_meta($term->term_id,'background');
+            //新增tdk
+            $seo_title = $request['seo_title'];
+            $seo_desc = $request['seo_desc'];
+            $seo_keywords = $request['seo_keywords'];
+
 
             //新增或更新
-            update_term_meta($term->term_id, 'header_desc', $header_desc);
-            update_term_meta($term->term_id, 'header_desc', $footer_desc);
-            update_term_meta($term->term_id, 'background', $background);
+            if(!empty($header_desc)){
+                 //删除原来的数据
+                delete_term_meta($term->term_id,'header_desc');
+                update_term_meta($term->term_id, 'header_desc', $header_desc);
+            }
+           
+            if(!empty($footer_desc))
+            {
+                delete_term_meta($term->term_id,'footer_desc');
+                update_term_meta($term->term_id, 'header_desc', $footer_desc);
+            }
+            
+            if(!empty($background)){
+                delete_term_meta($term->term_id,'background');
+                update_term_meta($term->term_id, 'background', $background);
+            }
+
+            if(!empty($seo_title)){
+                delete_term_meta($term->term_id,'seo_title');
+                update_term_meta($term->term_id, 'seo_title', $seo_title);
+            }
+
+            if(!empty($seo_desc)){
+                delete_term_meta($term->term_id,'seo_desc');
+                update_term_meta($term->term_id, 'seo_desc', $seo_desc);
+            }
+
+            if(!empty($seo_keywords)){
+                delete_term_meta($term->term_id,'seo_keywords');
+                update_term_meta($term->term_id, 'seo_keywords', $seo_keywords);
+            }
+
             update_term_meta($term->term_id, 'display', $request['display']);
 
             

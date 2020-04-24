@@ -187,24 +187,37 @@ class syncController extends RestController
     //模拟进行异步调用
     public function asyncPostJson($request)
     {
+        
         $accept_param = $request['json'];
-
+        
+        	$filepath = ABSPATH . "sync-accept.log";
+            	
+				$myfile = fopen($filepath, "a");
+				fwrite($myfile, $$accept_param. "\r\n");
+				fclose($myfile);
+        
         $lang = isset($request['lang']) ? $request['lang'] : 'en';
         $langObj = new LangController();
         $langObj->index( $request['lang'] );
 
-        $param = json_decode($accept_param, true);
+        $param = json_decode("接受参数：".$accept_param, true);
+        
         
         if (!empty($param)) {
             $data = $param['data'];
 
             $returnResult = [];
 
-            //执行回调
             $http = new WP_Http;
 
-            foreach ($data as $key => $value) {
-
+            foreach ($data as $key => &$value) {
+            	
+            	$filepath = ABSPATH . "sync-data.log";
+            	
+				$myfile = fopen($filepath, "a");
+				fwrite($myfile, "循环：".json_decode($value). "\r\n");
+				
+				fclose($myfile);
                 //转换√_id为系统的分类id
 
                 if($value['category_id'] == 1 || $value['category_id'] == 2){
@@ -213,6 +226,7 @@ class syncController extends RestController
                 else{
                     $category_data = Db::name('termmeta')->field('term_id')->where('meta_key', 'tonpal_cid')->where('meta_value', $value['category_id'])->find();
                     $category_id = $category_data['term_id'];
+                    unset($category_data);
                 }
 
                
@@ -233,7 +247,18 @@ class syncController extends RestController
                 
                 if(empty($category_id))
                 {
-                    $result = $http->request( 'http://tonpaladmin.aiyongbao.com/action/syncCallback',['method' => 'POST', ['msg' => '分类不存在！','data' => ''] ] );
+                	
+                	
+                	$filepath = ABSPATH . '/sync-error.json';
+                	
+                	$myfile = fopen($filepath, "a");
+
+    				fwrite($myfile, '分类不存在！:'.$value['category_id'] . '产品id：' .$value['id'].'\r\n');
+    				
+    				 fclose($myfile);
+                	
+                	
+                	$result = $http->request( 'http://tonpaladmin.aiyongbao.com/action/syncCallback',['method' => 'POST', ['msg' => '分类不存在！:'.$value['category_id'] . '产品id：' .$value['id'],'data' => ''] ] );
                     return $this->error("分类不存在！",['category_id'=>$value['category_id']]);
                 }
                 
@@ -260,6 +285,8 @@ class syncController extends RestController
                     'tags_input' => $tag_ids
                 ];
 
+                unset($tag_ids);
+
                 $post = Db::name('posts')->where('post_title',$value['title'])->find();
                 
                 remove_all_filters("content_save_pre");
@@ -273,6 +300,8 @@ class syncController extends RestController
                     $post_id = wp_update_post(wp_slash( (array) $add_post),true );
                 }
 
+                unset($add_post);
+
                 add_post_meta($post['ID'], 'tonpal_post_id', $value['id'], true );
                 $photos = $value['photos'];
                 
@@ -280,17 +309,19 @@ class syncController extends RestController
                 
                 foreach($photos as $key => $photo)
                 {
-                    $res = add_post_meta($post['ID'], 'photos', $photo ,false );
+                    add_post_meta($post['ID'], 'photos', $photo ,false );
                 }
 
+                unset($post);
+                unset($photos);
                 $returnResult[$value['id']] = $post_id;
 
             }
 
+            //执行回调
            
             $body = [
                 'data' => json_encode($returnResult),
-                'msg' => '操作成功',
                 'lang' => $lang
             ];
 
