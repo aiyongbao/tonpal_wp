@@ -24,22 +24,8 @@ if ( is_category() || is_single()) {
 
 }
 
-$args = array(
-    'numberposts' => 6, // 显示个数
-    'offset' => 0,
-    'category' => 1, // 指定需要返回哪个分类的文章
-    'orderby' => 'post_date',
-    'order' => 'DESC',
-    'include' => '',
-    'exclude' => $the_id,// 排除
-    'meta_key' => '',
-    'meta_value' =>'',
-    'post_type' => 'post',
-    'post_status' => 'publish',// 公开的文章
-    'suppress_filters' => true
-);
-$recent_posts = wp_get_recent_posts($args,'ARRAY_A');
-wp_reset_query(); // 重置query 防止影响其他query查询
+
+$recent_posts = get_category_new_product('product', array($the_id), 6, 'ARRAY_A');
 if(ifEmptyArray($recent_posts) !== []){
 ?>
     <div class="side-tit-bar">

@@ -86,7 +86,8 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                         <a href="<?php the_permalink(); ?>" class="item-img">
                                             <img style="width:262px;height:135px;"
                                                 src="<?php echo $thumbnail ?>"
-                                                alt="<?php the_title(); ?>"/></a>
+                                                alt="<?php the_title(); ?>"/>
+                                        </a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title"><a
                                                         href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>

@@ -114,7 +114,7 @@ $googleplus_link = '';
                 </ul>
                 <div class="head-search">
                     <div class="head-search-form">
-                        <form id="search" action="<?php echo get_lang_home_url(); ?>/" target="_blank">
+                        <form id="search" action="<?php echo get_lang_home_url(); ?>" target="_blank">
                             <input class="search-ipt" name="s" id="s" type="text" placeholder="search" />
                             <button class="search-btn" type="submit" ></button>
                          </form>
