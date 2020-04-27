@@ -1,5 +1,6 @@
 <?php
-$icon = ifEmptyText(get_query_var('icon'));
+$theme_vars_header = json_config_array('header','vars',1);
+$icon = ifEmptyText($theme_vars_header['icon']['value']);
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">

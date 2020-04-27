@@ -425,8 +425,7 @@ function get_host_name () {
  * @author zhuoyue
  */
 function get_lang_home_url () {
-    $home_url = home_url();
-    return $home_url;
+    return home_url() ?  get_query_var('lang') ? home_url().'/': home_url()  : '/';
 }
 /**
  * 获取当前页面url
@@ -522,16 +521,16 @@ function get_tags_relevant_product ($tag_id,$exclude = array(),$category, $num =
     return $related_posts;
 }
 /**
- * 根据category_id获取最新产品
- * @param int $category [分类slug]
+ * 根据分类别名获取最新产品
+ * @param string $slug [分类slug]
  * @param array $exclude [需要排除的id]
  * @param int $num [显示个数]
  * @param string $output [返回类型] ARRAY_A | OBJECT
  * @return array
  * @author zhuoyue
  */
-function get_category_new_product ($category,$exclude = array(),$num = 5,$output = 'ARRAY_A') {
-    $category_id = get_category_by_slug($category)->term_id; // 获取分类id
+function get_category_new_product ($slug,$exclude = array(),$num = 5,$output = 'ARRAY_A') {
+    $category_id = get_category_by_slug($slug)->term_id; // 获取分类id
     $args = array(
         'numberposts' => $num, // 显示个数
         'offset' => 0,
@@ -551,6 +550,24 @@ function get_category_new_product ($category,$exclude = array(),$num = 5,$output
     return $recent_posts;
 }
 
+/**
+ * 获取上下一篇文章
+ * @param string $class_name [class名]
+ * @param string $type [类型] prev | next
+ * @param string $prefix [前缀]
+ * @param string $tip [没有文章时的提示语]
+ * @author zhuoyue
+ */
+function get_prev_or_next_post ($class_name='prev', $type = 'prev', $prefix = 'Prev', $tip='') {
+    $post = $type == 'prev' ? get_previous_post(true) :  get_next_post(true) ;
+    printf('<div class="%s" >',$class_name);
+    if (!empty($post)) {
+        printf('%s<a href="%s">%s</a>',$prefix,get_permalink($post->ID),$post->post_name);
+    } else {
+        printf('%s<span>%s</span>',$prefix,$tip);
+    }
+    printf('</div>');
+}
 
 // 祛除摘要自动添加分段
 remove_filter( 'the_excerpt', 'wpautop' );

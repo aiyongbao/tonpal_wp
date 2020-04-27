@@ -214,6 +214,7 @@ $page_url = get_lang_page_url();
                         </div>
                     </div>
                 </div>
+                <?php get_template_part( 'templates/components/tags-random-category' )?>
                 <!-- inquiry form -->
                 <?php get_template_part( 'templates/components/sendMessage' ); ?>
                 <!-- RELATED PRODUCTS -->

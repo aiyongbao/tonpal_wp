@@ -3,9 +3,9 @@ global $wp_query; // Class_Reference/WP_Query 类实例
 global $wp; // Class_Reference/WP 类实例
 
 // SEO
-$seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));
-$seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
-$seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
+$seo_title = ifEmptyText(get_term_meta($cat,'seo_title',true));
+$seo_description = ifEmptyText(get_term_meta($cat,'seo_description',true));
+$seo_keywords = ifEmptyText(get_term_meta($cat,'seo_keywords',true));
 
 $paged = get_query_var('paged'); // 当前页数
 $max = intval( $wp_query->max_num_pages ); // 该分类总页数
@@ -19,7 +19,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
 
 
 <!doctype html>
-<html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -32,11 +32,16 @@ $page_url = $get_full_path.get_category_link($category->term_id);
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
     <?php } ?>
-    <?php if($paged !== $max) { ?>
+    <?php if($max > 1 && $paged !== $max) { ?>
         <link rel="next" href="<?php next_posts(); ?>" />
     <?php } ?>
     <?php get_template_part('templates/components/head'); ?>
 
+    <style>
+        .main{
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,7 +69,8 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                         <a href="<?php the_permalink(); ?>" class="item-img">
                                             <img style="width:262px;height:135px;"
                                                  src="<?php echo $thumbnail ?>"
-                                                 alt="<?php the_title(); ?>"/></a>
+                                                 alt="<?php the_title(); ?>"/>
+                                        </a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title">
                                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -77,13 +83,15 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                             <?php endwhile; ?>
                         </ul>
                         <?php wpbeginner_numeric_posts_nav(); ?>
+                    <?php } else { ?>
+                        <div class="row">
+                            <div class="no-product">No Product</div>
+                        </div>
                     <?php } ?>
                 </div>
-            </section>
-            <!--// main end -->
-            <div>
+                <?php get_template_part( 'templates/components/tags-random-category' )?>
 
-            </div>
+            </section>
         </div>
     </div>
     <!--// main_content end -->

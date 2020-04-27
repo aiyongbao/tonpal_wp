@@ -2,9 +2,6 @@
     position: absolute;
     text-indent: -9999px; /* 这个一定要加上 */
 }
-/*.fixed-nav .nav-bar .nav ul {*/
-/*    top: 0;*/
-/*}*/
 .nav-bar .nav ul ul {
     margin-left: 0;
 }
@@ -75,4 +72,13 @@
 }
 .mt-15 {
     margin-top: .15rem;
+}
+.contact-way a {
+    word-break: break-word;
+}
+.tab-panel-content a {
+    display: inline-block;
+    border: 1px solid #3fb9d1;
+    padding: .05rem;
+    margin: .1rem .1rem 0 0;
 }
