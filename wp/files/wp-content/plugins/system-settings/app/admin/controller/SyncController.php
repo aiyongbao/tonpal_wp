@@ -186,8 +186,8 @@ class syncController extends RestController
 
         $syfilepath = ABSPATH . "sync-data.log";
         $symyfile = fopen($syfilepath, "a");
-        fwrite($symyfile, "t1：" . $syfilepath . "\r\n");
-        fwrite($symyfile, "m1：" . $m1 . "\r\n");
+        fwrite($symyfile, "t1：".$syfilepath . "\r\n");
+        fwrite($symyfile, "m1：". $m1 . "\r\n");
 
         $accept_param = $request['json'];
 
@@ -203,7 +203,7 @@ class syncController extends RestController
 
         $param = json_decode($accept_param, true);
 
-        unset($accept_param);
+        unset( $accept_param );
 
         if (!empty($param)) {
             $data = $param['data'];
@@ -216,9 +216,9 @@ class syncController extends RestController
 
                 $t2 = microtime("true");
                 $m2 = memory_get_usage();
-                fwrite($symyfile, "t2：" . $t2 . "\r\n");
-                fwrite($symyfile, "m2：" . $m2 . "\r\n");
-                fwrite($symyfile, "消耗时间：" . $t2 - $t1 . "\r\n");
+                fwrite($symyfile, "t2：" .$t2 . "\r\n");
+                fwrite($symyfile, "m2：".$m2 . "\r\n");
+                fwrite($symyfile, "消耗时间：".$t2-$t1 . "\r\n");
                 fwrite($symyfile, "循环：" . json_decode($value) . "\r\n");
 
                 fclose($symyfile);
@@ -322,7 +322,7 @@ class syncController extends RestController
             ];
 
             unset($returnResult);
-
+            
             unset($body);
 
             $result = $http->request('http://tonpaladmin.aiyongbao.com/action/syncCallback', ['method' => 'POST', 'body' => $body]);

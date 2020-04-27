@@ -2,7 +2,6 @@
 
 namespace app\portal\controller;
 
-use app\admin\controller\SyncController;
 use library\controller\BaseController;
 
 class LangController extends BaseController
@@ -17,8 +16,8 @@ class LangController extends BaseController
         
 		if (in_array($lang,$match_arr)) {
             //不存在新建语种数据库
-            $sync = new SyncController();
-            $sync->init($lang);
+            // $sync = new SyncController();
+            // $sync->init($lang);
 			$prefix = 'wp_' . $lang . '_';
         }
         
