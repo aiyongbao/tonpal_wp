@@ -55,7 +55,7 @@ $page_url = get_lang_page_url();
                         <?php echo $post->post_content ?>
                     </section>
                 </article>
-
+                <?php get_template_part( 'templates/components/tags-random-category' )?>
                 <?php get_template_part( 'templates/components/sendMessage' )?>
 
             </section>

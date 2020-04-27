@@ -2,7 +2,7 @@
     $category = get_category(get_category_root_id($cat));
     $slug = $category->slug;
     if ( $slug === 'product' ) {
-        include('templates/category/category-products.php');
+        include('templates/category/category-product.php');
     }
     else if ( $slug === 'news' ) {
         include('templates/category/category-news.php');
