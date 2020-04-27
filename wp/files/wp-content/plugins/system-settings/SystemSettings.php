@@ -161,7 +161,15 @@ add_action('setup_theme', function () {
 
 add_filter("pre_post_link",function($permalink,$post,$leavename){
 
-    if(strpos($_SERVER['REQUEST_URI'],'info-product') !== false){
+    if(strpos($_SERVER['REQUEST_URI'],'ai-product-detail' == false)){
+        $permalink = '/info-product'.$permalink;
+    }
+    
+    elseif(strpos($_SERVER['REQUEST_URI'],'ai-news-detail') !== false){
+        $permalink = '/info-news'.$permalink;
+    }
+
+    elseif(strpos($_SERVER['REQUEST_URI'],'info-product') !== false){
         $permalink = '/info-product'.$permalink;
     }
 
