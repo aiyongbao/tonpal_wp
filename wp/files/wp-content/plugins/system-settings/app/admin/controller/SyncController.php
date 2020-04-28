@@ -258,7 +258,12 @@ class syncController extends RestController
                     fclose($myfile);
 
 
-                    $result = $http->request('http://tonpaladmin.aiyongbao.com/action/syncCallback', ['method' => 'POST', ['msg' => '分类不存在！:' . $value['category_id'] . '产品id：' . $value['id'], 'data' => '']]);
+                  $body = [
+                    'data' => '',
+                    'msg' => '分类不存在'.$value['category_id'] . '产品id：' . $value['id']
+                ];
+
+            $result = $http->request('http://tonpaladmin.aiyongbao.com/action/syncCallback', ['method' => 'POST', 'body' => $body]);
                     return $this->error("分类不存在！", ['category_id' => $value['category_id']]);
                 }
 
