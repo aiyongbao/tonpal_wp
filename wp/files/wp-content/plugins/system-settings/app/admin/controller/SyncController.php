@@ -321,12 +321,9 @@ class syncController extends RestController
                 'lang' => $lang
             ];
 
-            unset($returnResult);
-            
-            unset($body);
-
             $result = $http->request('http://tonpaladmin.aiyongbao.com/action/syncCallback', ['method' => 'POST', 'body' => $body]);
 
+            unset($body);
             unset($result);
 
             recursiveDelete(RT_WP_NGINX_HELPER_CACHE_PATH);
