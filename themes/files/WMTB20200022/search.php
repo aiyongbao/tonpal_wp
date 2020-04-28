@@ -68,7 +68,7 @@ if ( have_posts() ) {
                                     </a>
                                     <figcaption class="item-info">
                                         <h3 class="item-title">
-                                            <a href="<?php echo $item->guid; ?>"><?php echo $item->post_title; ?></a>
+                                            <a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a>
                                         </h3>
                                     </figcaption>
                                 </figure>

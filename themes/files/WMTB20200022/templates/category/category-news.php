@@ -39,13 +39,13 @@ $page_url = $get_full_path.get_category_link($category->term_id);
     <!-- SEO -->
     <title><?php echo $seo_title; ?></title>
     <meta name="keywords" content="<?php echo $seo_keywords; ?>" />
-    <meta name="description" content="<?php echo $seo_description; ?>" />>
+    <meta name="description" content="<?php echo $seo_description; ?>" />
     <link rel="canonical" href="<?php echo $page_url; ?>" />
 
     <?php if($paged !== 0) { ?>
         <link rel="prev" href="<?php previous_posts();?>" />
     <?php } ?>
-    <?php if($paged !== $max) { ?>
+    <?php if($max > 1 && $paged !== $max) { ?>
         <link rel="next" href="<?php next_posts(); ?>" />
     <?php } ?>
     <?php get_template_part('templates/components/head'); ?>
@@ -86,7 +86,8 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                         <a href="<?php the_permalink(); ?>" class="item-img">
                                             <img style="width:262px;height:135px;"
                                                 src="<?php echo $thumbnail ?>"
-                                                alt="<?php the_title(); ?>"/></a>
+                                                alt="<?php the_title(); ?>"/>
+                                        </a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title"><a
                                                         href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>

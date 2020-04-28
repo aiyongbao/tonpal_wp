@@ -107,6 +107,10 @@ set_query_var('gooleId', $gooleId);
             <?php if (ifEmptyText($footer_copyright) !== '') : ?>
                 <div class="copyright">Copyright&nbsp;©&nbsp;<span class="get-cur-year"><?php echo date('Y') ?>&nbsp;</span><?php echo $footer_copyright ?></div>
             <?php endif; ?>
+            <div class="footer-info">
+                <?php if (get_category_by_slug('info-news')) print_r('<a href="/info-news">INFO NEWS</a>'); ?>
+                <?php if (get_category_by_slug('info-product')) print_r('<a href="/info-product">INFO PRODUCT</a>'); ?>
+            </div>
         </div>
     </div>
 </footer>
@@ -124,9 +128,9 @@ set_query_var('gooleId', $gooleId);
 
 <div class="fixed-bottom">
     <?php if ($footer_contact_phone !== '' ) { ?>
-    <a href="tel:<?php echo $footer_contact_phone ?>" rel="nofollow"><img src="//q.zvk9.com/Model15/assets/images/btm1.png"></a>
+        <a href="tel:<?php echo $footer_contact_phone ?>" rel="nofollow"><img src="//q.zvk9.com/Model15/assets/images/btm1.png"></a>
     <?php } else { ?>
-    <a href="tel:<?php echo $footer_contact_mobile ?>" rel="nofollow"><img src="//q.zvk9.com/Model15/assets/images/btm1.png"></a>
+        <a href="tel:<?php echo $footer_contact_mobile ?>" rel="nofollow"><img src="//q.zvk9.com/Model15/assets/images/btm1.png"></a>
     <?php } ?>
     <a href="<?php echo $footer_mobile_link ?>" rel="nofollow" ><img src="//q.zvk9.com/Model15/assets/images/btm2.png"></a>
 </div>

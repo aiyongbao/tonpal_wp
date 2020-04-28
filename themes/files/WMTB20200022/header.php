@@ -26,13 +26,11 @@ $icon = ifEmptyText($theme_vars['icon']['value']);
 $sideBarMenu = ifEmptyText($theme_vars['sideBarMenu']['value']);
 $sideBarHotProduct = ifEmptyText($theme_vars['sideBarHotProduct']['value']);
 $sideBarTags = ifEmptyText($theme_vars['sideBarTags']['value']);
-set_query_var('icon',$icon);
 set_query_var('sideBarMenu',$sideBarMenu);
 set_query_var('sideBarHotProduct',$sideBarHotProduct);
 set_query_var('sideBarTags',$sideBarTags);
 $home_url = get_lang_home_url();
-$page_url = get_lang_page_url();
-$googleplus_link = '';
+
 
 ?>
 <!-- header start -->
@@ -102,9 +100,6 @@ $googleplus_link = '';
                     <?php if ($twitter_link !== '') { ?>
                     <li><a href="<?php echo $twitter_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns02.png" alt="" /></i></a></li>
                     <?php } ?>
-                    <?php if ($googleplus_link !== '') { ?>
-                    <li><a href="<?php echo $googleplus_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns04.png" alt="" /></i></a></li>
-                    <?php } ?>
                     <?php if ($linkedin_link !== '') { ?>
                     <li><a href="<?php echo $linkedin_link ?>"><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns03.png" alt="" /></i></a></li>
                     <?php } ?>
@@ -114,7 +109,7 @@ $googleplus_link = '';
                 </ul>
                 <div class="head-search">
                     <div class="head-search-form">
-                        <form id="search" action="<?php echo get_lang_home_url(); ?>/" target="_blank">
+                        <form id="search" action="<?php echo get_lang_home_url(); ?>" target="_blank">
                             <input class="search-ipt" name="s" id="s" type="text" placeholder="search" />
                             <button class="search-btn" type="submit" ></button>
                          </form>

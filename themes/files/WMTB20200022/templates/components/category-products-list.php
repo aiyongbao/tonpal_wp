@@ -1,7 +1,6 @@
 <?php
 $sideBarMenu = ifEmptyText(get_query_var('sideBarMenu'));
 $product_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
-$object_ids = get_category_objects($product_id);
 // 获取一级类目
 $data = get_categories( [
     'taxonomy' => 'category',

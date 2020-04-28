@@ -13,6 +13,11 @@ do
             DOMAIN=$2
             shift
             ;;
+        # wp 数据库地址
+        -dbhost)
+            DBHOST=$2 
+            shift  
+            ;;
         # wp 数据库名称
         -dbname)
             DBNAME=$2 
@@ -54,6 +59,10 @@ if [ "${ORGANIZATIONID}" = "" ]; then
 fi
 if [ "${DOMAIN}" = "" ]; then
     echo '-domain is necessary'
+    exit 1
+fi
+if [ "${DBHOST}" = "" ]; then
+    echo '-dbhost is necessary'
     exit 1
 fi
 if [ "${DBNAME}" = "" ]; then
@@ -100,7 +109,7 @@ Install_Db(){
     done
     sed -i 's#$WPPASS#'${ENWPPASS}'#g' /www/wwwroot/${DOMAIN}/install-db.sql
     # 进入数据库，运行sql语句
-    mysql -u${DBUSER} -p${DBPASS} ${DBNAME} < install-db.sql
+    mysql -h${DBHOST} -u${DBUSER} -p${DBPASS} ${DBNAME} < install-db.sql
 }
 
 # 安装主方法

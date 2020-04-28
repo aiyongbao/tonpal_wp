@@ -2,9 +2,6 @@
     position: absolute;
     text-indent: -9999px; /* 这个一定要加上 */
 }
-/*.fixed-nav .nav-bar .nav ul {*/
-/*    top: 0;*/
-/*}*/
 .nav-bar .nav ul ul {
     margin-left: 0;
 }
@@ -50,7 +47,7 @@
 .foot-wrapper .layout {
     position: relative;
 }
-.foot-wrapper .foot-item ul a {
+.foot-wrapper .foot-item ul a,.foot-cont>ul>li {
     word-break: break-word;
 }
 .main-tit-bar {
@@ -58,4 +55,30 @@
 }
 .entry {
     padding: 0;
+}
+.footer-info{
+    float: right;
+    color: #999;
+}
+.copyright {
+    line-height: 24px;
+}
+.footer-info a{
+    font-size: .12rem;
+    color: #999;
+}
+.mb-35 {
+    margin-bottom: 0.35rem;
+}
+.mt-15 {
+    margin-top: .15rem;
+}
+.contact-way a {
+    word-break: break-word;
+}
+.tab-panel-content a {
+    display: inline-block;
+    border: 1px solid #3fb9d1;
+    padding: .05rem;
+    margin: .1rem .1rem 0 0;
 }

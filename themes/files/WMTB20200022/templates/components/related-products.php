@@ -41,7 +41,7 @@ if(ifEmptyArray($related_posts) !== []){
                                 <img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php echo $item->post_title; ?>"/>
                             </a>
                             <figcaption class="item-info">
-                                <h3 class="item-title"><a href="<?php echo $item->guid; ?>"><?php echo $item->post_title; ?></a></h3>
+                                <h3 class="item-title"><a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a></h3>
                             </figcaption>
                         </figure>
                     </li>

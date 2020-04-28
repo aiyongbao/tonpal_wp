@@ -1,26 +1,26 @@
 <?php
-$sideBarTags = ifEmptyText(get_query_var('sideBarTags'));
-$the_name = '';
-$tag = [];
+$sideBarTags = ifEmptyText(get_query_var('sideBarTags'),'Tag');
 if( is_single() ) {
-    $tag = get_the_tags( $post->ID );
+    $term_id = ROOT_CATEGORY_CID;
+    $tags = get_random_tags($term_id,5); // 随机获取当前分类的tags
 } elseif ( is_category() ) {
     $category = get_category($cat);
-    $the_name = $category->name; //当前分类名称
+    $tags = get_random_tags($category->term_id,10);
 } elseif (is_tag()){
-    $tagName = single_tag_title('',false);
-    $the_name = $tagName; //当前分类名称
+    $the_name = single_tag_title('',false);
+    $tags = get_terms('post_tag', array('name__like'=> "$the_name",'fields'=>'all'));
+} else {
+    $term_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
+    $tags = get_random_tags($term_id,10);
 }
-if (!empty($the_name)) {
-    $tag = get_terms('post_tag', array('name__like'=> "$the_name",'fields'=>'all'));
-}
-if ( ifEmptyArray($tag) !== [] ) {
+
+if ( ifEmptyArray($tags) !== [] ) {
 ?>
     <div class="side-tit-bar">
         <h2 class="side-tit"><?php echo $sideBarTags ?></h2>
     </div>
     <div class="side-tags">
-        <?php foreach ($tag as $item ) { ?>
+        <?php foreach ($tags as $item ) { ?>
             <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
         <?php } ?>
     </div>
