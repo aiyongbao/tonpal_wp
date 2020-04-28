@@ -9,6 +9,9 @@ if( is_single() ) {
 } elseif (is_tag()){
     $the_name = single_tag_title('',false);
     $tags = get_terms('post_tag', array('name__like'=> "$the_name",'fields'=>'all'));
+} else {
+    $term_id = get_category_by_slug('product')->term_id; // 获取产品顶级id
+    $tags = get_random_tags($term_id,10);
 }
 
 if ( ifEmptyArray($tags) !== [] ) {
