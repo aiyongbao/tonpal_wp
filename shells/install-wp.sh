@@ -14,6 +14,11 @@ do
             TEMPDOMAIN=$2
             shift
             ;;
+        # wp 数据库地址
+        -dbhost)
+            DBHOST=$2 
+            shift  
+            ;;
         # wp 数据库名称
         -dbname)
             DBNAME=$2 
@@ -42,6 +47,10 @@ if [ "${TEMPDOMAIN}" = "" ]; then
     echo '-tempdomain is necessary'
     exit 1
 fi
+if [ "${DBHOST}" = "" ]; then
+    echo '-dbhost is necessary'
+    exit 1
+fi
 if [ "${DBNAME}" = "" ]; then
     echo '-dbname is necessary'
     exit 1
@@ -64,6 +73,7 @@ Install_Wp(){
     # 替换文本中的 php 内容（将数据库信息进行替换）
     sed -i 's/$TEMPDOMAIN/'${TEMPDOMAIN}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
     sed -i 's/$DOMAIN/'${DOMAIN}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
+    sed -i 's/$DBHOST/'${DBHOST}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
     sed -i 's/$DBNAME/'${DBNAME}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
     sed -i 's/$DBUSER/'${DBUSER}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
     sed -i 's/$DBPASS/'${DBPASS}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
