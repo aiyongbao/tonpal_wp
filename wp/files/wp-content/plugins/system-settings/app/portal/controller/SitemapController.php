@@ -58,7 +58,6 @@ class SitemapController extends BaseController
     public function fetch($type, $abbr = '')
     {
         header("Content-type: text/xml");
-
         $dom = new \DOMDocument('1.0', 'utf-8');
         $urlset = $dom->createElement('urlset');
         $urlset->setAttribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9");
@@ -160,18 +159,26 @@ class SitemapController extends BaseController
                     $category = get_category_by_slug("news");    
                     $slug = "news";
                 }
-                
+
                 $categories = $this->get_categories([$slug]);
+
+                //print_r($categories);
 
                 $data = [];
 
                 foreach($categories as $c)
                 {
                     $item = get_posts([
-                        'category' => $c
+                        'numberposts' => 500,
+                        'category' => $c,
+                        'post_type'        => 'post'
                     ]);
-
-                    $data = array_merge($data,$item);
+                    
+                    foreach($item as $obj)
+                    {
+                        array_push($data,$obj);
+                    }
+        
                 }
 
                 $sitemap = [];
