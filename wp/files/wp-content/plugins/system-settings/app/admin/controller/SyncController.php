@@ -154,7 +154,7 @@ class syncController extends RestController
 
         //$url = $http_type . $_SERVER['HTTP_HOST'];
 
-        $url = "http://127.0.0.1";
+        $url = "http://localhost";
 
         $cli = "php {$task} {$url} post '{$data_json_file}'";
 
@@ -369,6 +369,7 @@ class syncController extends RestController
                 'parent'      => $parentArr[$value['parent_id']],
                 'slug'        => $value['slug']
             ];
+
 
             $result = get_term_by('name', $value['name'], $taxonomy, ARRAY_A);
 
