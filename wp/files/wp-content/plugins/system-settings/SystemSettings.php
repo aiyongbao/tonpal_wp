@@ -60,6 +60,8 @@ add_filter('init', function () {
     //print_r($rules = get_option( 'rewrite_rules' ));
 
     $wp_rewrite->flush_rules();
+
+    
 });
 
 add_filter('get_terms_orderby',function($orderby, $query_vars, $taxonomy){
@@ -98,6 +100,7 @@ function add_rules()
 
 //文章查询钩子
 add_action('setup_theme', function () {
+
 
     //sitemap初始化
     $sitemap = new SitemapController();
@@ -177,7 +180,7 @@ add_filter("pre_post_link",function($permalink,$post,$leavename){
         $permalink = '/info-news'.$permalink;
     }
 
-    elseif(strpos($_SERVER['REQUEST_URI'],'product') !== false){
+    elseif(  !empty($_REQUEST['s']) || strpos($_SERVER['REQUEST_URI'],'product') !== false){
         $permalink = '/product'.$permalink;
     }
 
@@ -259,6 +262,22 @@ add_filter('query_vars', function ($public_query_vars) {
 });
 
 add_filter('request', function ($query_vars) {
+
+    //大写转小写
+    $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+    $http = $_SERVER['REQUEST_URI'];
+    $host = $_SERVER['HTTP_HOST'];
+    $url = $http_type.$host.$http;
+
+    if(preg_match("/[A-Z]+/", $url))
+    {
+        $url = strtolower($url);
+        header('HTTP/1.1 301 Moved Permanently');
+        header('Location: '.$url);
+        exit();
+    }
+
+
     $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
     if (isset($_REQUEST['lang']) && strpos($match, $_REQUEST['lang'])) {
         if (isset($query_vars['category_name'])) {
