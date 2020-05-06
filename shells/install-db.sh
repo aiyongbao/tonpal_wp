@@ -93,7 +93,7 @@ fi
 # 插入数据库一些内容
 Install_Db(){
     # 获取SQL文件
-    wget -O install-db.sql.des3 https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/sql/install-db.sql.des3
+    wget -O install-db.sql.des3 https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/sql/install-db.sql.des3
     # 进行解密
     dd if=install-db.sql.des3 |openssl des3 -d -k ${SQLDEPASS} | tar zxf -
     # 替换sql语句中域名, 替换成客户的域名

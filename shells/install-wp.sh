@@ -68,7 +68,7 @@ fi
 Install_Wp(){
     yum install -y wget
     # 下载wp目录文件
-    wget -O wp.zip https://raw.githubusercontent.com/tianleyang/tonpal_wp/master/wp/wp.zip
+    wget -O wp.zip https://raw.githubusercontent.com/aiyongbao/tonpal_wp/master/wp/wp.zip
     unzip -o wp.zip
     # 替换文本中的 php 内容（将数据库信息进行替换）
     sed -i 's/$TEMPDOMAIN/'${TEMPDOMAIN}'/g' /www/wwwroot/${DOMAIN}/wp-config.php
