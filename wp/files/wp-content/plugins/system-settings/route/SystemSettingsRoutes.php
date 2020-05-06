@@ -7,6 +7,7 @@ use app\admin\controller\NavMenuController;
 use app\admin\controller\SettingController;
 use app\admin\controller\CategoryController;
 use app\admin\controller\ThemeFileController;
+use app\admin\controller\RobotsController;
 
 class SystemSettingsRoutes {
     
@@ -318,6 +319,15 @@ class SystemSettingsRoutes {
             'callback' => function($request){
                 $settings = new SettingController();
                 return middleware::run('api')->init( $settings->plugin($request) , $request);
+            }
+        ));
+
+        //robots生成
+        register_rest_route($this->namespace, '/robots' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $robots = new RobotsController();
+                return middleware::run('api')->init($robots->index(),$request);
             }
         ));
 
