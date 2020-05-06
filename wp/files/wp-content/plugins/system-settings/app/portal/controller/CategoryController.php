@@ -18,9 +18,10 @@ class CategoryController extends BaseController
                 $hide_category[] = intval($value['term_id']);
             }
         }
+
         $query->query_vars['exclude'] =  $hide_category;
         $query->query_vars['hide_empty'] = 0;
-        
+
         return $query;
     }
 }
