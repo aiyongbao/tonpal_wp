@@ -28,8 +28,8 @@ $footer_friend_links = ifEmptyArray($theme_vars['friendLinks']['value']);
 
 
 $googleExtantion = get_option('google_extantion');
-$gooleId = get_option('goole_id');
-set_query_var('gooleId', $gooleId);
+$googleId = get_option('google_id');
+set_query_var('googleId', $googleId);
 
 ?>
 <!--  footer start -->

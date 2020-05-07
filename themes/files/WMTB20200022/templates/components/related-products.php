@@ -23,10 +23,13 @@ $args = array(
 
 $related_posts = query_posts($args);
 if(ifEmptyArray($related_posts) !== []){
+    // header.json
+    $theme_vars_header = json_config_array('header','vars',1);
+    $related_products = ifEmptyText($theme_vars_header['relatedProducts']['value'],'RELATED PRODUCTS');
 ?>
     <div class="goods-may-like">
         <div class="goods-title-bar">
-            <h2 class="title">RELATED PRODUCTS</h2>
+            <h2 class="title"><?php echo $related_products; ?></h2>
         </div>
         <div class="items_list">
             <ul>

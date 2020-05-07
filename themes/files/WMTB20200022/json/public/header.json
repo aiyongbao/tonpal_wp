@@ -89,6 +89,15 @@
                     "require": true
                 }
             },
+            "relatedProducts": {
+                "title": "相关产品提示语",
+                "type": "text",
+                "value": "RELATED PRODUCTS",
+                "tip": "eg:RELATED PRODUCTS",
+                "rule": {
+                    "require": true
+                }
+            },
             "downloadBtn": {
                 "title": "详情页的下载pdf按钮",
                 "type": "text",
