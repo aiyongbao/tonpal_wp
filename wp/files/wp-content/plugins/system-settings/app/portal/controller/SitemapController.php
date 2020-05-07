@@ -5,6 +5,10 @@ namespace app\portal\controller;
 use library\controller\BaseController;
 use library\Db;
 
+/**
+ * sitemap生成
+ * User: Frank <belief_dfy@163.com>
+ */
 class SitemapController extends BaseController
 {
     //设置排序规则
@@ -37,7 +41,6 @@ class SitemapController extends BaseController
             add_rewrite_rule($match . 'sitemap/detail.xml$', 'index.php?abbr=' . $abbr . '&xml_sitemap=params=detail');
             add_rewrite_rule($match . 'sitemap/ai-product-detail.xml$', 'index.php?abbr=' . $abbr . '&xml_sitemap=params=ai-product-detail');
             add_rewrite_rule($match . 'sitemap/ai-news-detail.xml$', 'index.php?abbr=' . $abbr . '&xml_sitemap=params=ai-news-detail');
-
         }
 
         add_filter('request', function ($query_vars) {
@@ -87,7 +90,7 @@ class SitemapController extends BaseController
 
             case "page":
 
-                $sitemap =[ 
+                $sitemap = [
                     ['loc' => "{$host}{$abbr}"],
                     ['loc' => "{$host}{$abbr}/news"],
                     ['loc' => "{$host}{$abbr}/info-news"],
@@ -95,7 +98,7 @@ class SitemapController extends BaseController
                 ];
 
                 //新闻二级
-                $category = get_category_by_slug("news");    
+                $category = get_category_by_slug("news");
                 $lists = $this->get_sub_data($category->term_id);
                 foreach ($lists as $value) {
                     $slug = get_category_link($value->term_id);
@@ -139,24 +142,21 @@ class SitemapController extends BaseController
             case 'product-detail':
                 $category = get_category_by_slug("product");
                 $slug = "product";
-            case 'ai-news-detail' :
-                if(!isset($category))
-                {
+            case 'ai-news-detail':
+                if (!isset($category)) {
                     $category = get_category_by_slug("info-news");
                     $slug = "info-news";
                 }
 
-            case 'ai-product-detail' :
-                if(!isset($category))
-                {
+            case 'ai-product-detail':
+                if (!isset($category)) {
                     $category = get_category_by_slug("info-product");
                     $slug = "info-product";
                 }
-           case 'news-detail':
+            case 'news-detail':
                 //查询全部的产品详情列表
-                if(!isset($category))
-                {
-                    $category = get_category_by_slug("news");    
+                if (!isset($category)) {
+                    $category = get_category_by_slug("news");
                     $slug = "news";
                 }
 
@@ -166,46 +166,43 @@ class SitemapController extends BaseController
 
                 $data = [];
 
-                foreach($categories as $c)
-                {
+                foreach ($categories as $c) {
                     $item = get_posts([
                         'numberposts' => 500,
                         'category' => $c,
                         'post_type'        => 'post'
                     ]);
-                    
-                    foreach($item as $obj)
-                    {
-                        array_push($data,$obj);
+
+                    foreach ($item as $obj) {
+                        array_push($data, $obj);
                     }
-        
                 }
 
                 $sitemap = [];
-                foreach($data as $post){
+                foreach ($data as $post) {
                     $cache = ['loc' => "{$host}{$abbr}" . get_permalink($post->ID)];
-                    if(!empty(get_post_meta($post->ID,'thumbnail',true))){
-                        $cache['image'] = "https:".get_post_meta($post->ID,'thumbnail',true);
+                    if (!empty(get_post_meta($post->ID, 'thumbnail', true))) {
+                        $cache['image'] = "https:" . get_post_meta($post->ID, 'thumbnail', true);
                     }
                     $sitemap[] = $cache;
                 }
 
                 break;
-            
-            case 'tag' : 
+
+            case 'tag':
                 $sitemap = [];
-                $lists = $this->get_sub_data('','post_tag');
+                $lists = $this->get_sub_data('', 'post_tag');
                 foreach ($lists as $value) {
                     $slug = get_category_link($value->term_id);
                     $sitemap[]['loc'] =  "{$host}{$abbr}" . $slug;
                 }
-                default:
+            default:
                 break;
-            case 'detail' :
+            case 'detail':
                 $sitemap = [];
 
                 //查询全部的产品详情列表
-               
+
                 $exclude = [];
 
                 $exclude_arr = [
@@ -221,10 +218,10 @@ class SitemapController extends BaseController
                 ]);
 
                 $sitemap = [];
-                foreach($data as $post){
+                foreach ($data as $post) {
                     $cache = ['loc' => "{$host}{$abbr}" . get_permalink($post->ID)];
-                    if(!empty(get_post_meta($post->ID,'thumbnail',true))){
-                        $cache['image'] = get_post_meta($post->ID,'thumbnail',true);
+                    if (!empty(get_post_meta($post->ID, 'thumbnail', true))) {
+                        $cache['image'] = get_post_meta($post->ID, 'thumbnail', true);
                     }
                     $sitemap[] = $cache;
                 }
@@ -242,27 +239,26 @@ class SitemapController extends BaseController
 
                 $pages = get_pages();
 
-                foreach($pages as $key => $page)
-                {
-                    $sitemap[] = [ 
-                        'loc' => "{$host}{$abbr}/". $page->post_name
+                foreach ($pages as $key => $page) {
+                    $sitemap[] = [
+                        'loc' => "{$host}{$abbr}/" . $page->post_name
                     ];
                 }
 
                 break;
         }
 
-        if(!empty($sitemap)){
+        if (!empty($sitemap)) {
             foreach ($sitemap as $key => $value) {
                 $url = $dom->createElement('url');
                 $urlset->appendChild($url);
-    
+
                 $loc = $dom->createElement('loc');
                 $url->appendChild($loc);
                 $url_text = $dom->createTextNode($value['loc']);
                 $loc->appendChild($url_text);
 
-                if(!empty($value['image'])){
+                if (!empty($value['image'])) {
                     $image = $dom->createElement('image:image');
                     $url->appendChild($image);
                     $image_loc = $dom->createElement('image:loc');
@@ -270,26 +266,25 @@ class SitemapController extends BaseController
                     $image_url = $dom->createTextNode($value['image']);
                     $image_loc->appendChild($image_url);
                 }
-
-            }    
+            }
         }
 
 
-        
+
         $xmlString = $dom->saveXML();
         echo $xmlString;
         exit();
     }
 
     //获取分类下的全部子类
-    public function get_sub_data($term_id,$taxonomy = 'category')
+    public function get_sub_data($term_id, $taxonomy = 'category')
     {
         static $lists = [];
         $data = get_categories(['parent' => $term_id, 'taxonomy' => $taxonomy]);
 
         foreach ($data as $value) {
             array_push($lists, $value);
-            $this->get_sub_data($value->term_id,$taxonomy);
+            $this->get_sub_data($value->term_id, $taxonomy);
         }
 
         return $lists;
@@ -304,9 +299,9 @@ class SitemapController extends BaseController
             if (!empty($term_id)) {
                 $children = get_term_children($term_id, 'category');
                 array_push($children, $term_id);
-                $exclude = array_merge($exclude,$children);
+                $exclude = array_merge($exclude, $children);
             }
         }
         return $exclude;
-    }  
+    }
 }
