@@ -77,7 +77,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                     </header>
                 <?php } else { ?>
                     <header class="main-tit-bar">
-                        <h3 class="title" style="text-transform:uppercase"><?php echo $the_category_name; ?></h3><h1 style="text-transform:uppercase"><?php $subName; ?></h1>
+                        <h3 class="title" style="text-transform:uppercase"><?php echo $the_category_name; ?></h3><h1 style="text-transform:uppercase"><?php echo $subName; ?></h1>
                     </header>
                 <?php } ?>
                 <?php if ($products_bg !== '') { ?>
