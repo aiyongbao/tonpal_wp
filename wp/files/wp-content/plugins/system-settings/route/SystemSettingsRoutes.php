@@ -327,7 +327,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::READABLE,
             'callback' => function($request){
                 $robots = new RobotsController();
-                return middleware::run('api')->init($robots->index(),$request);
+                return middleware::run('api')->init($robots->index($request),$request);
             }
         ));
 

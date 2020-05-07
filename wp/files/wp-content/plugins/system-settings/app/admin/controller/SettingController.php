@@ -91,7 +91,6 @@ class SettingController extends RestController
 
     public function store($request)
     {
-
         $key = $request['key'];
         $value = $request['value'];
 
@@ -101,9 +100,8 @@ class SettingController extends RestController
                return $this->success("设置成功！");
            }
            else{
-            return $this->error("出现错误！");
+            return $this->error("出现错误获取内容未修改！");
            }
-
     }
 
     public function enable()

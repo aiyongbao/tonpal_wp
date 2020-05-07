@@ -6,17 +6,22 @@ use library\Db;
 class RobotsController extends RestController{
 
     //创建robots.txt
-    public function index(){
-       $languages = Db::name('language')->where('status','1')->select();  
+    public function index($request){
 
+       $domain = $request['domain'];
+       
+       if(empty($domain)){
+           return $this->error("域名不能为空！");
+       }
+
+       $languages = Db::name('language')->where('status','1')->select();  
        $robots = ABSPATH . "robots.txt";
        $handle = fopen($robots,"w+");
-
        $robots = <<<EOT
 User-agent: *
 Disallow: /async-task/
 Disallow: /html/
-Disallow: /s*?
+Disallow: /?s=*
 Disallow: /logs/
 Disallow: /log/
 Disallow: /wp-admin/
@@ -24,11 +29,11 @@ Disallow: /wp-content/
 Disallow: /wp-includes/
 Disallow: /readme.html
 Disallow: /post.log
-Sitemap: {$_SERVER['HTTP_HOST']}/sitemap.xml\r\n
+Sitemap: https://{$domain}/sitemap.xml\r\n
 EOT;
 
         foreach($languages as $l){
-            $robots .= "Sitemap: {$_SERVER['HTTP_HOST']}/{$l['abbr']}/sitemap.xml\r\n";
+            $robots .= "Sitemap: https://{$domain}/{$l['abbr']}/sitemap.xml\r\n";
         }
 
        fwrite($handle,$robots);

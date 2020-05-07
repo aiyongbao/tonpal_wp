@@ -370,6 +370,9 @@ class syncController extends RestController
                 'slug'        => $value['slug']
             ];
 
+            if( empty($value['name']) ){
+                continue;
+            }
 
             $result = get_term_by('name', $value['name'], $taxonomy, ARRAY_A);
 
