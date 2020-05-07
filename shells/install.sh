@@ -643,6 +643,7 @@ Upload_Data(){
 }
 
 Install_Main(){
+	Install_Analystic
 	Lock_Clear
 	System_Check
 	Get_Pack_Manager
@@ -661,7 +662,6 @@ Install_Main(){
 	Service_Add
 	Set_Firewall
 	Get_Ip_Address
-	Install_Analystic
     Set_Token
     Upload_Data
 }

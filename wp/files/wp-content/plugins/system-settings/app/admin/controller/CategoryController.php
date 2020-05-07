@@ -22,31 +22,90 @@ class CategoryController extends RestController{
                 if(empty($display)){
                     $display = "show";
                 }
-
                 return ['display' => $display];
+            }
+        ));
+
+        register_rest_field('category', 'list_order' ,array(
+            'get_callback' => function ($params) {
+                return Db::name('terms')->where('term_id',$params['id'])->value('list_order');
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                //return get_term_field('list_order',$object->ID,'category');
+            }
+        ));
+
+        register_rest_field('category', 'header_desc' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'header_desc', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'footer_desc' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'footer_desc', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'background' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'background', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'seo_title' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'seo_title', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'seo_desc' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'seo_desc', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
+        register_rest_field('category', 'seo_keywords' ,array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'seo_keywords', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName){
+                return update_post_meta($object->ID, $fieldName, $value);
             }
         ));
         
         add_action("rest_after_insert_category",function($term,$request,$bool){
             
-            
+            global $wpdb;
             if($bool && $request['type'] == 'list')
             {
-                global $wpdb;
-                $item = get_json_toArray(get_template_directory() . '/json/portal/category.json');
-                
+                $item = $this->get_json_toArray(get_template_directory() . '/json/portal/category.json');
                 $data = [
-                    'object_id' => $term->ID,
+                    'object_id' => $term->term_id,
                     'is_public' =>  0,
                     'theme' => wp_get_theme()->get('Name'),
                     'name' => $item['name'],
                     'action' => $item['action'],
-                    'file' => 'portal/category',
+                    'file' => $item['action'],
                     'description' => $item['description'],
                     'more' => json_encode($item ),
                     'config_more' => json_encode($item)
-                  ];
-
+                ];
                
                 $res = Db::name('theme_file')->insert( $data );
                 $insert_id = $wpdb->insert_id;
@@ -58,11 +117,64 @@ class CategoryController extends RestController{
                 ]);
             }
 
-            $res = update_term_meta( $term->term_id, 'display', $request['display'] );
+            $header_desc = $request['header_desc'];
+            $footer_desc = $request['footer_desc'];
+            $background = $request['background'];
 
-            update_option('category_children','');
+            //新增tdk
+            $seo_title = $request['seo_title'];
+            $seo_desc = $request['seo_desc'];
+            $seo_keywords = $request['seo_keywords'];
+
+
+            //新增或更新
+            if(!empty($header_desc)){
+                 //删除原来的数据
+                delete_term_meta($term->term_id,'header_desc');
+                update_term_meta($term->term_id, 'header_desc', $header_desc);
+            }
+           
+            if(!empty($footer_desc))
+            {
+                delete_term_meta($term->term_id,'footer_desc');
+                update_term_meta($term->term_id, 'header_desc', $footer_desc);
+            }
+            
+            if(!empty($background)){
+                delete_term_meta($term->term_id,'background');
+                update_term_meta($term->term_id, 'background', $background);
+            }
+
+            if(!empty($seo_title)){
+                delete_term_meta($term->term_id,'seo_title');
+                update_term_meta($term->term_id, 'seo_title', $seo_title);
+            }
+
+            if(!empty($seo_desc)){
+                delete_term_meta($term->term_id,'seo_desc');
+                update_term_meta($term->term_id, 'seo_desc', $seo_desc);
+            }
+
+            if(!empty($seo_keywords)){
+                delete_term_meta($term->term_id,'seo_keywords');
+                update_term_meta($term->term_id, 'seo_keywords', $seo_keywords);
+            }
+
+            update_term_meta($term->term_id, 'display', $request['display']);
+
+            
+
+            //更新排序
+            $list_order = isset($request['list_order']) ? $request['list_order'] :0;
+            Db::name('terms')->where('term_id',$term->term_id)->update(['list_order' => $list_order]);
 
         },10,3);
+    }
+
+    public function get_json_toArray($dir){
+        $json = file_get_contents($dir);
+        $data = json_decode($json,true);
+        return $data;
     }
 
     //根据父级删除子集

@@ -109,14 +109,14 @@ class PostController extends RestController{
             if($bool && $request['type'] == 'page')
             {
                 global $wpdb;
-                $item = get_json_toArray(get_template_directory() . '/json/portal/page.json');
+                $item = $this->get_json_toArray(get_template_directory() . '/json/portal/page.json');
                 $data = [
                     'object_id' => $post->ID,
                     'is_public' =>  0,
                     'theme' => wp_get_theme()->get('Name'),
                     'name' => $item['name'],
                     'action' => $item['action'],
-                    'file' => 'portal/category',
+                    'file' => $item['action'],
                     'description' => $item['description'],
                     'more' => json_encode($item ),
                     'config_more' => json_encode($item)
@@ -135,6 +135,12 @@ class PostController extends RestController{
             }
 
         },10,3);
+    }
+
+    function get_json_toArray($dir){
+        $json = file_get_contents($dir);
+        $data = json_decode($json,true);
+        return $data;
     }
 
 }
