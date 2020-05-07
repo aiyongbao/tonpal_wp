@@ -57,5 +57,4 @@ if(ifEmptyArray($recent_posts) !== []){
         </div>
         <span class="btn-next"></span>
     </div>
-</section>
 <?php }  ?>
