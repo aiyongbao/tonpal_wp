@@ -22,12 +22,29 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
  * $paged 当前页数
  * $max 该分类总页数
  */
-$paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 
 // 当前页面url
 $get_full_path = get_full_path();
 $page_url = $get_full_path.get_category_link($category->term_id);
+
+// 当前是第几页
+$paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+
+// 产品列表数据
+$args = array(
+    'post_type' => 'post',
+    'post_status' => 'publish',
+    'paged' => $paged,
+    'cat' => $cat,   // 指定分类ID
+    'posts_per_page' => '12', /* 显示几条 */
+    'meta_key' => 'list_order',/* 此处为你的自定义栏目名称 */
+    'orderby' => 'list_order', /* 配置排序方式为自定义栏目值 */
+    'order' => 'DESC', /* 降序排列 */
+    'caller_get_posts' => 1,
+);
+$product_posts_items = query_posts($args);
+wp_reset_query(); // 重置query 防止影响其他query查询
 
 ?>
     <!--nextpage-->
@@ -89,24 +106,26 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                 <?php } ?>
                 <!-- product list -->
                 <div class="items_list">
-                    <?php if ( have_posts() ) { ?>
+                    <?php if(ifEmptyArray($product_posts_items) !== []){ ?>
                         <ul>
-                            <?php while ( have_posts() ) : the_post();   ?>
-                            <?php $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true); ?>
+                            <?php
+                            foreach( $product_posts_items as $key => $item ){
+                            $thumbnail = get_post_meta($item->ID,'thumbnail',true);
+                            ?>
                                 <li class="product-item">
                                     <figure class="item-wrap">
-                                        <a href="<?php the_permalink(); ?>" class="item-img">
+                                        <a href="<?php echo get_permalink($item->ID); ?>" class="item-img">
                                         <img src="<?php echo $thumbnail ?>_thumb_262x262.jpg"
-                                             alt="<?php the_title(); ?>"/>
+                                             alt="<?php echo $item->post_title; ?>"/>
                                         </a>
                                         <figcaption class="item-info">
                                             <h3 class="item-title">
-                                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                                <a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a>
                                             </h3>
                                         </figcaption>
                                     </figure>
                                 </li>
-                            <?php endwhile; ?>
+                            <?php } ?>
                         </ul>
                         <?php wpbeginner_numeric_posts_nav(); ?>
                     <?php } else { ?>

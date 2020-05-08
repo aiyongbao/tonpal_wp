@@ -53,7 +53,7 @@ $page_url = get_lang_page_url();
                 <header class="main-tit-bar tags-title">
                     <h1 class="title border"><?php echo $tagName; ?></h1>
                 </header>
-                <div class="blog_list">
+                <div class="blog_list mb-10">
                     <?php if ( have_posts() ) { ?>
                         <ul>
                             <?php while ( have_posts() ) {

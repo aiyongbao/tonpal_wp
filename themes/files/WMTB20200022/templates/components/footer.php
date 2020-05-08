@@ -117,7 +117,7 @@ set_query_var('googleId', $googleId);
 
 <?php if ( !empty($languagesArray)) { ?>
     <ul class="prisna-wp-translate-seo" id="prisna-translator-seo">
-        <li class="language-flag language-flag-en"> <a title="English" href="javascript:changeLanguage('en');"><span>English</span> </a> </li>
+        <li class="language-flag language-flag-en"> <a title="English" href="/"><span>English</span> </a> </li>
         <?php foreach ($languagesArray as $item) { ?>
         <li class="cart-menu-item index-li">
             <a data-language="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"  value="<?php echo ifEmptyText($item['abbr']) ?>" href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"><?php echo ifEmptyText($item['name']) ?></a>
