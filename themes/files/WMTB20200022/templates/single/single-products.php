@@ -158,12 +158,12 @@ $page_url = get_lang_page_url();
                 <!-- tab-content-wrap,tab-title-bar,tab-title ,tab-panel-wrap,tab-panel为结构不做样式用-->
                 <div class="tab-content-wrap product-detail">
                     <?php
-                        $newArray=[];
+                        $detailArray=[];
                         $contentArray = json_decode($post->post_content,true);
                         foreach ($contentArray as $key => $item ){
                             if ($item['content'] !== ''){
-                                $newArray[$key]['tabName'] = $item['tabName'];
-                                $newArray[$key]['content'] = $item['content'];
+                                $detailArray[$key]['tabName'] = $item['tabName'];
+                                $detailArray[$key]['content'] = $item['content'];
                             }
                         }
                     ?>
@@ -177,9 +177,9 @@ $page_url = get_lang_page_url();
                         <div class="tab-panel disabled">
                             <div class="tab-panel-content entry">
                                 <div class="fl-rich-text">
-                                    <?php if (count($newArray) != 1){ ?>
+                                    <?php if (count($detailArray) != 1){ ?>
                                         <ul class="nav nav-tabs" role="tablist">
-                                            <?php foreach ($newArray as $key => $item ){ ?>
+                                            <?php foreach ($detailArray as $key => $item ){ ?>
                                                 <?php if($key == 0){ ?>
                                                     <li role="presentation" class="active">
                                                         <a href="#detail_tab<?php echo $key ?>" aria-controls="product-tab" role="tab" data-toggle="tab"><?php echo $item['tabName']; ?></a>
@@ -192,7 +192,7 @@ $page_url = get_lang_page_url();
                                             <?php } ?>
                                         </ul>
                                         <div class="tab-content">
-                                            <?php foreach ($newArray as $key => $item ){ ?>
+                                            <?php foreach ($detailArray as $key => $item ){ ?>
                                                 <?php if($key == 0){ ?>
                                                     <div role="tabpanel" class="tab-pane active" id="detail_tab<?php echo $key ?>">
                                                         <?php echo $item['content']; ?>
@@ -205,7 +205,7 @@ $page_url = get_lang_page_url();
                                     <?php } else {?>
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane active">
-                                                <?php echo $newArray[0]['content']; ?>
+                                                <?php echo $detailArray[0]['content']; ?>
                                             </div>
                                         </div>
                                     <?php } ?>

@@ -18,7 +18,14 @@ if (!function_exists('my_theme_setup')) :
                 'footer' => __('底部菜单')
             )
         );
-
+        // 格式化时间
+        if (get_option('date_format') != 'Y-m-d'){
+            update_option('date_format','Y-m-d');
+        }
+        // 格式化时间
+        if (get_option('date_format_custom') != 'Y-m-d'){
+            update_option('date_format_custom','Y-m-d');
+        }
     }
 
     function init_theme_file()
@@ -425,7 +432,7 @@ function get_host_name () {
  * @author zhuoyue
  */
 function get_lang_home_url () {
-    return home_url() ?  get_query_var('lang') ? home_url().'/': home_url()  : '/';
+    return home_url() ?  get_query_var('lang') ? home_url().'/' : home_url()  : '/';
 }
 /**
  * 获取当前页面url
