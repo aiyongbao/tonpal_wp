@@ -21,3 +21,4 @@ $icon = ifEmptyText($theme_vars_header['icon']['value']);
 <link rel="stylesheet" type="text/css" href="//q.zvk9.com/Model15/assets/css/swiper.min.css">
 <link href="//q.zvk9.com/plugins/tinymce.20170727.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/style.css">
+<?php get_href_lang() ?>

@@ -57,7 +57,7 @@ if ( have_posts() ) {
                 </header>
             <!-- product list -->
             <?php if ( $product_item != [] ) { ?>
-                <div class="items_list 1">
+                <div class="items_list mb-10">
                     <ul>
                         <?php foreach ($product_item as $item ) { ?>
                             <li class="product-item">
