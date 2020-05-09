@@ -162,29 +162,37 @@ add_action('setup_theme', function () {
     }, 10, 4);
 });
 
+// 获取根分类id
+function p_get_category_root_id($cat)
+{
+    $this_category = get_category($cat); // 取得当前分类
+    while ($this_category->category_parent) // 若当前分类有上级分类时，循环
+    {
+        $this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
+    }
+    return $this_category->term_id; // 返回根分类的id号
+}
+
 add_filter("pre_post_link",function($permalink,$post,$leavename){
 
-    if(strpos($_SERVER['REQUEST_URI'],'ai-product-detail' == false)){
+    $category = get_the_category( $post->ID );
+    $parent_category = p_get_category_root_id($category[0]->term_id);
+    $results = get_category($parent_category);
+
+
+    if( $results->slug == 'ai-product-detail' || $results->slug == 'info-product' ){
         $permalink = '/info-product'.$permalink;
     }
     
-    elseif(strpos($_SERVER['REQUEST_URI'],'ai-news-detail') !== false){
+    elseif( $results->slug == 'ai-news-detail' || $results->slug == 'info-news'  ){
         $permalink = '/info-news'.$permalink;
     }
 
-    elseif(strpos($_SERVER['REQUEST_URI'],'info-product') !== false){
-        $permalink = '/info-product'.$permalink;
-    }
-
-    elseif(strpos($_SERVER['REQUEST_URI'],'info-news') !== false){
-        $permalink = '/info-news'.$permalink;
-    }
-
-    elseif(  !empty($_REQUEST['s']) || strpos($_SERVER['REQUEST_URI'],'product') !== false){
+    elseif( $results->slug == 'product' ){
         $permalink = '/product'.$permalink;
     }
 
-    elseif(strpos($_SERVER['REQUEST_URI'],'news') !== false){
+    elseif ($results->slug == 'news' ){
         $permalink = '/news'.$permalink;
     }
 
@@ -195,6 +203,7 @@ add_filter("pre_post_link",function($permalink,$post,$leavename){
     return $permalink;
 
 },10,3);
+
 
 // add_filter('get_pagenum_link',function($result,$pagenum){
     
