@@ -1,0 +1,286 @@
+{
+    "name": "header配置文件",
+    "action": "public/header",
+    "description": "header配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "logo": {
+                "title": "logo",
+                "value": "",
+                "type": "image",
+                "tip": "请选择logo",
+                "rule": {
+                    "require": true
+                }
+            },
+            "icon": {
+                "title": "icon",
+                "value": "",
+                "type": "image",
+                "tip": "建议50*50 png图片",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "公司名称",
+                "value": "外贸通宝",
+                "type": "text",
+                "tip": "请填写公司名称",
+                "rule": {
+                    "require": true
+                }
+            },
+            "keyWord": {
+                "title": "SEO优化关键词",
+                "value": "",
+                "type": "text",
+                "tip": "需要优化特定的关键词"
+            },
+            "sideBarMenu": {
+                "title": "sidebarTip-menu",
+                "type": "text",
+                "value": "SIDEBAR MENU",
+                "tip": "eg:SIDEBAR MENU",
+                "rule": {
+                    "require": true
+                }
+            },
+            "searchTip": {
+                "title": "搜索提示",
+                "type": "text",
+                "value": "Start Typing...",
+                "tip": "eg: Start Typing...",
+                "rule": {
+                    "require": true
+                }
+            },
+            "searchSlogan": {
+                "title": "搜索标语",
+                "type": "text",
+                "value": "Hit enter to search or ESC to close",
+                "tip": "eg: Hit enter to search or ESC to close",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sideBarHotProduct": {
+                "title": "sidebarTip-hotProduct",
+                "type": "text",
+                "value": "HOT PRODUCT",
+                "tip": "eg:HOT PRODUCT",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sideBarTags": {
+                "title": "sidebarTip-tags",
+                "type": "text",
+                "value": "TAGS",
+                "tip": "eg:TAGS",
+                "rule": {
+                    "require": true
+                }
+            },
+            "relatedProducts": {
+                "title": "相关产品提示语",
+                "type": "text",
+                "value": "RELATED PRODUCTS",
+                "tip": "eg:RELATED PRODUCTS",
+                "rule": {
+                    "require": true
+                }
+            },
+            "downloadBtn": {
+                "title": "详情页的下载pdf按钮",
+                "type": "text",
+                "value": "Download instructions",
+                "tip": "eg:Download instructions",
+                "rule": {
+                    "require": true
+                }
+            },
+            "inquiryBtn": {
+                "title": "详情页的信息按钮",
+                "type": "text",
+                "value": "Send Inquiry Now",
+                "tip": "eg:Send Inquiry Now",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessageTitle": {
+                "title": "询盘标题",
+                "type": "text",
+                "value": "LEAVE YOUR MESSAGES",
+                "tip": "eg:LEAVE YOUR MESSAGES",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessageBtn": {
+                "title": "询盘按钮",
+                "type": "text",
+                "value": "SEND MESSAGE",
+                "tip": "eg:SEND MESSAGE",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaName": {
+                "title": "询盘提示name",
+                "type": "text",
+                "value": "name",
+                "tip": "eg:name",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaEmail": {
+                "title": "询盘提示email",
+                "type": "text",
+                "value": "email",
+                "tip": "eg:email",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaPhone": {
+                "title": "询盘提示phone",
+                "type": "text",
+                "value": "phone",
+                "tip": "eg:phone",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaContent": {
+                "title": "询盘提示content",
+                "type": "text",
+                "value": "message",
+                "tip": "eg:message",
+                "rule": {
+                    "require": true
+                }
+            }
+        },
+        "weight": {
+            "FAQ": {
+                "title": "FQA模块",
+                "display": "0",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "FAQ",
+                        "type": "text",
+                        "tip": "eg: FAQ",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "FAQ列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "问题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "回答",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "问题答案",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "产品详情页的FAQ",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "review": {
+                "title": "review模块",
+                "display": "0",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "Review",
+                        "type": "text",
+                        "tip": "eg: Review",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "review列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "名字",
+                                "value": "",
+                                "type": "text",
+                                "tip": "",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "time": {
+                                "title": "时间",
+                                "value": "",
+                                "type": "text",
+                                "tip": "",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "头像图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "建议50*50",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "评价",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "评价",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "starNumber": {
+                                "title": "星星数量",
+                                "value": "5",
+                                "type": "text",
+                                "tip": "最少一个，最多五个",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "产品详情页的review",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
