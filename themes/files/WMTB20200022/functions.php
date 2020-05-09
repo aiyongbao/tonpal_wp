@@ -487,13 +487,42 @@ add_action('pre_get_posts','custom_posts_per_page');
  */
 function get_random_tags ($term_id,$num) {
     global $wpdb;
+    $term_id_string = '';
+
+    // 获取一级类目
+    $data = get_categories( [
+        'taxonomy' => 'category',
+        'parent' => $term_id,
+        'orderby' => 'list_order',
+        'order' => 'desc',
+    ] );
+    if(!empty($data)){
+        foreach ($data as $item) {
+            // 获取二级类目
+            $child = get_categories( [
+                'taxonomy' => 'category',
+                'parent' => $item->term_id,
+                'orderby' => 'list_order',
+                'order' => 'desc'
+            ] );
+            if(!empty($child)){
+                foreach ($child as $childItem) {
+                    $term_id_string .= $childItem->term_id.',';
+                }
+            }
+            $term_id_string .= $item->term_id.',';
+        }
+    }
+    $term_id_string = substr($term_id_string, 0, -1);
+
+
     $sql = "
         select o.* from (select DISTINCT(tr.term_taxonomy_id) as term_taxonomy_id, wp_term_taxonomy.taxonomy,wp_term_taxonomy.term_id, t.name from (
         SELECT wp_posts.ID
         FROM wp_posts LEFT JOIN wp_term_relationships ON wp_posts.ID = wp_term_relationships.object_id
         INNER JOIN wp_terms ON wp_terms.term_id = wp_term_relationships.term_taxonomy_id
         INNER JOIN wp_term_taxonomy ON wp_term_taxonomy.term_id = wp_terms.term_id
-        where wp_terms.term_id in (".$term_id.") AND wp_term_taxonomy.taxonomy = 'category'
+        where wp_terms.term_id in (".$term_id_string.") AND wp_term_taxonomy.taxonomy = 'category'
         ) as test 
         INNER JOIN wp_term_relationships tr ON tr.object_id = test.ID 
         INNER JOIN wp_terms t ON tr.term_taxonomy_id = t.term_id
@@ -574,6 +603,99 @@ function get_prev_or_next_post ($class_name='prev', $type = 'prev', $prefix = 'P
         printf('%s<span>%s</span>',$prefix,$tip);
     }
     printf('</div>');
+}
+
+/**
+ * 获取头部 hreflang标签
+ * @author daifuyang
+ */
+function get_href_lang()
+{
+    //显示当前页面类型
+
+    $http = $_SERVER['SERVER_PORT'] == 80 ? 'http://' : 'https://';
+    $currents = [];
+    $languages = Db::table('wp_language')->where('status', '1')->select();
+
+    array_unshift($languages, ['abbr' => 'en']);
+
+    if (is_home()) {
+        //首页hreflang
+        foreach ($languages as $lang) {
+            $abbr = $lang['abbr'] == 'en' ? '' : $lang['abbr'];
+
+            $currents[] = [
+                'abbr' => $lang['abbr'],
+                'link' => '/' . $abbr
+            ];
+        }
+    } elseif (is_category() || is_tag()) {
+
+        //分类页hreflang
+        $result = get_category($cat);
+        $slug = $result->slug; //当前语种下的链接
+
+        //查询全部语种下的链接
+        global $wpdb;
+        foreach ($languages as $lang) {
+            $abbr = $lang['abbr'] == 'en' ? '' : $lang['abbr'];
+            $db_prefix =  empty($abbr) ? '' : $abbr . '_';
+            $result = Db::table('wp_' . $db_prefix . 'terms')->field('term_id,slug')->where('slug', $slug)->find();
+            if (!empty($result)) {
+                $wpdb->set_prefix('wp_' . $db_prefix);
+                $link = get_category_link($result['term_id']);
+                $currents[] = [
+                    'abbr' => $lang['abbr'],
+                    'link' => $link
+                ];
+            }
+        }
+    } elseif (is_single()) {
+
+        //产品也hreflang
+        $result = get_post();
+        $post_name = $result->post_name; //当前语种下的链接
+
+        $cid = get_the_category($post_name->ID);
+        $pid = get_category_root_id($cid[0]->term_id);
+        $result = get_category($pid);
+        foreach ($languages as $lang) {
+            $abbr = $lang['abbr'] == 'en' ? '' : $lang['abbr'];
+            $db_prefix =  empty($abbr) ? '' : $abbr . '_';
+            $post_data = Db::table('wp_' . $db_prefix . 'posts')->field('post_name')->where('post_name', $post_name)->find();
+            //print_r($post_data);
+            if (!empty($post_data)) {
+                $currents[] = [
+                    'abbr' => $lang['abbr'],
+                    'link' => (empty($abbr) ? '' : '/' . $abbr) . '/' . $result->slug . '/' . $post_name . '.html'
+                ];
+            }
+        }
+    } elseif (is_page()) {
+
+        //产品也hreflang
+        $result = get_post();
+        $post_name = $result->post_name; //当前语种下的链接
+
+        foreach ($languages as $lang) {
+            $abbr = $lang['abbr'] == 'en' ? '' : $lang['abbr'];
+            $db_prefix =  empty($abbr) ? '' : $abbr . '_';
+            $post_data = Db::table('wp_' . $db_prefix . 'posts')->field('post_name')->where('post_name', $post_name)->find();
+            if (!empty($post_data)) {
+                $currents[] = [
+                    'abbr' => $lang['abbr'],
+                    'link' => (empty($abbr) ? '' : '/' . $abbr) . '/' . $post_name
+                ];
+            }
+        }
+    }
+
+    foreach($currents as $current){
+        if($current['abbr'] == 'en'){
+            echo "<link rel='alternate' hreflang='x-default' href='{$http}{$_SERVER['HTTP_HOST']}{$current['link']}' />";
+        }
+        echo "<link rel='alternate' hreflang='{$current['abbr']}' href='{$http}{$_SERVER['HTTP_HOST']}{$current['link']}' />";
+    };
 }
 
 // 祛除摘要自动添加分段
