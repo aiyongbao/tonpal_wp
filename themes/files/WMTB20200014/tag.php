@@ -77,7 +77,7 @@ $tags_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value'],'Send Inquiry
                                 <figure class="item-wrap">
                                     <a href="<?php the_permalink()  ?>" class="item-image"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
                                     <figcaption class="item-info">
-                                        <h3 class="item-title"><a href="<?php the_permalink()  ?>"><?php the_title(); ?></a><button><?php echo $tags_inquiry_btn; ?></button></h3>
+                                        <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $tags_inquiry_btn; ?></a></h3>
                                         <div class="item-detail"><?php the_excerpt(); ?></div>
                                         <div class="tag">
                                             <?php foreach ($tags as $item ) { ?>

@@ -239,12 +239,6 @@ strong {
 /* review-end */
 
 /* news-start */
-.news-ul {
-
-}
-.news-li {
-
-}
 .news .sharethis-inline-share-buttons {
     float: none;
 }
@@ -409,6 +403,11 @@ strong {
     padding: 0 10px;
     border-radius: 5px;
     cursor: pointer;
+}
+.post-item .item-title .button:hover {
+    background-color: #fff;
+    color: #3190ff;
+
 }
 .post-item .item-detail {
     font-size: 14px;

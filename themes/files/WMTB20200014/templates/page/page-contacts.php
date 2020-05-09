@@ -92,9 +92,11 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                             </div>
                         <?php } ?>
                     </section>
-                    <div class="contact-image">
-                        <img src="<?php echo $contacts_image; ?>" alt="<?php echo $contacts_title ?>" width="100%" />
-                    </div>
+                    <?php if (!empty($contacts_image)) { ?>
+                        <div class="contact-image">
+                            <img src="<?php echo $contacts_image; ?>" alt="<?php echo $contacts_title ?>" width="100%" />
+                        </div>
+                    <?php } ?>
                 </article>
                 <?php get_template_part( 'templates/components/sendMessage' )?>
             </section>

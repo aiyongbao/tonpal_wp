@@ -454,32 +454,31 @@ function get_languages(){
     return $data;
 }
 
-///**
-// * 用于控制列表页展示个数
-// * 系统自调用
-// * @author zhuoyue
-// */
-//function custom_posts_per_page($query){
-//    print_r('111111111');
-//    if(is_archive()){
-//        global $wp;
-//        $slug = $wp->request;
-//        $slug = explode('/',$slug);
-//
-//        if (empty(get_query_var('lang'))) {
-//            $slug = $slug[0];
-//        } else {
-//            $slug = $slug[1];
-//        }
-//        if ( $slug === 'product' ) {
-//            $query->set('posts_per_page',12);
-//            print_r('111111111');
-//        } else if ( $slug === 'news' || $slug === 'info-product' || $slug === 'info-news') {
-//            $query->set('posts_per_page',10);
-//        }
-//    }
-//}
-//add_action('pre_get_posts','custom_posts_per_page');
+/**
+ * 用于控制列表页展示个数
+ * 系统自调用
+ * @author zhuoyue
+ */
+function custom_posts_per_page($query){
+    if(is_archive()){
+        global $wp;
+        $slug = $wp->request;
+        $slug = explode('/',$slug);
+
+        if (empty(get_query_var('lang'))) {
+            $slug = $slug[0];
+        } else {
+            $slug = $slug[1];
+        }
+        if ( $slug === 'news' || $slug === 'info-product' || $slug === 'info-news') {
+            $query->set('posts_per_page',10);
+        }
+    }
+    if (is_search()){
+        $query->set('posts_per_page',9);
+    }
+}
+add_action('pre_get_posts','custom_posts_per_page');
 
 /**
  * 随机获取当前分类的tags
