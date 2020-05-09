@@ -31,7 +31,6 @@ class SitemapController extends BaseController
         foreach ($abbr as $lang) {
             $match = $lang == 'en' ? '' : '^' . $lang . '/';
             $abbr =  $lang == 'en' ? '' : $lang;
-
             add_rewrite_rule($match . 'sitemap(-+([a-zA-Z0-9_-]+))?\.xml$', 'index.php?abbr=' . $abbr . '&xml_sitemap=params=$matches[2]');
             add_rewrite_rule($match . 'sitemap/page.xml$', 'index.php?abbr=' . $abbr . '&xml_sitemap=params=page');
             add_rewrite_rule($match . 'sitemap/product-list.xml$', 'index.php?abbr=' . $abbr . '&xml_sitemap=params=product-list');
@@ -80,22 +79,40 @@ class SitemapController extends BaseController
                     ['loc' => "{$host}{$abbr}/sitemap/product-detail.xml"],
                     ['loc' => "{$host}{$abbr}/sitemap/news-detail.xml"],
                     ['loc' => "{$host}{$abbr}/sitemap/tag.xml"],
-                    ['loc' => "{$host}{$abbr}/sitemap/detail.xml"],
-                    ['loc' => "{$host}{$abbr}/sitemap/ai-news-detail.xml"],
-                    ['loc' => "{$host}{$abbr}/sitemap/ai-product-detail.xml"],
-                    ['loc' => "{$host}{$abbr}/sitemap/ai-review.xml"],
-                    ['loc' => "{$host}{$abbr}/sitemap/ai-faq.xml"]
+                    ['loc' => "{$host}{$abbr}/sitemap/detail.xml"]
                 ];
+
+                if(!empty(get_category_by_slug('info-news'))){
+                    $sitemap[] = ['loc' => "{$host}{$abbr}/sitemap/ai-news-detail.xml"];
+                }
+
+                if(!empty(get_category_by_slug('info-product'))){
+                    $sitemap[] =   ['loc' => "{$host}{$abbr}/sitemap/ai-product-detail.xml"];
+                }
+
+                if(!empty(get_category_by_slug('review'))){
+                    $sitemap[] = ['loc' => "{$host}{$abbr}/sitemap/ai-review.xml"];
+                }
+
+                if(!empty(get_category_by_slug('faq'))){
+                    $sitemap[] = ['loc' => "{$host}{$abbr}/sitemap/ai-faq.xml"];
+                }
                 break;
 
             case "page":
 
                 $sitemap = [
                     ['loc' => "{$host}{$abbr}"],
-                    ['loc' => "{$host}{$abbr}/news"],
-                    ['loc' => "{$host}{$abbr}/info-news"],
-                    ['loc' => "{$host}{$abbr}/info-product"]
+                    ['loc' => "{$host}{$abbr}/news"]
                 ];
+
+                if(!empty(get_category_by_slug('info-news'))){
+                    $sitemap[] = ['loc' => "{$host}{$abbr}/info-news"];
+                }
+
+                if(!empty(get_category_by_slug('info-product'))){
+                    $sitemap[] = ['loc' => "{$host}{$abbr}/info-product"];
+                }
 
                 //新闻二级
                 $category = get_category_by_slug("news");
@@ -117,6 +134,12 @@ class SitemapController extends BaseController
                 ];
 
                 $exclude = $this->get_categories($exclude_arr);
+
+                $tags = get_tags();
+
+                foreach($tags as $term){
+                    array_push($exclude,$term->term_id);
+                }
 
                 add_action('pre_get_terms', function ($query) use ($exclude) {
                     $query->query_vars['exclude'] = $exclude;
