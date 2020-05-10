@@ -401,9 +401,8 @@ function get_breadcrumbs()
 function get_full_path ($abbr = 0) {
     $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
     $domain = $_SERVER['HTTP_HOST'];
-
     $path = $http_type.$domain;
-    if($abbr = 1) {
+    if($abbr == 1) {
         $abbr = ifEmptyText(get_query_var('lang'));
         if(!empty($abbr)) {
             $path .= '/'.$abbr;

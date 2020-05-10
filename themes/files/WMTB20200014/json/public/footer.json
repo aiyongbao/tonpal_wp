@@ -106,14 +106,14 @@
                                 }
                             },
                             "link": {
-                                "title": "值",
+                                "title": "链接",
                                 "value": "",
                                 "type": "text",
-                                "tip": "值"
+                                "tip": "链接"
                             }
                         },
-                        "tip": "公共底部和contacts页面需要",
-                        "maxNumber": 1,
+                        "tip": "快捷链接",
+                        "maxNumber": 5,
                         "rule": {
                             "require": true
                         }

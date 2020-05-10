@@ -23,7 +23,7 @@ $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 // 当前页面url
-$page_url = get_full_path();
+$page_url = get_full_path(1);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
@@ -172,7 +172,7 @@ $page_url = get_full_path();
             <section class="index_company_intr">
                 <div class="index_bd">
                     <div class="layout">
-                        <div class="sys_row flex_row">
+                        <div class="sys_row flex_row flex-box">
                             <div class="company_intr_img">
                                 <div class="intr_img_box">
                                     <div class="company_intr_slider">
@@ -219,11 +219,11 @@ $page_url = get_full_path();
         <section class="index_ad">
             <div class="index_bd">
                 <div class="layout">
-                    <ul class="ad_items sys_row flex_row">
+                    <ul class="ad_items sys_row flex_row flex-box">
                         <?php foreach ($home_modular_two_items as $key => $item) { ?>
                             <li class="ad_item wow fadeInUpA" data-wow-delay=".<?php echo $key+1; ?>s" data-wow-duration=".8s">
                                 <figure class="item_inner">
-                                    <span class="item_img"><img src="<?php echo get_template_directory_uri()?>/assets/picture/index_ad_0<?php echo $key+1; ?>.png" alt="" /><img src="<?php echo get_template_directory_uri()?>/assets/picture/index_ad_0<?php echo $key+1; ?>.png" alt="" /></span>
+                                    <span class="item_img"><img src="<?php echo get_template_directory_uri()?>/assets/images/index_ad_0<?php echo $key+1; ?>.png" alt="" /><img src="<?php echo get_template_directory_uri()?>/assets/images/index_ad_0<?php echo $key+1; ?>.png" alt="" /></span>
                                     <figcaption class="item_info">
                                         <h3 class="item_title"><a href="<?php echo ifEmptyText($item['link'],'javascript:;');?>"><?php echo ifEmptyText($item['title']); ?></a></h3>
                                         <p class="item_desc"><?php echo ifEmptyText($item['desc']);?></p>
