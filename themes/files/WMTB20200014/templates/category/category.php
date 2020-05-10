@@ -2,7 +2,8 @@
 global $wp_query; // Class_Reference/WP_Query 类实例
 global $wp; // Class_Reference/WP 类实例
 // category.json -> vars 数据获取
-$theme_vars = json_config_array_category('category','vars');
+$theme_vars = json_config_array_category('category','vars',$cat);
+
 // Text 数据处理
 $category_title = ifEmptyText($theme_vars['title']['value']);
 $category_read_more = ifEmptyText($theme_vars['readMore']['value']);

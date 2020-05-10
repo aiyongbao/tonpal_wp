@@ -395,6 +395,7 @@ strong {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 30px;
 }
 .post-item .item-title .button {
     border: none;
@@ -426,12 +427,17 @@ strong {
     -webkit-box-orient: vertical;
 }
 /* post-end */
-
+.flex-box {
+    display: flex;
+}
 .category-image {
     max-height: 400px;
 }
 .tags-ul .post-item .tag a {
     border-color: #3190ff;
+}
+#st_gdpr_iframe {
+    border: none;
 }
 @media only screen and (max-width: 480px) {
     .tags-ul .post-item .item-image {
