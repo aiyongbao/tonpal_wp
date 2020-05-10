@@ -95,16 +95,16 @@ set_query_var('googleId', $googleId);
                         </address>
                         <ul class="foot_sns">
                             <?php if ($facebook_link !== '') { ?>
-                                <li><a href="<?php echo $facebook_link ?>" rel="nofollow" ><i class="sc-ico"><img src="http://demo.tonpal.com/WMTB20200014/assets/picture/sns01.png" alt="<?php echo $facebook_link ?>"/></i></a></li>
+                                <li><a href="<?php echo $facebook_link ?>" rel="nofollow" ><i class="sc-ico"><img src="<?php echo get_template_directory_uri()?>/assets/images/facebook.png" alt="<?php echo $facebook_link ?>"/></i></a></li>
                             <?php } ?>
                             <?php if ($twitter_link !== '') { ?>
-                                <li><a href="<?php echo $twitter_link ?>" rel="nofollow" ><i class="sc-ico"><img src="http://demo.tonpal.com/WMTB20200014/assets/picture/sns02.png" alt="<?php echo $twitter_link ?>" /></i></a></li>
+                                <li><a href="<?php echo $twitter_link ?>" rel="nofollow" ><i class="sc-ico"><img src="<?php echo get_template_directory_uri()?>/assets/images/twitter.png" alt="<?php echo $twitter_link ?>" /></i></a></li>
                             <?php } ?>
                             <?php if ($linkedin_link !== '') { ?>
-                                <li><a href="<?php echo $linkedin_link ?>" rel="nofollow" ><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns03.png" alt="<?php echo $linkedin_link ?>" /></i></a></li>
+                                <li><a href="<?php echo $linkedin_link ?>" rel="nofollow" ><i class="sc-ico"><img src="<?php echo get_template_directory_uri()?>/assets/images/linkedin.png" alt="<?php echo $linkedin_link ?>" /></i></a></li>
                             <?php } ?>
                             <?php if ($youtube_link !== '') { ?>
-                                <li><a href="<?php echo $youtube_link ?>" rel="nofollow" ><i class="sc-ico"><img src="//q.zvk9.com/Model15/assets/images/sns04.png" alt="<?php echo $youtube_link ?>" /></i></a></li>
+                                <li><a href="<?php echo $youtube_link ?>" rel="nofollow" ><i class="sc-ico"><img src="<?php echo get_template_directory_uri()?>/assets/images/youtube.png" alt="<?php echo $youtube_link ?>" /></i></a></li>
                             <?php } ?>
                         </ul>
                     </div>

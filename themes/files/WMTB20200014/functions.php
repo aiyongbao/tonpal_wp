@@ -401,9 +401,8 @@ function get_breadcrumbs()
 function get_full_path ($abbr = 0) {
     $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
     $domain = $_SERVER['HTTP_HOST'];
-
     $path = $http_type.$domain;
-    if($abbr = 1) {
+    if($abbr == 1) {
         $abbr = ifEmptyText(get_query_var('lang'));
         if(!empty($abbr)) {
             $path .= '/'.$abbr;
@@ -703,7 +702,9 @@ function get_href_lang()
 
 /**
  * info 页面 获取tags
- * @author daifuyang
+ * @param string $type 类型 single | category
+ * @param int $term_id 检索id
+ * @author zhuoyue
  */
 function get_info_tags ($type='single',$term_id) {
     if ($type == 'single') {

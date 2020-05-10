@@ -90,6 +90,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                     <figure class="item-wrap">
                                         <figcaption class="item-info">
                                             <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $news_read_more; ?></a></h3>
+                                            <time datetime="<?php echo esc_html( get_the_date() ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
                                             <div class="item-detail"><?php the_excerpt(); ?></div>
                                         </figcaption>
                                     </figure>

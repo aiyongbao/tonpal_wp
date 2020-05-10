@@ -309,7 +309,7 @@ a{-webkit-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;tra
 .index_counter .couner_items{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin: 0 -2.5%;}
 .index_counter .counter_item{text-align: center;-webkit-box-flex:0 0 25%;-webkit-flex:0 0 25%;-ms-flex:0 0 25%;flex:0 0 25%;max-width: 25%;width: 25%;}
 .index_counter .counter_item,.index_counter .counter_item a{color: #fff;}
-.index_counter .counter_item .couner_num{display: block;height: 1.1em;font-size: 55px;line-height: 1.1em;font-weight: bold;}
+.index_counter .counter_item .couner_num{display: block;font-size: 55px;line-height: 1.1em;font-weight: bold;}
 .index_counter .counter_item .couner_bd{display: block;padding-top: 50px;line-height: 2em;position: relative;}
 .index_counter .counter_item .couner_bd:before{content: '';display: inline-block;width: 40px;height: 1px;background-color: #fff;position: absolute;left: 50%;margin-left: -20px;top: 25px;}
 .index_counter .counter_item .counter_title{font-size: 18px;}

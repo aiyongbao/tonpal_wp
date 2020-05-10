@@ -49,7 +49,7 @@
             },
             "title": {
                 "title": "公司名称",
-                "value": "外贸通宝",
+                "value": "",
                 "type": "text",
                 "tip": "请填写公司名称",
                 "rule": {

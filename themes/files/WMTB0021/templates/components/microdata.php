@@ -11,9 +11,9 @@
 global $wp,$cat;
 // 先判断当前页面类型
 if( is_category() ) { // 列表页
-    $category_url_array = get_category_url_and_slug($cat);
+    $category_url_array = get_category_url_and_name($cat);
 } elseif ( is_single() ) { // 详情页
-    $category_url_array = get_category_url_and_slug(ROOT_CATEGORY_CID);
+    $category_url_array = get_category_url_and_name(ROOT_CATEGORY_CID);
 } elseif ( is_page() ) { // 单页面
     // 当前页面url
     $page_url = get_lang_page_url();

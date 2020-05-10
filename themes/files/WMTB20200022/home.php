@@ -21,7 +21,7 @@ $seo_Title = ifEmptyText($theme_vars['seoTitle']['value'],'Home');
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 // 当前页面url
-$page_url = get_full_path();
+$page_url = get_full_path(1);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo empty(get_query_var('lang')) ? 'en' : get_query_var('lang') ?>">
