@@ -1,7 +1,7 @@
 <?php
 $post = get_post();
 // page.json -> vars 数据获取
-$theme_vars = json_config_array_category('page','vars',$post->ID);
+$theme_vars = json_config_array_category('page','vars');
 // Text 数据处理
 $page_title = ifEmptyText($theme_vars['title']['value']);
 $page_rich_text = ifEmptyText($theme_vars['richText']['value']);

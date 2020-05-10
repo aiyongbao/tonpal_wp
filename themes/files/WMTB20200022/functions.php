@@ -468,12 +468,12 @@ function custom_posts_per_page($query){
         } else {
             $slug = $slug[1];
         }
-        if ( $slug === 'product' ) {
-            $query->set('posts_per_page',12);
-        } else if ( $slug === 'news' || $slug === 'info-product' || $slug === 'info-news') {
+        if ( $slug === 'news' || $slug === 'info-product' || $slug === 'info-news') {
             $query->set('posts_per_page',10);
         }
-
+    }
+    if (is_search()) {
+        $query->set('posts_per_page',9);
     }
 }
 add_action('pre_get_posts','custom_posts_per_page');
