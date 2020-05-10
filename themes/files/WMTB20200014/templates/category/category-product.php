@@ -101,7 +101,7 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                 </div>
                 <div class="banner_section">
                     <?php if ($products_bg !== '') { ?>
-                        <div class="main_banner">
+                        <div class="main_banner category-image">
                             <img src="<?php echo $products_bg; ?>" alt="<?php echo $the_category_name; ?>" title="<?php echo $the_category_name; ?>" />
                         </div>
                     <?php } ?>

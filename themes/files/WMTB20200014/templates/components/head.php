@@ -16,4 +16,5 @@ $icon = ifEmptyText($theme_vars_header['icon']['value']);
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/style.css">
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/themes.css">
+    <link href="//q.zvk9.com/plugins/tinymce.20170727.css" rel="stylesheet">
 <?php get_href_lang() ?>

@@ -111,6 +111,7 @@ if (empty($res_post)) { // 防止tags搜索不到数据时，补足五条
                                     <figure class="item-wrap">
                                         <figcaption class="item-info">
                                             <h3 class="item-title"><a href="<?php get_permalink($item->ID); ?>" class="title-link"><?php echo $item->post_title; ?>/a><a class="button" href="<?php get_permalink($item->ID); ?>">Send Inquiry Now</a></h3>
+                                            <time datetime="<?php echo $item->post_date; ?>"><?php echo $item->post_date; ?></time>
                                             <div class="item-detail"><?php echo $item->post_excerpt; ?></div>
                                         </figcaption>
                                     </figure>

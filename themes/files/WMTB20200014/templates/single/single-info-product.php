@@ -106,11 +106,14 @@ $next_post = get_next_post(true);
                     </div>
                     <div class="blog_list">
                         <ul>
-                            <?php foreach ($res_post as $item) { ?>
+                            <?php foreach ($res_post as $item) {
+                                $thumbnail=get_post_meta($item->ID,'thumbnail',true);
+                                ?>
                                 <li class="post-item border-bottom-2">
+                                    <a href="<?php get_permalink($item->ID);  ?>" class="item-image"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php $item->post_title; ?>" /></a>
                                     <figure class="item-wrap">
                                         <figcaption class="item-info">
-                                            <h3 class="item-title"><a href="<?php get_permalink($item->ID); ?>" class="title-link"><?php echo $item->post_title; ?>/a><a class="button" href="<?php get_permalink($item->ID); ?>">Send Inquiry Now</a></h3>
+                                            <h3 class="item-title"><a href="<?php get_permalink($item->ID); ?>" class="title-link"><?php echo $item->post_title; ?></a><a class="button" href="<?php get_permalink($item->ID); ?>">Send Inquiry Now</a></h3>
                                             <div class="item-detail"><?php echo $item->post_excerpt; ?></div>
                                         </figcaption>
                                     </figure>

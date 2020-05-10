@@ -75,6 +75,7 @@ if ( have_posts() ) {
                             </li>
                         <?php } ?>
                     </ul>
+                    <?php wpbeginner_numeric_posts_nav(); ?>
                 </div>
             <?php } else { ?>
                 <div class="items_list 2">

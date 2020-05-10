@@ -703,7 +703,9 @@ function get_href_lang()
 
 /**
  * info 页面 获取tags
- * @author daifuyang
+ * @param string $type 类型 single | category
+ * @param int $term_id 检索id
+ * @author zhuoyue
  */
 function get_info_tags ($type='single',$term_id) {
     if ($type == 'single') {
