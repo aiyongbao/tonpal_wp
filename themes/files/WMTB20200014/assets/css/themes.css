@@ -446,3 +446,36 @@ strong {
     }
 }
 
+/* link-item-start */
+.web_footer {
+    position: relative;
+}
+#link-item {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+}
+#link-item div{
+    cursor: pointer;
+
+}
+#link-item span{
+    margin: 8px 0px 0 5px;
+    width: 0;
+    height: 0;
+    display: block;
+    float: right;
+    border-color: #666 transparent transparent transparent;
+    border-width: 5px;
+    border-style: solid;
+}
+#link-item ul {
+    position: absolute;
+}
+#link-item ul li {
+    display: none;
+}
+#link-item div,#link-item ul a {
+    color: #666;
+}
+/* link-item-end */
