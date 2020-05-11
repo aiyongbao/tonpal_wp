@@ -24,16 +24,7 @@ set_query_var('sideBarTags',$sideBarTags);
 $home_url = get_lang_home_url();
 
 $languagesArray = get_query_var('languagesArray');
-$the_abbr = get_query_var('lang') ? get_query_var('lang') : 'en';
-if ($the_abbr != 'en') {
-    foreach ($languagesArray as $item) {
-        if ($item['abbr'] == $the_abbr) {
-            $languagesName = $item['name'];
-        }
-    }
-} else {
-    $languagesName = 'English';
-}
+
 ?>
 
 <header class="web_head <?php if (is_home()) echo 'index_web_head'; ?>">
@@ -72,16 +63,29 @@ if ($the_abbr != 'en') {
             </nav>
             <div class="top_right">
                 <b id="btn-search" class="btn--search"></b>
-                <div class="change-language ensemble">
-                    <div class="change-language-title medium-title">
-                        <div class="language-flag">
-                            <a title="<?php echo $languagesName; ?>" href="javascript:;">
-                                <span><?php echo $languagesName; ?></span>
-                            </a>
+                <?php if (!empty($languagesArray)) {
+                    $the_abbr = get_query_var('lang') ? get_query_var('lang') : 'en';
+                    if ($the_abbr != 'en') {
+                        foreach ($languagesArray as $item) {
+                            if ($item['abbr'] == $the_abbr) {
+                                $languagesName = $item['name'];
+                            }
+                        }
+                    } else {
+                        $languagesName = 'English';
+                    }
+                    ?>
+                    <div class="change-language ensemble">
+                        <div class="change-language-title medium-title">
+                            <div class="language-flag">
+                                <a title="<?php echo $languagesName; ?>" href="javascript:;">
+                                    <span><?php echo $languagesName; ?></span>
+                                </a>
+                            </div>
                         </div>
+                        <div class="change-language-cont sub-content"></div>
                     </div>
-                    <div class="change-language-cont sub-content"></div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>
