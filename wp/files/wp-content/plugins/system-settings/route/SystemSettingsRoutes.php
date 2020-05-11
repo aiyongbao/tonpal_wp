@@ -7,6 +7,7 @@ use app\admin\controller\NavMenuController;
 use app\admin\controller\SettingController;
 use app\admin\controller\CategoryController;
 use app\admin\controller\ThemeFileController;
+use app\admin\controller\RobotsController;
 
 class SystemSettingsRoutes {
     
@@ -36,7 +37,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $theme = new ThemeController();
-                return middleware::run('api')->init( $theme->set_theme($request),$request);
+                return $theme->set_theme($request);
             },
         ) );
 
@@ -206,6 +207,15 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //根据id获取主题的json单个配置文件列表
+        register_rest_route($this->namespace , '/theme_file_item',array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $themeFile = new ThemeFileController();
+                return middleware::run('api')->init( $themeFile->fileItemObject($request) , $request);
+            }
+        ));
+
         register_rest_route($this->namespace , '/theme_file_item/(?P<id>[\d]+)',array(
             'methods'  => WP_REST_Server::DELETABLE,
             'callback' => function($request){
@@ -232,6 +242,14 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //添加系统基本设置
+        register_rest_route($this->namespace , '/settings/store',array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->store($request) , $request);
+            }
+        ));
 
         //根据id删除网站分类和子分类
         register_rest_route($this->namespace , '/category/(?P<id>[\d]+)',array(
@@ -247,7 +265,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $inquiry = new InquiryController();
-                return middleware::run('api')->init( $inquiry->index($request) , $request);
+                return middleware::run('api')->init( $inquiry->index($request), $request);
             }
         ));
         
@@ -256,7 +274,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return middleware::run('api')->init( $sync->dbExecute($request) , $request);
+                return middleware::run('api')->init($sync->dbExecute($request), $request);
             }
         ));
 
@@ -278,11 +296,38 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //同步接口
         register_rest_route($this->namespace, '/async_post' ,array(
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                return middleware::run('api')->init( $sync->asyncPostJson($request) , $request);
+                return $sync->asyncPostJson($request);
+            }
+        ));
+
+        //开启nginx缓存路由
+        register_rest_route($this->namespace, '/purge' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function(){
+                $settings = new SettingController();
+                return $settings->enable();
+            }
+        ));
+
+        register_rest_route($this->namespace, '/plugin' ,array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->plugin($request) , $request);
+            }
+        ));
+
+        //robots生成
+        register_rest_route($this->namespace, '/robots' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $robots = new RobotsController();
+                return middleware::run('api')->init($robots->index($request),$request);
             }
         ));
 

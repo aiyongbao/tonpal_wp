@@ -6,15 +6,15 @@ define('ABSPATH', dirname(__FILE__) . '/');
 
 require_once ABSPATH . "async-task/autoload.php";
 
-$host = "http://wp.io";
+$host = $argv[1];
 // $host = "http://121.196.197.45";
 
-$container = $argv[1];
+$container = $argv[2];
 
 if($container == 'taxonomy')
 {
     $param = [
-        "json" => "{$argv[2]}"
+        "json" => "{$argv[3]}"
     ];
     
     $url = "/wp-json/admin/v1/async_json";
@@ -38,10 +38,10 @@ if($container == 'post')
 
     $myfile = fopen($filepath, "a");
 
-    $json = file_get_contents($argv[2]);
+    $json = file_get_contents($argv[3]);
 
     $param = [
-        "json" => "{$json}"
+        "json" => $json
     ];
 
     fwrite($myfile, date('Y-m-d H:i:s')." --cli参数：".$json . "\r\n");
@@ -54,6 +54,8 @@ if($container == 'post')
     {
         $url .= '?lang='.$param_array['lang'];
     }
+
+    fwrite($myfile, date('Y-m-d H:i:s')." --：RequestController::post host".$host . '-- url：'.$url . '-- param：'.json_encode($param) . "\r\n");
     
     $result = RequestController::post($host . $url ,$param);
 
@@ -62,7 +64,7 @@ if($container == 'post')
     fwrite($myfile, date('Y-m-d H:i:s')." --cli结果：".json_encode($result) . "\r\n");
 
     fclose($myfile);
-    chmod($filepath, 0777);
+    chmod($filepath, 0755);
     
 
 }

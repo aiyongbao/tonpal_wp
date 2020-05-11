@@ -19,6 +19,7 @@ use app\admin\controller\PostController;
 use app\admin\controller\CategoryController;
 use app\portal\controller\PostController as portalPostController;
 use app\portal\controller\CategoryController as portalCategoryController;
+use app\portal\controller\SitemapController;
 
 //定义插件根目录
 define('plugin_dir_path', plugin_dir_path(__FILE__));
@@ -48,41 +49,62 @@ add_action('init', function () {
     //实现列表页数据json自定义
     $category = new CategoryController();
     $category->index();
-
-    $data = get_categories(
-        [
-            "taxonomy" => "category",
-            "parent" => 87,
-            "hide_empty" => 0
-        ]
-    );
-
 });
 
 add_filter('init', function () {
-
     $rules = get_option('rewrite_rules');
-
     add_rules();
     global $wp_rewrite;
+    //print_r($wp_rewrite);
+
+    //print_r($rules = get_option( 'rewrite_rules' ));
 
     $wp_rewrite->flush_rules();
+
+    
 });
+
+add_filter('get_terms_orderby',function($orderby, $query_vars, $taxonomy){
+    
+    if(in_array('category', $taxonomy)){
+
+        if($query_vars['orderby'] == 'list_order'){
+            return 't.list_order';
+        }
+        else{
+            return $orderby;
+        }
+
+    }
+    
+    return $orderby;
+    
+},10,3);
 
 function add_rules()
 {
+    $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
 
-    $match = "(zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af)";
+    $match_arr = explode('|',$match);
 
-    $match_lang = str_replace('|', '\/|', $match);
+    foreach($match_arr as $lang)
+    {
+        add_rewrite_rule('^'.$lang.'/?$' , 'index.php?lang='.$lang, 'bottom');
+        add_rewrite_rule('^'.$lang . '/(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang='.$lang.'&pagename=$matches[1]', 'top');
+        add_rewrite_rule('^'.$lang . '/product/([^/]+).html(?:/([0-9]+))?/?$','index.php?lang='.$lang.'&name=$matches[1]&page=$matches[2]', 'top');  //新增产品详情伪静态
+        add_rewrite_rule('^'.$lang . '/news/([^/]+).html(?:/([0-9]+))?/?$' , 'index.php?lang='.$lang.'&name=$matches[1]&page=$matches[2]', 'top');
+        add_rewrite_rule('^'.$lang . '/list/([^/]+).html(?:/([0-9]+))?/?$' , 'index.php?lang='.$lang.'&name=$matches[1]&page=$matches[2]', 'top');
+    }
 
-    add_rewrite_rule($match, 'index.php?lang=$matches[1]', 'bottom');
-    add_rewrite_rule($match_lang . '(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&pagename=$matches[2]', 'top');
-    add_rewrite_rule($match_lang . '([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=$matches[1]&name=$matches[2]&page=$matches[3]', 'top');
 }
 
 //文章查询钩子
 add_action('setup_theme', function () {
+
+
+    //sitemap初始化
+    $sitemap = new SitemapController();
+    $sitemap->route_init();
 
     //前台语种初始化
     $abbr = explode('/', $_SERVER['REQUEST_URI']);
@@ -117,9 +139,82 @@ add_action('setup_theme', function () {
         }
         return $args;
     });
+
+    add_filter("home_url", function ($url, $path, $schame, $blog_id) {
+        $lang = get_query_var('lang');
+        $old_href_arr = explode('/', $url);
+        $old_href = $old_href_arr[2];
+
+        if ($lang) {
+            if ($schame != 'rest') {
+                $url = str_replace($old_href_arr[0] . "//" . $old_href, '/' . $lang, $url);
+            }
+        } else {
+            $url = str_replace($old_href_arr[0] . "//" . $old_href, '', $url);
+        }
+
+        if(empty($url))
+        {
+            $url = '/';
+        }
+
+        return $url;
+    }, 10, 4);
 });
 
+// 获取根分类id
+function p_get_category_root_id($cat)
+{
+    $this_category = get_category($cat); // 取得当前分类
+    while ($this_category->category_parent) // 若当前分类有上级分类时，循环
+    {
+        $this_category = get_category($this_category->category_parent); // 将当前分类设为上级分类（往上爬）
+    }
+    return $this_category->term_id; // 返回根分类的id号
+}
+
+add_filter("pre_post_link",function($permalink,$post,$leavename){
+
+    $category = get_the_category( $post->ID );
+    $parent_category = p_get_category_root_id($category[0]->term_id);
+    $results = get_category($parent_category);
+
+
+    if( $results->slug == 'ai-product-detail' || $results->slug == 'info-product' ){
+        $permalink = '/info-product'.$permalink;
+    }
+    
+    elseif( $results->slug == 'ai-news-detail' || $results->slug == 'info-news'  ){
+        $permalink = '/info-news'.$permalink;
+    }
+
+    elseif( $results->slug == 'product' ){
+        $permalink = '/product'.$permalink;
+    }
+
+    elseif ($results->slug == 'news' ){
+        $permalink = '/news'.$permalink;
+    }
+
+    else{
+        $permalink = '/list'.$permalink;
+    }
+
+    return $permalink;
+
+},10,3);
+
+
+// add_filter('get_pagenum_link',function($result,$pagenum){
+    
+//     $result = rtrim($result, "/");
+
+//     return $result;
+
+// },10,2);
+
 add_filter('category_rewrite_rules', function ($category_rewrite) {
+    
 
     if (class_exists('Sitepress')) {
         global $sitepress;
@@ -142,18 +237,55 @@ add_filter('category_rewrite_rules', function ($category_rewrite) {
             $category_nicename = get_category_parents($category->parent, false, '/', true) . $category_nicename;
         }
 
-        $match = "(zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af)";
-        $category_rewrite[$match . '/(' . $category_nicename . ')/?$'] = 'index.php?lang=$matches[1]&category_name=$matches[2]';
+        $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
+        $match_arr = explode('|',$match);
+
+        $category_rewrite[ 'list/(' . $category_nicename . ')/?$'] = 'index.php?category_name=$matches[1]'; // 列表伪静态
+        $category_rewrite[ 'list/(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?lang=&category_name=$matches[1]&paged=$matches[2]';  // 列表伪静态
+
+        foreach($match_arr as $lang)
+        {
+            $category_rewrite['^'.$lang . '/(' . $category_nicename . ')/?$'] = 'index.php?lang='.$lang.'&category_name=$matches[1]'; // 列表伪静态
+            $category_rewrite['^'.$lang . '/(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?lang='.$lang.'&category_name=$matches[1]&paged=$matches[2]';  // 列表伪静态
+        }
+        
+        //print_r( $category_rewrite );
+        
     }
     return $category_rewrite;
 });
 
+add_filter('post_rewrite_rules', function($post_rewrite) {
+    unset($post_rewrite['([^/]+).html(?:/([0-9]+))?/?$']); //移除原来的伪静态逻辑
+    $post_rewrite['product/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]';  //新增产品详情伪静态
+    $post_rewrite['news/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增图文详情伪静态
+    $post_rewrite['list/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
+    $post_rewrite['info-news/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
+    return $post_rewrite;
+});
+
 add_filter('query_vars', function ($public_query_vars) {
     $public_query_vars[] = 'lang';
+    $public_query_vars[] = 'is_admin';
     return $public_query_vars;
 });
 
 add_filter('request', function ($query_vars) {
+
+    //大写转小写
+    $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+    $http = $_SERVER['REQUEST_URI'];
+    $host = $_SERVER['HTTP_HOST'];
+    $url = $http_type.$host.$http;
+
+    if(preg_match("/[A-Z]+/", $url))
+    {
+        $url = strtolower($url);
+        header('HTTP/1.1 301 Moved Permanently');
+        header('Location: '.$url);
+        exit();
+    }
+
 
     $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
     if (isset($_REQUEST['lang']) && strpos($match, $_REQUEST['lang'])) {
@@ -166,24 +298,32 @@ add_filter('request', function ($query_vars) {
         } else {
             $catlink = trailingslashit(get_option('home')) . $_REQUEST['lang'] . '/';
         }
-        status_header(301);
-        header("Location: $catlink");
-        exit();
+
+        if (!isset($query_vars['is_admin'])) {
+            status_header(301);
+            header("Location: $catlink");
+            exit();
+        }
     }
     return $query_vars;
 });
 
-add_filter('nav_menu_link_attributes', function ($atts, $item, $args) {
-
-    $abbr = explode('/', $_SERVER['REQUEST_URI']);
-    $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
-
-    if (isset($abbr[1]) && strpos($match, $abbr[1])) {
-        $old_href = $atts['href'];
-        if ($old_href != "") {
-            $atts['href'] = str_replace($old_href, $old_href . '/' . $abbr[1] . '/', $atts['href']);
+function recursiveDelete($dir)
+{
+    // 打开指定目录
+    if ($handle = @opendir($dir)) {
+        while (($file = readdir($handle)) !== false) {
+            if (($file == ".") || ($file == "..")) {
+                continue;
+            }
+            if (is_dir($dir . '/' . $file)) {
+                // 递归
+                recursiveDelete($dir . '/' . $file);
+            } else {
+                unlink($dir . '/' . $file); // 删除文件
+            }
         }
+        @closedir($handle);
+        rmdir($dir);
     }
-
-    return $atts;
-}, 10, 3);
+}

@@ -1,10 +1,17 @@
 <?php
+
 namespace app\portal\controller;
+
 use library\controller\RestController;
 use library\Db;
 
-class InquiryController extends RestController{
-    
+/**
+ * 前台询盘控制器
+ * User: Frank <belief_dfy@163.com>
+ */
+class InquiryController extends RestController
+{
+
     //初始化sql语句
     public function initSql($prefix = 'wp_')
     {
@@ -25,18 +32,22 @@ EOT;
         dbDelta($sql);
     }
 
+    /**
+     * 新增询盘
+     * @author frank <belief_dfy@163.com>
+     */
     public function index($request)
     {
         $post_name = isset($request['post_name']) ? $request['post_name'] : "";
         $name = $request['name'];
         $email = isset($request['email']) ? $request['email'] : "";
-        if(empty($email)){
+        if (empty($email)) {
             return $this->error('邮箱不能为空！');
         }
         $phone = isset($request['phone']) ? $request['phone'] : "";
         $message = isset($request['message']) ? $request['message'] : "";
         $reference = isset($request['reference']) ? $request['reference'] : "";
-        if(empty($reference)){
+        if (empty($reference)) {
             return $this->error('reference不能为空！');
         }
 
@@ -46,9 +57,8 @@ EOT;
             'phone' => $phone,
             'message' => $message
         ]);
-        
-        if($result !== false)
-        {
+
+        if ($result !== false) {
 
             $url = 'http://tonpal.aiyongbao.com/action/savemessage';
             $params = [
@@ -61,16 +71,11 @@ EOT;
                 'reference' => $reference,
                 'organization_id' => get_option('organization_id')
             ];
-
             $params = http_build_query($params);
-
-            $res = wp_remote_get($url. '?'.$params);
-
+            $res = wp_remote_get($url . '?' . $params);
             return $this->success("提交成功");
-        }
-        else{
+        } else {
             return $this->error("提交失败");
         }
-
     }
 }
