@@ -57,7 +57,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                                  alt="<?php echo $item['alt']; ?>">
                         <?php } ?>
                     </div>
-                    <section class="mt15">
+                    <section class="mt-15">
                         <p><?php echo $about_rich_text; ?></p>
                     </section>
                 </article>

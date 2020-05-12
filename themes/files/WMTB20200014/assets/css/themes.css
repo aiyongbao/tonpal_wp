@@ -91,6 +91,11 @@ span.error {
     justify-content: center;
     font-size: 14px;
 }
+.foot_txt_list li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .sharethis-inline-share-buttons {
     float: right;
 }
@@ -101,15 +106,16 @@ strong {
     text-decoration: underline;
 }
 .chapter > div {
-    font-size: 24px;
+    font-size: 20px;
     margin: 10px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 700;
 }
 .chapter a,.chapter span {
     font-size: 16px;
-
+    font-weight: normal;
 }
 
 .tag-box .tag-title {
