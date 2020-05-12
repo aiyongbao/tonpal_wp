@@ -265,7 +265,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $inquiry = new InquiryController();
-                return middleware::run('api')->init( $inquiry->index($request), $request);
+                return $inquiry->index($request);
             }
         ));
         

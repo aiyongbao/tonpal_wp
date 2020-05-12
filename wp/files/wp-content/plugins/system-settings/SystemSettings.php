@@ -260,6 +260,7 @@ add_filter('post_rewrite_rules', function($post_rewrite) {
     $post_rewrite['product/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]';  //新增产品详情伪静态
     $post_rewrite['news/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增图文详情伪静态
     $post_rewrite['list/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
+    $post_rewrite['info-product/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
     $post_rewrite['info-news/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
     return $post_rewrite;
 });
@@ -278,7 +279,9 @@ add_filter('request', function ($query_vars) {
     $host = $_SERVER['HTTP_HOST'];
     $url = $http_type.$host.$http;
 
-    if(preg_match("/[A-Z]+/", $url))
+    $url = "http://121.196.197.45/wp-content/themes/WMTB20200015/assets/css/fonts/CaviarDreams/CaviarDreams.woff2?v=4.5.0";
+
+    if(!preg_match("/^.+\/wp-content\/.+\.+(js|css|woff2)/",$url) && preg_match("/[A-Z]+/", $url))
     {
         $url = strtolower($url);
         header('HTTP/1.1 301 Moved Permanently');
