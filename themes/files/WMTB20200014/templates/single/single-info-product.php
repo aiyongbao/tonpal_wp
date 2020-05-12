@@ -1,15 +1,44 @@
 <?php
 global $wp; // Class_Reference/WP 类实例
-
+$sideBarTags = ifEmptyText(get_query_var('sideBarTags'),'Tag');
 $post = get_post();
+
+$theme_vars = json_config_array('header','vars',1);
+$product_detail_download_btn = ifEmptyText($theme_vars['downloadBtn']['value']);
+$product_detail_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value']);
+
+// weight
+$theme_weight = json_config_array('header','widgets',1);
+$faq = $theme_weight['FAQ'];
+$review = $theme_weight['review'];
 
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 
+// 主图处理
+$photos = ifEmptyArray(get_post_meta(get_post()->ID,'photos'));
+$photosArray = [];
+foreach ($photos as $key=>$item){
+    array_push($photosArray,json_decode($photos[$key],true));
+}
+
 // 当前页面url
 $page_url = get_lang_page_url();
+
+// pdf
+$pdf = ifEmptyText(get_post_meta(get_post()->ID,'pdf',true));
+
+// 详情筛选
+$detailArray=[];
+$contentArray = json_decode($post->post_content,true);
+foreach ($contentArray as $key => $item ){
+    if ($item['content'] !== ''){
+        $detailArray[$key]['tabName'] = $item['tabName'];
+        $detailArray[$key]['content'] = $item['content'];
+    }
+}
 
 $the_tags = get_the_tags( $post->ID ); // 获取当前产品的所有tags
 $tags_array = [];
@@ -57,6 +86,24 @@ $next_post = get_next_post(true);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- OG -->
+    <meta property="og:title" content="<?php echo $post->post_title; ?>" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="<?php echo $page_url; ?>" />
+    <meta property="og:description" content="<?php echo $seo_description; ?>" />
+    <meta property="og:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
+    <meta property="og:site_name" content="<?php get_host_name(); ?>" />
+    <!-- itemprop -->
+    <meta itemprop="name" content="<?php echo $post->post_title; ?>" />
+    <meta itemprop="description" content="<?php the_excerpt(); ?>" />
+    <meta property="image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@affiliate_<?php get_host_name();; ?>" />
+    <meta name="twitter:creator" content="@affiliate_<?php get_host_name(); ?>" />
+    <meta name="twitter:title" content="<?php echo $post->post_title; ?>" />
+    <meta name="twitter:description" content="<?php echo $seo_description; ?>" />
+    <meta name="twitter:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
+
     <?php get_template_part( 'templates/components/head' )?>
     <style>
         .main {
@@ -85,11 +132,62 @@ $next_post = get_next_post(true);
                     <iframe src="/rec-product" style="width:100%;" frameborder="no" scrolling="no"></iframe>
                 </div>
                 <?php get_template_part( 'templates/components/sendMessage' )?>
-                <article>
-                    <section class="mt15">
-                        <?php echo $post->post_content ?>
-                    </section>
-                </article>
+                <div class="product-intro">
+                    <div class="product-view" >
+                        <div class="product-image">
+                            <a class="cloud-zoom" id="zoom1" data-zoom="adjustX:0, adjustY:0" href="<?php echo ifEmptyText($photosArray[0]['url'])?>" title="">
+                                <img src="<?php echo ifEmptyText($photosArray[0]['url'])?>"
+                                     itemprop="image" title="<?php echo ifEmptyText($photosArray[0]['alt'])?>"
+                                     alt="<?php echo ifEmptyText($photosArray[0]['alt'])?>"
+                                     style="width:100%" />
+                            </a>
+                        </div>
+                        <div style="position:relative; width:100%;">
+                            <div class="image-additional">
+                                <ul class="swiper-wrapper">
+                                    <?php foreach ($photosArray as $key => $item) { ?>
+                                        <li class="swiper-slide image-item <?php if ($key == 0) echo 'current'; ?>">
+                                            <a class="cloud-zoom-gallery item"  href="<?php echo ifEmptyText($item['url'])?>" data-zoom="useZoom:zoom1, smallImage:<?php echo ifEmptyText($item['url'])?>" title="<?php echo ifEmptyText($item['alt'])?>">
+                                                <img src="<?php echo ifEmptyText($item['url'])?>_thumb_262x262.jpg" title="<?php echo ifEmptyText($item['alt'])?>" alt="<?php echo ifEmptyText($item['alt'])?>" />
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                                <div class="swiper-pagination swiper-pagination-white"></div>
+                            </div>
+                            <div class="swiper-button-next swiper-button-white"></div>
+                            <div class="swiper-button-prev swiper-button-white"></div>
+                        </div>
+                    </div>
+                    <div class="product-summary">
+                        <div class="product-meta">
+                            <p><?php echo $post->post_excerpt ?></p>
+                        </div>
+                        <div class="gm-sep product-btn-wrap">
+                            <a href="javascript:" class="email"><?php echo $product_detail_inquiry_btn ?></a>
+                            <?php if ($pdf !== '' ) { ?>
+                                <a class="pdf" href="<?php echo $pdf ?>" download="<?php echo $post->post_title ?>"><?php echo $product_detail_download_btn ?></a>
+                            <?php } ?>
+                        </div>
+                        <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
+                    </div>
+                </div>
+                <div class="tab-content-wrap product-detail">
+                    <div class="gm-sep tab-title-bar detail-tabs">
+                        <?php foreach ($detailArray as $key => $item ){ ?>
+                            <h2 class="tab-title  title <?php if ($key == 0) echo 'current'; ?> "><span><?php echo $item['tabName']; ?></span></h2>
+                        <?php } ?>
+                    </div>
+                    <div class="tab-panel-wrap">
+                        <?php foreach ($detailArray as $key => $item ){ ?>
+                            <div class="tab-panel disabled">
+                                <div class="tab-panel-content">
+                                    <?php echo $item['content']; ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
                 <!--// 当前tags -->
                 <?php get_info_tags('single',$post->ID); ?>
                 <div class="chapter underline">

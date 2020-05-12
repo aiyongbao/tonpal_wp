@@ -36,7 +36,7 @@ foreach ($contentArray as $key => $item ){
 }
 
 // weight
-$theme_weight = json_config_array('header','weight',1);
+$theme_weight = json_config_array('header','widgets',1);
 $faq = $theme_weight['FAQ'];
 $review = $theme_weight['review'];
 ?>
@@ -75,9 +75,6 @@ $review = $theme_weight['review'];
 
     <?php get_template_part( 'templates/components/head' )?>
 
-    <style>
-
-    </style>
 </head>
 
 <body>
@@ -146,7 +143,6 @@ $review = $theme_weight['review'];
                         <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
                     </div>
                 </div>
-                <!-- tab-content-wrap,tab-title-bar,tab-title ,tab-panel-wrap,tab-panel为结构不做样式用-->
                 <div class="tab-content-wrap product-detail">
                     <div class="gm-sep tab-title-bar detail-tabs">
                         <?php foreach ($detailArray as $key => $item ){ ?>
