@@ -116,8 +116,10 @@ $next_post = get_next_post(true);
                 </article>
                 <?php if (!empty($the_tags)) { ?>
                     <div class="tags underline">Tags:
-                        <?php foreach ($the_tags as $item ) { ?>
-                            <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
+                        <?php foreach ($the_tags as $item ) {
+                            $tags_name = str_replace("wmtbprefix","",$item->name);
+                            ?>
+                            <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $tags_name; ?></a>
                         <?php } ?>
                     </div>
                 <?php } ?>
