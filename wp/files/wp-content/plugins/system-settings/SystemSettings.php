@@ -278,9 +278,6 @@ add_filter('request', function ($query_vars) {
     $http = $_SERVER['REQUEST_URI'];
     $host = $_SERVER['HTTP_HOST'];
     $url = $http_type.$host.$http;
-
-    $url = "http://121.196.197.45/wp-content/themes/WMTB20200015/assets/css/fonts/CaviarDreams/CaviarDreams.woff2?v=4.5.0";
-
     if(!preg_match("/^.+\/wp-content\/.+\.+(js|css|woff2)/",$url) && preg_match("/[A-Z]+/", $url))
     {
         $url = strtolower($url);
