@@ -38,6 +38,18 @@ if (empty($res_post)) { // 防止tags搜索不到数据时，补足五条
     $res_post = get_category_new_product('info-product', $exclude, 5, 'OBJECT');
 }
 
+// product-detail.json -> vars 数据获取
+$theme_vars = json_config_array('header','vars',1);
+// Text 数据处理
+$productDetail_download_btn = ifEmptyText($theme_vars['downloadBtn']['value']);
+$productDetail_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value']);
+$photos = ifEmptyArray(get_post_meta(get_post()->ID,'photos'));
+$photosArray = [];
+foreach ($photos as $key=>$item){
+    array_push($photosArray,json_decode($photos[$key],true));
+}
+
+
 $prev_post = get_previous_post(true);
 $next_post = get_next_post(true);
 ?>
@@ -56,6 +68,27 @@ $next_post = get_next_post(true);
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- OG -->
+    <meta property="og:title" content="<?php echo $post->post_title; ?>" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="<?php echo $page_url; ?>" />
+    <meta property="og:description" content="<?php echo $seo_description; ?>" />
+    <meta property="og:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
+    <meta property="og:site_name" content="<?php get_host_name(); ?>" />
+    <!-- itemprop -->
+    <meta itemprop="name" content="<?php echo $post->post_title; ?>" />
+    <meta itemprop="description" content="<?php the_excerpt(); ?>" />
+    <meta property="image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@affiliate_<?php get_host_name();; ?>" />
+    <meta name="twitter:creator" content="@affiliate_<?php get_host_name(); ?>" />
+    <meta name="twitter:title" content="<?php echo $post->post_title; ?>" />
+    <meta name="twitter:description" content="<?php echo $seo_description; ?>" />
+    <meta name="twitter:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <?php get_template_part( 'templates/components/head' )?>
     <style>
@@ -109,15 +142,68 @@ $next_post = get_next_post(true);
                     <iframe src="/rec-product" style="width:100%;" frameborder="no" scrolling="no"></iframe>
                 </div>
                 <?php get_template_part( 'templates/components/sendMessage' )?>
-                <article class="entry blog-article">
-                    <section class="mt15">
-                        <?php echo $post->post_content ?>
-                    </section>
-                </article>
+                <div class="product-intro">
+                    <div class="product-view" style="width:300px;">
+                        <div class="product-image" style="width:300px;height:300px;background-color:white;border:1px solid white;">
+                            <a class="certificate-fancy" target="_blank" href="<?php echo ifEmptyText($photosArray[0]['url'])?>">
+                                <img src="<?php echo ifEmptyText($photosArray[0]['url'])?>" alt="<?php echo ifEmptyText($photosArray[0]['alt'])?>" style="width:100%" />
+                            </a>
+                        </div>
+                        <div class="image-additional">
+                            <ul class="image-items">
+                                <?php foreach ($photosArray as $key => $item) { ?>
+                                    <li class="image-item">
+                                        <a href='<?php echo ifEmptyText($item['url'])?>' class='fancy-item' target="_blank" href="javascript:;">
+                                            <img src="<?php echo ifEmptyText($item['url'])?>" alt="<?php echo ifEmptyText($item['alt'])?>" />
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="product-summary" style="left:-40px;padding-left:0;">
+                        <div class="product-meta">
+                            <p><?php echo $post->post_excerpt ?></p>
+                        </div>
+                        <div class="gm-sep product-btn-wrap">
+                            <a href="#myform" class="email"><?php echo $productDetail_inquiry_btn ?></a>
+                            <?php if ($pdf !== '' ) { ?>
+                                <a class="pdf" href="<?php echo $pdf ?>" download="<?php echo $post->post_title ?>"><?php echo $productDetail_download_btn ?></a>
+                            <?php } ?>
+                        </div>
+                        <div class="share-this">
+                            <!--share-->
+                            <script async src="//platform-api.sharethis.com/js/sharethis.js#property=58cb62ef8263e70012464e1a&product=inline-share-buttons"></script>
+                            <div class="sharethis-inline-share-buttons"></div>
+                            <!--// share-->
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content-wrap product-detail">
+                    <div class="gm-sep tab-title-bar detail-tabs">
+                        <h2 class="tab-title  title current "><span>Detail</span></h2>
+                    </div>
+                    <div class="tab-panel-wrap mb0">
+                        <div class="tab-panel disabled">
+                            <div class="tab-panel-content entry">
+                                <div class="fl-rich-text">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active">
+                                            <?php echo $post->post_content ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php if (!empty($the_tags)) { ?>
                     <div class="tags underline">Tags:
-                        <?php foreach ($the_tags as $item ) { ?>
-                            <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
+                        <?php foreach ($the_tags as $item ) {
+                            $tags_name = str_replace("wmtbprefix","",$item->name);
+                            ?>
+                            <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $tags_name; ?></a>
                         <?php } ?>
                     </div>
                 <?php } ?>
@@ -175,5 +261,21 @@ $next_post = get_next_post(true);
     $('.iframe-box iframe').eq(0).on('load',() => {
         $('.iframe-box iframe').eq(0).height($('.iframe-box iframe')[0].contentDocument.body.offsetHeight)
     })
+    $('.fancy-item').click(function(){
+        var imgSrc = $(this).attr('_href');
+        $('.certificate-fancy').attr('href',imgSrc);
+        $('.certificate-fancy img').attr('src',imgSrc);
+    })
+
+    $('.certificate-fancy').fancybox({
+        afterLoad : function() {
+            //this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+            this.title = this.title ? this.title : '';
+        },
+        helpers     : {
+            title   : { type : 'inside' },
+            buttons : {}
+        }
+    });
 </script>
 </html>

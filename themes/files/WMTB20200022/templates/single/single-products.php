@@ -155,7 +155,6 @@ $page_url = get_lang_page_url();
                         </div>
                     </div>
                 </div>
-                <!-- tab-content-wrap,tab-title-bar,tab-title ,tab-panel-wrap,tab-panel为结构不做样式用-->
                 <div class="tab-content-wrap product-detail">
                     <?php
                         $detailArray=[];
@@ -168,10 +167,9 @@ $page_url = get_lang_page_url();
                         }
                     ?>
                     <div class="gm-sep tab-title-bar detail-tabs">
-                        <h2 class="tab-title  title current"><span>PRODUCTS DETAILS</span></h2>
-                    </div>
-                    <div class="gm-sep tab-title-bar detail-tabs">
-
+                        <?php foreach ($detailArray as $key => $item ){ ?>
+                            <h2 class="tab-title  title <?php if ($key == 0) echo 'current'; ?> "><span><?php echo $item['tabName']; ?></span></h2>
+                        <?php } ?>
                     </div>
                     <div class="tab-panel-wrap mb0">
                         <div class="tab-panel disabled">
