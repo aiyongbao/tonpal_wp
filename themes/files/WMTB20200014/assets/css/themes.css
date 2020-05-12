@@ -91,6 +91,11 @@ span.error {
     justify-content: center;
     font-size: 14px;
 }
+.foot_txt_list li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .sharethis-inline-share-buttons {
     float: right;
 }
@@ -101,15 +106,16 @@ strong {
     text-decoration: underline;
 }
 .chapter > div {
-    font-size: 24px;
+    font-size: 20px;
     margin: 10px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 700;
 }
 .chapter a,.chapter span {
     font-size: 16px;
-
+    font-weight: normal;
 }
 
 .tag-box .tag-title {
@@ -446,3 +452,36 @@ strong {
     }
 }
 
+/* link-item-start */
+.web_footer {
+    position: relative;
+}
+#link-item {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+}
+#link-item div{
+    cursor: pointer;
+
+}
+#link-item span{
+    margin: 8px 0px 0 5px;
+    width: 0;
+    height: 0;
+    display: block;
+    float: right;
+    border-color: #666 transparent transparent transparent;
+    border-width: 5px;
+    border-style: solid;
+}
+#link-item ul {
+    position: absolute;
+}
+#link-item ul li {
+    display: none;
+}
+#link-item div,#link-item ul a {
+    color: #666;
+}
+/* link-item-end */

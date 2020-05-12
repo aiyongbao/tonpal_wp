@@ -893,3 +893,6 @@ $('#contact-form').validate({
     highlight: function(e) {},
     success: function(e) {}
 });
+$('#link-item>div').click(() => {
+    $('#link-item ul li').toggle('500');
+})

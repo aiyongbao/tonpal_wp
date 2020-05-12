@@ -165,7 +165,7 @@
                 }
             }
         },
-        "weight": {
+        "widgets": {
             "FAQ": {
                 "title": "FQA模块",
                 "display": "0",

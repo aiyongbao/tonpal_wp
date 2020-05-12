@@ -140,6 +140,11 @@ class SitemapController extends BaseController
                 foreach($tags as $term){
                     array_push($exclude,$term->term_id);
                 }
+                
+                $locations = wp_get_nav_menus();
+                foreach($locations as $location){
+                    array_push($exclude,$location->term_id);
+                }
 
                 add_action('pre_get_terms', function ($query) use ($exclude) {
                     $query->query_vars['exclude'] = $exclude;

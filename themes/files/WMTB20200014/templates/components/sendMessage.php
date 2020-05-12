@@ -25,12 +25,12 @@ $placeholder_content = ifEmptyText($theme_vars['sendMessagePlaContent']['value']
                         <input id="name" type="text" name="name" class="form-input form-input-name">
                     </li>
                     <li class="form-item">
-                        <span><?php echo $placeholder_email ?></span>
-                        <input id="email" type="email" name="email" class="form-input form-input-email">
-                    </li>
-                    <li class="form-item">
                         <span><?php echo $placeholder_phone ?></span>
                         <input id="phone" type="tel" name="phone" class="form-input form-input-phone">
+                    </li>
+                    <li class="form-item">
+                        <span><?php echo $placeholder_email ?></span>
+                        <input id="email" type="email" name="email" class="form-input form-input-email">
                     </li>
                 </div>
                 <div class="form-right">
