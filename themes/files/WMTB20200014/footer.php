@@ -1,5 +1,5 @@
 <?php
-$gooleId = ifEmptyText(get_query_var('gooldId'));
+$googleId = ifEmptyText(get_query_var('googleId'));
 ?>
 <script src="<?php echo get_template_directory_uri()?>/assets/js/jquery.min.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/jquery.validate.min.js"></script>
@@ -8,6 +8,6 @@ $gooleId = ifEmptyText(get_query_var('gooldId'));
 <script>
 
 </script>
-<?php if( ifEmptyText($gooleId) !== '') {
-    echo $gooleId;
+<?php if( ifEmptyText($googleId) !== '') {
+    echo $googleId;
 }?>
