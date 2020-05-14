@@ -113,7 +113,7 @@ $page_url = get_full_path();
             <?php if ($home_collections['display'] == 1) {
                 $widget_vars = ifEmptyArray($home_collections['vars']);
             ?>
-                <div class="index_ad" style="background-image: url(<?php echo get_template_directory_uri() ?>/assets/images/ad_bg.jpg)">
+                <div class="index_ad" style="background-image: url(<?php echo ifEmptyText($widget_vars['bg']['value']) ?>">
                     <div class="layout">
                         <div class="index_title wow fadeInUpA" data-wow-delay=".1s">
                             <h2><?php echo $widget_vars['title']['value'] ?></h2>

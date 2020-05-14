@@ -13,6 +13,8 @@ $seo_title = ifEmptyText($theme_vars['seoTitle']['value']);
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
+$background = ifEmptyText($theme_vars['bg']['value']);
+
 $subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
 
 /**
@@ -57,6 +59,10 @@ $page_url = $get_full_path . get_category_link($category->term_id);
         <?php get_header() ?>
         <!--// web_head end -->
 
+        <?php if(!empty($background)) { ?>
+            <div class="page_bg" style='background: url("<?php echo $background; ?>") fixed no-repeat center center'>
+            </div>
+        <?php } ?>
         <!-- path -->
         <?php get_breadcrumbs(); ?>
 

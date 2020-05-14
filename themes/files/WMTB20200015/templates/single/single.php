@@ -3,7 +3,8 @@ global $wp; // Class_Reference/WP 类实例
 
 $post = get_post();
 
-
+$theme_vars = json_config_array_category('category', 'vars', ROOT_CATEGORY_CID);
+$background = ifEmptyText($theme_vars['bg']['value']);
 // SEO
 $seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
@@ -12,7 +13,6 @@ $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 // 当前页面url
 $page_url = get_lang_page_url();
 
-$background = ifEmptyText(get_term_meta(ROOT_CATEGORY_CID,'background',true),'http://demo.tonpal.com/WMTB20200015/assets/images/main_banner.jpg');
 
 ?>
 <!DOCTYPE html>

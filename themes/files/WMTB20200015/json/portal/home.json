@@ -228,6 +228,12 @@
                             "require": true
                         }
                     },
+                    "bg": {
+                        "title": "页面背景图",
+                        "value": "/wp-content/themes/WMTB20200015/assets/images/ad_bg.jpg",
+                        "type": "image",
+                        "tip": "页面背景图"
+                    },
                     "items": {
                         "title": "特色案例",
                         "value": [
