@@ -1,0 +1,77 @@
+{
+    "name": "showcase配置文件",
+    "action": "portal/showcase",
+    "description": "showcase配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "bg": {
+                "title": "页面背景图",
+                "value": "",
+                "type": "image",
+                "tip": "页面背景图"
+            },
+            "items": {
+                "title": "showcase列表",
+                "type": "array",
+                "value": [],
+                "item": {
+                    "image": {
+                        "title": "image图片",
+                        "type": "image",
+                        "value": "",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "title": {
+                        "title": "标题",
+                        "type": "text",
+                        "value": "",
+                        "tip": "标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "type": "textarea",
+                        "value": "",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

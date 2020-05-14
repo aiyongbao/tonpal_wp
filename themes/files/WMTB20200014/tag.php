@@ -66,27 +66,13 @@ $tags_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value'],'Send Inquiry
                             $cid = $category[0]->cat_ID;
                             $pid = get_category_root_id($cid);
                             $the_slug = get_category($pid)->slug;
-                            if ( $the_slug == 'product' ) {
-                                $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true);
-                                $tags = get_the_tags( $post->ID );
-                                ?>
-                                <li class="post-item border-bottom-2">
-                                    <figure class="item-wrap">
-                                        <a href="<?php the_permalink()  ?>" class="item-image"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
-                                        <figcaption class="item-info">
-                                            <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $tags_inquiry_btn; ?></a></h3>
-                                            <div class="item-detail"><?php the_excerpt(); ?></div>
-                                            <div class="tag">
-                                                <?php foreach ($tags as $item ) { ?>
-                                                    <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
-                                                <?php } ?>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                            <?php }elseif ($the_slug == 'info-product' || $the_slug == 'info-news') {
-                                $thumbnail=ifEmptyText(get_post_meta(get_post()->ID,'thumbnail',true));
-                                $tags = get_the_tags( $post->ID );
+
+                            $thumbnail = ifEmptyText(get_post_meta(get_post()->ID, 'thumbnail', true));
+                            $tags = get_the_tags($post->ID);
+
+                            if ($the_slug != 'news') {
+                                $thumbnail = get_post_meta(get_post()->ID, 'thumbnail', true);
+                                $tags = get_the_tags($post->ID);
                                 ?>
                                 <li class="post-item border-bottom-2">
                                     <figure class="item-wrap">
@@ -106,9 +92,7 @@ $tags_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value'],'Send Inquiry
                                         </figcaption>
                                     </figure>
                                 </li>
-                            <?php } ?>
-
-                        <?php } ?>
+                            <?php } } ?>
                     </ul>
                     <?php wpbeginner_numeric_posts_nav(); ?>
                 <?php } ?>
