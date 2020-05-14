@@ -69,14 +69,30 @@ if ($the_abbr != 'en') {
                         <i class="top_ico_email"></i><span class="top_label"><a href="mailto:">Email: <?php echo $email['value']; ?></a></span>
                     </li>
                 </ul>
-                <div class="change-language ensemble">
-                    <div class="change-language-title medium-title">
-                        <div class="language-flag language-flag-en"> <a title="<?php echo $languagesName; ?>" href="javascript:;">
-                                <span><?php echo $languagesName; ?></span>
-                            </a> </div>
+
+                <?php if (!empty($languagesArray)) {
+                    $the_abbr = get_query_var('lang') ? get_query_var('lang') : 'en';
+                    if ($the_abbr != 'en') {
+                        foreach ($languagesArray as $item) {
+                            if ($item['abbr'] == $the_abbr) {
+                                $languagesName = $item['name'];
+                            }
+                        }
+                    } else {
+                        $languagesName = 'English';
+                    }
+                    ?>
+                    <div class="change-language ensemble">
+                        <div class="change-language-title medium-title">
+                            <div class="language-flag">
+                                <a title="<?php echo $languagesName; ?>" href="javascript:;">
+                                    <span><?php echo $languagesName; ?></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="change-language-cont sub-content"></div>
                     </div>
-                    <div class="change-language-cont sub-content"></div>
-                </div>
+                <?php } ?>
 
             </div>
         </div>

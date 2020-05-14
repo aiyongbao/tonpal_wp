@@ -113,7 +113,7 @@ $page_url = get_full_path();
             <?php if ($home_collections['display'] == 1) {
                 $widget_vars = ifEmptyArray($home_collections['vars']);
             ?>
-                <div class="index_ad" style="background-image: url(<?php echo get_template_directory_uri() ?>/assets/images/ad_bg.jpg)">
+                <div class="index_ad" style="background-image: url(<?php echo ifEmptyText($widget_vars['bg']['value']) ?>">
                     <div class="layout">
                         <div class="index_title wow fadeInUpA" data-wow-delay=".1s">
                             <h2><?php echo $widget_vars['title']['value'] ?></h2>
@@ -227,25 +227,8 @@ $page_url = get_full_path();
         <!--// web_footer end -->
 
     </div>
-    <!--// container end -->
 
-    <!-- <div class="inquiry-pop-bd">
-  <div class="inquiry-pop"><i class="ico-close-pop" onclick="hideMsgPop();"></i><script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/assets/js/app.js"></script></div>
-</div> -->
-    <div class="web-search"> <b id="btn-search-close" class="btn--search-close"></b>
-        <div style=" width:100%">
-            <div class="head-search">
-                <form class="" action="">
-                    <input class="search-ipt" name="search" placeholder="Start Typing.." />
-                    <input class="search-btn" type="button" />
-                    <span class="search-attr">Hit enter to search or ESC to close</span>
-                </form>
-            </div>
-        </div>
-    </div>
-    <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery.min.js"></script>
-    <script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js"></script>
 
 </body>
-
+<?php get_footer(); ?>
 </html>
