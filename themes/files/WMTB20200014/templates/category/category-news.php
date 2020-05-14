@@ -81,7 +81,6 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                             <h3 style="text-transform:uppercase"><?php echo $news_title; ?></h3><h1 style="text-transform:uppercase"><?php echo $subName; ?></h1>
                         <?php } ?>
                         </div>
-                        <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
                     </div>
                     <?php if ( have_posts() ) { ?>
                         <ul class="news-ul">

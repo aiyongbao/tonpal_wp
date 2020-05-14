@@ -25,7 +25,7 @@ if ( is_category() || is_single()) {
 }
 
 
-$recent_posts = get_category_new_product('product', array($the_id), 6, 'ARRAY_A');
+$recent_posts = get_category_new_product('product', array($the_id), 5, 'ARRAY_A');
 if(ifEmptyArray($recent_posts) !== []){
 ?>
     <div class="side-tit-bar">
@@ -35,7 +35,8 @@ if(ifEmptyArray($recent_posts) !== []){
         <div class="items_content">
             <ul>
                 <?php
-                foreach( $recent_posts as $recent ){
+                foreach( $recent_posts as $key => $recent ){
+                    if ($key < 5) {
                     $sub_name = '';// 产品副标题
                     $thumbnail=get_post_meta($recent["ID"],'thumbnail',true);
                     ?>
@@ -55,7 +56,7 @@ if(ifEmptyArray($recent_posts) !== []){
                         </figure>
                         <a href="<?php echo get_permalink($recent["ID"]); ?>" class="add-friend"></a>
                     </li>
-                <?php } ?>
+                <?php } } ?>
             </ul>
         </div>
     </div>

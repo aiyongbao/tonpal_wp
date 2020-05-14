@@ -6,6 +6,9 @@ global $cat; // Class_Reference/WP 类实例
 $theme_vars = json_config_array('products','vars');
 // Text 数据处理
 $products_bg = ifEmptyText(get_term_meta($cat,'background',true));
+if (empty($products_bg)){
+    $products_bg = ifEmptyText($theme_vars['bg']['value']);
+}
 $products_header_desc = ifEmptyText(get_term_meta($cat,'header_desc',true));
 $products_footer_desc =ifEmptyText(get_term_meta($cat,'footer_desc',true));
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
@@ -15,9 +18,20 @@ $category = get_category($cat);
 $the_category_name = $category->name; //当前分类名称
 
 // SEO
-$seo_title = ifEmptyText($theme_vars['seoTitle']['value']);
-$seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
-$seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
+$seo_title = ifEmptyText(get_term_meta($cat,'seo_title',true));
+if (empty($seo_title)){
+    $seo_title = ifEmptyText($theme_vars['seoTitle']['value']);
+}
+$seo_description = ifEmptyText(get_term_meta($cat,'seo_description',true));
+
+if (empty($seo_description)){
+    $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
+}
+
+$seo_keywords = ifEmptyText(get_term_meta($cat,'seo_keywords',true));
+if (empty($seo_keywords)){
+    $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
+}
 /**
  * $wp_query 是全局变量
  * $paged 当前页数
@@ -97,7 +111,6 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                             <h3 style="text-transform:uppercase"><?php echo $the_category_name; ?></h3><h1 style="text-transform:uppercase"><?php echo $subName; ?></h1>
                         <?php } ?>
                     </div>
-                    <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
                 </div>
                 <div class="banner_section">
                     <?php if ($products_bg !== '') { ?>

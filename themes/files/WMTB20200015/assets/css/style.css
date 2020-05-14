@@ -1314,6 +1314,10 @@ strong {
 }
 .side-tags.tag a {
     border: 1px solid #d3ad69;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
 }
 .mb-35 {
     margin-bottom: 35px;
@@ -2008,6 +2012,36 @@ div#st-1 {
 .video .tag {
     margin: 0 -0.15rem;
 }
+
+
+#link-item {
+    position: absolute;
+    left: -150px;
+}
+#link-item div{
+    cursor: pointer;
+
+}
+#link-item span{
+    margin: 8px 0px 0 5px;
+    width: 0;
+    height: 0;
+    display: block;
+    float: right;
+    border-color: #666 transparent transparent transparent;
+    border-width: 5px;
+    border-style: solid;
+}
+#link-item ul {
+    position: absolute;
+}
+#link-item ul li {
+    display: none;
+}
+#link-item div,#link-item ul a {
+    color: #666;
+}
+
 @media only screen and (min-width: 768px) {
     .contact .contacts-box {
         width: 50%;
