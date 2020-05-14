@@ -1,0 +1,478 @@
+{
+    "name": "首页配置文件",
+    "action": "portal/home",
+    "description": "首页模板文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            }
+        },
+        "widgets": {
+            "carousel": {
+                "title": "轮播图组件",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "轮播图组件",
+                        "value": [
+                            {
+                                "title": "",
+                                "image": "/wp-content/themes/WMTB20200015/assets/picture/banner01.jpg",
+                                "link": ""
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "图片alt",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "轮播图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "轮播图片"
+                            },
+                            "link": {
+                                "title": "跳转链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填写对应链接"
+                            }
+                        },
+                        "tip": "这是轮播图组件",
+                        "maxNumber": 5,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "aboutLeft": {
+                "title": "关于我们",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "关于我们标题",
+                        "value": "TEST HAIRCARE ...",
+                        "type": "text",
+                        "tip": "请填写首页关于我们的标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "关于我们描述",
+                        "value": "about desc HAIRCARE",
+                        "type": "textarea",
+                        "tip": "请填写首页关于我们的描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "content": {
+                        "title": "关于我们介绍",
+                        "value": "about content HAIRCARE",
+                        "type": "textarea",
+                        "tip": "请填写首页关于我们的介绍",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "关于我们详情链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入关于我们跳转链接"
+                    },
+                    "items": {
+                        "title": "about列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填写标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "自定义描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "建议三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "aboutRight": {
+                "title": "企业优势",
+                "display": "1",
+                "vars": {
+                    "image": {
+                        "title": "优势图片",
+                        "value": "/wp-content/themes/WMTB20200015/assets/picture/promote_img.png",
+                        "type": "image",
+                        "tip": "建议尺寸：195x195",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "跳转链接",
+                        "value": "javascript:;",
+                        "type": "text",
+                        "tip": "请填写要跳转到的链接"
+                    },
+                    "title": {
+                        "title": "企业优势标题",
+                        "value": "adv com title",
+                        "type": "text",
+                        "tip": "请填写首页关于我们的标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "企业优势描述",
+                        "value": "adv com desc",
+                        "type": "textarea",
+                        "tip": "请填写企业优势描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "extra_title": {
+                        "title": "企业优势底部标题",
+                        "value": "adv com extra title",
+                        "type": "text",
+                        "tip": "请填写首页关于我们的标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "extra_desc": {
+                        "title": "企业优势底部描述",
+                        "value": "adv com extra desc",
+                        "type": "textarea",
+                        "tip": "请填写企业优势描述",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                    
+                }
+            },
+            "featuredCollections": {
+                "title": "特色系列",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "特色标题",
+                        "value": "Featured Collections",
+                        "type": "text",
+                        "tip": "请填写特色标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "特色描述",
+                        "value": "Our Solutions tailor made for with each individual to </br> understand specific needs",
+                        "type": "text",
+                        "tip": "请填写特色描述（建议不超过100个英文字符）",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "特色案例",
+                        "value": [
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/ad01.jpg",
+                                "title":"case 1",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/ad01.jpg",
+                                "title":"case 2",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/ad01.jpg",
+                                "title":"case 3",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "image": {
+                                "title": "案例图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "请上传案例图片(推荐尺寸：373x249)",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "title": {
+                                "title": "案例标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填写案例标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "案例描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "请填写案例描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "featuredProducts": {
+                "title": "特色产品",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "特色标题",
+                        "value": "Featured Collections",
+                        "type": "text",
+                        "tip": "请填写特色标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "特色描述",
+                        "value": "Our Solutions tailor made for with each individual to </br> understand specific needs",
+                        "type": "text",
+                        "tip": "请填写特色描述（建议不超过100个英文字符）",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "特色产品",
+                        "value": [
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd01.jpg",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd02.jpg",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd03.jpg",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd01.jpg",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd02.jpg",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd03.jpg",
+                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "image": {
+                                "title": "案例图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "请上传案例图片(推荐尺寸：373x249)",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "案例描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "请填写案例描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "产品详情链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入产品详情链接"
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "news": {
+                "title": "新闻管理",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "新闻标题",
+                        "value": "Stay tuned for Updates",
+                        "type": "text",
+                        "tip": "请输入首页新闻标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "sub_title": {
+                        "title": "新闻小标题",
+                        "value": "News & Updates",
+                        "type": "text",
+                        "tip": "请输入首页新闻小标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "新闻列表",
+                        "value": [
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/news_img.jpg",
+                                "title":"First news article on suitable hairstyle?",
+                                "desc":"Beauty salon has been the industry’s standard dummy text ever since the 1500s, when an unknown pr asdasd",
+                                "date":"2020-05-10",
+                                "link":"http://www.baidu.com"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/news_img.jpg",
+                                "title":"Second news article on suitable hairstyle?",
+                                "desc":"Beauty salon has been the industry’s standard dummy text ever since the 1500s, when an unknown pr asdasd",
+                                "date":"2020-05-10",
+                                "link":"http://www.baidu.com"
+                            },
+                            {
+                                "image":"/wp-content/themes/WMTB20200015/assets/picture/news_img.jpg",
+                                "title":"Third news article on suitable hairstyle?",
+                                "desc":"Beauty salon has been the industry’s standard dummy text ever since the 1500s, when an unknown pr asdasd",
+                                "date":"2020-05-10",
+                                "link":"http://www.baidu.com"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "image": {
+                                "title": "新闻图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "请输入新闻图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "title": {
+                                "title": "新闻标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入新闻标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "新闻描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "请输入新闻描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "date": {
+                                "title": "新闻发布时间",
+                                "value": "",
+                                "type": "date",
+                                "tip": "请选择新闻文章发布时间",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "新闻链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入新闻跳转链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

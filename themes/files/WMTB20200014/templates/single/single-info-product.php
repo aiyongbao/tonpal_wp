@@ -30,15 +30,6 @@ $page_url = get_lang_page_url();
 // pdf
 $pdf = ifEmptyText(get_post_meta(get_post()->ID,'pdf',true));
 
-// 详情筛选
-$detailArray=[];
-$contentArray = json_decode($post->post_content,true);
-foreach ($contentArray as $key => $item ){
-    if ($item['content'] !== ''){
-        $detailArray[$key]['tabName'] = $item['tabName'];
-        $detailArray[$key]['content'] = $item['content'];
-    }
-}
 
 $the_tags = get_the_tags( $post->ID ); // 获取当前产品的所有tags
 $tags_array = [];
@@ -174,18 +165,14 @@ $next_post = get_next_post(true);
                 </div>
                 <div class="tab-content-wrap product-detail">
                     <div class="gm-sep tab-title-bar detail-tabs">
-                        <?php foreach ($detailArray as $key => $item ){ ?>
-                            <h2 class="tab-title  title <?php if ($key == 0) echo 'current'; ?> "><span><?php echo $item['tabName']; ?></span></h2>
-                        <?php } ?>
+                        <h2 class="tab-title  title current "><span>Detail</span></h2>
                     </div>
                     <div class="tab-panel-wrap">
-                        <?php foreach ($detailArray as $key => $item ){ ?>
-                            <div class="tab-panel disabled">
-                                <div class="tab-panel-content">
-                                    <?php echo $item['content']; ?>
-                                </div>
+                        <div class="tab-panel disabled">
+                            <div class="tab-panel-content">
+                                <?php echo $post->post_content ?>
                             </div>
-                        <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <!--// 当前tags -->

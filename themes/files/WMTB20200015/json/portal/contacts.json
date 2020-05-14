@@ -1,0 +1,70 @@
+{
+    "name": "contacts配置文件",
+    "action": "portal/contacts",
+    "description": "contacts配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "bg": {
+                "title": "页面背景图",
+                "value": "",
+                "type": "image",
+                "tip": "页面背景图"
+            },
+            "title": {
+                "title": "标题",
+                "value": "CONTACT",
+                "type": "text",
+                "tip": "请填写标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "value": "",
+                "type": "textarea",
+                "tip": "描述",
+                "rule": {
+                    "require": true
+                }
+            },
+            "image": {
+                "title": "图片",
+                "value": "",
+                "type": "image",
+                "tip": "图片",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}
