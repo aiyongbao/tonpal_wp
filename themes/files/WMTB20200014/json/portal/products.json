@@ -32,6 +32,12 @@
                     "require": true
                 }
             },
+            "bg": {
+                "title": "页面背景图",
+                "value": "",
+                "type": "image",
+                "tip": "页面背景图"
+            },
             "nullTip": {
                 "title": "提示语",
                 "type": "text",
