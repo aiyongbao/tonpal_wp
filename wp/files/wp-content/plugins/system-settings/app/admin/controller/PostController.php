@@ -117,9 +117,25 @@ class PostController extends RestController
             $seo_keywords = $request['seo_keywords'];
             update_post_meta($post->ID, 'seo_keywords', $seo_keywords);
 
-            if ($bool && $request['type'] == 'page') {
+            if ($bool) {
+
+                switch ($request['type']) {
+                    case 'page':
+                        $item = $this->get_json_toArray(get_template_directory() . '/json/portal/page.json');
+                        return $this->error("page.json不存在！");
+                        break;
+                    case 'privacy':
+                        $item = $this->get_json_toArray(get_template_directory() . '/json/portal/privacy-policy.json');
+                        return $this->error("privacy-policy.json不存在！");
+                        break;
+                    default:
+                        return $this->error("未定义的页面！");
+                        break;
+                }
+
+
                 global $wpdb;
-                $item = $this->get_json_toArray(get_template_directory() . '/json/portal/page.json');
+
                 $data = [
                     'object_id' => $post->ID,
                     'is_public' =>  0,
