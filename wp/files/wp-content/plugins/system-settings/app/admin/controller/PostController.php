@@ -122,11 +122,17 @@ class PostController extends RestController
                 switch ($request['type']) {
                     case 'page':
                         $item = $this->get_json_toArray(get_template_directory() . '/json/portal/page.json');
-                        return $this->error("page.json不存在！");
+                        if(empty($item)){
+                            return $this->error("page.json不存在！");
+                        }
                         break;
                     case 'privacy':
                         $item = $this->get_json_toArray(get_template_directory() . '/json/portal/privacy-policy.json');
-                        return $this->error("privacy-policy.json不存在！");
+                        
+                        if(empty($item)){
+                            return $this->error("privacy-policy.json不存在！");
+                        }
+
                         break;
                     default:
                         return $this->error("未定义的页面！");
