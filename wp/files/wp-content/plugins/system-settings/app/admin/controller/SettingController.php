@@ -181,4 +181,19 @@ class SettingController extends RestController
             activate_plugin($key);
         }
     }
+
+    /**
+     * 清空nginx缓存
+     * @author frank <belief_dfy@163.com>
+     * @return html
+     */
+    public function clear($request){
+        $shell = "rm -rf /www/server/nginx/cache";
+        exec($shell, $result, $status);
+        if( $status ){
+        return $this->success("操作成功");
+        }else{
+            return $this->error("操作失败");
+        }
+    }
 }
