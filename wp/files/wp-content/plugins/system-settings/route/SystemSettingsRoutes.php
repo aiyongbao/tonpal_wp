@@ -331,6 +331,15 @@ class SystemSettingsRoutes {
             }
         ));
 
+        //清理nginx缓存
+        register_rest_route($this->namespace, '/clear' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->clear($request),$request);
+            }
+        ));
+
     }
 }
 
