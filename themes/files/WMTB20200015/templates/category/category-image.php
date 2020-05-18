@@ -51,70 +51,111 @@ $page_url = $get_full_path . get_category_link($category->term_id);
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
 
-    <!-- web_head start -->
-    <?php get_header() ?>
-    <!--// web_head end -->
+        <!-- web_head start -->
+        <?php get_header() ?>
+        <!--// web_head end -->
 
-    <!-- path -->
-    <?php get_breadcrumbs(); ?>
+        <!-- path -->
+        <?php get_breadcrumbs(); ?>
 
-    <!-- page-layout start -->
-    <section class="web_main page_main">
-        <div class="layout">
-            <!-- main start -->
-            <section>
-                <div class="blog_list">
-                    <?php if (have_posts()) { ?>
-                        <div class="tp-list mt-6">
-                            <?php while (have_posts()) : the_post();   ?>
-                                <?php $thumbnail = get_post_meta(get_post()->ID, 'thumbnail', true); ?>
-                                <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
-                                    <div class="tp-media">
-                                        <img src="<?php echo get_post_meta(get_post()->ID, 'thumbnail', true); ?>" alt="<?php echo the_title(); ?>">
-                                    </div>
-                                    <div class="tp-content d-flex flex-coloum justify-content-between">
-                                        <div class="">
-                                            <div class="d-flex align-items-center mb-1">
-                                                <h3 class="tp-content-title ellipsis-1">
-                                                    <?php the_title(); ?>
-                                                </h3>
-                                                <span class="date">
-                                                        <?php echo esc_html( get_the_date() ); ?>
+        <!-- page-layout start -->
+        <section class="web_main page_main">
+            <div class="layout">
+                <!-- main start -->
+                <section>
+                    <div class="blog_list">
+                        <?php if (have_posts()) { ?>
+                            <div class="tp-list mt-6 d-none d-sm-block">
+                                <?php while (have_posts()) : the_post();   ?>
+                                    <?php $thumbnail = get_post_meta(get_post()->ID, 'thumbnail', true); ?>
+                                    <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
+                                        <div class="tp-media">
+                                            <img src="<?php echo get_post_meta(get_post()->ID, 'thumbnail', true); ?>" alt="<?php echo the_title(); ?>">
+                                        </div>
+                                        <div class="tp-content d-flex flex-coloum justify-content-between">
+                                            <div class="">
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <h3 class="tp-content-title ellipsis-1">
+                                                        <?php the_title(); ?>
+                                                    </h3>
+                                                    <span class="date">
+                                                        <?php echo esc_html(get_the_date()); ?>
                                                     </span>
+                                                </div>
+                                                <div class="tp-content-expert ellipsis-4">
+                                                    <?php the_excerpt(); ?>
+                                                </div>
                                             </div>
-                                            <div class="tp-content-expert ellipsis-4">
-                                                <?php the_excerpt(); ?>
-                                            </div>
-                                        </div>
 
-                                        <div class="tp-content-btn">
-                                            <div class="tp-btn">
-                                                <?php echo $category_read_more; ?>
+                                            <div class="tp-content-btn">
+                                                <div class="tp-btn">
+                                                    <?php echo $category_read_more; ?>
+                                                </div>
                                             </div>
                                         </div>
+                                    </a>
+                                <?php endwhile; ?>
+                            </div>
+
+                            <div class="tp-list mt-6 d-block d-sm-none">
+                                <?php if (have_posts()) { ?>
+                                    <div style="margin-top: 0.3rem" class="tp-list">
+                                        <?php while (have_posts()) : the_post();   ?>
+                                            <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
+                                                <div class="tp-media">
+                                                    <img src="<?php echo get_post_meta(get_post()->ID, 'thumbnail', true); ?>" alt="<?php echo the_title(); ?>">
+                                                </div>
+                                                <div class="tp-content d-flex flex-coloum justify-content-between">
+
+                                                    <div>
+                                                        <h3 class="tp-content-title ellipsis-2 mb-2">
+                                                            <?php the_title(); ?>
+                                                        </h3>
+
+                                                        <div class="date mb-2">
+                                                            <?php echo esc_html(get_the_date()); ?>
+                                                        </div>
+                                                        <div class="tp-content-expert mb-3 ellipsis-4">
+                                                            <?php the_excerpt(); ?>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tp-content-btn">
+                                                        <div class="tp-btn">
+                                                            <?php echo $news_read_more; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        <?php endwhile; ?>
                                     </div>
-                                </a>
-                            <?php endwhile; ?>
-                        </div>
-                        <?php wpbeginner_numeric_posts_nav(); ?>
-                    <?php } ?>
-                    <!--// sendMessage -->
-                </div>
-                <?php get_template_part('templates/components/sendMessage'); ?>
-            </section>
-            <!--// main end -->
-        </div>
-    </section>
-    <!--// page-layout end -->
+                                    <?php wpbeginner_numeric_posts_nav(); ?>
+                                <?php } else { ?>
+                                    <div class="row">
+                                        <div class="no-product"><?php echo $news_null_tip; ?></div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+
+                            <?php wpbeginner_numeric_posts_nav(); ?>
+                        <?php } ?>
+                        <!--// sendMessage -->
+                    </div>
+                    <?php get_template_part('templates/components/sendMessage'); ?>
+                </section>
+                <!--// main end -->
+            </div>
+        </section>
+        <!--// page-layout end -->
 
 
-    <!-- web_footer start -->
-    <?php get_template_part('templates/components/footer'); ?>
-    <!--// web_footer end -->
+        <!-- web_footer start -->
+        <?php get_template_part('templates/components/footer'); ?>
+        <!--// web_footer end -->
 
-</div>
+    </div>
 </body>
 
 <?php get_footer(); ?>

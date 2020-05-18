@@ -59,39 +59,77 @@ $page_url = $get_full_path . get_category_link($category->term_id);
                 <!-- main begin -->
                 <section class="main">
                     <?php if (have_posts()) { ?>
-                            <div class="tp-list mt-6">
-                                <?php while (have_posts()) : the_post();   ?>
-                                    <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
-                                        <div style="margin:0;margin: 0;min-height: 1.05rem;" class="tp-content d-flex flex-coloum justify-content-between">
-                                            <div class="mb-3">
-                                                <div class="d-flex align-items-center mb-1">
-                                                    <h3 class="tp-content-title ellipsis-1">
-                                                        <?php the_title(); ?>
-                                                    </h3>
-                                                    <span class="date">
-                                                        Posted <?php echo esc_html( get_the_date() ); ?>
-                                                    </span>
-                                                </div>
-                                                <div class="tp-content-expert ellipsis-4">
-                                                    <?php echo get_the_excerpt(); ?>
-                                                </div>
+                        <div class="tp-list mt-6 d-none d-sm-block">
+                            <?php while (have_posts()) : the_post();   ?>
+                                <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
+                                    <div style="margin:0;margin: 0;min-height: 1.05rem;" class="tp-content d-flex flex-coloum justify-content-between">
+                                        <div class="mb-3">
+                                            <div class="d-flex align-items-center mb-1">
+                                                <h3 class="tp-content-title ellipsis-1">
+                                                    <?php the_title(); ?>
+                                                </h3>
+                                                <span class="date">
+                                                    Posted <?php echo esc_html(get_the_date()); ?>
+                                                </span>
                                             </div>
-
-                                            <div class="tp-content-btn">
-                                                <div class="tp-btn">
-                                                <?php echo $more_btn; ?>
-                                                </div>
+                                            <div class="tp-content-expert ellipsis-4">
+                                                <?php echo get_the_excerpt(); ?>
                                             </div>
                                         </div>
-                                    </a>
-                                <?php endwhile; ?>
-                            </div>
-                            <?php wpbeginner_numeric_posts_nav(); ?>
-                        <?php } else { ?>
-                            <div class="row">
-                                <div class="no-product">No News</div>
-                            </div>
-                        <?php } ?>
+
+                                        <div class="tp-content-btn">
+                                            <div class="tp-btn-text">
+                                                <?php echo $more_btn; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endwhile; ?>
+                        </div>
+
+                        <div class="tp-list d-block d-sm-none">
+                            <?php if (have_posts()) { ?>
+                                <div class="tp-list">
+                                    <?php while (have_posts()) : the_post();   ?>
+                                        <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
+                                            <div style="margin-left: 0" class="tp-content d-flex flex-coloum justify-content-between">
+
+                                                <div class="mb-2">
+                                                    <h3 class="tp-content-title ellipsis-2 mb-2">
+                                                        <?php the_title(); ?>
+                                                    </h3>
+
+                                                    <div class="date mb-2">
+                                                        <?php echo esc_html(get_the_date()); ?>
+                                                    </div>
+                                                    <div class="tp-content-expert mb-3 ellipsis-4">
+                                                        <?php the_excerpt(); ?>
+                                                    </div>
+                                                </div>
+
+                                                <div class="tp-content-btn">
+                                                    <div class="tp-btn-text">
+                                                        <?php echo $more_btn; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    <?php endwhile; ?>
+                                </div>
+                                <?php wpbeginner_numeric_posts_nav(); ?>
+                            <?php } else { ?>
+                                <div class="row">
+                                    <div class="no-product"><?php echo $news_null_tip; ?></div>
+                                </div>
+                            <?php } ?>
+                        </div>
+
+                        <?php wpbeginner_numeric_posts_nav(); ?>
+                    <?php } else { ?>
+                        <div class="row">
+                            <div class="no-product">No News</div>
+                        </div>
+                    <?php } ?>
                     <?php get_template_part('templates/components/tags-random-category') ?>
                 </section>
                 <!--// main end -->

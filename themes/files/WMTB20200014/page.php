@@ -21,13 +21,17 @@
     {
         include('templates/page/page-showcase.php');
     }
-    elseif(strtolower($data->post_name) == 'picturewell')
+    elseif(strtolower($data->post_name) == 'certificate')
     {
-        include('templates/page/page-picturewell.php');
+        include('templates/page/page-certificate.php');
     }
     elseif(strtolower($data->post_name) == 'rec-product')
     {
         include('templates/page/rec-product.php');
+    }
+    elseif(strtolower($data->post_name) == 'privacy-policy-page')
+    {
+        include('templates/page/privacy-policy.php');
     }
 	else{
 		include('templates/page/page.php');
