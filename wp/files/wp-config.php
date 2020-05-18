@@ -98,6 +98,9 @@ define( 'WP_DEBUG_LOG', false );
 define( 'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 'On' );
 
+define('WP_POST_REVISIONS', false); 
+define('SAVEQUERIES', true);
+
 /** 更改访问域名 */
 $domain = ['www.$DOMAIN', '$DOMAIN', 'm.$DOMAIN', '$TEMPDOMAIN']; 
 if(in_array($_SERVER['HTTP_HOST'], $domain)){

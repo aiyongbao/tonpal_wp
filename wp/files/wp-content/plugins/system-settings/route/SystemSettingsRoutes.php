@@ -7,6 +7,7 @@ use app\admin\controller\NavMenuController;
 use app\admin\controller\SettingController;
 use app\admin\controller\CategoryController;
 use app\admin\controller\ThemeFileController;
+use app\admin\controller\RobotsController;
 
 class SystemSettingsRoutes {
     
@@ -264,7 +265,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $inquiry = new InquiryController();
-                return middleware::run('api')->init( $inquiry->index($request) , $request);
+                return $inquiry->index($request);
             }
         ));
         
@@ -273,7 +274,7 @@ class SystemSettingsRoutes {
             'methods'  => WP_REST_Server::CREATABLE,
             'callback' => function($request){
                 $sync = new SyncController();
-                $sync->dbExecute($request);
+                return middleware::run('api')->init($sync->dbExecute($request), $request);
             }
         ));
 
@@ -301,6 +302,41 @@ class SystemSettingsRoutes {
             'callback' => function($request){
                 $sync = new SyncController();
                 return $sync->asyncPostJson($request);
+            }
+        ));
+
+        //开启nginx缓存路由
+        register_rest_route($this->namespace, '/purge' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function(){
+                $settings = new SettingController();
+                return $settings->enable();
+            }
+        ));
+
+        register_rest_route($this->namespace, '/plugin' ,array(
+            'methods'  => WP_REST_Server::CREATABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->plugin($request) , $request);
+            }
+        ));
+
+        //robots生成
+        register_rest_route($this->namespace, '/robots' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $robots = new RobotsController();
+                return middleware::run('api')->init($robots->index($request),$request);
+            }
+        ));
+
+        //清理nginx缓存
+        register_rest_route($this->namespace, '/clear' ,array(
+            'methods'  => WP_REST_Server::READABLE,
+            'callback' => function($request){
+                $settings = new SettingController();
+                return middleware::run('api')->init( $settings->clear($request),$request);
             }
         ));
 
