@@ -80,7 +80,7 @@ $page_url = $get_full_path . get_category_link($category->term_id);
                                                         <?php the_title(); ?>
                                                     </h3>
                                                     <span class="date">
-                                                        Posted <?php echo esc_html(get_the_date()); ?>
+                                                       <?php echo esc_html(get_the_date()); ?>
                                                     </span>
                                                 </div>
                                                 <div class="tp-content-expert ellipsis-4">
