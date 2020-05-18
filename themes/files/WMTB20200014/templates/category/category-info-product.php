@@ -60,7 +60,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                     <h1>INFO PRODUCT</h1>
                 </header>
                 <?php if ( have_posts() ) { ?>
-                    <ul>
+                    <ul class="mobile-ul" >
                         <?php while ( have_posts() ) : the_post();   ?>
                             <?php $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true); ?>
                             <li class="post-item border-bottom-2">
