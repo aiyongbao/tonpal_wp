@@ -108,6 +108,8 @@ set_query_var('googleId', $googleId);
                 <div class="copyright">Copyright&nbsp;©&nbsp;<span class="get-cur-year"><?php echo date('Y') ?>&nbsp;</span><?php echo $footer_copyright ?></div>
             <?php endif; ?>
             <div class="footer-info">
+                <?php print_r('&nbsp|&nbsp <a href="/privacy-policy-page">Privacy Policy</a>'); ?>
+                <?php print_r('&nbsp|&nbsp <a href="/sitemap.xml">Sitemap</a>'); ?>
                 <?php if (get_category_by_slug('info-news')) print_r('<a href="/info-news">INFO NEWS</a>'); ?>
                 <?php if (get_category_by_slug('info-product')) print_r('<a href="/info-product">INFO PRODUCT</a>'); ?>
             </div>

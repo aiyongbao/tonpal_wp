@@ -59,7 +59,7 @@ $tags_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value'],'Send Inquiry
                     <h1><?php echo $tagName ?></h1>
                 </header>
                 <?php if ( have_posts() ) { ?>
-                    <ul class="tags-ul">
+                    <ul class="tags-ul mobile-ul">
                         <?php while ( have_posts() ) {
                             the_post();
                             $category = get_the_category();
