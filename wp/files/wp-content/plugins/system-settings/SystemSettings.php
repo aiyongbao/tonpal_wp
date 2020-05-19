@@ -134,7 +134,6 @@ add_action('setup_theme', function () {
     });
 
     add_filter("nav_menu_item_args", function ($args, $items, $depth) {
-        
         if ($items->type == "taxonomy") {
                 $category = get_category($items->object_id);
                 $parent_category = p_get_category_root_id($category->term_id);
@@ -147,7 +146,6 @@ add_action('setup_theme', function () {
                     $items->url = '/list' . $items->url;
                 }
         }
-        
         return $args;
     }, 10, 3);
 
@@ -272,7 +270,7 @@ add_filter('query_vars', function ($public_query_vars) {
 });
 
 add_filter('request', function ($query_vars) {
-
+    
     //大写转小写
     $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
     $http = $_SERVER['REQUEST_URI'];
