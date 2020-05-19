@@ -1113,6 +1113,15 @@ li.language-flag a{ position:relative;}
 /*-------------------------------
 			language  end
 			----------------------------------*/
+            .h1-title{
+                color: #000;
+                font-weight: bold;
+            }
+        
+            .sub-title{
+                color: #333;
+                font-size: 0.18rem;
+            }
 
 /*-------------------------------
 			common
