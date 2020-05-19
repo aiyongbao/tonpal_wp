@@ -1,5 +1,5 @@
 <?php
-$googleId = ifEmptyText(get_query_var('googleId'));
+$googleId = get_option('google_id');
 ?>
 <script src="<?php echo get_template_directory_uri()?>/assets/js/jquery.min.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/jquery.validate.min.js"></script>
