@@ -13,7 +13,7 @@ $news_read_more = ifEmptyText($theme_vars['readMore']['value']);
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value']);
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
 $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
-$news_bg = ifEmptyText(get_term_meta($cat,'background',true));
+$news_bg = ifEmptyText(get_term_meta($cat, 'background', true));
 
 $subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
 
@@ -51,7 +51,11 @@ $page_url = $get_full_path . get_category_link($category->term_id);
         <link rel="next" href="<?php next_posts(); ?>" />
     <?php } ?>
     <?php get_template_part('templates/components/head'); ?>
-
+    <style>
+        .main {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,20 +64,22 @@ $page_url = $get_full_path . get_category_link($category->term_id);
         <!-- web_head start -->
         <?php get_header() ?>
         <!--// web_head end -->
-        <?php if(!empty($news_bg)) { ?>
-        <div class="page_bg" style='background: url("<?php echo $news_bg; ?>") fixed no-repeat center center'>
-        </div>
-    <?php } ?>
+        <?php if (!empty($news_bg)) { ?>
+            <div class="page_bg" style='background: url("<?php echo $news_bg; ?>") fixed no-repeat center center'>
+            </div>
+        <?php } ?>
         <!-- path -->
         <?php get_breadcrumbs(); ?>
 
         <!-- page-layout start -->
         <section class="web_main page_main">
             <div class="layout">
-
+                <div class="page_title">
+                    <h1 style="text-transform:uppercase"><?php echo $news_title; ?></h1>
+                </div>
                 <!-- main start -->
-                <section>
-                    <div class="blog_list mt-6">
+                <section class="main">
+                    <div class="tp-list mt-6 d-none d-sm-block">
                         <?php if (have_posts()) { ?>
                             <div style="margin-top: 0.3rem" class="tp-list">
                                 <?php while (have_posts()) : the_post();   ?>
@@ -88,7 +94,7 @@ $page_url = $get_full_path . get_category_link($category->term_id);
                                                         <?php the_title(); ?>
                                                     </h3>
                                                     <span class="date">
-                                                        Posted <?php echo esc_html( get_the_date() ); ?>
+                                                        <?php echo esc_html(get_the_date()); ?>
                                                     </span>
                                                 </div>
                                                 <div class="tp-content-expert ellipsis-4">
@@ -98,7 +104,53 @@ $page_url = $get_full_path . get_category_link($category->term_id);
 
                                             <div class="tp-content-btn">
                                                 <div class="tp-btn">
-                                                <?php echo $news_read_more; ?>
+                                                    <?php echo $news_read_more; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <?php endwhile; ?>
+                            </div>
+                            <?php wpbeginner_numeric_posts_nav(); ?>
+                        <?php } else { ?>
+                            <div class="row">
+                                <div class="no-product"><?php echo $news_null_tip; ?></div>
+                            </div>
+                        <?php } ?>
+                        <!--// sendMessage -->
+                        <?php get_template_part('templates/components/sendMessage'); ?>
+                        <!--// tags -->
+                        <div class="foot-tags mb-35">
+                            <?php get_template_part('templates/components/tags-random-product') ?>
+                        </div>
+                    </div>
+
+                    <div class="tp-list d-block d-sm-none">
+                        <?php if (have_posts()) { ?>
+                            <div class="tp-list">
+                                <?php while (have_posts()) : the_post();   ?>
+                                    <a href="<?php the_permalink(); ?>" class="d-flex tp-list-item">
+                                        <div class="tp-media">
+                                            <img src="<?php echo get_post_meta(get_post()->ID, 'thumbnail', true); ?>" alt="<?php echo the_title(); ?>">
+                                        </div>
+                                        <div class="tp-content d-flex flex-coloum justify-content-between">
+
+                                            <div>
+                                                <h3 class="tp-content-title ellipsis-2 mb-2">
+                                                    <?php the_title(); ?>
+                                                </h3>
+
+                                                <div class="date mb-2">
+                                                    <?php echo esc_html(get_the_date()); ?>
+                                                </div>
+                                                <div class="tp-content-expert mb-3 ellipsis-4">
+                                                    <?php the_excerpt(); ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-content-btn">
+                                                <div class="tp-btn-text">
+                                                    <?php echo $news_read_more; ?>
                                                 </div>
                                             </div>
                                         </div>

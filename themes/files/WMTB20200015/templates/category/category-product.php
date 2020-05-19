@@ -80,8 +80,6 @@ $max = intval( $wp_query->max_num_pages );
     <?php } ?>
 
     <?php get_template_part('templates/components/head'); ?>
-
-
 </head>
 
 <body>

@@ -42,6 +42,9 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <div class="layout video">
                 <!-- main begin -->
                 <section class="main video">
+                    <header>
+                        <h1 class="about-title"><?php echo $video_title ?></h1>
+                    </header>
                     <div class="items_list">
                         <ul class="gm-sep">
                             <?php if (!empty($video_item)) { ?>

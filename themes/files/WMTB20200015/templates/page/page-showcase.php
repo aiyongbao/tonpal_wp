@@ -4,7 +4,8 @@ $theme_vars = json_config_array('showcase', 'vars');
 
 // Array 数据处理
 $showcase_items = ifEmptyArray($theme_vars['items']['value']);
-$products_bg = ifEmptyText($theme_vars['bg']['value']);
+$showcase_title = ifEmptyArray($theme_vars['title']['value']);
+$bg = ifEmptyText($theme_vars['bg']['value']);
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'], "$showcase_title");
 $seo_description = ifEmptyText($theme_vars['seoDescription']['value']);
@@ -29,8 +30,8 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
         <!-- web_head start -->
         <?php get_header() ?>
         <!--// web_head end -->
-        <?php if (!empty($products_bg)) { ?>
-            <div class="page_bg" style='background: url("<?php echo $products_bg; ?>") fixed no-repeat center center'>
+        <?php if (!empty($bg)) { ?>
+            <div class="page_bg" style='background: url("<?php echo $bg; ?>") fixed no-repeat center center'>
             </div>
         <?php } ?>
         <!-- path -->
@@ -40,6 +41,9 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <div class="layout showcase">
                 <!--// main start -->
                 <section class="main showcase">
+                    <header>
+                        <h1 class="about-title"><?php echo $showcase_title ?></h1>
+                    </header>
                     <ul class="showcase-ul" id="masonry-elements">
                         <?php foreach ($showcase_items as $item) { ?>
                             <li class="item showcase-li">

@@ -38,6 +38,15 @@
                 "type": "image",
                 "tip": "页面背景图"
             },
+            "title": {
+                "title": "标题",
+                "value": "",
+                "type": "text",
+                "tip": "请填写标题",
+                "rule": {
+                    "require": true
+                }
+            },
             "item": {
                 "title": "video列表",
                 "type": "array",
