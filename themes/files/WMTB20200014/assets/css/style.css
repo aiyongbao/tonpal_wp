@@ -1452,3 +1452,13 @@ li.language-flag a{position:relative;}
 /*-------------------------------
 			animation  end
 			----------------------------------*/
+
+.h1-title{
+	font-size: 22px;
+	color: #000;
+}
+
+.sub-title{
+	font-size: 0.14rem;
+	color: #999;
+}
