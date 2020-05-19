@@ -30,9 +30,7 @@ $footer_friend_links = ifEmptyArray($theme_vars['friendLinks']['value']);
 
 
 $googleExtantion = get_option('google_extantion');
-$googleId = get_option('google_id');
 
-set_query_var('googleId', $googleId);
 
 ?>
 <footer class="web_footer">
