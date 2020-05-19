@@ -36,6 +36,15 @@ class PostController extends RestController
             }
         ]);
 
+        register_meta($this->post_type, 'sub_title', array(
+            'type'      => 'string', // Validate and sanitize the meta value as a string.
+            // Default: 'string'.  
+            // In 4.7 one of 'string', 'boolean', 'integer', 'number' must be used as 'type'. 
+            'description'    => 'A meta key associated with a string meta value.', // Shown in the schema for the meta key.
+            'single'        => true, // Return a single value of the type. Default: false.
+            'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
+        ));
+
         register_meta($this->post_type, 'seo_title', array(
             'type'      => 'string', // Validate and sanitize the meta value as a string.
             // Default: 'string'.  
@@ -44,6 +53,7 @@ class PostController extends RestController
             'single'        => true, // Return a single value of the type. Default: false.
             'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
         ));
+        
 
         register_meta($this->post_type, 'seo_description', array(
             'type'      => 'string', // Validate and sanitize the meta value as a string.
@@ -116,6 +126,9 @@ class PostController extends RestController
             update_post_meta($post->ID, 'seo_description', $seo_description);
             $seo_keywords = $request['seo_keywords'];
             update_post_meta($post->ID, 'seo_keywords', $seo_keywords);
+
+            $sub_title = $request['sub_title'];
+            update_post_meta($post->ID, 'sub_title', $sub_title);
 
             if ($bool) {
 
