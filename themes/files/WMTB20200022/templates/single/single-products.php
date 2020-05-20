@@ -21,7 +21,7 @@ $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 
 // 当前页面url
 $page_url = get_lang_page_url();
-
+$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
 ?>
 
 <!DOCTYPE html>
@@ -115,7 +115,16 @@ $page_url = get_lang_page_url();
             <!-- main start -->
             <section class="main">
                 <!-- product info -->
-                <h1 class="product-title"><?php echo $post->post_title ?></h1>
+                <?php if ($sub_title == '') { ?>
+                    <h1 class="h1-title">
+                        <?php echo $post->post_title; ?>
+                    </h1>
+                <?php } else { ?>
+                    <div class="h1-title">
+                        <?php echo $post->post_title; ?>
+                    </div>
+                <?php } ?>
+
                 <div class="product-intro">
                     <div class="product-view" style="width:300px;">
                         <div class="product-image" style="width:300px;height:300px;background-color:white;border:1px solid white;">
@@ -137,6 +146,11 @@ $page_url = get_lang_page_url();
                         <br>
                     </div>
                     <div class="product-summary" style="left:-40px;padding-left:0;">
+                        <?php if($sub_title != '') { ?>
+                            <h1 class="sub-title">
+                                <?php echo $sub_title; ?>
+                            </h1>
+                        <?php } ?>
                         <div class="product-meta">
                             <p><?php echo $post->post_excerpt ?></p>
                             <br>

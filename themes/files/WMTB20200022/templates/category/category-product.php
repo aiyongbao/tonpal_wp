@@ -12,7 +12,7 @@ $products_header_desc = ifEmptyText(get_term_meta($cat,'header_desc',true));
 $products_footer_desc =ifEmptyText(get_term_meta($cat,'footer_desc',true));
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
-$subName = ""; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
+$sub_title = ifEmptyText(get_term_meta($cat,'sub_title',true));  // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
 $category = get_category($cat);
 $the_category_name = $category->name; //当前分类名称
 
@@ -98,15 +98,21 @@ $max = intval( $wp_query->max_num_pages );
             <!--// aisde end -->
             <!-- main begin -->
             <section class="main">
-                <?php if ($subName == '') { ?>
-                    <header class="main-tit-bar">
-                        <h1 class="title" style="text-transform:uppercase"><?php echo $the_category_name; ?></h1>
-                    </header>
-                <?php } else { ?>
-                    <header class="main-tit-bar">
-                        <h3 class="title" style="text-transform:uppercase"><?php echo $the_category_name; ?></h3><h1 style="text-transform:uppercase"><?php echo $subName; ?></h1>
-                    </header>
-                <?php } ?>
+                <header style="display: block" class="main-tit-bar">
+                    <?php if ($sub_title == '') { ?>
+                        <h1 class="h1-title">
+                            <?php echo $the_category_name; ?>
+                        </h1>
+                    <?php } else { ?>
+                        <div class="h1-title">
+                            <?php echo $the_category_name; ?>
+                        </div>
+                        <h1 class="sub-title">
+                            <?php echo $sub_title; ?>
+                        </h1>
+                    <?php } ?>
+                </header>
+
                 <?php if ($products_bg !== '') { ?>
                     <div class="main-banner">
                         <img src="<?php echo $products_bg; ?>" style="width:912px;height:312px;margin-bottom: 30px;">

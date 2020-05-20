@@ -25,6 +25,8 @@ $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
 // 当前页面url
 $page_url = get_lang_page_url();
 
+$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
+
 // 详情筛选
 $detailArray=[];
 $contentArray = json_decode($post->post_content,true);
@@ -100,7 +102,14 @@ $review = $theme_weight['review'];
             <!-- main start -->
             <section class="main" >
                 <div class="main_hd">
-                    <h1 class="page_title"><?php echo $post->post_title ?></h1>
+                    <?php if ($sub_title == '') { ?>
+                        <h1 class="page_title"><?php echo $post->post_title ?></h1>
+                    <?php } else {  ?>
+                        <div class="page_title">
+                            <?php echo $post->post_title ?>
+                        </div>
+                    <?php }  ?>
+
                 </div>
                 <!-- product info -->
                 <div class="product-intro">
@@ -130,7 +139,13 @@ $review = $theme_weight['review'];
                             <div class="swiper-button-prev swiper-button-white"></div>
                         </div>
                     </div>
-                    <div class="product-summary">
+                    <div style="padding: 0 0 10px 0" class="product-summary">
+                        <?php if ($sub_title != '') { ?>
+                            <h1 class="sub-title">
+                                <?php echo $sub_title ?>
+                            </h1>
+                        <?php }  ?>
+
                         <div class="product-meta">
                             <p><?php echo $post->post_excerpt ?></p>
                         </div>
