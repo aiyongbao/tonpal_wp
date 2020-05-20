@@ -10,7 +10,6 @@ $product_detail_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value']);
 $background = ifEmptyText(get_term_meta(ROOT_CATEGORY_CID, 'background', true));
 // 主图处理
 $photos = ifEmptyArray(get_post_meta(get_post()->ID, 'photos'));
-
 $photosArray = [];
 foreach ($photos as $key => $item) {
     array_push($photosArray, json_decode($photos[$key], true));
@@ -24,8 +23,6 @@ $seo_title = ifEmptyText(get_post_meta(get_post()->ID, 'seo_title', true));
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID, 'seo_description', true));
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID, 'seo_keywords', true));
 
-$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
-
 // 当前页面url
 $page_url = get_lang_page_url();
 
@@ -38,7 +35,7 @@ foreach ($contentArray as $key => $item) {
         $detailArray[$key]['content'] = $item['content'];
     }
 }
-
+$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
 // weight
 $theme_weight = json_config_array('header', 'widgets', 1);
 $faq = $theme_weight['FAQ'];
@@ -108,7 +105,6 @@ $review = $theme_weight['review'];
                 <!-- main start -->
                 <section class="main">
                     <div class="main_hd">
-
                         <?php if ($sub_title == '') { ?>
                             <h1 class="page_title"><?php echo $post->post_title ?></h1>
                         <?php } else {  ?>
@@ -144,7 +140,6 @@ $review = $theme_weight['review'];
                             </div>
                         </div>
                         <div style="padding: 0 0 10px 0" class="product-summary">
-
                             <?php if ($sub_title != '') { ?>
                                 <h1 class="sub-title">
                                     <?php echo $sub_title ?>

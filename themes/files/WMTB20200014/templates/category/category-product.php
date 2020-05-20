@@ -13,7 +13,7 @@ $products_header_desc = ifEmptyText(get_term_meta($cat,'header_desc',true));
 $products_footer_desc =ifEmptyText(get_term_meta($cat,'footer_desc',true));
 $products_null_tip = ifEmptyText($theme_vars['nullTip']['value'],'No Product');
 
-$subName = ifEmptyText(get_term_meta($cat,'sub_title',true));; // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
+$sub_title = ifEmptyText(get_term_meta($cat,'sub_title',true)); // 分类小标题 预设 后台暂时未有填写位置 注意：当小标题存在时h1标签优先设置
 $category = get_category($cat);
 $the_category_name = $category->name; //当前分类名称
 
@@ -105,17 +105,17 @@ wp_reset_query(); // 重置query 防止影响其他query查询
             <section class="main">
                 <div class="main_hd">
                     <div class="page_title">
-                        <?php if ($subName == '') { ?>
-                            <h1 class="h1-title">
-                            <?php echo $the_category_name; ?>
-                        </h1>
+                        <?php if ($sub_title == '') { ?>
+                            <h1 class="h1-title" style="text-transform:uppercase">
+                                <?php echo $the_category_name; ?>
+                            </h1>
                         <?php } else { ?>
-                            <div class="h1-title">
+                            <div class="h1-title" style="text-transform:uppercase" >
                                 <?php echo $the_category_name; ?>
                             </div>
                             <h1 class="sub-title">
-                            <?php echo $subName; ?>
-                        </h1>
+                                <?php echo $sub_title; ?>
+                            </h1>
                         <?php } ?>
                     </div>
                 </div>

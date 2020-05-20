@@ -6,11 +6,9 @@ $post = get_post();
 $theme_vars = json_config_array('header', 'vars', 1);
 $product_detail_download_btn = ifEmptyText($theme_vars['downloadBtn']['value']);
 $product_detail_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value']);
-// 获取父级的背景图
-$background = ifEmptyText(get_term_meta(ROOT_CATEGORY_CID, 'background', true));
+
 // 主图处理
 $photos = ifEmptyArray(get_post_meta(get_post()->ID, 'photos'));
-
 $photosArray = [];
 foreach ($photos as $key => $item) {
     array_push($photosArray, json_decode($photos[$key], true));
@@ -24,10 +22,10 @@ $seo_title = ifEmptyText(get_post_meta(get_post()->ID, 'seo_title', true));
 $seo_description = ifEmptyText(get_post_meta(get_post()->ID, 'seo_description', true));
 $seo_keywords = ifEmptyText(get_post_meta(get_post()->ID, 'seo_keywords', true));
 
-$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
-
 // 当前页面url
 $page_url = get_lang_page_url();
+
+$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
 
 // 详情筛选
 $detailArray = [];
@@ -79,7 +77,6 @@ $review = $theme_weight['review'];
 
     <?php get_template_part('templates/components/head') ?>
 
-
 </head>
 
 <body>
@@ -88,17 +85,14 @@ $review = $theme_weight['review'];
         <!-- web_head start -->
         <?php get_header() ?>
         <!--// web_head end -->
-        <?php if (!empty($background)) { ?>
-            <div class="page_bg" style='background: url("<?php echo $background; ?>") fixed no-repeat center center'>
-            </div>
-        <?php } ?>
+
         <!-- path -->
         <?php get_breadcrumbs(); ?>
 
 
 
         <!-- page-layout start -->
-        <section class="web_main page_main single-product">
+        <section class="web_main page_main">
             <div class="layout">
 
                 <!-- aside start -->
@@ -108,7 +102,6 @@ $review = $theme_weight['review'];
                 <!-- main start -->
                 <section class="main">
                     <div class="main_hd">
-
                         <?php if ($sub_title == '') { ?>
                             <h1 class="page_title"><?php echo $post->post_title ?></h1>
                         <?php } else {  ?>
@@ -144,7 +137,6 @@ $review = $theme_weight['review'];
                             </div>
                         </div>
                         <div style="padding: 0 0 10px 0" class="product-summary">
-
                             <?php if ($sub_title != '') { ?>
                                 <h1 class="sub-title">
                                     <?php echo $sub_title ?>
@@ -155,7 +147,7 @@ $review = $theme_weight['review'];
                                 <p><?php echo $post->post_excerpt ?></p>
                             </div>
                             <div class="gm-sep product-btn-wrap">
-                                <a href="#myform" class="email"><?php echo $product_detail_inquiry_btn ?></a>
+                                <a href="javascript:" class="email"><?php echo $product_detail_inquiry_btn ?></a>
                                 <?php if ($pdf !== '') { ?>
                                     <a class="pdf" href="<?php echo $pdf ?>" download="<?php echo $post->post_title ?>"><?php echo $product_detail_download_btn ?></a>
                                 <?php } ?>
@@ -181,7 +173,7 @@ $review = $theme_weight['review'];
                             <?php } ?>
                         </div>
                     </div>
-                    <div class="chapter underline border-bottom-1 pd-bottom-10">
+                    <div class="chapter underline border-bottom-2">
                         <?php
                         // prev
                         get_prev_or_next_post('prev', 'prev', 'Prev: ', 'This is the last product.');
@@ -190,6 +182,10 @@ $review = $theme_weight['review'];
                         ?>
                     </div>
                     <?php get_template_part('templates/components/tags-random-product') ?>
+                    <!--// RELATED PRODUCTS -->
+                    <?php get_template_part('templates/components/related-products') ?>
+                    <!--// inquiry form -->
+                    <?php get_template_part('templates/components/sendMessage'); ?>
                     <!--// FAQ  -->
                     <?php if ($faq['display'] == 1) {
                         $faq_title = ifEmptyText($faq['vars']['title']['value'], 'FAQ');
@@ -245,15 +241,9 @@ $review = $theme_weight['review'];
                             </ul>
                         </div>
                     <?php } ?>
-                    <!--// RELATED PRODUCTS -->
-                    <?php get_template_part('templates/components/related-products') ?>
                 </section>
                 <!--// main end -->
-                <!--// inquiry form -->
-                <?php get_template_part('templates/components/sendMessage'); ?>
-                <div class="mb-35"></div>
             </div>
-
         </section>
         <!--// page-layout end -->
 
