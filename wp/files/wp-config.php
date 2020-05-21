@@ -56,10 +56,12 @@ define( 'AUTH_SALT',        'uDu~.,F4n;HWbqD=*X qcojmO=v-lcbM&>,[*X!e6k/R1;:!^qU
 define( 'SECURE_AUTH_SALT', 'U-O3ay4xOTFf$hN#WR3G?[k0<{X$7c%@[(*ws]Z/>E)`z;mT&6?2X8aR[)_ZtqyE' );
 define( 'LOGGED_IN_SALT',   'UFje)why+r^l#2yh^]C#JmD<-.)Fs:(b[j::uvswKRazqnijyS^U<4}Ei]u-n};5' );
 define( 'NONCE_SALT',       'NzXM0_M>8.OOE2;,VHh3{v2K0}l_.`SUdoLtgr8L}?Mg3^%tMH hCgTTMdK/M2,r' );
-
 	
 define('JWT_AUTH_SECRET_KEY', '=i``G+H|} fSLR f,$8~&N#paMfPzrk6,e]Dg.-<|jip(H8C%) ^uO/ l~$3},fC');
 define('JWT_AUTH_CORS_ENABLE', true);
+
+//定义wordPress Nginx缓存路径
+define( 'RT_WP_NGINX_HELPER_CACHE_PATH','/www/server/nginx/fastcgi_temp');
 
 /**#@-*/
 
@@ -96,11 +98,14 @@ define( 'WP_DEBUG_LOG', false );
 define( 'WP_DEBUG_DISPLAY', false );
 @ini_set( 'display_errors', 'On' );
 
+define('WP_POST_REVISIONS', false); 
+define('SAVEQUERIES', true);
+
 /** 更改访问域名 */
 $domain = ['www.$DOMAIN', '$DOMAIN', 'm.$DOMAIN', '$TEMPDOMAIN']; 
 if(in_array($_SERVER['HTTP_HOST'], $domain)){
-    define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);
-    define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
+    define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
+    define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
 }
 
 /* 好了！请不要再继续编辑。请保存本文件。使用愉快！ */

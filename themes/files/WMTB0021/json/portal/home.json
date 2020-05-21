@@ -1,0 +1,567 @@
+{
+    "name": "首页配置文件",
+    "action": "portal/home",
+    "description": "首页模板文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "specialImag": {
+                "title": "自定义模块一图片",
+                "value": "",
+                "type": "image",
+                "tip": "图片",
+                "rule": {
+                    "require": true
+                }
+            }
+        },
+        "widgets": {
+            "carousel": {
+                "title": "轮播图组件",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "轮播图组件",
+                        "value": [
+                            {
+                                "title": "Hello my website",
+                                "desc": "Build your website quickly",
+                                "btn": "have a look",
+                                "link": ""
+                            },
+                            {
+                                "title": "Link my website",
+                                "desc": "Consistent quality",
+                                "btn": "inquiry",
+                                "link": ""
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "这是一个标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "这是一个描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "btn": {
+                                "title": "按钮",
+                                "value": "",
+                                "type": "text",
+                                "tip": "这是一个按钮"
+                            },
+                            "link": {
+                                "title": "跳转链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "这是一个链接"
+                            }
+                        },
+                        "tip": "这是轮播图组件",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "bg":{
+                        "title": "选择图片背景",
+                        "value": "",
+                        "type": "image",
+                        "tip": "这是一个图片",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "special": {
+                "title": "公司特色",
+                "display": "1",
+                "vars": {
+                    "imag": {
+                        "title": "右侧大图",
+                        "value": "https://iph.href.lu/635x750?text=635x750",
+                        "type": "image",
+                        "tip": "建议635*750的png图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "item": {
+                        "title": "公司特色-列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填写标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "icon": {
+                                "title": "图标",
+                                "value": "",
+                                "type": "image",
+                                "tip": "50x50 格式为png",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "请输入描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "跳转链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "这是一个链接，默认不跳转"
+                            }
+                        },
+                        "tip": "此模块最多展示四组数据",
+                        "maxNumber": 4,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "about": {
+                "title": "关于我们",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc1": {
+                        "title": "描述段落一",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "控制desc字数，以便美观",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc2": {
+                        "title": "描述段落二",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "控制desc字数，以便美观"
+                    },
+                    "image": {
+                        "title": "图片展示",
+                        "value": "https://iph.href.lu/800x450?text=800x450",
+                        "type": "image",
+                        "tip": "右侧展示图片 建议800*450",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "",
+                        "tip": "有自定义跳转链接需求时填写,默认不跳转"
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "Learn more",
+                        "type": "text",
+                        "tip": "建议十个字符以内",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "hotProduct": {
+                "title": "热门产品",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "热门产品标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "按钮跳转链接"
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "see all",
+                        "type": "text",
+                        "tip": "建议十个字符以内",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "item": {
+                        "title": "热门产品-列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "产品标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "text",
+                                "tip": "产品描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "产品图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "产品链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "btn": {
+                                "title": "按钮内容",
+                                "value": "Apply now",
+                                "type": "text",
+                                "tip": "建议十个字符以内",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "建议最少三组数据，最多六组数据",
+                        "maxNumber": 6,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "modularFour": {
+                "title": "自定义模块四",
+                "display": "1",
+                "vars": {
+                    "desc1": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "自定义描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc2": {
+                        "title": "描述",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "自定义描述"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接，默认不跳转"
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "Apply now",
+                        "type": "text",
+                        "tip": "建议十个字符以内",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "modularFive": {
+                "title": "自定义模块五",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc1": {
+                        "title": "第一段描述",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "自定义描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc2": {
+                        "title": "第二段描述",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "自定义描述"
+                    },
+                    "video": {
+                        "title": "视频链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "视频链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "bg": {
+                        "title": "背景图片",
+                        "value": "https://iph.href.lu/1280x720?text=1280x720",
+                        "type": "image",
+                        "tip": "背景图片",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "modularSix": {
+                "title": "自定义模块六",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "这里是一个链接,默认不跳转",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮内容",
+                        "value": "see all",
+                        "type": "text",
+                        "tip": "建议十个字符以内",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "item": {
+                        "title": "列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "https://iph.href.lu/350x300?text=350x300",
+                                "type": "image",
+                                "tip": "建议尺寸350*300",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "这里是一个链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "customTop": {
+                                "title": "左上角自定义-top",
+                                "value": "",
+                                "type": "text",
+                                "tip": "custom填写才展示"
+                            },
+                            "customBtm": {
+                                "title": "左上角自定义-btm",
+                                "value": "",
+                                "type": "text",
+                                "tip": "custom填写才展示"
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "modularSeven": {
+                "title": "自定义模块七",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "item": {
+                        "title": "自定义模块七-列表",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "这里是一个链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "time": {
+                                "title": "时间",
+                                "value": "",
+                                "type": "date",
+                                "tip": "时间",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

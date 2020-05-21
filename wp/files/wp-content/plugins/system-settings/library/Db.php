@@ -98,13 +98,26 @@ EOT;
 
     public function find()
     {
-        $field = isset($field) ? $this->field : '*' ;
+        $field = isset( $this->field ) ? $this->field : '*' ;
         $table_name = $this->name;
         $sql = <<<EOT
         SELECT {$field} FROM {$table_name} {$this->condition} limit 1;
 EOT;
-        $result = $this->db->get_results($sql)[0];
+        $result = $this->db->get_row($sql);
         $result = $this->object_array($result);
+        return $result;
+    }
+
+    public function value($value)
+    {
+        $field = isset( $this->field ) ? $this->field : '*' ;
+        $table_name = $this->name;
+        $sql = <<<EOT
+        SELECT {$field} FROM {$table_name} {$this->condition} limit 1;
+EOT;
+        $result = $this->db->get_row($sql);
+        $result = $this->object_array($result);
+        $result = $result[$value];
         return $result;
     }
 

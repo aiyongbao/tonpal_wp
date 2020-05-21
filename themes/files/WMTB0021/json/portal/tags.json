@@ -1,0 +1,64 @@
+{
+    "name": "tags配置文件",
+    "action": "portal/tags",
+    "description": "tags配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "tags",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "bg": {
+                "title": "背景图",
+                "type": "image",
+                "value": "",
+                "tip": "背景图",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "type": "text",
+                "value": "desc",
+                "tip": "描述",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}

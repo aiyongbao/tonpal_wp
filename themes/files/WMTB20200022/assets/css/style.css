@@ -1,0 +1,97 @@
+.logo-img span {
+    position: absolute;
+    text-indent: -9999px; /* 这个一定要加上 */
+}
+.nav-bar .nav ul ul {
+    margin-left: 0;
+}
+.nav-bar .nav > li > ul li a {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+.fixed-nav .nav-bar .nav ul ul {
+    top: 0px;
+}
+#link-item {
+    position: absolute;
+    top: 52px;
+    right: 15px;
+}
+#link-item div{
+    cursor: pointer;
+
+}
+#link-item span{
+    margin: 8px 0px 0 5px;
+    width: 0;
+    height: 0;
+    display: block;
+    float: right;
+    border-color: #ccc transparent transparent transparent;
+    border-width: 5px;
+    border-style: solid;
+}
+#link-item ul {
+    position: absolute;
+    padding: 0 0 0 10px;
+}
+#link-item ul li {
+    display: none;
+}
+#link-item div,#link-item ul a {
+    color: #e5e5e5;
+}
+.foot-wrapper .layout {
+    position: relative;
+}
+.foot-wrapper .foot-item ul a,.foot-cont>ul>li {
+    word-break: break-word;
+}
+.main-tit-bar {
+    margin: 0;
+}
+.entry {
+    padding: 0;
+}
+.footer-info{
+    float: right;
+    color: #999;
+}
+.copyright {
+    line-height: 24px;
+}
+.footer-info a{
+    font-size: .12rem;
+    color: #999;
+}
+.mb-35 {
+    margin-bottom: 0.35rem;
+}
+.mb-10 {
+    margin-bottom: 0.1rem;
+}
+.mt-15 {
+    margin-top: .15rem;
+}
+.contact-way a {
+    word-break: break-word;
+}
+.tab-panel-content a {
+    display: inline-block;
+    border: 1px solid #3fb9d1;
+    padding: .05rem;
+    margin: .1rem .1rem 0 0;
+}
+
+.h1-title{
+	font-size: 22px;
+	color: #000;
+}
+
+.sub-title{
+	font-size: 0.12rem;
+	color: #999;
+}

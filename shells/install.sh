@@ -593,15 +593,16 @@ Install_Analystic(){
 	yum install GeoIP-devel gcc ncurses* glib2 glib2-devel zlib zlib-devel bzip2-devel -y
 	rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 	yum -y install GeoIP-update
-	wget https://tar.goaccess.io/goaccess-1.3.tar.gz
+	wget https://tar.goaccess.io/goaccess-1.3.tar.gz -O goaccess-1.3.tar.gz
 	tar -xzvf goaccess-1.3.tar.gz
 	cd goaccess-1.3/
 	./configure --enable-utf8 --enable-geoip=legacy
 	make
 	make install
-	echo 'time-format %T
+	echo '
+time-format %T
 date-format %d/%b/%Y
-log-format %h - %^ [%d:%t %^] requesthost:"%v"; "%r" requesttime:"%T"; %s %b "%R" - %^"%u"' > /usr/local/etc/goaccess.conf
+log-format %h %^[%d:%t %^] "%r" %s %b "%R" "%u" "%^" "%^"' > /usr/local/etc/goaccess.conf
 }
 
 # 生成 API KEY ( 手动开启 api 调试模式 )
@@ -642,6 +643,7 @@ Upload_Data(){
 }
 
 Install_Main(){
+	Install_Analystic
 	Lock_Clear
 	System_Check
 	Get_Pack_Manager
@@ -660,7 +662,6 @@ Install_Main(){
 	Service_Add
 	Set_Firewall
 	Get_Ip_Address
-	Install_Analystic
     Set_Token
     Upload_Data
 }
