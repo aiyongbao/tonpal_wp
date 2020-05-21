@@ -30,9 +30,7 @@ $footer_friend_links = ifEmptyArray($theme_vars['friendLinks']['value']);
 
 
 $googleExtantion = get_option('google_extantion');
-$googleId = get_option('google_id');
 
-set_query_var('googleId', $googleId);
 
 ?>
 <footer class="web_footer">
@@ -126,8 +124,10 @@ set_query_var('googleId', $googleId);
                 <?php if (ifEmptyText($footer_copyright) !== '') : ?>
                     <div class="copyright">Copyright&nbsp;©&nbsp;<span class="get-cur-year"><?php echo date('Y') ?>&nbsp;</span><?php echo $footer_copyright ?></div>
                 <?php endif; ?>
-                    <?php if (get_category_by_slug('info-news')) print_r('&nbsp|&nbsp<a href="/info-news">INFO NEWS</a>'); ?>
-                    <?php if (get_category_by_slug('info-product')) print_r('&nbsp|&nbsp<a href="/info-product">INFO PRODUCT</a>'); ?>
+                <?php print_r('&nbsp|&nbsp <a href="/privacy-policy-page">Privacy Policy</a>'); ?>
+                <?php print_r('&nbsp|&nbsp <a href="/sitemap.xml">Sitemap</a>'); ?>
+                <?php if (get_category_by_slug('info-news')) print_r('&nbsp|&nbsp<a href="/info-news">INFO NEWS</a>'); ?>
+                <?php if (get_category_by_slug('info-product')) print_r('&nbsp|&nbsp<a href="/info-product">INFO PRODUCT</a>'); ?>
             </div>
         </div>
     </section>

@@ -51,6 +51,15 @@ class CategoryController extends RestController
             }
         ));
 
+        register_rest_field('category', 'sub_title', array(
+            'get_callback' => function ($params) {
+                return get_term_meta($params['id'], 'sub_title', true);
+            },
+            'update_callback' => function ($value, $object, $fieldName) {
+                return update_post_meta($object->ID, $fieldName, $value);
+            }
+        ));
+
         register_rest_field('category', 'footer_desc', array(
             'get_callback' => function ($params) {
                 return get_term_meta($params['id'], 'footer_desc', true);
@@ -132,6 +141,8 @@ class CategoryController extends RestController
             $seo_desc = $request['seo_desc'];
             $seo_keywords = $request['seo_keywords'];
 
+            $sub_title = $request['sub_title'];
+
 
             //新增或更新
             if (!empty($header_desc)) {
@@ -163,6 +174,11 @@ class CategoryController extends RestController
             if (!empty($seo_keywords)) {
                 delete_term_meta($term->term_id, 'seo_keywords');
                 update_term_meta($term->term_id, 'seo_keywords', $seo_keywords);
+            }
+
+            if (!empty($sub_title)) {
+                delete_term_meta($term->term_id, 'sub_title');
+                update_term_meta($term->term_id, 'sub_title', $sub_title);
             }
 
             update_term_meta($term->term_id, 'display', $request['display']);

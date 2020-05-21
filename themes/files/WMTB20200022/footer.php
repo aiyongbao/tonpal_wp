@@ -1,6 +1,4 @@
-<?php
-$googleId = ifEmptyText(get_query_var('googldId'));
-?>
+
 <script src="//q.zvk9.com/Model15/assets/js/jquery.min.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/language.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/jquery.validate.min.js"></script>
@@ -17,9 +15,5 @@ $googleId = ifEmptyText(get_query_var('googldId'));
 <script src="//q.zvk9.com/Model15/assets/js/html5.js"></script>
 <![endif]-->
 <script src="<?php echo get_template_directory_uri()?>/assets/js/common.js"></script>
-<script>
 
-</script>
-<?php if( ifEmptyText($googleId) !== '') {
-    echo $googleId;
-}?>
+

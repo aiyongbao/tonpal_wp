@@ -1,42 +1,44 @@
 <?php
 global $wp; // Class_Reference/WP 类实例
-$sideBarTags = ifEmptyText(get_query_var('sideBarTags'),'Tag');
+$sideBarTags = ifEmptyText(get_query_var('sideBarTags'), 'Tag');
 
 $post = get_post();
-$theme_vars = json_config_array('header','vars',1);
+$theme_vars = json_config_array('header', 'vars', 1);
 $product_detail_download_btn = ifEmptyText($theme_vars['downloadBtn']['value']);
 $product_detail_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value']);
 
 // 主图处理
-$photos = ifEmptyArray(get_post_meta(get_post()->ID,'photos'));
+$photos = ifEmptyArray(get_post_meta(get_post()->ID, 'photos'));
 $photosArray = [];
-foreach ($photos as $key=>$item){
-    array_push($photosArray,json_decode($photos[$key],true));
+foreach ($photos as $key => $item) {
+    array_push($photosArray, json_decode($photos[$key], true));
 }
 
 // pdf
-$pdf = ifEmptyText(get_post_meta(get_post()->ID,'pdf',true));
+$pdf = ifEmptyText(get_post_meta(get_post()->ID, 'pdf', true));
 
 // SEO
-$seo_title = ifEmptyText(get_post_meta(get_post()->ID,'seo_title',true));
-$seo_description = ifEmptyText(get_post_meta(get_post()->ID,'seo_description',true));
-$seo_keywords = ifEmptyText(get_post_meta(get_post()->ID,'seo_keywords',true));
+$seo_title = ifEmptyText(get_post_meta(get_post()->ID, 'seo_title', true));
+$seo_description = ifEmptyText(get_post_meta(get_post()->ID, 'seo_description', true));
+$seo_keywords = ifEmptyText(get_post_meta(get_post()->ID, 'seo_keywords', true));
 
 // 当前页面url
 $page_url = get_lang_page_url();
 
+$sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
+
 // 详情筛选
-$detailArray=[];
-$contentArray = json_decode($post->post_content,true);
-foreach ($contentArray as $key => $item ){
-    if ($item['content'] !== ''){
+$detailArray = [];
+$contentArray = json_decode($post->post_content, true);
+foreach ($contentArray as $key => $item) {
+    if ($item['content'] !== '') {
         $detailArray[$key]['tabName'] = $item['tabName'];
         $detailArray[$key]['content'] = $item['content'];
     }
 }
 
 // weight
-$theme_weight = json_config_array('header','weight',1);
+$theme_weight = json_config_array('header', 'widgets', 1);
 $faq = $theme_weight['FAQ'];
 $review = $theme_weight['review'];
 ?>
@@ -73,191 +75,199 @@ $review = $theme_weight['review'];
     <meta name="twitter:description" content="<?php echo $seo_description; ?>" />
     <meta name="twitter:image" content="<?php echo ifEmptyText($photosArray[0]['url']); ?>" />
 
-    <?php get_template_part( 'templates/components/head' )?>
+    <?php get_template_part('templates/components/head') ?>
 
-    <style>
-
-    </style>
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
 
-    <!-- web_head start -->
-    <?php get_header() ?>
-    <!--// web_head end -->
+        <!-- web_head start -->
+        <?php get_header() ?>
+        <!--// web_head end -->
 
-    <!-- path -->
-    <?php get_breadcrumbs();?>
+        <!-- path -->
+        <?php get_breadcrumbs(); ?>
 
 
 
-    <!-- page-layout start -->
-    <section class="web_main page_main">
-        <div class="layout">
+        <!-- page-layout start -->
+        <section class="web_main page_main">
+            <div class="layout">
 
-            <!-- aside start -->
-            <?php get_template_part('templates/components/side-bar'); ?>
-            <!--// aside end -->
+                <!-- aside start -->
+                <?php get_template_part('templates/components/side-bar'); ?>
+                <!--// aside end -->
 
-            <!-- main start -->
-            <section class="main" >
-                <div class="main_hd">
-                    <h1 class="page_title"><?php echo $post->post_title ?></h1>
-                </div>
-                <!-- product info -->
-                <div class="product-intro">
-                    <div class="product-view" >
-                        <div class="product-image">
-                            <a class="cloud-zoom" id="zoom1" data-zoom="adjustX:0, adjustY:0" href="<?php echo ifEmptyText($photosArray[0]['url'])?>" title="">
-                                <img src="<?php echo ifEmptyText($photosArray[0]['url'])?>"
-                                     itemprop="image" title="<?php echo ifEmptyText($photosArray[0]['alt'])?>"
-                                     alt="<?php echo ifEmptyText($photosArray[0]['alt'])?>"
-                                     style="width:100%" />
-                            </a>
-                        </div>
-                        <div style="position:relative; width:100%;">
-                            <div class="image-additional">
-                                <ul class="swiper-wrapper">
-                                    <?php foreach ($photosArray as $key => $item) { ?>
-                                        <li class="swiper-slide image-item <?php if ($key == 0) echo 'current'; ?>">
-                                            <a class="cloud-zoom-gallery item"  href="<?php echo ifEmptyText($item['url'])?>" data-zoom="useZoom:zoom1, smallImage:<?php echo ifEmptyText($item['url'])?>" title="<?php echo ifEmptyText($item['alt'])?>">
-                                                <img src="<?php echo ifEmptyText($item['url'])?>_thumb_262x262.jpg" title="<?php echo ifEmptyText($item['alt'])?>" alt="<?php echo ifEmptyText($item['alt'])?>" />
-                                            </a>
-                                        </li>
-                                    <?php } ?>
-                                </ul>
-                                <div class="swiper-pagination swiper-pagination-white"></div>
+                <!-- main start -->
+                <section class="main">
+                    <div class="main_hd">
+                        <?php if ($sub_title == '') { ?>
+                            <h1 class="page_title"><?php echo $post->post_title ?></h1>
+                        <?php } else {  ?>
+                            <div class="page_title">
+                                <?php echo $post->post_title ?>
                             </div>
-                            <div class="swiper-button-next swiper-button-white"></div>
-                            <div class="swiper-button-prev swiper-button-white"></div>
-                        </div>
+                        <?php }  ?>
+
                     </div>
-                    <div class="product-summary">
-                        <div class="product-meta">
-                            <p><?php echo $post->post_excerpt ?></p>
-                        </div>
-                        <div class="gm-sep product-btn-wrap">
-                            <a href="javascript:" class="email"><?php echo $product_detail_inquiry_btn ?></a>
-                            <?php if ($pdf !== '' ) { ?>
-                                <a class="pdf" href="<?php echo $pdf ?>" download="<?php echo $post->post_title ?>"><?php echo $product_detail_download_btn ?></a>
-                            <?php } ?>
-                        </div>
-                        <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
-                    </div>
-                </div>
-                <!-- tab-content-wrap,tab-title-bar,tab-title ,tab-panel-wrap,tab-panel为结构不做样式用-->
-                <div class="tab-content-wrap product-detail">
-                    <div class="gm-sep tab-title-bar detail-tabs">
-                        <?php foreach ($detailArray as $key => $item ){ ?>
-                            <h2 class="tab-title  title <?php if ($key == 0) echo 'current'; ?> "><span><?php echo $item['tabName']; ?></span></h2>
-                        <?php } ?>
-                    </div>
-                    <div class="tab-panel-wrap">
-                        <?php foreach ($detailArray as $key => $item ){ ?>
-                            <div class="tab-panel disabled">
-                                <div class="tab-panel-content">
-                                    <?php echo $item['content']; ?>
+                    <!-- product info -->
+                    <div class="product-intro">
+                        <div class="product-view">
+                            <div class="product-image">
+                                <a class="cloud-zoom" id="zoom1" data-zoom="adjustX:0, adjustY:0" href="<?php echo ifEmptyText($photosArray[0]['url']) ?>" title="">
+                                    <img src="<?php echo ifEmptyText($photosArray[0]['url']) ?>" itemprop="image" title="<?php echo ifEmptyText($photosArray[0]['alt']) ?>" alt="<?php echo ifEmptyText($photosArray[0]['alt']) ?>" style="width:100%" />
+                                </a>
+                            </div>
+                            <div style="position:relative; width:100%;">
+                                <div class="image-additional">
+                                    <ul class="swiper-wrapper">
+                                        <?php foreach ($photosArray as $key => $item) { ?>
+                                            <li class="swiper-slide image-item <?php if ($key == 0) echo 'current'; ?>">
+                                                <a class="cloud-zoom-gallery item" href="<?php echo ifEmptyText($item['url']) ?>" data-zoom="useZoom:zoom1, smallImage:<?php echo ifEmptyText($item['url']) ?>" title="<?php echo ifEmptyText($item['alt']) ?>">
+                                                    <img src="<?php echo ifEmptyText($item['url']) ?>_thumb_262x262.jpg" title="<?php echo ifEmptyText($item['alt']) ?>" alt="<?php echo ifEmptyText($item['alt']) ?>" />
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+                                    <div class="swiper-pagination swiper-pagination-white"></div>
                                 </div>
+                                <div class="swiper-button-next swiper-button-white"></div>
+                                <div class="swiper-button-prev swiper-button-white"></div>
                             </div>
-                        <?php } ?>
+                        </div>
+                        <div style="padding: 0 0 10px 0" class="product-summary">
+                            <?php if ($sub_title != '') { ?>
+                                <h1 class="sub-title">
+                                    <?php echo $sub_title ?>
+                                </h1>
+                            <?php }  ?>
+
+                            <div class="product-meta">
+                                <p><?php echo $post->post_excerpt ?></p>
+                            </div>
+                            <div class="gm-sep product-btn-wrap">
+                                <a href="javascript:" class="email"><?php echo $product_detail_inquiry_btn ?></a>
+                                <?php if ($pdf !== '') { ?>
+                                    <a class="pdf" href="<?php echo $pdf ?>" download="<?php echo $post->post_title ?>"><?php echo $product_detail_download_btn ?></a>
+                                <?php } ?>
+                            </div>
+                            <div class="share_this">
+                                <div class="sharethis-inline-share-buttons"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="chapter underline border-bottom-2">
-                    <?php
-                    // prev
-                    get_prev_or_next_post('prev','prev','Prev: ','This is the last product.');
-                    // next
-                    get_prev_or_next_post('next','next','Next: ','This is the latest product.');
-                    ?>
-                </div>
-                <?php get_template_part( 'templates/components/tags-random-product' )?>
-                <!--// RELATED PRODUCTS -->
-                <?php get_template_part( 'templates/components/related-products' )?>
-                <!--// inquiry form -->
-                <?php get_template_part( 'templates/components/sendMessage' ); ?>
-                <!--// FAQ  -->
-                <?php if ($faq['display'] == 1) {
-                    $faq_title = ifEmptyText($faq['vars']['title']['value'],'FAQ');
-                    $faq_items = ifEmptyArray($faq['vars']['items']['value']);
-                    ?>
-                    <div class="faq mt-15">
-                        <h2 class="title"><?php echo $faq_title; ?></h2>
-                        <ul class="faq-ul">
-                            <?php foreach ($faq_items as $key => $item ) { ?>
-                                <li class="faq-li border-bottom-2">
-                                    <span class="icon-left">Q<?php echo $key+1; ?></span>
-                                    <div>
-                                        <h3><?php echo ifEmptyText($item['title'])?></h3>
-                                        <p><?php echo ifEmptyText($item['desc']) ?></p>
-                                    </div>
-                                    <span class="icon-right icon-up-arrow click-more"></span>
-                                </li>
+                    <div class="tab-content-wrap product-detail">
+                        <div class="gm-sep tab-title-bar detail-tabs">
+                            <?php foreach ($detailArray as $key => $item) { ?>
+                                <h2 class="tab-title  title <?php if ($key == 0) echo 'current'; ?> "><span><?php echo $item['tabName']; ?></span></h2>
                             <?php } ?>
-                        </ul>
+                        </div>
+                        <div class="tab-panel-wrap">
+                            <?php foreach ($detailArray as $key => $item) { ?>
+                                <div class="tab-panel disabled">
+                                    <div class="tab-panel-content">
+                                        <?php echo $item['content']; ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
                     </div>
-                <?php } ?>
-                <!--// review -->
-                <?php if ($review['display'] == 1) {
-                    $review_title = ifEmptyText($review['vars']['title']['value'],'Review');
-                    $review_items = ifEmptyArray($review['vars']['items']['value']);
+                    <div class="chapter underline border-bottom-2">
+                        <?php
+                        // prev
+                        get_prev_or_next_post('prev', 'prev', 'Prev: ', 'This is the last product.');
+                        // next
+                        get_prev_or_next_post('next', 'next', 'Next: ', 'This is the latest product.');
+                        ?>
+                    </div>
+                    <?php get_template_part('templates/components/tags-random-product') ?>
+                    <!--// RELATED PRODUCTS -->
+                    <?php get_template_part('templates/components/related-products') ?>
+                    <!--// inquiry form -->
+                    <?php get_template_part('templates/components/sendMessage'); ?>
+                    <!--// FAQ  -->
+                    <?php if ($faq['display'] == 1) {
+                        $faq_title = ifEmptyText($faq['vars']['title']['value'], 'FAQ');
+                        $faq_items = ifEmptyArray($faq['vars']['items']['value']);
                     ?>
-                    <div class="review mt-15">
-                        <h2 class="title"><?php echo $review_title; ?></h2>
-                        <ul class="review-ul">
-                            <?php foreach ($review_items as $item ) { ?>
-                                <li class="review-li">
-                                    <div class="top">
-                                        <span class="review-top-left">
-                                            <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['title'] ?>" />
-                                        </span>
-                                        <div class="review-top-right">
-                                            <h4><?php echo $item['title'] ?></h4>
-                                            <span class="review-top-right-time">
-                                                <?php echo $item['time'] ?>
-                                            </span>
-                                            <span class="review-top-right-start">
-                                                <?php for ($i = 0 ; $i < $item['starNumber']; $i += 1) { ?>
-                                                    <i class="icon-star-png"></i>
-                                                <?php } ?>
-                                            </span>
+                        <div class="faq mt-15">
+                            <h2 class="title"><?php echo $faq_title; ?></h2>
+                            <ul class="faq-ul">
+                                <?php foreach ($faq_items as $key => $item) { ?>
+                                    <li class="faq-li border-bottom-2">
+                                        <span class="icon-left">Q<?php echo $key + 1; ?></span>
+                                        <div>
+                                            <h3><?php echo ifEmptyText($item['title']) ?></h3>
+                                            <p><?php echo ifEmptyText($item['desc']) ?></p>
                                         </div>
-                                    </div>
-                                    <div class="bottom">
-                                        <?php echo $item['desc'] ?>
-                                    </div>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                <?php } ?>
-            </section>
-            <!--// main end -->
-        </div>
-    </section>
-    <!--// page-layout end -->
+                                        <span class="icon-right icon-up-arrow click-more"></span>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
+                    <!--// review -->
+                    <?php if ($review['display'] == 1) {
+                        $review_title = ifEmptyText($review['vars']['title']['value'], 'Review');
+                        $review_items = ifEmptyArray($review['vars']['items']['value']);
+                    ?>
+                        <div class="review mt-15">
+                            <h2 class="title"><?php echo $review_title; ?></h2>
+                            <ul class="review-ul">
+                                <?php foreach ($review_items as $item) { ?>
+                                    <li class="review-li">
+                                        <div class="top">
+                                            <span class="review-top-left">
+                                                <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['title'] ?>" />
+                                            </span>
+                                            <div class="review-top-right">
+                                                <h4><?php echo $item['title'] ?></h4>
+                                                <span class="review-top-right-time">
+                                                    <?php echo $item['time'] ?>
+                                                </span>
+                                                <span class="review-top-right-start">
+                                                    <?php for ($i = 0; $i < $item['starNumber']; $i += 1) { ?>
+                                                        <i class="icon-star-png"></i>
+                                                    <?php } ?>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="bottom">
+                                            <?php echo $item['desc'] ?>
+                                        </div>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
+                </section>
+                <!--// main end -->
+            </div>
+        </section>
+        <!--// page-layout end -->
 
 
-    <!-- web_footer start -->
-    <?php get_template_part( 'templates/components/footer' )?>
-    <!--// web_footer end -->
+        <!-- web_footer start -->
+        <?php get_template_part('templates/components/footer') ?>
+        <!--// web_footer end -->
 
-</div>
+    </div>
 </body>
 <?php get_footer() ?>
 <script>
-    $(function () {
+    $(function() {
         let clickMoreLength = $('.click-more').length;
         for (let i = 0; i < clickMoreLength; i += 1) {
-            $('.click-more').eq(i).click(function(){
+            $('.click-more').eq(i).click(function() {
                 let $this = $(this);
                 let $content = $this.prev().children('p');
-                if($content.is(":hidden")){//当内容为隐藏的时候
-                    $content.show();//将对象显示
+                if ($content.is(":hidden")) { //当内容为隐藏的时候
+                    $content.show(); //将对象显示
                     $this.removeClass('icon-up-arrow');
                     $this.addClass('icon-down-arrow');
-                }else{
-                    $content.hide();//将对象隐藏
+                } else {
+                    $content.hide(); //将对象隐藏
                     $this.removeClass('icon-down-arrow');
                     $this.addClass('icon-up-arrow');
                 }
@@ -266,5 +276,6 @@ $review = $theme_weight['review'];
     })
 </script>
 <!--微数据-->
-<?php get_template_part( 'templates/components/microdata' )?>
+<?php get_template_part('templates/components/microdata') ?>
+
 </html>

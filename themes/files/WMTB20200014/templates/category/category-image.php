@@ -2,7 +2,7 @@
 global $wp_query; // Class_Reference/WP_Query 类实例
 global $wp; // Class_Reference/WP 类实例
 // category.json -> vars 数据获取
-$theme_vars = json_config_array_category('category-image','vars');
+$theme_vars = json_config_array_category('category-image','vars',$cat);
 // Text 数据处理
 $category_title = ifEmptyText($theme_vars['title']['value']);
 $category_read_more = ifEmptyText($theme_vars['readMore']['value']);
@@ -77,7 +77,6 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                 <h3 style="text-transform:uppercase"><?php echo $category_title; ?></h3><h1 style="text-transform:uppercase"><?php echo $subName; ?></h1>
                             <?php } ?>
                         </div>
-                        <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
                     </div>
                     <?php if ( have_posts() ) { ?>
                         <ul>

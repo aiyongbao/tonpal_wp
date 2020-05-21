@@ -8,6 +8,7 @@ global $wp_query,$wp,$post;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 $tagName = single_tag_title('',false);
+$tagName = str_replace("wmtbprefix","",$tagName);
 // 当前页面url
 $page_url = get_lang_page_url();
 
@@ -56,32 +57,39 @@ $page_url = get_lang_page_url();
                 <div class="blog_list mb-10">
                     <?php if ( have_posts() ) { ?>
                         <ul>
-                            <?php while ( have_posts() ) {
+                            <?php while (have_posts()) {
                                 the_post();
                                 $category = get_the_category();
                                 $cid = $category[0]->cat_ID;
                                 $pid = get_category_root_id($cid);
                                 $the_slug = get_category($pid)->slug;
-                                if ( $the_slug == 'product' ) {
-                                    $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true);
-                                    $tags = get_the_tags( $post->ID );
 
-                               ?>
-                                <li class="blog-item tags-item">
-                                    <figure class="item-wrap">
-                                        <a href="<?php the_permalink()  ?>"class="item-img"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
-                                        <figcaption class="item-info">
-                                            <h3 class="item-title"><a href="<?php the_permalink()  ?>"><?php the_title(); ?></a></h3>
-                                            <div class="item-detail"><?php the_excerpt(); ?></div>
-                                            <div class="tags">
-                                                <?php foreach ($tags as $item ) { ?>
-                                                    <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
-                                                <?php } ?>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                            <?php } }?>
+                                $thumbnail = ifEmptyText(get_post_meta(get_post()->ID, 'thumbnail', true));
+                                $tags = get_the_tags($post->ID);
+
+                                if ($the_slug != 'news') {
+                                    $thumbnail = get_post_meta(get_post()->ID, 'thumbnail', true);
+                                    $tags = get_the_tags($post->ID);
+                                    ?>
+                                    <li class="blog-item tags-item">
+                                        <figure class="item-wrap">
+                                            <?php if (!empty($thumbnail)) { ?>
+                                                <a href="<?php the_permalink()  ?>"class="item-img"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
+                                            <?php } ?>
+                                            <figcaption class="item-info">
+                                                <h3 class="item-title"><a href="<?php the_permalink()  ?>"><?php the_title(); ?></a></h3>
+                                                <div class="item-detail"><?php the_excerpt(); ?></div>
+                                                <div class="tags">
+                                                    <?php foreach ($tags as $item ) {
+                                                        $tags_name = str_replace("wmtbprefix","",$item->name);
+                                                        ?>
+                                                        <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $tags_name; ?></a>
+                                                    <?php } ?>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                <?php } } ?>
                         </ul>
                         <?php wpbeginner_numeric_posts_nav(); ?>
                     <?php } ?>

@@ -8,6 +8,7 @@ global $wp_query,$wp,$post;
 $paged = get_query_var('paged');
 $max = intval( $wp_query->max_num_pages );
 $tagName = single_tag_title('',false);
+$tagName = str_replace("wmtbprefix","",$tagName);
 // 当前页面url
 $page_url = get_lang_page_url();
 $theme_vars = json_config_array('header','vars',1);
@@ -57,37 +58,41 @@ $tags_inquiry_btn = ifEmptyText($theme_vars['inquiryBtn']['value'],'Send Inquiry
                 <header class="border-bottom-2 mb-10">
                     <h1><?php echo $tagName ?></h1>
                 </header>
-                <?php if($video_desc != ''){ ?>
-                    <p class="class-desc pd-10" style="margin-bottom:20px;line-height:1.5"><?php echo $video_desc ?></p>
-                <?php } ?>
                 <?php if ( have_posts() ) { ?>
-                    <ul class="tags-ul">
+                    <ul class="tags-ul mobile-ul">
                         <?php while ( have_posts() ) {
-                        the_post();
-                        $category = get_the_category();
-                        $cid = $category[0]->cat_ID;
-                        $pid = get_category_root_id($cid);
-                        $the_slug = get_category($pid)->slug;
-                        if ( $the_slug == 'product' ) {
-                            $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true);
-                            $tags = get_the_tags( $post->ID );
+                            the_post();
+                            $category = get_the_category();
+                            $cid = $category[0]->cat_ID;
+                            $pid = get_category_root_id($cid);
+                            $the_slug = get_category($pid)->slug;
 
-                            ?>
-                            <li class="post-item border-bottom-2">
-                                <figure class="item-wrap">
-                                    <a href="<?php the_permalink()  ?>" class="item-image"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
-                                    <figcaption class="item-info">
-                                        <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $tags_inquiry_btn; ?></a></h3>
-                                        <div class="item-detail"><?php the_excerpt(); ?></div>
-                                        <div class="tag">
-                                            <?php foreach ($tags as $item ) { ?>
-                                                <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
-                                            <?php } ?>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        <?php } }?>
+                            $thumbnail = ifEmptyText(get_post_meta(get_post()->ID, 'thumbnail', true));
+                            $tags = get_the_tags($post->ID);
+
+                            if ($the_slug != 'news') {
+                                $thumbnail = get_post_meta(get_post()->ID, 'thumbnail', true);
+                                $tags = get_the_tags($post->ID);
+                                ?>
+                                <li class="post-item border-bottom-2">
+                                    <figure class="item-wrap">
+                                        <?php if (!empty($thumbnail)) { ?>
+                                            <a href="<?php the_permalink()  ?>" class="item-image"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
+                                        <?php } ?>
+                                        <figcaption class="item-info">
+                                            <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $tags_inquiry_btn; ?></a></h3>
+                                            <div class="item-detail"><?php the_excerpt(); ?></div>
+                                            <div class="tag">
+                                                <?php foreach ($tags as $item ) {
+                                                    $tags_name = str_replace("wmtbprefix","",$item->name);
+                                                    ?>
+                                                    <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $tags_name?></a>
+                                                <?php } ?>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            <?php } } ?>
                     </ul>
                     <?php wpbeginner_numeric_posts_nav(); ?>
                 <?php } ?>

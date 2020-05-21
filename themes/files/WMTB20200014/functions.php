@@ -68,10 +68,10 @@ if (!function_exists('my_theme_setup')) :
                             if(empty($result))
                             {
                                 //新增
-                                $wpdb->insert($wpdb->theme_file,$data);
+                                $wpdb->insert("{$wpdb->prefix}theme_file",$data);
                             }
                             else{
-                                $res = $wpdb->update($wpdb->theme_file,$data,['id' => $result->id]);
+                                $res = $wpdb->update("{$wpdb->prefix}theme_file",$data,['id' => $result->id]);
                             }
                         }
 
@@ -471,6 +471,8 @@ function custom_posts_per_page($query){
         }
         if ( $slug === 'news' || $slug === 'info-product' || $slug === 'info-news') {
             $query->set('posts_per_page',10);
+        } else if ($slug == 'product') {
+            $query->set('posts_per_page',get_posts_per_page_num());
         }
     }
     if (is_search()){
@@ -478,6 +480,15 @@ function custom_posts_per_page($query){
     }
 }
 add_action('pre_get_posts','custom_posts_per_page');
+
+/**
+ * 用于产品列表页面展示个数
+ * @author zhuoyue
+ * @return int
+ */
+function get_posts_per_page_num(){
+    return 12;
+}
 
 /**
  * 随机获取当前分类的tags
@@ -610,10 +621,9 @@ function get_prev_or_next_post ($class_name='prev', $type = 'prev', $prefix = 'P
  * 获取头部 hreflang标签
  * @author daifuyang
  */
-function get_href_lang()
+function get_href_lang($cat)
 {
     //显示当前页面类型
-
     $http = $_SERVER['SERVER_PORT'] == 80 ? 'http://' : 'https://';
     $currents = [];
     $languages = Db::table('wp_language')->where('status', '1')->select();
@@ -627,7 +637,7 @@ function get_href_lang()
 
             $currents[] = [
                 'abbr' => $lang['abbr'],
-                'link' => '/' . $abbr
+                'link' => '/' . $abbr.'/'
             ];
         }
     } elseif (is_category() || is_tag()) {
@@ -647,7 +657,7 @@ function get_href_lang()
                 $link = get_category_link($result['term_id']);
                 $currents[] = [
                     'abbr' => $lang['abbr'],
-                    'link' => $link
+                    'link' => (empty($abbr) ? '' : '/' . $abbr) . $link
                 ];
             }
         }
@@ -706,7 +716,7 @@ function get_href_lang()
  * @param int $term_id 检索id
  * @author zhuoyue
  */
-function get_info_tags ($type='single',$term_id) {
+function get_info_tags ($type='',$term_id) {
     if ($type == 'single') {
         $tags = get_the_tags($term_id);// 获取当前产品的所有tags
     } else {
@@ -717,7 +727,8 @@ function get_info_tags ($type='single',$term_id) {
         echo '<h3 class="tag-title">Tags:</h3>';
         echo '<div class="tag">';
         foreach ($tags as $item) {
-            printf('<a href="%s">$s</a>', get_tag_link($item->term_id), $item->name);
+            $tags_name = str_replace("wmtbprefix","",$item->name);
+            printf('<a href="%s">%s</a>', get_tag_link($item->term_id), $tags_name);
         }
         echo '</div>';
         echo '</div>';

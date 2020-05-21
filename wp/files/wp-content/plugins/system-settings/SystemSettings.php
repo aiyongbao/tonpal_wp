@@ -60,42 +60,35 @@ add_filter('init', function () {
     //print_r($rules = get_option( 'rewrite_rules' ));
 
     $wp_rewrite->flush_rules();
-
-    
 });
 
-add_filter('get_terms_orderby',function($orderby, $query_vars, $taxonomy){
-    
-    if(in_array('category', $taxonomy)){
+add_filter('get_terms_orderby', function ($orderby, $query_vars, $taxonomy) {
 
-        if($query_vars['orderby'] == 'list_order'){
+    if (in_array('category', $taxonomy)) {
+
+        if ($query_vars['orderby'] == 'list_order') {
             return 't.list_order';
-        }
-        else{
+        } else {
             return $orderby;
         }
-
     }
-    
+
     return $orderby;
-    
-},10,3);
+}, 10, 3);
 
 function add_rules()
 {
     $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
 
-    $match_arr = explode('|',$match);
+    $match_arr = explode('|', $match);
 
-    foreach($match_arr as $lang)
-    {
-        add_rewrite_rule('^'.$lang.'/?$' , 'index.php?lang='.$lang, 'bottom');
-        add_rewrite_rule('^'.$lang . '/(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang='.$lang.'&pagename=$matches[1]', 'top');
-        add_rewrite_rule('^'.$lang . '/product/([^/]+).html(?:/([0-9]+))?/?$','index.php?lang='.$lang.'&name=$matches[1]&page=$matches[2]', 'top');  //新增产品详情伪静态
-        add_rewrite_rule('^'.$lang . '/news/([^/]+).html(?:/([0-9]+))?/?$' , 'index.php?lang='.$lang.'&name=$matches[1]&page=$matches[2]', 'top');
-        add_rewrite_rule('^'.$lang . '/list/([^/]+).html(?:/([0-9]+))?/?$' , 'index.php?lang='.$lang.'&name=$matches[1]&page=$matches[2]', 'top');
+    foreach ($match_arr as $lang) {
+        add_rewrite_rule('^' . $lang . '/?$', 'index.php?lang=' . $lang, 'bottom');
+        add_rewrite_rule('^' . $lang . '/(.?.+?)(?:/([0-9]+))?/?$', 'index.php?lang=' . $lang . '&pagename=$matches[1]', 'top');
+        add_rewrite_rule('^' . $lang . '/product/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=' . $lang . '&name=$matches[1]&page=$matches[2]', 'top');  //新增产品详情伪静态
+        add_rewrite_rule('^' . $lang . '/news/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=' . $lang . '&name=$matches[1]&page=$matches[2]', 'top');
+        add_rewrite_rule('^' . $lang . '/list/([^/]+).html(?:/([0-9]+))?/?$', 'index.php?lang=' . $lang . '&name=$matches[1]&page=$matches[2]', 'top');
     }
-
 }
 
 //文章查询钩子
@@ -140,6 +133,22 @@ add_action('setup_theme', function () {
         return $args;
     });
 
+    add_filter("nav_menu_item_args", function ($args, $items, $depth) {
+        if ($items->type == "taxonomy") {
+                $category = get_category($items->object_id);
+                $parent_category = p_get_category_root_id($category->term_id);
+                $results = get_category($parent_category);
+                if ($results->slug == 'ai-product-detail' || $results->slug == 'info-product') {
+                } elseif ($results->slug == 'ai-news-detail' || $results->slug == 'info-news') {
+                } elseif ($results->slug == 'product') {
+                } elseif ($results->slug == 'news') {
+                } else {
+                    $items->url = '/list' . $items->url;
+                }
+        }
+        return $args;
+    }, 10, 3);
+
     add_filter("home_url", function ($url, $path, $schame, $blog_id) {
         $lang = get_query_var('lang');
         $old_href_arr = explode('/', $url);
@@ -153,8 +162,7 @@ add_action('setup_theme', function () {
             $url = str_replace($old_href_arr[0] . "//" . $old_href, '', $url);
         }
 
-        if(empty($url))
-        {
+        if (empty($url)) {
             $url = '/';
         }
 
@@ -173,40 +181,31 @@ function p_get_category_root_id($cat)
     return $this_category->term_id; // 返回根分类的id号
 }
 
-add_filter("pre_post_link",function($permalink,$post,$leavename){
+add_filter("pre_post_link", function ($permalink, $post, $leavename) {
 
-    $category = get_the_category( $post->ID );
+    $category = get_the_category($post->ID);
     $parent_category = p_get_category_root_id($category[0]->term_id);
     $results = get_category($parent_category);
 
 
-    if( $results->slug == 'ai-product-detail' || $results->slug == 'info-product' ){
-        $permalink = '/info-product'.$permalink;
-    }
-    
-    elseif( $results->slug == 'ai-news-detail' || $results->slug == 'info-news'  ){
-        $permalink = '/info-news'.$permalink;
-    }
-
-    elseif( $results->slug == 'product' ){
-        $permalink = '/product'.$permalink;
-    }
-
-    elseif ($results->slug == 'news' ){
-        $permalink = '/news'.$permalink;
-    }
-
-    else{
-        $permalink = '/list'.$permalink;
+    if ($results->slug == 'ai-product-detail' || $results->slug == 'info-product') {
+        $permalink = '/info-product' . $permalink;
+    } elseif ($results->slug == 'ai-news-detail' || $results->slug == 'info-news') {
+        $permalink = '/info-news' . $permalink;
+    } elseif ($results->slug == 'product') {
+        $permalink = '/product' . $permalink;
+    } elseif ($results->slug == 'news') {
+        $permalink = '/news' . $permalink;
+    } else {
+        $permalink = '/list' . $permalink;
     }
 
     return $permalink;
-
-},10,3);
+}, 10, 3);
 
 
 // add_filter('get_pagenum_link',function($result,$pagenum){
-    
+
 //     $result = rtrim($result, "/");
 
 //     return $result;
@@ -214,7 +213,7 @@ add_filter("pre_post_link",function($permalink,$post,$leavename){
 // },10,2);
 
 add_filter('category_rewrite_rules', function ($category_rewrite) {
-    
+
 
     if (class_exists('Sitepress')) {
         global $sitepress;
@@ -238,28 +237,28 @@ add_filter('category_rewrite_rules', function ($category_rewrite) {
         }
 
         $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
-        $match_arr = explode('|',$match);
+        $match_arr = explode('|', $match);
 
-        $category_rewrite[ 'list/(' . $category_nicename . ')/?$'] = 'index.php?category_name=$matches[1]'; // 列表伪静态
-        $category_rewrite[ 'list/(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?lang=&category_name=$matches[1]&paged=$matches[2]';  // 列表伪静态
+        $category_rewrite['list/(' . $category_nicename . ')/?$'] = 'index.php?category_name=$matches[1]'; // 列表伪静态
+        $category_rewrite['list/(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?lang=&category_name=$matches[1]&paged=$matches[2]';  // 列表伪静态
 
-        foreach($match_arr as $lang)
-        {
-            $category_rewrite['^'.$lang . '/(' . $category_nicename . ')/?$'] = 'index.php?lang='.$lang.'&category_name=$matches[1]'; // 列表伪静态
-            $category_rewrite['^'.$lang . '/(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?lang='.$lang.'&category_name=$matches[1]&paged=$matches[2]';  // 列表伪静态
+        foreach ($match_arr as $lang) {
+            $category_rewrite['^' . $lang . '/(' . $category_nicename . ')/?$'] = 'index.php?lang=' . $lang . '&category_name=$matches[1]'; // 列表伪静态
+            $category_rewrite['^' . $lang . '/(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?lang=' . $lang . '&category_name=$matches[1]&paged=$matches[2]';  // 列表伪静态
         }
-        
+
         //print_r( $category_rewrite );
-        
+
     }
     return $category_rewrite;
 });
 
-add_filter('post_rewrite_rules', function($post_rewrite) {
+add_filter('post_rewrite_rules', function ($post_rewrite) {
     unset($post_rewrite['([^/]+).html(?:/([0-9]+))?/?$']); //移除原来的伪静态逻辑
     $post_rewrite['product/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]';  //新增产品详情伪静态
     $post_rewrite['news/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增图文详情伪静态
     $post_rewrite['list/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
+    $post_rewrite['info-product/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
     $post_rewrite['info-news/([^/]+).html(?:/([0-9]+))?/?$'] = 'index.php?name=$matches[1]&page=$matches[2]'; //新增列详情伪静态
     return $post_rewrite;
 });
@@ -271,18 +270,17 @@ add_filter('query_vars', function ($public_query_vars) {
 });
 
 add_filter('request', function ($query_vars) {
-
+    
     //大写转小写
     $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
     $http = $_SERVER['REQUEST_URI'];
     $host = $_SERVER['HTTP_HOST'];
-    $url = $http_type.$host.$http;
+    $url = $http_type . $host . $http;
 
-    if(preg_match("/[A-Z]+/", $url))
-    {
+    if (!preg_match("/^.+\/wp-content\/.+\.+(js|css|woff2)/", $url) && preg_match("/[A-Z]+/", $url)) {
         $url = strtolower($url);
         header('HTTP/1.1 301 Moved Permanently');
-        header('Location: '.$url);
+        header('Location: ' . $url);
         exit();
     }
 

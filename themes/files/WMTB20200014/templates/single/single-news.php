@@ -55,7 +55,6 @@ $page_url = get_lang_page_url();
                     <h1><?php echo $post->post_title ?></h1>
                 </div>
                 <div class="news-time mb-10"><?php echo $post->post_date; ?></div>
-                <div class="share_this"><div class="sharethis-inline-share-buttons"></div></div>
                 <article>
                     <section class="mt15">
                         <?php echo $post->post_content ?>

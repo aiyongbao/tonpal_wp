@@ -197,8 +197,8 @@ a{-webkit-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;tra
 .foot_item{display: inline-block;-webkit-box-flex:0 0 25%;-webkit-flex:0 0 25%;-ms-flex:0 0 25%;flex:0 0 25%;max-width: 25%;width: 25%;float: left;padding: 15px;}
 .foot_item .title{font-size: 18px;line-height: 25px;padding-top: 15px;text-transform: uppercase;margin-bottom: 25px;letter-spacing: 1px;}
 .foot_item .foot_logo{margin-bottom: 25px;padding-bottom: 5px;}
-.foot_item .foot_logo img{height: 34px;vertical-align: middle;max-width: 100%;}
-.foot_item .info_desc{max-width: 300px;letter-spacing: .5px;text-align: justify;}
+.foot_item .foot_logo img{max-height: 75px;vertical-align: middle;max-width: 100%;}
+.foot_item .info_desc{max-width: 300px;letter-spacing: .5px;text-align: left;}
 .foot_item_info{-webkit-box-flex:0 0 33.33333333%;-webkit-flex:0 0 33.33333333%;-ms-flex:0 0 33.33333333%;flex:0 0 33.33333333%;max-width: 33.33333333%;width: 33.33333333%;}
 .foot_txt_list li{height: 1.5em;line-height: 1.5em;overflow: hidden;margin-bottom: .5em;}
 .foot_txt_list li a{display: block;padding-left: 35px;position: relative;}
@@ -1452,3 +1452,13 @@ li.language-flag a{position:relative;}
 /*-------------------------------
 			animation  end
 			----------------------------------*/
+
+.h1-title{
+	font-size: 22px;
+	color: #000;
+}
+
+.sub-title{
+	font-size: 0.12rem;
+	color: #999;
+}
