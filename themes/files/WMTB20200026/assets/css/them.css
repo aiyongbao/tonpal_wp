@@ -1,0 +1,47 @@
+.foot-wrapper .foot-bar .layout {
+    display: flex;
+}
+strong {
+    font-weight: normal;
+}
+.underline a{
+    text-decoration: underline;
+}
+.mb-35 {
+    margin-bottom: 0.35rem;
+}
+.mb-10 {
+    margin-bottom: 0.10rem;
+}
+.mt-15 {
+    margin-top: .15rem;
+}
+.pd-10{
+    padding: 10px;
+}
+.border-bottom-1 {
+    border-bottom: 1px solid #ebebeb;
+}
+.border-bottom-2 {
+    border-bottom: 2px solid #ebebeb;
+}
+.border-bottom-3 {
+    border-bottom: 3px solid #ebebeb;
+}
+.foot-item-contact li.foot_youtube:before {
+    content: "\f130"
+}
+.foot-item-contact li.foot_googleplus:before {
+    content: "\f025"
+}
+.info-message {
+    height: 1000px;
+}
+.related-box .pd-name {
+    height: 34px;
+}
+@media only screen and (max-width: 480px){
+    .related-box .pd-name {
+        height: 28px;
+    }
+}

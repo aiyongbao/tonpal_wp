@@ -1,0 +1,301 @@
+{
+    "name": "footer配置文件",
+    "action": "public/footer",
+    "description": "footer配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "aboutTitle": {
+                "title": "底部标题一",
+                "value": "ABOUT US",
+                "type": "text",
+                "tip": "eg: About US"
+            },
+            "aboutAbstract": {
+                "title": "公司描述",
+                "value": "",
+                "type": "textarea",
+                "tip": "公司描述"
+            },
+            "contactTitle": {
+                "title": "底部标题二",
+                "value": "CONTACT US",
+                "type": "text",
+                "tip": "eg:CONTACT US"
+            },
+            "facebookLink": {
+                "title": "facebook 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "twitterLink": {
+                "title": "twitter 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "youtubeLink": {
+                "title": "youtube 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "linkedinLink": {
+                "title": "linkedin 链接",
+                "value": "",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "copyright": {
+                "title": "版权",
+                "value": "TONPAL.COM",
+                "type": "text",
+                "tip": "版权自定义"
+            },
+            "friendLinks": {
+                "title": "链轮系统",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "name": {
+                        "title": "名称",
+                        "value": "",
+                        "type": "text",
+                        "tip": "锚文本"
+                    },
+                    "link": {
+                        "title": "固定链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "固定链接"
+                    }
+                },
+                "tip": " 默认不显示， 但点击图标时，则会展示其所有的信息"
+            }
+        },
+        "widgets": {
+            "phone": {
+                "title": "手机",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "手机信息",
+                        "value": [
+                            {
+                                "name" : "phone",
+                                "value" : "+86 88888888"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Phone",
+                                "type": "text",
+                                "tip": "phone"
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "mobile": {
+                "title": "电话",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "电话信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Tel",
+                                "type": "text",
+                                "tip": "Tel"
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "email": {
+                "title": "邮箱",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "邮箱信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Email",
+                                "type": "text",
+                                "tip": "Email",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 2,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "address": {
+                "title": "地址",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "地址信息",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Address",
+                                "type": "text",
+                                "tip": "address",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 2,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "contactusGoogleplus": {
+                "title": "WhatsApp",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "WhatsApp",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "WhatsApp",
+                                "type": "text",
+                                "tip": "WhatsApp",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "WhatsApp",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "contactusYoutube": {
+                "title": "Viber",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "Viber",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Viber",
+                                "type": "text",
+                                "tip": "Viber",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "Viber",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "footerInquiry": {
+                "title": "底部最右侧模块",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "底部最右侧标题",
+                        "value": "SUBSCRIBE",
+                        "type": "text",
+                        "tip": "eg: SUBSCRIBE"
+                    },
+                    "desc": {
+                        "title": "底部最右侧描述",
+                        "value": "",
+                        "type": "textarea",
+                        "tip": "公司描述"
+                    },
+                    "btn": {
+                        "title": "底部最右侧按钮",
+                        "value": "Inquiry",
+                        "type": "text",
+                        "tip": "eg: Inquiry"
+                    }
+                }
+            }
+        }
+    }
+}
