@@ -48,7 +48,7 @@ $page_url = get_lang_page_url();
             <section class="main">
                 <header class="main-tit-bar">
                     <h1 class="title"><?php echo $post->post_title ?></h1>
-                    <time><?php get_the_date() ?></time>
+                    <time><?php echo $post->post_date; ?></time>
                 </header>
                 <article class="entry blog-article">
                     <section class="mt15">

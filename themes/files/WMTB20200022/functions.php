@@ -341,6 +341,10 @@ function get_breadcrumbs()
                 echo '<li>'.$item.'</li>';
             }
         }
+        elseif ( is_tag() )
+        {
+            echo "<li>Tags</li>";
+        }
         elseif ( is_archive() && !is_category() )
         {
             echo "<li>Archives</li>";
@@ -474,7 +478,7 @@ function custom_posts_per_page($query){
         }
     }
     if (is_search()) {
-        $query->set('posts_per_page',9);
+        $query->set('posts_per_page',100);
     }
 }
 add_action('pre_get_posts','custom_posts_per_page');
@@ -497,8 +501,7 @@ function get_posts_per_page_num(){
  */
 function get_random_tags ($term_id,$num) {
     global $wpdb;
-    $term_id_string = '';
-
+    $term_id_string = $term_id.',';
     // 获取一级类目
     $data = get_categories( [
         'taxonomy' => 'category',

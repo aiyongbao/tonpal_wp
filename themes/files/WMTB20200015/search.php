@@ -1,25 +1,26 @@
 <?php
-$category = get_category($cat);
-$the_category_name = $category->name; //当前分类名称
-
-
 if ( have_posts() ) {
     $product_item = [];
-    $news_item = [];
-    while ( have_posts() ) {
-        the_post();
-        $category = get_the_category();
-        $cid = $category[0]->cat_ID;
-        $pid = get_category_root_id($cid);
-        $the_slug = get_category($pid)->slug;
-        if ( $the_slug == 'product' ) {
-            $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true);
-            $post->thumbnail = $thumbnail;
-            array_push($product_item,$post);
+    $keywords = get_query_var('s');
+    $term_id = get_category_by_slug("product")->term_id;
+    $wp_query = new WP_Query([
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'cat' => $term_id,   // 指定分类ID
+        's'=>$keywords,
+        'meta_key' => 'list_order',/* 此处为你的自定义栏目名称 */
+        'orderby' => 'list_order', /* 配置排序方式为自定义栏目值 */
+        'order' => 'DESC', /* 降序排列 */
+        'caller_get_posts' => 1,
+    ]);
 
-        }
+    while ( $wp_query->have_posts() ) {
+        $wp_query->the_post();
+        $thumbnail=get_post_meta(get_post()->ID,'thumbnail',true);
+        $post->thumbnail = $thumbnail;
+        array_push($product_item,$post);
     }
-
+    wp_reset_query(); // 重置query 防止影响其他query查询
 }
 ?>
 <!--nextpage-->
@@ -30,7 +31,7 @@ if ( have_posts() ) {
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $the_category_name; ?></title>
+    <title><?php echo $keywords; ?></title>
     <?php get_template_part('templates/components/head'); ?>
 
 
