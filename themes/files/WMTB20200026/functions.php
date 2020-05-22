@@ -149,7 +149,7 @@ function init_menu_items_class($classes, $item, $args) {
 
         if(in_array('menu-item-has-children',$classes))
         {
-            $classes[] = 'view';
+            $classes[] = 'view arrow';
         }
 
     }
@@ -167,7 +167,7 @@ function init_menu_link_attributes( $atts, $item, $args ) {
         $atts['class'] = 'nav-link';
         if(in_array('menu-item-has-children',$item->classes))
         {
-            $atts['class'] = 'nav-link dropdown-toggle';
+            $atts['class'] = 'nav-link';
         }
 
         if($item->menu_item_parent != 0)
@@ -299,7 +299,7 @@ function wpbeginner_numeric_posts_nav() {
     }
 
 
-    echo '<div class="page_bar"><div class="pages">' . "\n";
+    echo '<div class="page-bar"><div class="pages">' . "\n";
     // 首页
     echo '<a href="'.get_pagenum_link(1).'">Head</a>'. "\n";
     // 上一页
@@ -326,9 +326,8 @@ function get_breadcrumbs()
     if ( !is_home() ){
 
 // Start the UL
-        echo '<div class="path_bar">';
-        echo '<div class="layout">';
-        echo '<ul>';
+        echo '<div class="path-bar">';
+        echo '<ul class="path-nav">';
 // Add the Home link
         echo '<li><a href="'. get_lang_home_url() .'">Home</a></li>';
 
@@ -393,7 +392,6 @@ function get_breadcrumbs()
 
 // End the UL
         echo "</ul>";
-        echo "</div>";
         echo "</div>";
     }
 }
@@ -486,13 +484,14 @@ function custom_posts_per_page($query){
 add_action('pre_get_posts','custom_posts_per_page');
 
 /**
- * 用于产品列表页面展示个数
+ * 用于产品单页面展示个数
  * @author zhuoyue
  * @return int
  */
 function get_posts_per_page_num(){
     return 12;
 }
+
 
 /**
  * 随机获取当前分类的tags
@@ -503,7 +502,6 @@ function get_posts_per_page_num(){
  */
 function get_random_tags ($term_id,$num) {
     global $wpdb;
-
     $term_id_string = $term_id.',';
     $data = get_categories( [
         'taxonomy' => 'category',
@@ -529,8 +527,6 @@ function get_random_tags ($term_id,$num) {
         }
     }
     $term_id_string = substr($term_id_string, 0, -1);
-
-
 
     $sql = "
         select o.* from (select DISTINCT(tr.term_taxonomy_id) as term_taxonomy_id, wp_term_taxonomy.taxonomy,wp_term_taxonomy.term_id, t.name from (
@@ -720,7 +716,7 @@ function get_href_lang($cat)
  * @param int $term_id 检索id
  * @author zhuoyue
  */
-function get_info_tags ($type='',$term_id) {
+function get_info_tags ($type='single',$term_id) {
     if ($type == 'single') {
         $tags = get_the_tags($term_id);// 获取当前产品的所有tags
     } else {
@@ -728,16 +724,33 @@ function get_info_tags ($type='',$term_id) {
     }
     if (!empty($tags)) {
         echo '<div class="tag-box mt-15">';
-        echo '<h3 class="tag-title">Tags:</h3>';
-        echo '<div class="tag">';
-        foreach ($tags as $item) {
-            $tags_name = str_replace("wmtbprefix","",$item->name);
-            printf('<a href="%s">%s</a>', get_tag_link($item->term_id), $tags_name);
-        }
-        echo '</div>';
+        echo '<div class="gm-sep tab-title-bar detail-tabs">
+                <h2 class="tab-title  title current"><span>Tags</span></h2>
+              </div>';
+        echo '<section class="tab-panel-wrap">
+              <section class="tab-panel entry">
+              <section class="tab-panel-content post-tags">';
+            foreach ($tags as $item) {
+                $tags_name = str_replace("wmtbprefix","",$item->name);
+                printf('<a href="%s">%s</a>', get_tag_link($item->term_id), $tags_name);
+            }
+        echo '</section>
+              </section>
+              </section>';
         echo '</div>';
     }
 }
+
+function wpdocs_custom_excerpt_length( $length ) {
+    return 700;
+}
+
+function wpdocs_excerpt_more( $more ) {
+    return '';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 // 祛除摘要自动添加分段
 remove_filter( 'the_excerpt', 'wpautop' );
