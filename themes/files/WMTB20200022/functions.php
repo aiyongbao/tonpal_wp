@@ -624,6 +624,7 @@ function get_prev_or_next_post ($class_name='prev', $type = 'prev', $prefix = 'P
  */
 function get_href_lang($cat)
 {
+    global $wpdb;
     //显示当前页面类型
     $http = $_SERVER['SERVER_PORT'] == 80 ? 'http://' : 'https://';
     $currents = [];
@@ -648,7 +649,7 @@ function get_href_lang($cat)
         $slug = $result->slug; //当前语种下的链接
 
         //查询全部语种下的链接
-        global $wpdb;
+    
         foreach ($languages as $lang) {
             $abbr = $lang['abbr'] == 'en' ? '' : $lang['abbr'];
             $db_prefix =  empty($abbr) ? '' : $abbr . '_';
@@ -701,6 +702,8 @@ function get_href_lang($cat)
             }
         }
     }
+
+    $wpdb->set_prefix('wp_' . get_query_var("lang"));
 
     foreach($currents as $current){
         if($current['abbr'] == 'en'){
