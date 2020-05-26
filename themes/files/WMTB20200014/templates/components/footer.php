@@ -39,7 +39,7 @@ $googleExtantion = get_option('google_extantion');
             <div class="foot_items">
                 <nav class="foot_item foot_item_info wow fadeInLeftA" data-wow-delay=".1s" data-wow-duration=".8s">
                     <div class="foot_logo"><img src="<?php echo $footer_logo; ?>" alt="<?php echo $header_title; ?>"></div>
-                    <div class="info_desc break-word"><?php echo $footer_about_abstract; ?></div>
+                    <div class="info_desc break-word ellipsis-8"><?php echo $footer_about_abstract; ?></div>
                 </nav>
                 <?php if ($footer_quick_links['display'] == 1) {
                     $quick_links_title = ifEmptyText($footer_quick_links['vars']['title']['value']);
@@ -52,7 +52,7 @@ $googleExtantion = get_option('google_extantion');
                         <div class="foot_item_bd">
                             <ul class="foot_txt_list">
                                 <?php foreach ($quick_links_items as $item ) { ?>
-                                    <li><a rel="nofollow" href="<?php echo $item['link']; ?>"><?php echo $item['name'] ?></a></li>
+                                    <li><a class="ellipsis-1" rel="nofollow" href="<?php echo $item['link']; ?>"><?php echo $item['name'] ?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>
@@ -69,7 +69,7 @@ $googleExtantion = get_option('google_extantion');
                                     <li class="contact_item">
                                         <i class="contact_ico contact_ico_local"></i>
                                         <div class="contact_txt">
-                                            <span class="item_val break-word"><?php echo $address['value']; ?></span>
+                                            <span class="item_val break-word ellipsis-4"><?php echo $address['value']; ?></span>
                                         </div>
                                     </li>
                                 <?php } ?>
