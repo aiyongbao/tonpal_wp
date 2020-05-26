@@ -126,7 +126,7 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                         </div>
                     <?php } ?>
                     <?php if($products_header_desc !== '') { ?>
-                        <div class="main_intro"><?php echo $products_header_desc; ?></div>
+                        <div class="main_intro ellipsis-5"><?php echo $products_header_desc; ?></div>
                     <?php } ?>
                 </div>
                 <div class="items_list">
@@ -143,7 +143,7 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                                             <a href="<?php echo get_permalink($item->ID); ?>" target="_blank" ></a>
                                         </span>
                                         <figcaption>
-                                            <h3 class="item_title">
+                                            <h3 class="item_title ellipsis-2">
                                                 <a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a>
                                             </h3>
                                         </figcaption>

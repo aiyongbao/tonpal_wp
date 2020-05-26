@@ -47,7 +47,7 @@ if(ifEmptyArray($recent_posts) !== []){
                                 </a>
                                 <figcaption>
                                     <h3 class="item_title" >
-                                        <a href="<?php echo get_permalink($recent["ID"]); ?>" title="<?php echo $recent["post_title"]; ?>">
+                                        <a class="ellipsis-2" style="-webkit-line-clamp: 2;" href="<?php echo get_permalink($recent["ID"]); ?>" title="<?php echo $recent["post_title"]; ?>">
                                             <?php echo $recent["post_title"]; ?>
                                         </a>
                                     </h3>
