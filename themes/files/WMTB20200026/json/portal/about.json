@@ -1,0 +1,82 @@
+{
+    "name": "about配置文件",
+    "action": "portal/about",
+    "description": "about配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "value": "About",
+                "type": "text",
+                "tip": "请填写标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "richText": {
+                "title": "富文本",
+                "value": "",
+                "type": "richText",
+                "tip": "主体展示内容",
+                "rule": {
+                    "require": true
+                }
+            },
+            "image": {
+                "title": "图片",
+                "value": [],
+                "type": "array",
+                "item": {
+                    "image": {
+                        "title": "图片",
+                        "value": "",
+                        "type": "image",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "alt": {
+                        "title": "图片描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "alt",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "最多三个图片",
+                "maxNumber": 3
+            }
+        }
+    }
+}

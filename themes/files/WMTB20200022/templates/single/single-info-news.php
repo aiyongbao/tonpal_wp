@@ -103,7 +103,7 @@ $next_post = get_next_post(true);
             <section class="main">
                 <header class="main-tit-bar">
                     <h1 class="title"><?php echo $post->post_title ?></h1>
-                    <time><?php get_the_date() ?></time>
+                    <time><?php echo $post->post_date; ?></time>
                 </header>
                 <div class="iframe-box">
                     <iframe src="/rec-product" style="width:100%;" frameborder="no" scrolling="no"></iframe>
