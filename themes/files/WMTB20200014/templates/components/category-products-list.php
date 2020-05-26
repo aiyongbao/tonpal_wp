@@ -41,16 +41,16 @@ if(ifEmptyArray($list) != []){
             if(ifEmptyArray($item['child'] != [])) {
                 ?>
                 <li>
-                    <a href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a>
+                    <a class="ellipsis-2" href="<?php echo $item['link'] ?>"><?php echo $item['name'] ?></a>
                     <ul class="sub-menu">
                         <?php foreach ($item['child'] as $childItem) { ?>
-                            <li><a href="<?php echo $childItem['link'] ?>"><?php echo $childItem['name'] ?></a></li>
+                            <li><a class="ellipsis-2" href="<?php echo $childItem['link'] ?>"><?php echo $childItem['name'] ?></a></li>
                         <?php }?>
                     </ul>
                 </li>
             <?php } else { ?>
                 <li>
-                    <a href="<?php echo $item['link'] ?>" title="<?php echo $item['name'] ?>">
+                    <a class="ellipsis-2" href="<?php echo $item['link'] ?>" title="<?php echo $item['name'] ?>">
                         <?php echo $item['name'] ?>
                     </a>
                 </li>

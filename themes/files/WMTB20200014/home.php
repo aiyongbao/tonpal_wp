@@ -91,14 +91,16 @@ $page_url = get_full_path(1);
                                 <li class="advantage_item flex_row wow <?php echo ($key == 0 || $key == 2) ? 'fadeInLeftA' : 'fadeInRightA';?>" data-wow-delay="<?php echo ($key == 0 || $key == 1) ? '0.1' : '0.2'; ?>" data-wow-duration=".8s">
                                     <div class="item_hd">0<?php echo $key+1; ?></div>
                                     <div class="item_bd">
-                                        <h3 class="item_title"><a href="<?php echo ifEmptyText($item['link']); ?>"><?php echo ifEmptyText($item['title']); ?></a></h3>
-                                        <p class="item_desc"><?php echo ifEmptyText($item['desc']); ?></p>
+                                        <h3 class="item_title"><a class="ellipsis-1" href="<?php echo ifEmptyText($item['link']); ?>"><?php echo ifEmptyText($item['title']); ?></a></h3>
+                                        <p class="item_desc ellipsis-3"><?php echo ifEmptyText($item['desc']); ?></p>
                                     </div>
                                 </li>
                             <?php } ?>
                         </ul>
                         <div class="advantage_img wow fadeInDownA" data-wow-delay=".1s" data-wow-duration=".8s">
-                            <img src="<?php echo $home_special_image; ?>" alt="<?php echo $home_special_title; ?>" title="<?php echo $home_special_title; ?>" />
+                            <div style="display: inline-block; width: 100%; padding-bottom: 100%; position: absolute; vertical-align: middle; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <img style="width: 85%; height: 85%; object-fit: cover; position:absolute; left: 7.5%; top: 7.5%" src="<?php echo $home_special_image; ?>" alt="<?php echo $home_special_title; ?>" title="<?php echo $home_special_title; ?>" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,7 +115,7 @@ $page_url = get_full_path(1);
             <section class="index_product">
                 <div class="index_hd">
                     <div class="layout">
-                        <h2 class="hd_title"><?php echo $home_hot_product_title; ?></h2>
+                        <h2 class="hd_title ellipsis-1"><?php echo $home_hot_product_title; ?></h2>
                     </div>
                 </div>
                 <div class="index_bd">
@@ -127,7 +129,7 @@ $page_url = get_full_path(1);
                                         <a href="<?php echo ifEmptyText($item['link']); ?>"></a>
                                     </span>
                                         <figcaption>
-                                            <h3 class="item_title"><a href="<?php echo ifEmptyText($item['link']); ?>"><?php echo ifEmptyText($item['title']); ?></a></h3>
+                                            <h3 class="item_title"><a class="ellipsis-2" href="<?php echo ifEmptyText($item['link']); ?>"><?php echo ifEmptyText($item['title']); ?></a></h3>
                                         </figcaption>
                                     </figure>
                                 </li>
@@ -150,9 +152,9 @@ $page_url = get_full_path(1);
                         <ul class="couner_items sys_row flex_row">
                             <li class="counter_item">
                                 <div class="couner_num">
-                                    <span class="count-title"><?php echo $home_modular_one_title; ?></span>
+                                    <span class="count-title ellipsis-3"><?php echo $home_modular_one_title; ?></span>
                                 </div>
-                                <div class="couner_bd">
+                                <div class="couner_bd ellipsis-8">
                                     <?php echo $home_modular_one_desc; ?>
                                 </div>
                             </li>
@@ -176,30 +178,24 @@ $page_url = get_full_path(1);
                             <div class="company_intr_img">
                                 <div class="intr_img_box">
                                     <div class="company_intr_slider">
-                                        <ul class="swiper-wrapper">
-                                            <li class="swiper-slide intr_slide_item">
-                                                <div class="slide_item_img">
-                                                    <a href="<?php echo $home_about_link; ?>">
-                                                        <img src="<?php echo $home_about_image; ?>" alt="<?php echo $home_about_title; ?>" title="<?php echo $home_about_title; ?>" />
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                        <a href="<?php echo $home_about_link; ?>">
+                                            <img src="<?php echo $home_about_image; ?>" alt="<?php echo $home_about_title; ?>" title="<?php echo $home_about_title; ?>" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="company_intr_cont">
-                                <h2 class="company_intr_title"><?php echo $home_about_title; ?></h2>
+                                <h2 class="company_intr_title ellipsis-1"><?php echo $home_about_title; ?></h2>
                                 <ul class="company_intr_group">
                                     <?php foreach ($home_about_items as $key => $item) { ?>
                                         <li class="intr_group_item wow fadeInRightA <?php if ($key == 0) echo 'active'; ?>" data-wow-delay=".<?php echo $key+1; ?>s" data-wow-duration=".5s">
                                             <div class="intr_group_hd">
                                                 <i class="fa group_hd_arrow"></i>
-                                                <h4 class="group_hd_title"><?php echo ifEmptyText($item['title']); ?></h4>
+                                                <h4 class="group_hd_title ellipsis-1"><?php echo ifEmptyText($item['title']); ?></h4>
                                             </div>
                                             <div class="intr_group_bd">
                                                 <div class="intr_group_cont">
-                                                    <p><?php echo ifEmptyText($item['desc']); ?></p>
+                                                    <p class="ellipsis-5"><?php echo ifEmptyText($item['desc']); ?></p>
                                                 </div>
                                             </div>
                                         </li>
@@ -250,14 +246,14 @@ $page_url = get_full_path(1);
                 <div class="layout">
                     <div class="sys_row flex_row">
                         <div class="subscribe_cont">
-                            <h3 class="subscribe_title"><?php echo $home_modular_three_title; ?></h3>
-                            <p class="subscribe_desc"><?php echo $home_modular_three_desc; ?></p>
+                            <h3 class="subscribe_title ellipsis-2"><?php echo $home_modular_three_title; ?></h3>
+                            <p class="subscribe_desc ellipsis-8"><?php echo $home_modular_three_desc; ?></p>
                         </div>
                         <?php if ($home_modular_three_link != '') {
                             $home_modular_three_btn = ifEmptyText($home_modular_three['vars']['btn']['value']);
                             ?>
                             <div class="learn_more">
-                                <a class="sys_btn button" href="<?php echo $home_modular_three_link; ?>"><?php echo $home_modular_three_desc; ?></a>
+                                <a class="sys_btn button ellipsis-1" href="<?php echo $home_modular_three_link; ?>"><?php echo $home_modular_three_desc; ?></a>
                             </div>
                         <?php } ?>
                     </div>
@@ -274,7 +270,7 @@ $page_url = get_full_path(1);
         <section class="index_news">
             <div class="index_hd">
                 <div class="layout">
-                    <h2 class="hd_title"><?php echo $home_news_title; ?></h2>
+                    <h2 class="hd_title ellipsis-1"><?php echo $home_news_title; ?></h2>
                 </div>
             </div>
             <div class="index_bd">

@@ -172,7 +172,7 @@ function init_menu_link_attributes( $atts, $item, $args ) {
 
         if($item->menu_item_parent != 0)
         {
-            $atts['class'] = 'dropdown-item';
+            $atts['class'] = 'dropdown-item ellipsis-2';
         }
 
         return $atts;
