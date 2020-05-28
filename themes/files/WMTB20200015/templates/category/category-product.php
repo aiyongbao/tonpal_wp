@@ -129,7 +129,7 @@ $max = intval( $wp_query->max_num_pages );
                                             <a href="<?php echo get_permalink($item->ID); ?>" target="_blank" ></a>
                                         </span>
                                         <figcaption>
-                                            <h3 class="item_title">
+                                            <h3 class="item_title ellipsis-2">
                                                 <a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a>
                                             </h3>
                                         </figcaption>
