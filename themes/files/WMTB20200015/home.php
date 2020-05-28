@@ -116,8 +116,8 @@ $page_url = get_full_path();
                 <div class="index_ad" style="background-image: url(<?php echo ifEmptyText($widget_vars['bg']['value']) ?>">
                     <div class="layout">
                         <div class="index_title wow fadeInUpA" data-wow-delay=".1s">
-                            <h2><?php echo $widget_vars['title']['value'] ?></h2>
-                            <h4><?php echo $widget_vars['desc']['value'] ?></h4>
+                            <h2 class="ellipsis-1"><?php echo $widget_vars['title']['value'] ?></h2>
+                            <h4 class="ellipsis-2"><?php echo $widget_vars['desc']['value'] ?></h4>
                         </div>
                         <div class="index_bd">
                             <ul class="ad_items">
@@ -128,8 +128,8 @@ $page_url = get_full_path();
                                             <span class="item_img"><img src="<?php echo $item['image'] ?>" alt=""></span>
                                             <figcaption class="item_info">
                                                 <span class="item_ico"><?php echo $key + 1 ?></span>
-                                                <h3 class="item_title"><a href=""><?php echo $item['title'] ?></a></h3>
-                                                <span class="item_text">
+                                                <h3 class="item_title ellipsis-1"><a href=""><?php echo $item['title'] ?></a></h3>
+                                                <span class="item_text ellipsis-4">
                                                     <?php echo $item['desc'] ?>
                                                 </span>
                                             </figcaption>
@@ -152,8 +152,8 @@ $page_url = get_full_path();
                 <div class="index_product">
                     <div class="layout">
                         <div class="index_title wow fadeInUpA" data-wow-delay=".1s">
-                            <h2><?php echo $widget_vars['title']['value'] ?></h2>
-                            <h4><?php echo $widget_vars['desc']['value'] ?></h4>
+                            <h2 class="ellipsis-1"><?php echo $widget_vars['title']['value'] ?></h2>
+                            <h4 class="ellipsis-2"><?php echo $widget_vars['desc']['value'] ?></h4>
                         </div>
                         <div class="index_bd">
                             <div class="product_slider">
@@ -163,7 +163,7 @@ $page_url = get_full_path();
                                         <li class="swiper-slide product_item wow fadeInUpA">
                                             <figure> <span class="item_img"><img src="<?php echo $item['image'] ?>" alt="" /><a target="_blank" href="<?php echo $item['link'] ?>"></a></span>
                                                 <figcaption>
-                                                    <h3 class="item_title"><a href="<?php echo $item['link'] ?>"><?php echo $item['desc'] ?></a></h3>
+                                                    <h3 class="item_title ellipsis-2"><a href="<?php echo $item['link'] ?>"><?php echo $item['desc'] ?></a></h3>
                                                 </figcaption>
                                             </figure>
                                         </li>
@@ -184,8 +184,8 @@ $page_url = get_full_path();
                 <div class="index_news">
                     <div class="layout">
                         <div class="index_title wow fadeInUpA">
-                            <h2><?php echo $widget_vars['title']['value'] ?></h2>
-                            <h4><?php echo $widget_vars['title']['sub_title'] ?></h4>
+                            <h2 class="ellipsis-1"><?php echo $widget_vars['title']['value'] ?></h2>
+                            <h4 class="ellipsis-2"><?php echo $widget_vars['title']['sub_title'] ?></h4>
                         </div>
                         <div class="index_bd">
 
@@ -196,8 +196,8 @@ $page_url = get_full_path();
                                             <div class="item_img"><a href=""><img src="<?php echo $item['image'] ?>" alt=""></a></div>
                                             <div class="item_inner">
                                                 <time class="item_time"><?php echo $item['date'] ?> </time>
-                                                <h3 class="item_tit"><a target="_blank" href="<?php echo $item['link'] ?>"><?php echo $item['title'] ?></a></h3>
-                                                <p class="item_desc"><?php echo $item['desc'] ?></p>
+                                                <h3 class="item_tit ellipsis-1"><a target="_blank" href="<?php echo $item['link'] ?>"><?php echo $item['title'] ?></a></h3>
+                                                <p class="item_desc ellipsis-2"><?php echo $item['desc'] ?></p>
                                                 <a class="sys_btn" target="_blank" href="<?php echo $item['link'] ?>">Read more</a>
                                             </div>
                                         </div>
@@ -207,8 +207,8 @@ $page_url = get_full_path();
                                         <div class="news_item wow fadeInUpA">
                                             <div class="item_inner">
                                                 <time class="item_time"><?php echo $item['date'] ?> </time>
-                                                <h3 class="item_tit"><a target="_blank" href="<?php echo $item['link'] ?>"><?php echo $item['title'] ?></a></h3>
-                                                <p class="item_desc"><?php echo $item['desc'] ?></p>
+                                                <h3 class="item_tit ellipsis-2"><a target="_blank" href="<?php echo $item['link'] ?>"><?php echo $item['title'] ?></a></h3>
+                                                <p class="item_desc ellipsis-3"><?php echo $item['desc'] ?></p>
                                                 <a class="sys_btn" target="_blank" href="<?php echo $widget_vars['link'] ?>">Read more</a>
                                             </div>
                                         </div>

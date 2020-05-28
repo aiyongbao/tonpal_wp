@@ -38,7 +38,7 @@ $googleExtantion = get_option('google_extantion');
         <div class="layout">
             <div class="foot_items">
                 <nav class="foot_item foot_item_info wow fadeInLeftA" data-wow-delay=".1s" data-wow-duration=".8s">
-                    <div class="foot_logo"><img src="<?php echo $footer_logo; ?>" alt="<?php echo $header_title; ?>"></div>
+                    <div class="foot_logo"><img style="filter: brightness(100)" src="<?php echo $footer_logo; ?>" alt="<?php echo $header_title; ?>"></div>
                     <div class="info_desc break-word"><?php echo $footer_about_abstract; ?></div>
                 </nav>
                 <?php if ($footer_quick_links['display'] == 1) {

@@ -30,6 +30,12 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
     <meta name="description" content="<?php echo $seo_description; ?>" />
 
     <?php get_template_part('templates/components/head'); ?>
+    
+    <style>
+        img{
+            max-width: 100%;
+        }
+    </style>
 
 </head>
 
