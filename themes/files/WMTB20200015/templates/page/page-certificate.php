@@ -45,8 +45,8 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     <header>
                         <h1 class="about-title"><?php echo $certificate_title ?></h1>
                     </header>
-                    <ul class="certificate-ul">
-                        <?php foreach ($certificate_items as $item) { ?>
+                    <ul id="wm-page" class="certificate-ul">
+                        <?php /* foreach ($certificate_items as $item) { ?>
                             <li class="certificate-li">
                                 <div class="certificate-card">
                                     <figure class="item-image">
@@ -59,8 +59,11 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                                     </div>
                                 </div>
                             </li>
-                        <?php } ?>
+                        <?php }*/ ?>
                     </ul>
+                    
+                    <div id="pagination"></div>
+
                     <?php get_template_part('templates/components/sendMessage') ?>
                     <?php get_template_part('templates/components/tags-random-product'); ?>
                 </section>
@@ -78,5 +81,118 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
 <!--微数据-->
 <?php get_template_part('templates/components/microdata') ?>
+
+<!-- 分页 -->
+<script>
+    var all_data = []; //全部数据
+    var current = 1; //当前页码
+    var per_page = 10; //每页码数
+    var all_page = 1; //总页数
+    var render_dom = "wm-page"; //渲染dom
+    var pagination = []; //分页数据
+
+    //渲染模板
+    var template = `
+    <li class="certificate-li">
+        <div class="certificate-card">
+            <figure class="item-image">
+                <a href="$image" target="_blank" rel="$title" title="$title" class="item-img certificate-fancy">
+                    <img src="$image" alt="$desc" title="$title" />
+                </a>
+            </figure>
+            <div class="item-info">
+                <h3 class="item-title">$title</h3>
+            </div>
+        </div>
+    </li>
+            `;
+
+
+    window.onload = function() {
+        console.log("开始")
+        all_data = <?php echo json_encode($certificate_items) ?>;
+        var key = 0; //分页key
+    
+        for (var i = 0; i < all_data.length; i++) {
+            if (i % per_page > 0) {
+                pagination[key].push(all_data[i])
+            } else {
+                key = i / per_page
+                pagination[key] = pagination[key] == "undefined" ? pagination[key] : []
+                pagination[key].push(all_data[i])
+            }
+        }
+        all_page = pagination.length //总页数
+        pageTo() //初始化渲染
+    }
+
+    //跳转
+    function pageTo(page = 1) {
+        current = page
+        rernderHtml(current - 1)
+        renderPagination()
+    }
+
+    //渲染列表页
+    function rernderHtml(page) {
+        var html = '';
+        var list = pagination[page]
+        for (let index = 0; index < list.length; index++) {
+
+            var result_map = {
+                "$title": list[index]['title'],
+                "$image": list[index]['image'],
+                "$desc": list[index]['desc']
+            }
+
+            var tem_html = template.replace(/(\$image)|(\$title)|(\$desc)/g, reg => (result_map[reg]));
+            html += tem_html
+
+        }
+        var parent_dom = document.getElementById(render_dom)
+        parent_dom.innerHTML = html
+        window.scrollTo(0, 0)
+    }
+
+    //渲染分页按钮
+    function renderPagination() {
+        let parent_html = `
+        <div class="page_bar">
+            <div class="pages">
+                <a href="javascript:;" onclick="pageTo(1)">Head</a>
+                <$page/>
+                <a href="javascript:;" onclick="pageTo(` + all_page + `)">Foot</a>
+            </div>
+        </div>`
+
+        let page_html = ''
+
+        if (current > 1) {
+            page = current - 1
+            var temp = '<a href="javascript:;" onclick="pageTo(' + page + ')">PREVIOUS</a>'
+            page_html += temp
+        }
+
+        for (let index = 0; index < pagination.length; index++) {
+            let current_class = '';
+            if ((index + 1) == current) {
+                current_class = "current"
+            }
+            let page = index + 1
+            var temp = '<a class="' + current_class + '" href="javascript:;" onclick="pageTo(' + page + ')">' + page + '</a>'
+            page_html += temp
+        }
+
+        if (current < all_page) {
+            page = current + 1
+            var temp = '<a href="javascript:;" onclick="pageTo(' + page + ')">NEXT</a>'
+            page_html += temp
+        }
+
+        parent_html = parent_html.replace("<$page/>", page_html)
+
+        document.getElementById("pagination").innerHTML = parent_html
+    }
+</script>
 
 </html>

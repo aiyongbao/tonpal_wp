@@ -4,7 +4,7 @@ $theme_vars = json_config_array('showcase', 'vars');
 
 // Array 数据处理
 $showcase_items = ifEmptyArray($theme_vars['items']['value']);
-$showcase_title = ifEmptyArray($theme_vars['title']['value']);
+$showcase_title = ifEmptyText($theme_vars['title']['value']);
 $bg = ifEmptyText($theme_vars['bg']['value']);
 // SEO
 $seo_title = ifEmptyText($theme_vars['seoTitle']['value'], "$showcase_title");
