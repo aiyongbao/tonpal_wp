@@ -704,7 +704,7 @@ function get_href_lang($cat)
             }
         }
     }
-    $wpdb->set_prefix('wp_' . get_query_var("lang"));
+    $wpdb->set_prefix('wp_' . get_query_var("lang") . '_');
     foreach($currents as $current){
         if($current['abbr'] == 'en'){
             echo "<link rel='alternate' hreflang='x-default' href='{$http}{$_SERVER['HTTP_HOST']}{$current['link']}' />";
