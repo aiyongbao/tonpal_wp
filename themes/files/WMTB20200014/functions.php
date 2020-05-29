@@ -709,7 +709,6 @@ function get_href_lang($cat)
     }
 
     $abbr = empty( get_query_var("lang") ) ? '' : get_query_var("lang"). '_';
-
     $wpdb->set_prefix('wp_' . $abbr);
 
     foreach($currents as $current){
