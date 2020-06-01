@@ -1,0 +1,64 @@
+{
+    "name": "category配置文件",
+    "action": "portal/category",
+    "description": "category配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "image": {
+                "title": "背景图片",
+                "value": "",
+                "type": "image",
+                "tip": "图片",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "Category",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "readMore": {
+                "title": "按钮",
+                "type": "text",
+                "value": "READ MORE",
+                "tip": "eg:READ MORE",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}

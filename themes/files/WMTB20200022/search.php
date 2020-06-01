@@ -63,7 +63,7 @@ if ( have_posts() ) {
                         <?php foreach ($product_item as $item ) { ?>
                             <li class="product-item">
                                 <figure class="item-wrap">
-                                    <a href="<?php the_permalink(); ?>" class="item-img">
+                                    <a href="<?php echo get_permalink($item->ID); ?>" class="item-img">
                                         <img src="<?php echo $item->thumbnail; ?>_thumb_262x262.jpg"
                                              alt="<?php echo $item->post_title; ?>"/>
                                     </a>

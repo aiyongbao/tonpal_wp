@@ -26,6 +26,12 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
 
     <?php get_template_part('templates/components/head'); ?>
 
+    <style>
+        img{
+            max-width: 100%
+        }
+    </style>
+
 </head>
 
 <body>

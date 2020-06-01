@@ -1,0 +1,514 @@
+{
+    "name": "首页配置文件",
+    "action": "portal/home",
+    "description": "首页模板文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            }
+        },
+        "widgets": {
+            "carousel": {
+                "title": "轮播图组件",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "轮播图组件",
+                        "value": [
+                            {
+                                "title": "title",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/banner01.jpg",
+                                "link": "//www.baidu.com"
+                            },
+                            {
+                                "title": "title",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/banner02.jpg",
+                                "link": "//www.baidu.com"
+                            },
+                            {
+                                "title": "title",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/banner03.jpg",
+                                "link": ""
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "图片alt",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "轮播图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "轮播图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "跳转链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填写对应链接"
+                            }
+                        },
+                        "tip": "这是轮播图组件",
+                        "maxNumber": 5,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "special": {
+                "title": "公司特色",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "Product Display",
+                        "type": "text",
+                        "tip": "标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "icon": {
+                        "title": "icon图片",
+                        "value": "/wp-content/themes/WMTB20200019/assets/images/title_ico.png",
+                        "type": "image",
+                        "tip": "建议71*71"
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        "type": "textarea",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮",
+                        "value": "Detail >> ",
+                        "type": "text",
+                        "tip": "按钮",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "跳转链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "跳转链接"
+                    },
+                    "items": {
+                        "title": "轮播图片",
+                        "value": [
+                            {
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/business_bn_01.jpg",
+                                "alt": "01"
+                            },
+                            {
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/business_bn_02.jpg",
+                                "alt": "02"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "建议750*470",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "alt": {
+                                "title": "图片alt",
+                                "value": "",
+                                "type": "text",
+                                "tip": "图片alt",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "最多三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "hotProduct": {
+                "title": "热门产品",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "MORE PRODUCTS",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "icon": {
+                        "title": "icon图片",
+                        "value": "/wp-content/themes/WMTB20200019/assets/images/title_ico.png",
+                        "type": "image",
+                        "tip": "建议40*40"
+                    },
+                    "items": {
+                        "title": "热门产品列表",
+                        "value": [
+                            {
+                                "title": "Unmaned drone with camera 01",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/index_pd01.jpg",
+                                "link": "/"
+                            },
+                            {
+                                "title": "Delivery drone with the cardboard box on white background",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/index_pd02.jpg",
+                                "link": "/"
+                            },
+                            {
+                                "title": "Unmaned drone with camera 03",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/index_pd03.jpg",
+                                "link": ""
+                            },
+                            {
+                                "title": "Delivery drone with the cardboard box on white background",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/index_pd04.jpg",
+                                "link": "/"
+                            },
+                            {
+                                "title": "Unmaned drone with camera 05",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/index_pd02.jpg",
+                                "link": "/"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填写标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "建议1:1的图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "建议最少四组数据",
+                        "maxNumber": 8,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "modularOne": {
+                "title": "自定义模块一",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "For inquiries about our products or pricelist, please leave your email to us and we will be in touch within 24 hours.",
+                        "type": "text",
+                        "tip": "一句话",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮",
+                        "value": "INQUIRY NOW",
+                        "type": "text",
+                        "tip": "按钮"
+                    },
+                    "link": {
+                        "title": "链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请填入相应链接",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "image": {
+                        "title": "背景图",
+                        "value": "/wp-content/themes/WMTB20200019/assets/images/company_subscribe_bg.jpg",
+                        "type": "image",
+                        "tip": "建议1200*571",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "about": {
+                "title": "关于我们",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "WHY CHOOSE US",
+                        "type": "text",
+                        "tip": "eg:WHY CHOOSE US",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "icon": {
+                        "title": "icon图片",
+                        "value": "/wp-content/themes/WMTB20200019/assets/images/title_ico.png",
+                        "type": "image",
+                        "tip": "建议71*71"
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "value": "The company has thousands of new products, with the classical and romantic and modern pop elements of East and West, with the designer's unique design concept, leading design standards, superb production processes, strong production capacity, affordable price to become the domestic industrial products after the show.",
+                        "type": "textarea",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "btn": {
+                        "title": "按钮",
+                        "value": "Abouts us >>",
+                        "type": "text",
+                        "tip": "按钮",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "跳转链接",
+                        "value": "",
+                        "type": "text",
+                        "tip": "请填入相应链接"
+                    },
+                    "items": {
+                        "title": "图片列表",
+                        "value": [
+                            {
+                                "alt": "01",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/company_intr_01.jpg"
+                            },
+                            {
+                                "alt": "02",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/company_intr_02.jpg"
+                            },
+                            {
+                                "alt": "03",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/company_intr_03.jpg"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "alt": {
+                                "title": "图片alt",
+                                "value": "",
+                                "type": "text",
+                                "tip": "图片alt",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "建议610*451",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "建议三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "news": {
+                "title": "news模块",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "COMPANY NEWS",
+                        "type": "text",
+                        "tip": "eg:COMPANY NEWS",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "icon": {
+                        "title": "icon图片",
+                        "value": "/wp-content/themes/WMTB20200019/assets/images/title_ico.png",
+                        "type": "image",
+                        "tip": "建议40*40"
+                    },
+                    "image": {
+                        "title": "右侧image",
+                        "value": "/wp-content/themes/WMTB20200019/assets/picture/news_bn_01.jpg",
+                        "type": "image",
+                        "tip": "建议492*358",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "imageTitle": {
+                        "title": "右侧image标题",
+                        "value": "China supplier high quality plastic sliding",
+                        "type": "text",
+                        "tip": "右侧image标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "news-列表",
+                        "value": [
+                            {
+                                "title": "METHODS OF THE RECRUITMENT",
+                                "desc": "Overalls bearing the company's logo on it is, first of all, economy and practicality. In itself a preference of corporate style in overalls involves a signifiOveralls bearing the company's logo on it is, first of all, economy and practicality. In itself a preference of corporate style in overalls involves a signifi",
+                                "date": "2020-01-01",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/news01.jpg",
+                                "link": ""
+                            },
+                            {
+                                "title": "METHODS OF THE RECRUITMENT",
+                                "desc": "Overalls bearing the company's logo on it is, first of all, economy and practicality. In itself a preference of corporate style in overalls involves a signifiOveralls bearing the company's logo on it is, first of all, economy and practicality. In itself a preference of corporate style in overalls involves a signifi",
+                                "date": "2020-01-02",
+                                "image": "/wp-content/themes/WMTB20200019/assets/picture/news02.jpg",
+                                "link": ""
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "date": {
+                                "title": "时间",
+                                "value": "",
+                                "type": "text",
+                                "tip": "eg: 2020-01-01",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "这里需要二组数据",
+                        "maxNumber": 2,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

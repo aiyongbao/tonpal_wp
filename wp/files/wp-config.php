@@ -20,24 +20,22 @@
 
 // ** MySQL 设置 - 具体信息来自您正在使用的主机 ** //
 /** WordPress数据库的名称 */
-define( 'DB_NAME', '$DBNAME' );
+define( 'DB_NAME', 'wp_default' );
 
 /** MySQL数据库用户名 */
-define( 'DB_USER', '$DBUSER' );
+define( 'DB_USER', 'root' );
 
 /** MySQL数据库密码 */
-define( 'DB_PASSWORD', '$DBPASS' );
+define( 'DB_PASSWORD', '123456' );
 
 /** MySQL主机 */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'mysql' );
 
 /** 创建数据表时默认的文字编码 */
 define( 'DB_CHARSET', 'utf8mb4' );
 
 /** 数据库整理类型。如不确定请勿更改 */
 define( 'DB_COLLATE', '' );
-
-define('WP_ALLOW_MULTISITE', true);
 
 /**#@+
  * 身份认证密钥与盐。
@@ -48,22 +46,21 @@ define('WP_ALLOW_MULTISITE', true);
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'bEvMCip/&o&#j~%>:H:ao[sCcnn[ ^,:UoR,pec5=pH+zTep{WUP+D@D?X+G#~N,' );
-define( 'SECURE_AUTH_KEY',  '<[lzo%a=t]JJbp*,QnyA)},xBXwld>@Fj0,|<J>(}ZTkZjbhh_#fyJ)O|sncEzDy' );
-define( 'LOGGED_IN_KEY',    ')9MG83fyv,CRB_Ns_9sPLH%3Kux5mev6^SR9hIzZ~i7_p* JwH|#sb>R]@HUB_NM' );
-define( 'NONCE_KEY',        ' o3m5Jns#tYz5288Va{pB.%u*9$3pfx*XW >y{VTg$]WxBeRxtY@MQX5*^<v[J] ' );
-define( 'AUTH_SALT',        'uDu~.,F4n;HWbqD=*X qcojmO=v-lcbM&>,[*X!e6k/R1;:!^qU#{uVbNA5OY9xl' );
-define( 'SECURE_AUTH_SALT', 'U-O3ay4xOTFf$hN#WR3G?[k0<{X$7c%@[(*ws]Z/>E)`z;mT&6?2X8aR[)_ZtqyE' );
-define( 'LOGGED_IN_SALT',   'UFje)why+r^l#2yh^]C#JmD<-.)Fs:(b[j::uvswKRazqnijyS^U<4}Ei]u-n};5' );
-define( 'NONCE_SALT',       'NzXM0_M>8.OOE2;,VHh3{v2K0}l_.`SUdoLtgr8L}?Mg3^%tMH hCgTTMdK/M2,r' );
-	
+define( 'AUTH_KEY',         ';z{CS`wHE,q8j!>J |PqNg/Dtrdg/b;RArSQzJ[lY7HxPZ4&hB,WOxiKg}[,?G,N' );
+define( 'SECURE_AUTH_KEY',  '>L_u(GDa(O.CqL@+E05nntW_F9(f,npl~1!vgG P@QLx~%B`%^P@*Uh??NFT6F?`' );
+define( 'LOGGED_IN_KEY',    'Dr3IHdwqdw8_C#WovEQ>:m;aN9w`jN35bkf+Fno?>$BwWm&jEne??^W#DU]]].XO' );
+define( 'NONCE_KEY',        'rJffIc$NW>eSr_}~wEkWq=BizpXK5-_j 5 :@rF/{X[<`Y+LXIQh|8; &Y-Kz%($' );
+define( 'AUTH_SALT',        '<S~,[!}c8*lM*Qt8_zkjZ%SJu`[XD6l3G&/cOu|6W:.zv,,jtDHZ>E{0W4=cbmIW' );
+define( 'SECURE_AUTH_SALT', 'wR#C>zwrtn#9lhyE45:#F>q$L/m2MXcduJXb(Rv->v$c10u0Vy,P9D8]NAPr&)mv' );
+define( 'LOGGED_IN_SALT',   'jF3Siz*3)r2^MV0Ht 240&1}ofX]tqx;94R>X>AYLWDF.SkGS &sLJ&+>YeX:-??' );
+define( 'NONCE_SALT',       '6) CE&N|sJE!ZdUO}jUS0$;968>HUuM>?;v4?/E.(+yj%GQR|:[MW8d}5qp Yjeg' );
+
+/**#@-*/
 define('JWT_AUTH_SECRET_KEY', '=i``G+H|} fSLR f,$8~&N#paMfPzrk6,e]Dg.-<|jip(H8C%) ^uO/ l~$3},fC');
 define('JWT_AUTH_CORS_ENABLE', true);
 
 //定义wordPress Nginx缓存路径
-define( 'RT_WP_NGINX_HELPER_CACHE_PATH','/www/server/nginx/fastcgi_temp');
-
-/**#@-*/
+define( 'RT_WP_NGINX_HELPER_CACHE_PATH','/www/server/nginx/cache');
 
 /**
  * WordPress数据表前缀。
@@ -83,30 +80,10 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-
-define( 'WP_DISABLE_FATAL_ERROR_HANDLER', true );
-
-// 开启WP_DEBUG模式
-define( 'WP_DEBUG', false );
-
-define( 'WP_CONTENT_URL', '/wp-content');
- 
-// 开启DEBUG日志，一定要记得关闭这个日志功能并清理这个日志文件哦，产生的日志文件在: /wp-content/debug.log
-define( 'WP_DEBUG_LOG', false );
- 
-// 显示errors and warnings
-define( 'WP_DEBUG_DISPLAY', false );
-@ini_set( 'display_errors', 'On' );
-
+define('WP_DEBUG', false);
 define('WP_POST_REVISIONS', false); 
-define('SAVEQUERIES', true);
 
-/** 更改访问域名 */
-$domain = ['www.$DOMAIN', '$DOMAIN', 'm.$DOMAIN', '$TEMPDOMAIN']; 
-if(in_array($_SERVER['HTTP_HOST'], $domain)){
-    define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
-    define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST']);
-}
+define('SAVEQUERIES', true);
 
 /* 好了！请不要再继续编辑。请保存本文件。使用愉快！ */
 
