@@ -46,7 +46,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <!--// main start -->
             <section class="main" >
                 <header class="border-bottom-2 mb-10">
-                    <h1><?php echo $page_title ?></h1>
+                    <h1 class="ellipsis-1"><?php echo $page_title ?></h1>
                 </header>
                 <article class="blog-article pd-10">
                     <?php echo $page_rich_text ?>

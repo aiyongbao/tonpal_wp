@@ -86,7 +86,7 @@ $recent_posts = get_category_new_product('product', array(), 40, 'OBJECT');
                                         </span>
                                         <figcaption>
                                             <h3 class="item_title">
-                                                <a href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a>
+                                                <a class="ellipsis-1" href="<?php echo get_permalink($item->ID); ?>"><?php echo $item->post_title; ?></a>
                                             </h3>
                                         </figcaption>
                                     </figure>

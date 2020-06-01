@@ -52,9 +52,9 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <!--// main start -->
             <section class="main contact" >
                 <header class="border-bottom-2 mb-10">
-                    <h1><?php echo $contacts_title ?></h1>
+                    <h1 class="ellipsis-1"><?php echo $contacts_title ?></h1>
                 </header>
-                <div class="page-desc mt-15">
+                <div class="page-desc mt-15 ellipsis-8">
                     <?php echo $contacts_desc; ?>
                 </div>
                 <article class="blog-article">

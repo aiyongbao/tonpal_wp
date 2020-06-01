@@ -144,7 +144,7 @@ $review = $theme_weight['review'];
                             <?php }  ?>
 
                             <div class="product-meta">
-                                <p><?php echo $post->post_excerpt ?></p>
+                                <p class="ellipsis-9"><?php echo $post->post_excerpt ?></p>
                             </div>
                             <div class="gm-sep product-btn-wrap">
                                 <a href="javascript:" class="email"><?php echo $product_detail_inquiry_btn ?></a>
