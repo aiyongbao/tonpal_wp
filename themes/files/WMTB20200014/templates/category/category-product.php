@@ -106,14 +106,14 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                 <div class="main_hd">
                     <div class="page_title">
                         <?php if ($sub_title == '') { ?>
-                            <h1 class="h1-title" style="text-transform:uppercase">
+                            <h1 class="h1-title ellipsis-1" style="text-transform:uppercase">
                                 <?php echo $the_category_name; ?>
                             </h1>
                         <?php } else { ?>
-                            <div class="h1-title" style="text-transform:uppercase" >
+                            <div class="h1-title ellipsis-1" style="text-transform:uppercase" >
                                 <?php echo $the_category_name; ?>
                             </div>
-                            <h1 class="sub-title">
+                            <h1 class="sub-title ellipsis-1">
                                 <?php echo $sub_title; ?>
                             </h1>
                         <?php } ?>
@@ -140,7 +140,7 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                                     <figure>
                                         <span class="item_img">
                                             <img src="<?php echo $thumbnail ?>_thumb_262x262.jpg" alt="<?php echo $item->post_title; ?>" />
-                                            <a href="<?php echo get_permalink($item->ID); ?>" target="_blank" ></a>
+                                            <a href="<?php echo get_permalink($item->ID); ?>" ></a>
                                         </span>
                                         <figcaption>
                                             <h3 class="item_title ellipsis-2">

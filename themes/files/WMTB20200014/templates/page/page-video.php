@@ -47,7 +47,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                     <h1><?php echo $video_title ?></h1>
                 </header>
                 <?php if($video_desc != ''){ ?>
-                    <p class="class-desc pd-10" style="margin-bottom:20px;line-height:1.5"><?php echo $video_desc ?></p>
+                    <p class="class-desc pd-10 ellipsis-8" style="margin-bottom:30px;padding-bottom: 0;line-height:1.5"><?php echo $video_desc ?></p>
                 <?php } ?>
                 <ul class="video-ul">
                     <?php foreach ($video_item as $item) { ?>
@@ -57,7 +57,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                                     <?php echo ifEmptyText($item['iframe']) ?>
                                 </div>
                                 <figcaption class="item-info">
-                                    <h3 class="item-title"><?php echo ifEmptyText($item['title']) ?></h3>
+                                    <h3 class="item-title ellipsis-2"><?php echo ifEmptyText($item['title']) ?></h3>
                                 </figcaption>
                             </figure>
                         </li>

@@ -136,7 +136,7 @@ $googleExtantion = get_option('google_extantion');
 <div class="web-search"> <b id="btn-search-close" class="btn--search-close"></b>
     <div style=" width:100%">
         <div class="head-search">
-            <form id="search" action="<?php echo get_lang_home_url(); ?>" target="_blank" >
+            <form id="search" action="<?php echo get_lang_home_url(); ?>">
                 <input class="search-ipt" name="s" id="s" placeholder="<?php echo $search_tip; ?>" />
                 <input class="search-btn" type="button" />
                 <span class="search-attr"><?php echo $search_slogan; ?></span>

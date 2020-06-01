@@ -43,7 +43,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <!--// main start -->
             <section class="main certificate" >
                 <header class="border-bottom-2 mb-10">
-                    <h1><?php echo $picturewell_title ?></h1>
+                    <h1 class="ellipsis-1"><?php echo $picturewell_title ?></h1>
                 </header>
                 <ul class="certificate-ul">
                     <?php foreach ( $picturewell_items as $item ) { ?>
@@ -54,7 +54,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                                 </a>
                             </figure>
                             <div class="item-info pd-10">
-                                <h3 class="item-title"><?php echo ifEmptyText($item['title'])?></h3>
+                                <h3 class="item-title ellipsis-2"><?php echo ifEmptyText($item['title'])?></h3>
                             </div>
                         </li>
                     <?php } ?>

@@ -44,7 +44,7 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
             <!--// main start -->
             <section class="main showcase" >
                 <header class="border-bottom-2 mb-10">
-                    <h1><?php echo $showcase_title ?></h1>
+                    <h1 class="ellipsis-1"><?php echo $showcase_title ?></h1>
                 </header>
                 <?php if($showcase_desc != ''){ ?>
                     <p class="class-desc pd-10" style="margin-top: 10px;line-height:1.5"><?php echo $showcase_desc ?></p>
@@ -58,9 +58,9 @@ $seo_keywords = ifEmptyText($theme_vars['seoKeywords']['value']);
                                         <img src="<?php echo ifEmptyText($item['image']) ?>" alt="<?php echo ifEmptyText($item['desc']) ?>" title="<?php echo ifEmptyText($item['title'])?>" />
                                     </a>
                                 </div>
-                                <h3 class="item-title"><?php echo ifEmptyText($item['title']) ?></h3>
+                                <h3 class="item-title ellipsis-2"><?php echo ifEmptyText($item['title']) ?></h3>
                                 <i></i>
-                                <p><?php echo ifEmptyText($item['desc']) ?></p>
+                                <p class="ellipsis-6"><?php echo ifEmptyText($item['desc']) ?></p>
                             </figure>
                         </li>
                     <?php } ?>
