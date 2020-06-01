@@ -87,7 +87,7 @@ add_action('after_setup_theme', 'my_theme_setup');
 
 add_action('init', function(){
     do_action('lang_loaded');
-    init_theme_file();
+    //init_theme_file();
 });
 
 
