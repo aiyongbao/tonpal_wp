@@ -101,6 +101,7 @@
                                 "value": "",
                                 "type": "text",
                                 "tip": "",
+                                "maxLength": 20,
                                 "rule": {
                                     "require": true
                                 }
@@ -133,13 +134,15 @@
                                 "title": "名称",
                                 "value": "Phone",
                                 "type": "text",
+                                "maxLength": 20,
                                 "tip": "phone"
                             },
                             "value": {
                                 "title": "值",
                                 "value": "",
                                 "type": "text",
-                                "tip": "值"
+                                "tip": "值",
+                                "maxLength": 25
                             }
                         },
                         "tip": "公共底部和contacts页面需要",
@@ -163,17 +166,19 @@
                                 "title": "名称",
                                 "value": "Tel",
                                 "type": "text",
+                                "maxLength": 20,
                                 "tip": "Tel"
                             },
                             "value": {
                                 "title": "值",
                                 "value": "",
                                 "type": "text",
-                                "tip": "值"
+                                "tip": "值",
+                                "maxLength": 25 
                             }
                         },
                         "tip": "公共底部和contacts页面需要",
-                        "maxNumber": 3,
+                        "maxNumber": 2,
                         "rule": {
                             "require": true
                         }
@@ -194,6 +199,7 @@
                                 "value": "Email",
                                 "type": "text",
                                 "tip": "Email",
+                                "maxLength": 20,
                                 "rule": {
                                     "require": true
                                 }
@@ -202,7 +208,8 @@
                                 "title": "值",
                                 "value": "",
                                 "type": "text",
-                                "tip": "值"
+                                "tip": "值",
+                                "maxLength": 50
                             }
                         },
                         "tip": "公共底部和contacts页面需要",
@@ -227,6 +234,7 @@
                                 "value": "Address",
                                 "type": "text",
                                 "tip": "address",
+                                "maxLength": 20,
                                 "rule": {
                                     "require": true
                                 }
@@ -235,7 +243,8 @@
                                 "title": "值",
                                 "value": "",
                                 "type": "text",
-                                "tip": "值"
+                                "tip": "值",
+                                "maxLength": 120
                             }
                         },
                         "tip": "公共底部和contacts页面需要",

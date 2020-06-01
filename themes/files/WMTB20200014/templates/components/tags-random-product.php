@@ -12,7 +12,7 @@ if( is_single() ) {
 if ( ifEmptyArray($tags) !== [] ) { ?>
     <div class="tag-box mt-15">
         <h3 class="tag-title"><?php echo $sideBarTags ?>:</h3>
-        <div class="tag">
+        <div style="margin: 0 -5px" class="tag">
             <?php foreach ($tags as $item ) { ?>
                 <a href="<?php echo get_tag_link($item->term_id) ?>"><?php echo $item->name?></a>
             <?php } ?>

@@ -67,7 +67,7 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                 <figure class="item-wrap">
                                     <a href="<?php the_permalink()  ?>" class="item-image"><img src="<?php echo $thumbnail ?>_thumb_220x220.jpg" alt="<?php the_title(); ?>" /></a>
                                     <figcaption class="item-info">
-                                        <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $category_read_more; ?></a></h3>
+                                        <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link ellipsis-1"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>">Read More</a></h3>
 
                                         <div class="item-detail"><?php the_excerpt(); ?></div>
                                     </figcaption>

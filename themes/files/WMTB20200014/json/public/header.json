@@ -88,6 +88,7 @@
                 "type": "text",
                 "value": "RELATED PRODUCTS",
                 "tip": "eg:RELATED PRODUCTS",
+                "maxLength": 60,
                 "rule": {
                     "require": true
                 }
@@ -115,6 +116,7 @@
                 "type": "text",
                 "value": "LEAVE YOUR MESSAGES",
                 "tip": "eg:LEAVE YOUR MESSAGES",
+                "maxLeng": 60,
                 "rule": {
                     "require": true
                 }

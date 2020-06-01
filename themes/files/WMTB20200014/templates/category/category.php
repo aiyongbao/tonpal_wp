@@ -85,8 +85,8 @@ $page_url = $get_full_path.get_category_link($category->term_id);
                                 <li class="post-item border-bottom-2">
                                     <figure class="item-wrap">
                                         <figcaption class="item-info">
-                                            <h3 class="item-title"><a href="<?php the_permalink()  ?>" class="title-link"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $category_read_more; ?></a></h3>
-                                            <div class="item-detail"><?php the_excerpt(); ?></div>
+                                            <h3 class="item-title"><a style="display: block!important" href="<?php the_permalink()  ?>" class="title-link ellipsis-1"><?php the_title(); ?></a><a class="button" href="<?php the_permalink()  ?>"><?php echo $category_read_more; ?></a></h3>
+                                            <div class="item-detail ellipsis-3"><?php the_excerpt(); ?></div>
                                         </figcaption>
                                     </figure>
                                 </li>
