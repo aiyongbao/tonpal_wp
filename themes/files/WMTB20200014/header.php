@@ -34,14 +34,15 @@ $languagesArray = get_query_var('languagesArray');
                 <h1 class="logo">
                     <a href="<?php echo $home_url; ?>">
                         <img src="<?php echo $header_logo; ?>" alt="<?php echo $header_title; ?>">
-                        <span><?php echo $header_title; echo $header_key_word; ?></span>
+                        <!-- <span><?php echo $header_title; echo $header_key_word; ?></span> -->
                     </a>
                 </h1>
             <?php } else { ?>
+
                 <figure class="logo">
                     <a href="<?php echo $home_url; ?>">
                         <img src="<?php echo $header_logo; ?>" alt="<?php echo $header_title; ?>">
-                        <span><?php echo $header_title; echo $header_key_word; ?></span>
+                        <!-- <span><?php echo $header_title; echo $header_key_word; ?></span> -->
                     </a>
                 </figure>
             <?php } ?>
