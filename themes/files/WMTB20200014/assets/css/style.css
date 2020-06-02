@@ -295,7 +295,7 @@ a{-webkit-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;tra
 .product_item .item_img img{width:100%;height: auto;}
 .product_item  figcaption{padding:15px 10px;}
 .product_item .item_title{font-weight:bold;font-size:15px;text-align:center;}
-.product_item .item_title a{display:block;height:2.4em;line-height:1.2em;overflow:hidden;padding:0 6%;}
+.product_item .item_title a{display:block;height:2.4em !important;line-height:1.2em;overflow:hidden;padding:0 6%;}
 .product_item:hover .item_img a:before{width:100%;left:0;}
 .index_product{padding-top: 120px;padding-bottom: 120px;}
 .index_main .product_item {-webkit-box-flex:0 0 25%;-webkit-flex:0 0 25%;-ms-flex:0 0 25%;flex:0 0 25%;max-width: 25%;width: 25%;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-webkit-flex-direction:row;flex-direction:row;}
