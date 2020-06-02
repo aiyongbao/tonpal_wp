@@ -61,7 +61,7 @@ if ( have_posts() ) {
                 <!-- product list -->
                 <div class="items_list">
                     <?php if ( $product_item != [] ) { ?>
-                        <ul>
+                        <ul style="display: flex;" >
                             <?php foreach ($product_item as $item ) { ?>
                                 <li class="product_item">
                                     <figure>
