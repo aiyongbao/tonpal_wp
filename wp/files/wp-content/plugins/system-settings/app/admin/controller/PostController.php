@@ -53,7 +53,7 @@ class PostController extends RestController
             'single'        => true, // Return a single value of the type. Default: false.
             'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
         ));
-        
+
 
         register_meta($this->post_type, 'seo_description', array(
             'type'      => 'string', // Validate and sanitize the meta value as a string.
@@ -101,48 +101,64 @@ class PostController extends RestController
 
         add_action("rest_after_insert_{$this->post_type}", function ($post, $request, $bool) {
 
-            $thumbnail = $request['thumbnail'];
-
+           
             $list_order = isset($request['list_order']) ?  $request['list_order'] : 10000;
+            if (empty($list_order)) {
+                $list_order = $post->list_order;
+            }
 
-            $photos = $request['photos'];
-            //存入postmeta属性
-            $photos = json_decode($photos, true);
+            $thumbnail = $request['thumbnail'];
+            if(!empty($thumbnail)){
+                update_post_meta($post->ID, 'thumbnail', $thumbnail);
+            }
 
             $pdf = $request['pdf'];
+            if(!empty($pdf)){
+                update_post_meta($post->ID, 'pdf', $pdf);
+            }
 
-            delete_post_meta($post->ID, 'photos');
-            update_post_meta($post->ID, 'thumbnail', $thumbnail);
-
-            update_post_meta($post->ID, 'pdf', $pdf);
-
-            foreach ($photos as $key => $value) {
-                add_post_meta($post->ID, 'photos', json_encode($value));
+            $photos = $request['photos'];
+            $photos = json_decode($photos, true);
+            if(!empty($photos)){
+                delete_post_meta($post->ID, 'photos');
+                foreach ($photos as $key => $value) {
+                    add_post_meta($post->ID, 'photos', json_encode($value));
+                }
             }
 
             $seo_title = $request['seo_title'];
-            update_post_meta($post->ID, 'seo_title', $seo_title);
+            if(!empty($seo_title)){
+                update_post_meta($post->ID, 'seo_title', $seo_title);   
+            }
+
             $seo_description = $request['seo_description'];
-            update_post_meta($post->ID, 'seo_description', $seo_description);
+            if (!empty($seo_description)) {
+                update_post_meta($post->ID, 'seo_description', $seo_description);
+            }
+
             $seo_keywords = $request['seo_keywords'];
-            update_post_meta($post->ID, 'seo_keywords', $seo_keywords);
+            if (!empty($seo_keywords)) {
+                update_post_meta($post->ID, 'seo_keywords', $seo_keywords);
+            }
 
             $sub_title = $request['sub_title'];
-            update_post_meta($post->ID, 'sub_title', $sub_title);
+            if (!empty($sub_title)) {
+                update_post_meta($post->ID, 'sub_title', $sub_title);
+            }
 
-            if ($bool) {
+            if ($bool && $this->post_type == 'page') {
 
                 switch ($request['type']) {
                     case 'page':
                         $item = $this->get_json_toArray(get_template_directory() . '/json/portal/page.json');
-                        if(empty($item)){
+                        if (empty($item)) {
                             return $this->error("page.json不存在！");
                         }
                         break;
                     case 'privacy':
                         $item = $this->get_json_toArray(get_template_directory() . '/json/portal/privacy-policy.json');
-                        
-                        if(empty($item)){
+
+                        if (empty($item)) {
                             return $this->error("privacy-policy.json不存在！");
                         }
 
@@ -152,9 +168,7 @@ class PostController extends RestController
                         break;
                 }
 
-
                 global $wpdb;
-
                 $data = [
                     'object_id' => $post->ID,
                     'is_public' =>  0,

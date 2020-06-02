@@ -76,6 +76,17 @@ add_filter('get_terms_orderby', function ($orderby, $query_vars, $taxonomy) {
     return $orderby;
 }, 10, 3);
 
+add_filter('posts_orderby', function($orderby,$query) {
+    
+    if($query->query['orderby'] == "list_order" ){
+        $orderby = str_replace('wp_postmeta.meta_value','CAST(wp_postmeta.meta_value AS UNSIGNED)',$orderby);
+    }
+    return $orderby;  
+
+},10,2); 
+
+
+
 function add_rules()
 {
     $match = "zh|zh-cn|zu|yo|yi|cy|vi|uz|ur|uk|tr|th|te|ta|tg|sv|sw|su|es|so|sl|sk|si|st|sr|ru|ro|pa|pt|pl|fa|no|ne|my|mn|mr|mi|mt|ml|ms|mg|lt|lv|la|lo|ko|km|kk|kn|jw|ja|it|ga|id|ig|is|hu|hi|iw|ha|ht|gu|el|de|ka|gl|fr|fi|tl|et|eo|nl|da|cs|hr|ny|ca|bg|bs|bn|be|eu|az|hy|ar|sq|af";
