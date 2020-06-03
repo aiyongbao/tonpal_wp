@@ -1,0 +1,141 @@
+{
+    "name": "certificate配置文件",
+    "action": "portal/certificate",
+    "description": "certificate配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "items": {
+                "title": "certificate列表",
+                "type": "array",
+                "value": [
+                    {
+                        "image": "http://yweb2.china.cnlive.com/cnlive/public/160519071448241_351.jpg",
+                        "title": "ISO",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/09/08/null_00001(7).jpg",
+                        "title": "ISO",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/09/08/9001英文版.jpg",
+                        "title": "ISO",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/09/08/优质供应商认证.jpg",
+                        "title": "CERTIFIED MANUFACTURER",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/09/08/8612000298-Production Capacity Inspected.jpg",
+                        "title": "CERTIFIED MANUFACTURER",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/09/08/CE认证.jpg",
+                        "title": "CERTIFIED MANUFACTURER",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/09/08/3rd Party Testing reference2.jpg",
+                        "title": "TESTING APPROVAL",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/12/20/EBO2.jpg",
+                        "title": "REACH",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/12/20/EBO.jpg",
+                        "title": "ROHS",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/12/20/14001.jpg",
+                        "title": "ISO 14001",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2017/12/20/ISO9001 CHI.jpg",
+                        "title": "ISO 9001",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2020/02/26/14643-1582709312000.jpg",
+                        "title": "CERTIFICATE OF CONFORMITY",
+                        "desc": "Copier toner opc drum MITSUBISHI for KONICA MINOLTA Di1810/2510/3010/3510/250/251/350/351  A15"
+                    }
+                ],
+                "item": {
+                    "image": {
+                        "title": "image图片",
+                        "type": "image",
+                        "value": "",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "title": {
+                        "title": "标题",
+                        "type": "text",
+                        "value": "",
+                        "tip": "标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "type": "textarea",
+                        "value": "",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
