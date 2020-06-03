@@ -1,0 +1,203 @@
+{
+    "name": "footer配置文件",
+    "action": "public/footer",
+    "description": "footer配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "aboutTitle": {
+                "title": "底部标题",
+                "value": "about us sales network contact us careers",
+                "type": "text",
+                "tip": "eg:ABOUT US"
+            },
+            "aboutAbstract": {
+                "title": "公司描述",
+                "value": "for inquiries about our products or pricelist, please leave your email to us and we will be in touch within 24 hours.",
+                "type": "textarea",
+                "tip": "公司描述"
+            },
+            "contactBtn": {
+                "title": "底部按钮",
+                "value": "INQUIRY NOW",
+                "type": "text"
+            },
+            "facebookLink": {
+                "title": "facebook 链接",
+                "value": "http://www.facebook.com/copiertonerpro",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "twitterLink": {
+                "title": "twitter 链接",
+                "value": "http://twitter.com/Kimlee69361655",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "youtubeLink": {
+                "title": "youtube 链接",
+                "value": "http://www.linkedin.com/company/1609999?trk=tyah&trkInfo=clickedVertical%3Acompany%2CentityType%3AentityHistoryName%2CclickedEntityId%3Acompany_1609999%2Cidx%3A0",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            }
+        },
+        "widgets": {
+            "phone": {
+                "title": "手机",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "手机信息",
+                        "value": [
+                            {
+                                "name": "Whats app: ",
+                                "value": "+86 139 269 06062"
+                            },
+                            {
+                                "value": "+86 13360618518"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Phone",
+                                "type": "text",
+                                "tip": "phone",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "mobile": {
+                "title": "电话",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "电话信息",
+                        "value": [
+                            {
+                                "value": "+86 13360618518"
+                            },
+                            {
+                                "name": "Whats app: ",
+                                "value": "+86 139 269 06062"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Tel",
+                                "type": "text",
+                                "tip": "Tel",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "email": {
+                "title": "邮箱",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "邮箱信息",
+                        "value": [
+                            {
+                                "value": "kim@haoyinbao.com"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Email",
+                                "type": "text",
+                                "tip": "Email",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "address": {
+                "title": "地址",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "地址信息",
+                        "value": [
+                            {
+                                "value": "Factory - NO. 6, Ping Xi10th Rd, Nanping, Zhuhai City,PR of China  "
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Address",
+                                "type": "text",
+                                "tip": "address",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

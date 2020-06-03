@@ -1,0 +1,1961 @@
+@charset "utf-8";
+
+@font-face {
+
+  font-family: 'fontawesome';
+
+  src: url('../fonts/fontawesome-webfont.eot');
+
+  src: url('../fonts/fontawesome-webfont.eot#iefix') format('embedded-opentype'),
+
+       url('../fonts/fontawesome-webfont.woff') format('woff'),
+
+       url('../fonts/fontawesome-webfont.ttf') format('truetype'),
+
+       url('../fonts/fontawesome-webfont.svg') format('svg');
+
+  font-weight: normal;
+
+  font-style: normal;
+
+}
+
+.change-language{
+
+	position:relative;
+
+	display:inline-block;
+
+	vertical-align:top;
+
+	*display:inline;
+
+	*zoom:1;
+
+	}
+
+.change-language .change-language-cont .empty{ display:none;}
+
+.change-language .change-language-cont .change-empty{ text-align:center; padding:10px 0;}
+
+.change-language .prisna-wp-translate-seo .lang-more{ display:none; margin:10px;}
+
+.change-languag,.change-language-cont ul,.change-language-cont ul li{
+
+	text-align:left;
+
+	}
+
+.change-language-info .language-icon:before{
+
+  font-family: "fontawesome";
+
+  font-style: normal;
+
+  font-weight: normal;
+
+  speak: none;
+
+  display: inline-block;
+
+  text-decoration: inherit;
+
+  width: 1em;
+
+  margin-right: .2em;
+
+  text-align: center;
+
+  font-variant: normal;
+
+  text-transform: none;
+
+  line-height: 1em;
+
+  margin-left: .2em;
+
+}
+
+.change-language .change-language-cont .lang-item-hide{ display:none !important;}
+
+.change-language .change-language-cont .lang-more{
+
+	position:relative;
+
+	display:block;
+
+	text-align:center;
+
+	cursor:pointer;
+
+	}
+
+.medium-title{ cursor:pointer;}
+
+.sub-content{
+
+	position:absolute;
+
+	display:none;
+
+	right:0;
+
+	background:#fff;
+
+	border-radius:5px 0 5px 5px;
+
+	border:1px solid #dbdbdb;
+
+	z-index:99999;
+
+	}
+
+.change-language-info .change-language-title.title-show{
+
+	border-radius:5px 5px 0 0 !important;
+
+	background:#fff;
+
+	border-color:#dbdbdb;
+
+	}
+
+.change-language-info .change-language-title.title-hide{
+
+	border-radius:5px !important;
+
+	background:none;
+
+	border-color:transparent;
+
+	}		
+
+.prisna-wp-translate-dropdown-hidden{
+
+	display:none !important;
+
+	}
+
+.change-language-info  .language-icon{
+
+	-moz-transition:all 0.5s ease-in-out;
+
+	-webkit-transition:all 0.5s ease-in-out;
+
+	-ms-transition:all 0.5s ease-in-out;
+
+	-o-transition:all 0.5s ease-in-out;
+
+	transition:all 0.5s ease-in-out;
+
+	}
+
+.change-language-info:hover .language-icon{
+
+	-moz-transform:rotate(-180deg);
+
+	-webkit-transform:rotate(-180deg);
+
+	-ms-transform:rotate(-180deg);
+
+	-o-transform:rotate(-180deg);
+
+	transform:rotate(-180deg);
+
+	top:6px;
+
+	}	
+
+.change-language-info{
+
+	position:relative;
+
+	display:inline-block;
+
+	vertical-align:top;
+
+	*display:inline;
+
+	*zoom:1;
+
+	
+
+	}
+
+
+
+.change-language-info .change-language-title{
+
+	position:relative;
+
+	line-height:16px;
+
+	padding:6px 25px 6px 5px;
+
+	border:1px solid transparent;
+
+	border-bottom:none;
+
+	border-radius:5px 5px 0 0;
+
+	z-index:100000;
+
+ 
+
+ 
+
+	-moz-transition:all 0.4s ease-in-out;
+
+	-webkit-transition:all 0.4s ease-in-out;
+
+	-ms-transition:all 0.4s ease-in-out;
+
+	-o-transition:all 0.4s ease-in-out;
+
+	transition:all 0.4s ease-in-out;
+
+ 
+
+/* 	padding:5px 35px 5px 15px;
+
+	background-color: #fff;
+
+	border: 3px solid #10c7d7;
+
+	border-radius: 18px; */
+
+	 
+
+  
+
+	}
+
+.change-language-info:hover .change-language-title,.change-language-info:hover .change-language-title a,.change-language-info:hover .change-language-title span,.change-language-info:hover .language-icon{ color:inherit}	
+
+
+
+.change-language-info .language-icon {
+
+	position:absolute;
+
+	right:4px;
+
+	top:6px;
+
+}
+
+.change-language-info .language-icon:before{
+
+	content:"\f0d7";
+
+	}	
+
+		
+
+.change-language-cont{
+
+	top:27px;
+
+	*top: 26px;
+
+	padding:10px 5px;
+
+	width:350px;
+
+	}
+
+.change-language ::-webkit-scrollbar{width:8px;}
+
+.change-language ::-webkit-scrollbar-track{background-color:#fff;}
+
+.change-language ::-webkit-scrollbar-thumb{background-color:rgba(0,0,0,0.5); border-radius:3px; }
+
+.change-language .language-cont:hover::-webkit-scrollbar-thumb{ display:block}
+
+.change-language ::-webkit-scrollbar-thumb:hover {background-color:#9c3}
+
+.change-language ::-webkit-scrollbar-thumb:active {background-color:#00aff0}		
+
+	
+
+	
+
+.change-language-cont ul li{
+
+	position:relative;
+
+	display:inline-block;
+
+	vertical-align:bottom;
+
+	*display:inline;
+
+	*zoom:1;
+
+	width:30%;
+
+	margin:0 1.666666%;
+
+	list-style:none;
+
+	border-bottom:1px solid #ececec;
+
+	padding:5px 0;
+
+	line-height:16px;
+
+	}
+
+.change-language-title span{
+
+	color:#666;
+
+}
+
+.language-flag span{
+
+	position:relative;
+
+	display:inline-block;
+
+	vertical-align:top;
+
+	*display:inline;
+
+	*zoom:1;
+
+	}
+
+.language-flag .country-flag {
+
+	position:relative;
+
+	display:inline-block;
+
+	vertical-align:top;
+
+	*display:inline;
+
+	*zoom:1;
+
+	background-repeat: no-repeat;
+
+	background-image:url(../images/all-m.gif);
+
+	width:22px;
+
+	height:16px;
+
+	margin:0 5px
+
+}
+
+
+
+ 
+
+
+
+.language-flag-af .country-flag  {
+
+
+
+	background-position: 0 0 !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-sq .country-flag  {
+
+
+
+	background-position: 0 -16px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ar .country-flag  {
+
+
+
+	background-position: 0 -32px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-hy .country-flag  {
+
+
+
+	background-position: 0 -48px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-az  .country-flag {
+
+
+
+	background-position: 0 -64px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-eu  .country-flag {
+
+
+
+	background-position: 0 -80px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-be .country-flag  {
+
+
+
+	background-position: 0 -96px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-bg  .country-flag {
+
+
+
+	background-position: 0 -112px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ca  .country-flag {
+
+
+
+	background-position: 0 -128px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-zh-cn  .country-flag {
+
+
+
+	background-position: 0 -144px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-zh-tw  .country-flag {
+
+
+
+	background-position: 0 -160px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-hr .country-flag  {
+
+
+
+	background-position: 0 -176px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-cs .country-flag  {
+
+
+
+	background-position: 0 -192px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-da .country-flag{
+
+
+
+	background-position: 0 -208px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-nl  .country-flag {
+
+
+
+	background-position: 0 -240px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-en  .country-flag {
+
+
+
+	background-position: 0 -256px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-et  .country-flag {
+
+
+
+	background-position: 0 -272px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-tl  .country-flag {
+
+
+
+	background-position: 0 -288px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-fi  .country-flag {
+
+
+
+	background-position: 0 -304px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-fr  .country-flag {
+
+
+
+	background-position: 0 -320px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-gl  .country-flag {
+
+
+
+	background-position: 0 -336px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ka  .country-flag {
+
+
+
+	background-position: 0 -352px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-de  .country-flag {
+
+
+
+	background-position: 0 -368px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-el .country-flag  {
+
+
+
+	background-position: 0 -384px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ht  .country-flag {
+
+
+
+	background-position: 0 -400px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-iw  .country-flag {
+
+
+
+	background-position: 0 -416px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-hi .country-flag ,
+
+
+
+.language-flag-te .country-flag ,
+
+
+
+.language-flag-kn .country-flag ,
+
+
+
+.language-flag-ta .country-flag ,
+
+
+
+.language-flag-gu .country-flag  {
+
+
+
+	background-position: 0 -432px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-hu .country-flag  {
+
+
+
+	background-position: 0 -448px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-is  .country-flag {
+
+
+
+	background-position: 0 -464px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-id .country-flag  {
+
+
+
+	background-position: 0 -480px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ga  .country-flag {
+
+
+
+	background-position: 0 -496px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-it .country-flag  {
+
+
+
+	background-position: 0 -512px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ja  .country-flag {
+
+
+
+	background-position: 0 -528px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ko  .country-flag {
+
+
+
+	background-position: 0 -544px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-la  .country-flag {
+
+
+
+	background-position: 0 -560px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-lv  .country-flag {
+
+
+
+	background-position: 0 -576px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-lt  .country-flag {
+
+
+
+	background-position: 0 -592px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-mk  .country-flag {
+
+
+
+	background-position: 0 -608px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ms  .country-flag {
+
+
+
+	background-position: 0 -624px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-mt  .country-flag {
+
+
+
+	background-position: 0 -640px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-no .country-flag  {
+
+
+
+	background-position: 0 -656px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-fa  .country-flag {
+
+
+
+	background-position: 0 -672px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-pl .country-flag  {
+
+
+
+	background-position: 0 -688px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-pt  .country-flag {
+
+
+
+	background-position: 0 -704px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ro  .country-flag {
+
+
+
+	background-position: 0 -720px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ru  .country-flag {
+
+
+
+	background-position: 0 -736px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-sr  .country-flag {
+
+
+
+	background-position: 0 -752px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-sk  .country-flag {
+
+
+
+	background-position: 0 -768px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-sl  .country-flag {
+
+
+
+	background-position: 0 -784px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-es  .country-flag {
+
+
+
+	background-position: 0 -800px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-sw  .country-flag {
+
+
+
+	background-position: 0 -816px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-sv  .country-flag {
+
+
+
+	background-position: 0 -832px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-th  .country-flag {
+
+
+
+	background-position: 0 -848px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-tr  .country-flag {
+
+
+
+	background-position: 0 -864px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-uk  .country-flag {
+
+
+
+	background-position: 0 -880px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-ur  .country-flag {
+
+
+
+	background-position: 0 -896px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-vi  .country-flag {
+
+
+
+	background-position: 0 -912px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-cy .country-flag  {
+
+
+
+	background-position: 0 -928px !important;
+
+
+
+}
+
+
+
+ 
+
+
+
+.language-flag-yi  .country-flag {
+
+
+
+	background-position: 0 -944px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag-bn  .country-flag {
+
+
+
+	background-position: 0 -960px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag-eo .country-flag  {
+
+
+
+	background-position: 0 -976px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-afghanistan .country-flag  {
+
+
+
+	background-position: 0 -992px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-albania .country-flag  {
+
+
+
+	background-position: 0 -1008px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-algeria  .country-flag {
+
+
+
+	background-position: 0 -1024px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-argentina  .country-flag {
+
+
+
+	background-position: 0 -1040px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-australia .country-flag  {
+
+
+
+	background-position: 0 -1056px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-austria  .country-flag {
+
+
+
+	background-position: 0 -1072px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-belgium  .country-flag {
+
+
+
+	background-position: 0 -1088px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-brazil  .country-flag {
+
+
+
+	background-position: 0 -1104px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-canada  .country-flag {
+
+
+
+	background-position: 0 -1120px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-chile .country-flag  {
+
+
+
+	background-position: 0 -1136px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-cote-d-ivoire .country-flag  {
+
+
+
+	background-position: 0 -1152px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-ecuador .country-flag  {
+
+
+
+	background-position: 0 -1168px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-egypt .country-flag  {
+
+
+
+	background-position: 0 -1184px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-england  .country-flag {
+
+
+
+	background-position: 0 -1200px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-luxembourg  .country-flag {
+
+
+
+	background-position: 0 -1216px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-malaysia  .country-flag {
+
+
+
+	background-position: 0 -1232px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-mexico  .country-flag {
+
+
+
+	background-position: 0 -1248px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-new-zealand  .country-flag {
+
+
+
+	background-position: 0 -1264px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-oman  .country-flag {
+
+
+
+	background-position: 0 -1280px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-qatar  .country-flag {
+
+
+
+	background-position: 0 -1296px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-saudi-arabia  .country-flag {
+
+
+
+	background-position: 0 -1312px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-singapore  .country-flag {
+
+
+
+	background-position: 0 -1328px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-south-africa .country-flag  {
+
+
+
+	background-position: 0 0 !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-switzerland  .country-flag {
+
+
+
+	background-position: 0 -1344px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-syria  .country-flag {
+
+
+
+	background-position: 0 -1360px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-united-arab-emirates .country-flag  {
+
+
+
+	background-position: 0 -1376px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag.language-flag-custom-united-states-of-america  .country-flag {
+
+
+
+	background-position: 0 -1392px !important;
+
+
+
+}
+
+
+
+
+
+
+
+.language-flag-hy .country-flag {background-position: 0 -1408px;}
+
+
+
+.language-flag-bs .country-flag {background-position: 0 -1424px;}
+
+
+
+.language-flag-ceb .country-flag {background-position: 0 -1440px;}
+
+
+
+.language-flag-ny .country-flag {background-position: 0 -1456px;}
+
+
+
+.language-flag-ha .country-flag {background-position: 0 -1472px;}
+
+
+
+.language-flag-hmn .country-flag {background-position: 0 -1488px;}
+
+
+
+.language-flag-ig .country-flag {background-position: 0 -1504px;}
+
+
+
+.language-flag-jw .country-flag {background-position: 0 -1520px;}
+
+
+
+.language-flag-kk .country-flag {background-position: 0 -1536px;}
+
+
+
+.language-flag-km .country-flag {background-position: 0 -1552px;}
+
+
+
+.language-flag-lo .country-flag {background-position: 0 -1568px;}
+
+
+
+.language-flag-la .country-flag {background-position: 0 -1584px;}
+
+
+
+.language-flag-mg .country-flag {background-position: 0 -1600px;}
+
+
+
+.language-flag-ml .country-flag {background-position: 0 -1616px;}
+
+
+
+.language-flag-mi .country-flag {background-position: 0 -1632px;}
+
+
+
+.language-flag-mr .country-flag {background-position: 0 -1648px;}
+
+
+
+.language-flag-mn .country-flag {background-position: 0 -1664px;}
+
+
+
+.language-flag-my .country-flag {background-position: 0 -1680px;}
+
+
+
+.language-flag-ne .country-flag {background-position: 0 -1696px;}
+
+
+
+.language-flag-pa .country-flag {background-position: 0 -1712px;}
+
+
+
+.language-flag-st .country-flag {background-position: 0 -1728px;}
+
+
+
+.language-flag-si .country-flag {background-position: 0 -1744px;}
+
+
+
+.language-flag-so .country-flag {background-position: 0 -1760px;}
+
+
+
+.language-flag-su .country-flag {background-position: 0 -1776px;}
+
+
+
+.language-flag-tg .country-flag {background-position: 0 -1792px;}
+
+
+
+.language-flag-uz .country-flag {background-position: 0 -1808px;}
+
+
+
+.language-flag-yo .country-flag {background-position: 0 -1824px;}
+
+
+
+.language-flag-zu .country-flag {background-position: 0 -1840px;}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:768px){
+
+.change-language-cont{
+
+	top:auto;
+
+	*top: auto;
+
+	padding:0;
+
+	width:100%;
+
+	text-align:left;
+
+	}
+
+.sub-content{
+
+	position:relative;
+
+	display:block;
+
+	right:auto;
+
+	border-radius:0;
+
+	border:none;
+
+	box-shadow:none;
+
+	z-index:99999;
+
+	}
+
+.change-language-title{
+
+	display:none;
+
+	}
+
+.change-language-cont ul li{
+
+	width:auto
+
+	}
+
+	}
+
+.none{display:none;}

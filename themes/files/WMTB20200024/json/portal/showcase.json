@@ -1,0 +1,150 @@
+{
+    "name": "showcase配置文件",
+    "action": "portal/showcase",
+    "description": "showcase配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "type": "textarea",
+                "value": "",
+                "tip": "描述",
+                "rule": {
+                    "require": true
+                }
+            },
+            "item": {
+                "title": "showcase列表",
+                "type": "array",
+                "value": [
+                    {
+                        "title": "Kyocera  copier Toner chips for FS-C8500DN",
+                        "desc": "Toner chips for Kyocera FS-C8500DN Engineered and manufactured in Korea",
+                        "image": "//q.zvk9.com/345/2017/09/08/null_00001(7).jpg",
+                        "imageAlt": "",
+                        "link": "/Toner-Chips-for-Photo-Copiers/Kyocera-Mita/Kyocera-copier-Toner-chips-for-FS.html"
+                    },
+                    {
+                        "title": "XEROX  copier toner chips for DocuCentre-IV2056/2058",
+                        "desc": "Toner chips for XEROX DocuCentre-IV2056/2058 Engineered and manufactured in Korea",
+                        "image": "//q.zvk9.com/345/2017/04/25/芯片1.jpg",
+                        "imageAlt": "",
+                        "link": "/Toner-Chips-for-Photo-Copiers/Kyocera-Mita/XEROX-copier-toner-chips-for-DocuCentre.html"
+                    },
+                    {
+                        "title": "G-51(GPR-35/C-EXV33) waste toner box for Canon iR2520/2525/2530/2535/2535i iR2545/2545i iR ADVANCE 4025/4035/4045/4051 iR ADVANC",
+                        "desc": "G-51(GPR-35/C-EXV33) waste toner box for Canon iR2520/2525/2530/2535/2535i iR2545/2545i iR ADVANCE 4025/4035/4045/4051 iR ADVANCE 4225/4235/4245/4251",
+                        "image": "//q.zvk9.com/345/2017/09/11/G51_副本.png",
+                        "imageAlt": "",
+                        "link": "/Copier-Waste-Toner-Container/G-51-GPR-35-C-EXV33-WASTE-TONER-CONTAINER-FOR-iR2/G-51-GPR-35-C-EXV33.html"
+                    },
+                    {
+                        "title": "PN:302HN06080,  Pickup Roller for use in Kyocera TASKalfa 3010i,Kyocera TASKalfa 3050ci,Kyocera TASKalfa 3051ci,Kyocera TASKalfa",
+                        "desc": "PN:302HN06080,  Pickup Roller for use in Kyocera TASKalfa 3010i,Kyocera TASKalfa 3050ci,Kyocera TASKalfa 3051ci,Kyocera TASKalfa",
+                        "image": "//q.zvk9.com/345/2017/12/22/PN:302HN06080, For use in Pickup Roller Kyocera TASKalfa 3010i,Kyocera TASKalfa 3050ci,Kyocera TASKalfa 3051ci,Kyocera TASKalfa 3500i,Kyocera TASKalfa 3501i,Kyocera TASKalfa 3550ci,Kyocera TASKalfa 3551ci-151393881435.png",
+                        "imageAlt": "",
+                        "link": "/PAPER-PICKUP-ROLLER-KIT/Kyocera/PN-302HN06080-Pickup-Roller-for-use.html"
+                    },
+                    {
+                        "title": "Sharp MX-560HB Waste toner container for MX-M364N MX-M365N MX-M464N MX-M564N MX-M565N HP MFP S956dn",
+                        "desc": "MX-560HB Waste toner container for use in   Sharp MX-M364N/MX-M365N/MX-M464N/MX-M564N/MX-M565N/HP MFP S956dn",
+                        "image": "//q.zvk9.com/345/2017/09/11/MX560_副本.png",
+                        "imageAlt": "",
+                        "link": "/Copier-Waste-Toner-Container/MX-560HB-WASTE-TONER-CONTAINER-FOR-DP1520-1820/Sharp-MX-560HB-Waste-toner-container.html"
+                    },
+                    {
+                        "title": "MINOLTA copier toner chips for Bizhub-C451/550/650",
+                        "desc": "Toner chips for KONICA MINOLTA Bizhub-C451/550/650 Engineered and manufactured in Korea",
+                        "image": "//q.zvk9.com/345/2017/04/25/芯片5.jpg",
+                        "imageAlt": "",
+                        "link": "/Toner-Chips-for-Photo-Copiers/KONICA-MINOLTA/MINOLTA-copier-toner-chips-for-Bizhub-29827.html"
+                    }
+                ],
+                "item": {
+                    "image": {
+                        "title": "image图片",
+                        "type": "image",
+                        "value": "",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "imageAlt": {
+                        "title": "image描述",
+                        "type": "image",
+                        "value": "",
+                        "tip": "图片描述",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "link": {
+                        "title": "链接",
+                        "type": "link",
+                        "value": "",
+                        "tip": "link",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "title": {
+                        "title": "标题",
+                        "type": "text",
+                        "value": "",
+                        "tip": "标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "desc": {
+                        "title": "描述",
+                        "type": "textarea",
+                        "value": "",
+                        "tip": "描述",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

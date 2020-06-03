@@ -1,0 +1,461 @@
+{
+    "name": "首页配置文件",
+    "action": "portal/home",
+    "description": "首页模板文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            }
+        },
+        "widgets": {
+            "carousel": {
+                "title": "轮播图组件",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "轮播图组件",
+                        "value": [
+                            {
+                                "title": "1",
+                                "image": "https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3892521478,1695688217&fm=26&gp=0.jpg"
+                            },
+                            
+                            {
+                                "title": "2",
+                                "image": "https://q.zvk9.com/25060/2019/09/27/banner.jpg"
+                            }
+                        ],
+                        
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "图片alt",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "轮播图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "轮播图片"
+                            }
+                        },
+                        "tip": "这是轮播图组件",
+                        "maxNumber": 5,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "special": {
+                "title": "公司特色",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "eg:WHY CHOOSE US",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "",
+                        "value": [
+                            {
+                                "image": "https://q.zvk9.com/25060/2019/08/05/1.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/3D-Drawing.html"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/05/2.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Cost-Analysis.html"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/05/3.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Prototyping.html"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/05/4.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Tooling.html"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/05/5.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Mass-Manufacturing.html"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/05/6.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/QC.html"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            
+                            "image": {
+                                "title": "图标",
+                                "value": "",
+                                "type": "icon",
+                                "tip": "建议30x30 格式为png",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "链接"
+                            }
+                        }
+                    }
+                }
+            },
+            "hotProduct": {
+                "title": "",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "HOT",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "subtitle": {
+                        "title": "标题",
+                        "value": "PRODUCTs",
+                        "type": "text",
+                        "tip": "请输入标题",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "HOT",
+                        "value": [
+                            {
+                                "image": "https://q.zvk9.com/25060/2019/06/22/The_Baby_s_crib_the_Best_Double_Baby_Play_Yards_for_Growing_Families_156119142990.png_thumb_262x262.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/3D-Drawing.html",
+                                "desc": "Roin Bibendum Nibhsds Nuncsdsd Fermdada"
+                            },
+                            {
+                                "image": "https://q.zvk9.com/25060/2019/10/12/Multi_function_Plastic_Roto_molded_Insulted_MAGIC_COOLER_BOX_with_Dual_Open_Removable_Lid_Design_Beer_Picnic_Outdoor_Usage_157086404645.png_thumb_262x262.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Cost-Analysis.html",
+                                "desc": "Roin Bibendum Nibhsds Nuncsdsd Fermdada"
+                            },
+                            {
+                                "image": "https://q.zvk9.com/25060/2019/06/22/Two_Fisted_Drinker_Ultimate_Beer_Mug_156118869536.png_thumb_262x262.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Prototyping.html",
+                                "desc": "Roin Bibendum Nibhsds Nuncsdsd Fermdada"
+                            },
+                            {
+                                "image": "https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3892521478,1695688217&fm=26&gp=0.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Tooling.html",
+                                "desc": "Roin Bibendum Nibhsds Nuncsdsd Fermdada"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {      
+                                           
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "建议1:1的图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "请输入描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "建议最少四组数据",
+                        "maxNumber": 8,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },      
+            "about": {
+                "title": "关于我们",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "ABOUT US",
+                        "type": "text",
+                        "tip": "eg:ABOUT US",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "",
+                        "value": [
+                            { 
+                                "date": "dsfjiffdsafddasfgudasyfgydasufgdasyufasdhfuksfjiffdsafddasfgudasyfgydasufgdasyufasdhfukshdfisugsfjiffdsafddasfgudasyfgydasufgdasyufasdhfukshdfisugsfjiffdsafddasfgudasyfgydasufgdasyufasdhfukshdfisugsfjiffdsafddasfgudasyfgydasufgdasyufasdhfukshdfisugsfjiffdsafddasfgudasyfgydasufgdasyufasdhfukshdfisugsfjiffdsafddasfgudasyfgydasufgdasyufasdhfukshdfisugshdfisugy",
+                                "btn": "Read More",
+                                "link":"http://www.baidu.com"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "date": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "btn": {
+                                "title": "",
+                                "value": "",
+                                "type": "text",
+                                "tip": "按钮",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "news": {
+                "title": "news",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "RECENT",
+                        "type": "text",
+                        "tip": "eg:RECENT",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "subtitle": {
+                        "title": "标题",
+                        "value": "NEWS",
+                        "type": "text",
+                        "tip": "eg:NEWS",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "news-列表",
+                        "value": [
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/07/_P641MHI_YVQ4O83_L4.png_thumb_262x135.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/3D-Drawing.html",
+                                "date": "Aug 07,2019",
+                                "title": "UV Light Development",
+                                "desc": "A white light with UV light, from idea to product journey!",
+                                "btn": "Read More"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/08/_3RA8JPWI0IQ6_AYP9X3MG6.png_thumb_262x135.jpg",
+                                "link": "https://www.ideasupplier.com/Flow-Description/Cost-Analysis.html",
+                                "date": "Aug 08,2019",
+                                "title": "PRX Squat Rack",
+                                "desc": "PRX Squat Rack",
+                                "btn": "Read More"
+                            },
+                            {
+                                "image": "//q.zvk9.com/25060/2019/08/08/63O6SM6RBGJWK_IF_WR.png_thumb_262x135.jpg",
+                                "link": "https://www.baidu.com",
+                                "date": "Aug 08,2019",
+                                "title": "ROMP and ROOST",
+                                "desc": "ROMP and ROOST",
+                                "btn": "Read More"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "date": {
+                                "title": "日期",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "日期",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "image": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "tip": "图片",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "btn": {
+                                "title": "",
+                                "value": "Read More",
+                                "type": "text",
+                                "tip": "",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "thank": {
+                "title": "thank",
+                "display": "1",
+                "vars": {
+                    "title": {
+                        "title": "标题",
+                        "value": "",
+                        "type": "text",
+                        "tip": "eg:thank",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "items": {
+                        "title": "",
+                        "value": [
+                            {
+                                "desc": "EXCELLENT MANUFACTURING &ENGINEERING CAPABILITY",
+                                "link":"1-STOP SOLUTION FOR NEW PRODUCT DEVELOPMENT"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请输入标题",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "tip": "描述",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "link": {
+                                "title": "链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": "请填入相应链接",
+                                "rule": {
+                                    "require": true
+                                }
+                            }
+                        },
+                        "tip": "这里需要三组数据",
+                        "maxNumber": 3,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

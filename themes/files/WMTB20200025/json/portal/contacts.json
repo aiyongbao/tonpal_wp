@@ -1,0 +1,64 @@
+{
+    "name": "contacts配置文件",
+    "action": "portal/contacts",
+    "description": "contacts配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "value": "CONTACT",
+                "type": "text",
+                "tip": "请填写标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "value": "We have been supplying spare parts & copier consumables to more than 600 importers in 77 countries who are professional distributors, wholesalers, and manufacturers of copier imaging supplies and machines. All the products are manufactured by a professional provider of All-In-One Solution for Copiers HK HAO YIN BAO GROUP CO.",
+                "type": "textarea",
+                "tip": "描述",
+                "rule": {
+                    "require": true
+                }
+            },
+            "img": {
+                "title": "大图",
+                "value": "http://demo.tonpal.com/WMTB20200014/assets/picture/main_banner_02.jpg",
+                "type": "image",
+                "tip": "请填写图片",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}
