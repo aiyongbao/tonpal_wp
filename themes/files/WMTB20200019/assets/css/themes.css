@@ -1,5 +1,5 @@
 .index_main .layout {
-    width: 1440px;
+    max-width: 1440px;
 }
 .web_footer .foot_bar .layout {
     display: flex;
