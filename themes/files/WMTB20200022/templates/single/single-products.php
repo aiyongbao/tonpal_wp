@@ -88,11 +88,6 @@ $sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
             align-items: center;
         }
 
-        .product-view .image-additional li a {
-            width: 65.75px;
-            height: 65.75px;
-        }
-
         @media only screen and (max-width: 950px) {
             .product-image {
                 width: 100%;
@@ -141,7 +136,7 @@ $sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
                             <div class="image-additional">
                                 <ul class="image-items">
                                     <?php foreach ($photosArray as $key => $item) { ?>
-                                        <li class="image-item">
+                                        <li class="image-item <?php if ($key == 0) echo 'current'; ?>">
                                             <a href='<?php echo ifEmptyText($item['url']) ?>' class='fancy-item' target="_blank" href="javascript:;">
                                                 <img src="<?php echo ifEmptyText($item['url']) ?>" alt="<?php echo ifEmptyText($item['alt']) ?>" />
                                             </a>
@@ -248,6 +243,28 @@ $sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
 </body>
 <?php get_footer() ?>
 <script type="text/javascript">
+    $(function() {
+        $(".owl-item .image-item").click(
+            function(e) {
+                console.log($(this));
+                
+                //移除active
+                $(".owl-item .image-item").removeClass("current");
+
+                //添加当前hover
+                $(this).addClass("current");
+
+                let image_url = $($(this).find("a")[0]).attr("href");
+                console.log(image_url);
+
+                //修改图片src为当前图片src
+                $(".product-intro .product-image img").attr("src",image_url);
+                
+                return false;
+            }
+        )
+    })
+
     $('.fancy-item').click(function() {
         var imgSrc = $(this).attr('_href');
         $('.certificate-fancy').attr('href', imgSrc);
