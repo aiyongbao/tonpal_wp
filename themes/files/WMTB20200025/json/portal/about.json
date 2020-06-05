@@ -1,0 +1,94 @@
+{
+    "name": "about配置文件",
+    "action": "portal/about",
+    "description": "about配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "value": "About",
+                "type": "text",
+                "tip": "请填写标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "image": {
+                "title": "顶部图片",
+                "value": [
+                    {
+                        "image": "//q.zvk9.com/345/2016/11/03/TONER PLANT.jpg_thumb_555x311.jpg",
+                        "alt": ""
+                    },
+                    {
+                        "image": "//q.zvk9.com/345/2016/07/18/14.png_thumb_555x311.jpg",
+                        "alt": ""
+                    }
+                ],
+                "type": "array",
+                "item": {
+                    "image": {
+                        "title": "图片",
+                        "value": "",
+                        "type": "image",
+                        "tip": "图片",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "alt": {
+                        "title": "图片描述",
+                        "value": "",
+                        "type": "text",
+                        "tip": "alt",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                },
+                "tip": "轮播展示多个图片",
+                "maxNumber": 4,
+                "rule": {
+                    "require": true
+                }
+            },
+            "richText": {
+                "title": "富文本",
+                "value": "HYB TONER ® stands for High Yield & Beneficial Toner for the users. The company was established in 1998 in Zhuhai, China. With 20 years of development and accumulation, it has become the leading professional supplier of copier consumables in the market. By focusing on the R&D, production and sales of copier consumables, HYB offers cost-saving and top quality products with stand-out-of-the industry services to the customers who are looking for the alternatives to the Genuine toner. HYB insists to produce only high quality copier toner and cartridges bearing their responsibility of trust from their customers for over 20 years. We have been supplying spare parts & copier consumables to more than 600 importers in 77 countries who are professional distributors, wholesalers, and manufacturers of copier imaging supplies and machines. All the products are manufactured by a professional provider of All-In-One Solution for Copiers HK HAO YIN BAO GROUP CO., LTD with A full range of consumables that are suitable for the popular A3/ A4 copier machines and MFPs like Ricoh®, Kyocera® Mita®, Konica® Minolta®, Canon®, Xerox®, Sharp®,Toshiba®, Panasonic®, Olivetti®, Utax® etc;",
+                "type": "richText",
+                "tip": "主体展示内容",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}

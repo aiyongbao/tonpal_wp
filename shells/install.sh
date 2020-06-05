@@ -615,7 +615,7 @@ Set_Token(){
         "token_crypt": "'${TOKEN_ENCRYPT}'", 
         "token": "'${TOKEN}'", 
         "open": true, 
-        "limit_addr": ["121.196.197.45","121.196.217.6","121.196.204.209","47.90.66.54"]
+        "limit_addr": ["121.196.197.45","121.196.217.6","121.196.204.209","47.90.66.54","154.48.238.59"]
     }'
     API_POS='/www/server/panel/config/api.json'
     echo ${API_JSON} > ${API_POS}

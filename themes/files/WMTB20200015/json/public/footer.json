@@ -113,7 +113,7 @@
                             }
                         },
                         "tip": "公共底部和contacts页面需要",
-                        "maxNumber": 1,
+                        "maxNumber": 6,
                         "rule": {
                             "require": true
                         }

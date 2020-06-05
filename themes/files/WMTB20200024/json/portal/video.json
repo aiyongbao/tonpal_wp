@@ -1,0 +1,114 @@
+{
+    "name": "video配置文件",
+    "action": "portal/video",
+    "description": "video配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "seoTitle": {
+                "title": "seo title",
+                "value": "",
+                "type": "text",
+                "tip": "title",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoDescription": {
+                "title": "seo Description",
+                "value": "",
+                "type": "text",
+                "tip": "Description",
+                "rule": {
+                    "require": true
+                }
+            },
+            "seoKeywords": {
+                "title": "seo Keywords",
+                "value": "",
+                "type": "text",
+                "tip": "Keywords",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "标题",
+                "type": "text",
+                "value": "",
+                "tip": "标题",
+                "rule": {
+                    "require": true
+                }
+            },
+            "desc": {
+                "title": "描述",
+                "type": "text",
+                "value": "",
+                "tip": "描述"
+            },
+            "item": {
+                "title": "video列表",
+                "type": "array",
+                "value": [
+                    {
+                        "iframe":"<iframe src='http://player.youku.com/embed/XMzg1Njg0NTI0OA==' frameborder='0' allowfullscreen></iframe>",
+                        "title":"Boshi QQ3301 Hand Welding",
+                        "images":"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"
+                    },
+                    {
+                        "iframe":"//player.youku.com/embed/XMzg1Njg0NTI0OA==",
+                        "title":"Boshi QQ3301 Hand Welding",
+                        "images":"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"
+                    },
+                    {
+                        "iframe":"//player.youku.com/embed/XMzg1Njg0NTI0OA==",
+                        "title":"Boshi QQ3301 Hand Welding",
+                        "images":"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"
+                    },
+                    {
+                        "iframe":"//player.youku.com/embed/XMzg1Njg0NTI0OA==",
+                        "title":"Boshi QQ3301 Hand Welding",
+                        "images":"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"
+                    },
+                    {
+                        "iframe":"//player.youku.com/embed/XMzg1Njg0NTI0OA==",
+                        "title":"Boshi QQ3301 Hand Welding",
+                        "images":"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"
+                    },
+                    {
+                        "iframe":"//player.youku.com/embed/XMzg1Njg0NTI0OA==",
+                        "title":"Boshi QQ3301 Hand Welding",
+                        "images":"https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg"
+                    }
+                ],
+                "item": {
+                    "iframe": {
+                        "title": "iframe链接",
+                        "type": "text",
+                        "value": "",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "title": {
+                        "title": "描述",
+                        "type": "text",
+                        "value": "",
+                        "rule": {
+                            "require": true
+                        }
+                    },
+                    "images": {
+                        "title": "",
+                        "type": "",
+                        "value": "",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

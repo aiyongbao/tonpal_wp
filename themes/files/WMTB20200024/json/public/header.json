@@ -1,0 +1,254 @@
+{
+    "name": "header配置文件",
+    "action": "public/header",
+    "description": "header配置文件",
+    "order": 6.0,
+    "more": {
+        "vars": {
+            "facebookLink": {
+                "title": "facebook 链接",
+                "value": "//www.facebook.com/Seeway-industrial-limited-103234354382711/?modal=admin_todo_tour",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "twitterLink": {
+                "title": "twitter 链接",
+                "value": "https://twitter.com/sara45762295",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "youtubeLink": {
+                "title": "youtube 链接",
+                "value": "https://www.youtube.com/channel/UC5j-mzeCVEeHtxL-yW9ksQQ",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "linkedinLink": {
+                "title": "linkedin 链接",
+                "value": "https://www.linkedin.cn/in/simon-xie-5197bb3b/",
+                "image": "q.zvk9.com/Model23/assets/images/so04.png",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "googleLink": {
+                "title": "google 链接",
+                "value": "https://www.youtube.com/channel/UC5j-mzeCVEeHtxL-yW9ksQQ/",
+                "image": "//q.zvk9.com/Model23/assets/images/so01.png",
+                "type": "text",
+                "tip": "未填写则隐藏"
+            },
+            "email": {
+                "title": "邮箱",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "邮箱信息",
+                        "value": [
+                            {
+                                "name": "header配置文件",
+                                "value": "sales1@seewayinc.com"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Email",
+                                "type": "text",
+                                "tip": "Email",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共底部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "phone": {
+                "title": "电话",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "电话信息",
+                        "value": [
+                            {
+                                "name": "header配置文件",
+                                "value": "0086-0592-5631692"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "name": {
+                                "title": "名称",
+                                "value": "Tel",
+                                "type": "text",
+                                "tip": "Tel",
+                                "rule": {
+                                    "require": true
+                                }
+                            },
+                            "value": {
+                                "title": "值",
+                                "value": "",
+                                "type": "text",
+                                "tip": "值"
+                            }
+                        },
+                        "tip": "公共头部和contacts页面需要",
+                        "maxNumber": 1,
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
+            },
+            "logo": {
+                "title": "logo",
+                "value": "https://q.zvk9.com/25060/2019/08/27/logo.png",
+                "type": "image",
+                "tip": "请选择logo",
+                "rule": {
+                    "require": true
+                }
+            },
+            "icon": {
+                "title": "icon",
+                "value": "",
+                "type": "image",
+                "tip": "建议50*50 png图片",
+                "rule": {
+                    "require": true
+                }
+            },
+            "title": {
+                "title": "公司名称",
+                "value": "",
+                "type": "text",
+                "tip": "请填写公司名称",
+                "rule": {
+                    "require": true
+                }
+            },
+            "key_word": {
+                "title": "SEO优化关键词",
+                "value": "",
+                "type": "text",
+                "tip": "需要优化特定的关键词"
+            },
+            "sideBarMenu": {
+                "title": "sidebarTip-menu",
+                "type": "text",
+                "value": "SIDEBAR MENU",
+                "tip": "eg:SIDEBAR MENU",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sideBarHotProduct": {
+                "title": "sidebarTip-hotProduct",
+                "type": "text",
+                "value": "HOT PRODUCT",
+                "tip": "eg:HOT PRODUCT",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sideBarTags": {
+                "title": "sidebarTip-tags",
+                "type": "text",
+                "value": "TAGS",
+                "tip": "eg:TAGS",
+                "rule": {
+                    "require": true
+                }
+            },
+            "downloadBtn": {
+                "title": "详情页的下载pdf按钮",
+                "type": "text",
+                "value": "Download instructions",
+                "tip": "eg:Download instructions",
+                "rule": {
+                    "require": true
+                }
+            
+            },
+            "inquiryBtn": {
+                "title": "详情页的信息按钮",
+                "type": "text",
+                "value": "Send Inquiry Now",
+                "tip": "eg:Send Inquiry Now",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessageTitle": {
+                "title": "询盘标题",
+                "type": "text",
+                "value": "LEAVE YOUR MESSAGES",
+                "tip": "eg:LEAVE YOUR MESSAGES",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessageBtn": {
+                "title": "询盘按钮",
+                "type": "text",
+                "value": "SEND MESSAGE",
+                "tip": "eg:SEND MESSAGE",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaName": {
+                "title": "询盘提示name",
+                "type": "text",
+                "value": "Name*",
+                "tip": "eg:name",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaEmail": {
+                "title": "询盘提示email",
+                "type": "text",
+                "value": "E-mail*",
+                "tip": "eg:email",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaPhone": {
+                "title": "询盘提示phone",
+                "type": "text",
+                "value": "Phone",
+                "tip": "eg:phone",
+                "rule": {
+                    "require": true
+                }
+            },
+            "sendMessagePlaContent": {
+                "title": "询盘提示content",
+                "type": "text",
+                "value": "Message*",
+                "tip": "eg:message",
+                "rule": {
+                    "require": true
+                }
+            }
+        }
+    }
+}
+
+
+
