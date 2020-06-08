@@ -447,7 +447,7 @@ a{-webkit-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;tra
 .side-cate li li li{font-size: 12px;}
 .side-cate li a:hover,.side-cate li.active>a{color: #3190ff;}
 .side-cate li a:hover:before,.side-cate li.active>a:before{background-color: #3190ff;}
-.side-cate li .icon-cate {position:absolute;right:0;top:7px;display: inline-block;width: 20px;height: 20px;line-height:22px;overflow: hidden;text-align: center;font-size:10px;cursor:pointer;color:#000;border-radius: 0%;-webkit-transition: all .2s ease;-o-transition: all .2s ease;transition: all .2s ease;}
+.side-cate li .icon-cate {position:absolute;right:0;top: 50%;transform: translateY(-50%);display: inline-block;width: 20px;height: 20px;line-height:22px;overflow: hidden;text-align: center;font-size:10px;cursor:pointer;color:#000;border-radius: 0%;-webkit-transition: all .2s ease;-o-transition: all .2s ease;transition: all .2s ease;}
 .side-cate li .icon-cate:before{padding-left: 1px;padding-right: 1px;}
 .side-cate li .icon-cate.icon-cate-down:before {content:'\f04b';}
 .side-cate li .icon-cate.icon-cate-up:before{content:'\f04b';}

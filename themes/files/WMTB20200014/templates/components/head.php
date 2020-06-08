@@ -1,5 +1,5 @@
 <?php
-$theme_vars_header = json_config_array('header','vars',1);
+$theme_vars_header = json_config_array('header', 'vars', 1);
 $icon = ifEmptyText($theme_vars_header['icon']['value']);
 $googleId = get_option('google_id');
 ?>
@@ -14,11 +14,17 @@ $googleId = get_option('google_id');
     <link rel="shortcut icon" href="<?php echo $icon; ?>" />
 <?php } ?>
 
-<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/style.css">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/css/style.css">
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php echo get_template_directory_uri()?>/assets/css/themes.css">
-    <link href="//q.zvk9.com/plugins/tinymce.20170727.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/css/themes.css">
+<link href="//q.zvk9.com/plugins/tinymce.20170727.css" rel="stylesheet">
 <?php get_href_lang($cat); ?>
-<?php if( ifEmptyText($googleId) !== '') {
+<?php if (ifEmptyText($googleId) !== '') {
     echo $googleId;
-}?>
+} ?>
+
+<style>
+    strong {
+        font-weight: unset;
+    }
+</style>
