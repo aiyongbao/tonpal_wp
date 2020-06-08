@@ -131,7 +131,7 @@ wp_reset_query(); // 重置query 防止影响其他query查询
                 </div>
                 <div class="items_list">
                     <?php if(ifEmptyArray($product_posts_items) !== []){ ?>
-                        <ul style="display: flex;">
+                        <ul style="display: flex;justify-content: flex-start;">
                             <?php
                             foreach( $product_posts_items as $key => $item ){
                                 $thumbnail = get_post_meta($item->ID,'thumbnail',true);
