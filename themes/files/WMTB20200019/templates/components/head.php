@@ -22,3 +22,9 @@ $googleId = get_option('google_id');
 <?php if( ifEmptyText($googleId) !== '') {
     echo $googleId;
 }?>
+
+<style>
+    strong{
+        font-weight: unset;
+    }
+</style>
