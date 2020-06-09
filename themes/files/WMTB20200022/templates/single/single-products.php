@@ -246,8 +246,7 @@ $sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
     $(function() {
         $(".owl-item .image-item").click(
             function(e) {
-                console.log($(this));
-                
+       
                 //移除active
                 $(".owl-item .image-item").removeClass("current");
 
@@ -255,7 +254,8 @@ $sub_title = ifEmptyText(get_post_meta(get_post()->ID, 'sub_title', true));
                 $(this).addClass("current");
 
                 let image_url = $($(this).find("a")[0]).attr("href");
-                console.log(image_url);
+ 
+                $(".product-intro .product-image .certificate-fancy").attr("href",image_url);
 
                 //修改图片src为当前图片src
                 $(".product-intro .product-image img").attr("src",image_url);
