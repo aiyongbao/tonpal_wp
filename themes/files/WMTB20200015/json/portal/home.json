@@ -316,30 +316,7 @@
                     "items": {
                         "title": "特色产品",
                         "value": [
-                            {
-                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd01.jpg",
-                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
-                            },
-                            {
-                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd02.jpg",
-                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
-                            },
-                            {
-                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd03.jpg",
-                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
-                            },
-                            {
-                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd01.jpg",
-                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
-                            },
-                            {
-                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd02.jpg",
-                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
-                            },
-                            {
-                                "image":"/wp-content/themes/WMTB20200015/assets/picture/index_pd03.jpg",
-                                "desc":"Phasellus et semper sapien. Sed pulvinar a dolor imperdiet iaculis. Fusce interdum arcu volutpat, mattis urna eu, placerat elit. Proin posuere ut ipsum ac ullamcorper"
-                            }
+                            
                         ],
                         "type": "array",
                         "item": {
@@ -368,8 +345,8 @@
                                 "tip": "请输入产品详情链接"
                             }
                         },
-                        "tip": "这里需要三组数据",
-                        "maxNumber": 3,
+                        "tip": "这里需要六组数据",
+                        "maxNumber": 6,
                         "rule": {
                             "require": true
                         }
