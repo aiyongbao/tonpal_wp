@@ -25,6 +25,6 @@ $googleId = get_option('google_id');
 
 <style>
     strong{
-        font-weight: unset;
+        font-weight: bold;
     }
 </style>
