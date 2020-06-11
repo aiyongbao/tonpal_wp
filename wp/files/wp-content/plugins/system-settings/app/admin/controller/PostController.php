@@ -99,6 +99,16 @@ class PostController extends RestController
             'show_in_rest'    => true, // Show in the WP REST API response. Default: false.
         ));
 
+        add_filter("rest_pre_insert_{$this->post_type}", function($prepared_post, $request){
+
+            if(empty($request['status'])){
+                $prepared_post->post_status = 'publish';
+            }
+
+            return $prepared_post;
+
+        },10,2);
+
         add_action("rest_after_insert_{$this->post_type}", function ($post, $request, $bool) {
 
            
