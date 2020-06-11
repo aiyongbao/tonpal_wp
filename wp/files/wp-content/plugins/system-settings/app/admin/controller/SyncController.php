@@ -270,7 +270,7 @@ class syncController extends RestController
                     'post_title'       => $value['title'],
                     'post_name'        => $value['slug'],
                     'post_content'     => is_array($value['content']) ? json_encode($value['content']) : $value['content'],
-                    'post_status'      => $value['status'],
+                    'post_status'      => empty($value['status']) ? 'publish' : $value['status'],
                     'post_excerpt'     => $value['excerpt'],
                     'post_date' => empty($value['date']) ? '' : $value['date'],
                     'post_date_gmt' => empty($value['date_gmt']) ? '' : $value['date_gmt'],
