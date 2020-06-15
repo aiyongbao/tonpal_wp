@@ -54,6 +54,12 @@
                     }
                 },
                 "tip": " 默认不显示， 但点击图标时，则会展示其所有的信息"
+            },
+            "go_top_icon": {
+                "title": "回顶部图标",
+                "value": "/wp-content/themes/WMTB20200019/assets/images/title_ico.png",
+                "type": "image",
+                "tip": "建议40*40"
             }
         },
         "widgets": {
