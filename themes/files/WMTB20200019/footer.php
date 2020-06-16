@@ -1,14 +1,18 @@
 <?php
 // header.json
-$theme_vars_header = json_config_array('header','vars',1);
+$theme_vars_header = json_config_array('header', 'vars', 1);
 $languagesArray = ifEmptyArray(get_query_var('languagesArray'));
 $search_tip = ifEmptyText($theme_vars_header['searchTip']['value']);
 $search_slogan = ifEmptyText($theme_vars_header['searchSlogan']['value']);
+
+$theme_widgets = json_config_array('footer', 'widgets', 1);
+$customer = ifEmptyArray($theme_widgets['customer']);
+
 ?>
 <div class="web-search"> <b id="btn-search-close" class="btn--search-close"></b>
     <div style=" width:100%">
         <div class="head-search">
-            <form id="search" action="<?php echo get_lang_home_url(); ?>" target="_blank" >
+            <form id="search" action="<?php echo get_lang_home_url(); ?>" target="_blank">
                 <input class="search-ipt" name="s" id="s" placeholder="<?php echo $search_tip; ?>" />
                 <input class="search-btn" type="button" />
                 <span class="search-attr"><?php echo $search_slogan; ?></span>
@@ -16,54 +20,125 @@ $search_slogan = ifEmptyText($theme_vars_header['searchSlogan']['value']);
         </div>
     </div>
 </div>
-<?php if ( !empty($languagesArray)) { ?>
+<?php if (!empty($languagesArray)) { ?>
     <ul class="prisna-wp-translate-seo" id="prisna-translator-seo">
         <li class="language-flag language-flag-en"><a title="English" href="/"><span>English</span></a></li>
         <?php foreach ($languagesArray as $item) { ?>
             <li class="language-flag language-flag-<?php echo ifEmptyText($item['abbr']); ?>">
-                <a data-language="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"  value="<?php echo ifEmptyText($item['abbr']) ?>" href="<?php echo ifEmptyText($item['link'],'javascript:;') ?>"><?php echo ifEmptyText($item['name']) ?></a>
+                <a data-language="<?php echo ifEmptyText($item['link'], 'javascript:;') ?>" value="<?php echo ifEmptyText($item['abbr']) ?>" href="<?php echo ifEmptyText($item['link'], 'javascript:;') ?>"><?php echo ifEmptyText($item['name']) ?></a>
             </li>
         <?php } ?>
     </ul>
 <?php } ?>
-<script src="<?php echo get_template_directory_uri()?>/assets/js/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery.min.js"></script>
 <script src="//q.zvk9.com/Model15/assets/js/jquery.validate.min.js"></script>
-<script src="<?php echo get_template_directory_uri()?>/assets/js/common.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js"></script>
 <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=58cb62ef8263e70012464e1a&product=inline-share-buttons"></script>
 
 <script>
-    $(function () {
+    $(function() {
+
+        <?php
+        if ($customer['display'] == 1) {
+        ?>
+
+            var kf_template = `<div style="position: fixed;z-index:99999;bottom:180px;right:20px">
+    <div id="kefu-icon" onclick="showPanel()" style="width: 55px;height: 55px;line-height: 50px;text-align: center;border-radius: 50%;background:#c4c7cc;box-shadow: -1px 2px 10px 2px #c4c7cc;">
+        <img src="https://t1.picb.cc/uploads/2020/06/12/ti6FWi.png" alt="" style="width: 25px;">
+    </div>
+
+    <div id="kefu-panel" style="display:none;background:#c4c7cc;width:200px;padding: 15px 20px;border-radius: 15px;">
+        {$kefu-panel}
+        <div onclick="closePanel()" style="position: absolute;right: 10px;bottom: -30px;width: 20px;height: 20px;">
+            <div style="width: 20px;height: 2px;background-color: #999;transform: rotate(45deg);position: absolute;right: 0;bottom:9px"></div>
+            <div style="width: 20px;height: 2px;background-color: #999;transform: rotate(-45deg);position: absolute;right: 0;bottom:9px"></div>
+        </div>
+    </div>
+</div>`;
+
+            var data = JSON.parse(`<?php echo json_encode($customer['vars']['items']['value']) ?>`)
+            var kefu_panel = `<div onclick="window.open('$link','_blank');" style="background:#0595c7;padding: 5px 10px;border-radius: 10px;font-size: 18px;$margin">
+            <img style="width: 20px;vertical-align: middle;" src="$icon" alt="">
+            <span style="vertical-align: middle;margin-left: 10px;color: #fff;">$name</span>
+        </div>`
+
+            var kefu_item = ''
+
+            for (let i = 0; i < data.length; i++) {
+                const element = data[i];
+
+                var result_map = {
+                    "$icon": element['icon'],
+                    "$name": element['name'],
+                    "$link": element['link'],
+                    "$margin": "margin-bottom:15px"
+                }
+
+                if (i == data.length - 1) {
+                    result_map['$margin'] = '';
+                }
+
+                var tem_html = kefu_panel.replace(/(\$icon)|(\$name)|(\$link)|(\$margin)/g, reg => (result_map[reg]));
+                kefu_item += tem_html
+            }
+
+            kf_template = kf_template.replace('{$kefu-panel}', kefu_item)
+
+            $("body").append(kf_template);
+        <?php } ?>
         $('#contact-form').length > 0 &&
-        $('#contact-form').validate({
-            submitHandler: function(e) {
-                $('#customer_submit_button')
-                    .prop({ disabled: !0, value: 'Loading...' })
-                    .addClass('disabled btn-success');
-                var i = {};
-                (i.post_name =
-                    void 0 === e.product_title.value
-                        ? ''
-                        : e.product_title.value),
+            $('#contact-form').validate({
+                submitHandler: function(e) {
+                    $('#customer_submit_button')
+                        .prop({
+                            disabled: !0,
+                            value: 'Loading...'
+                        })
+                        .addClass('disabled btn-success');
+                    var i = {};
+                    (i.post_name =
+                        void 0 === e.product_title.value ?
+                        '' :
+                        e.product_title.value),
                     (i.name = e.name.value),
                     (i.email = e.email.value),
                     (i.phone = e.phone.value),
                     (i.message = e.message.value),
-                    location.href.indexOf('?') > -1
-                        ? (i.reference = location.href.split('?')[0])
-                        : (i.reference = location.href),
-                    $.ajax({
-                        url: '/wp-json/portal/v1/inquiry',
-                        type:'POST',
-                        data: i,
-                        success: function(e) {
-                            $('#MessageSent').removeClass('hidden'),
-                                $('#MessageNotSent').addClass('hidden'),
-                                $('#customer_submit_button')
+                    location.href.indexOf('?') > -1 ?
+                        (i.reference = location.href.split('?')[0]) :
+                        (i.reference = location.href),
+                        $.ajax({
+                            url: '/wp-json/portal/v1/inquiry',
+                            type: 'POST',
+                            data: i,
+                            success: function(e) {
+                                $('#MessageSent').removeClass('hidden'),
+                                    $('#MessageNotSent').addClass('hidden'),
+                                    $('#customer_submit_button')
                                     .addClass('btn-success')
                                     .prop('value', 'Message Sent'),
-                                setTimeout(function() {
+                                    setTimeout(function() {
+                                        $('#MessageSent').addClass('hidden'),
+                                            $('#customer_submit_button')
+                                            .removeClass(
+                                                'disabled btn-success'
+                                            )
+                                            .prop({
+                                                disabled: !1,
+                                                value: 'Send Message'
+                                            });
+                                        $('#name').val('');
+                                        $('#phone').val('');
+                                        $('#email').val('');
+                                        $('#message').val('');
+                                    }, 2e3);
+                            },
+                            error: function(e, i, t) {
+                                $('#MessageNotSent').removeClass('hidden'),
                                     $('#MessageSent').addClass('hidden'),
-                                        $('#customer_submit_button')
+                                    setTimeout(function() {
+                                        $('#MessageNotSent').addClass('hidden'),
+                                            $('#customer_submit_button')
                                             .removeClass(
                                                 'disabled btn-success'
                                             )
@@ -71,64 +146,65 @@ $search_slogan = ifEmptyText($theme_vars_header['searchSlogan']['value']);
                                                 disabled: !1,
                                                 value: 'Send Message'
                                             });
-                                    $('#name').val('');
-                                    $('#phone').val('');
-                                    $('#email').val('');
-                                    $('#message').val('');
-                                }, 2e3);
-                        },
-                        error: function(e, i, t) {
-                            $('#MessageNotSent').removeClass('hidden'),
-                                $('#MessageSent').addClass('hidden'),
-                                setTimeout(function() {
-                                    $('#MessageNotSent').addClass('hidden'),
-                                        $('#customer_submit_button')
-                                            .removeClass(
-                                                'disabled btn-success'
-                                            )
-                                            .prop({
-                                                disabled: !1,
-                                                value: 'Send Message'
-                                            });
-                                }, 2e3);
-                        }
-                    });
-            },
-            errorPlacement: function(e, i) {
-                i.after(e);
-            },
-            onkeyup: !1,
-            onclick: !1,
-            rules: {
-                name: { required: !0, minlength: 2 },
-                email: { required: !0, email: !0 },
-                subject: { required: !0 },
-                message: { required: !0, minlength: 10 }
-            },
-            messages: {
-                name: {
-                    required: 'Please specify your name',
-                    minlength: 'Your name must be longer than 2 characters'
+                                    }, 2e3);
+                            }
+                        });
                 },
-                email: {
-                    required: 'We need your email address to contact you',
-                    email:
-                        'Please enter a valid email address e.g. name@domain.com'
+                errorPlacement: function(e, i) {
+                    i.after(e);
                 },
-                subject: { required: 'Please enter a subject' },
-                message: {
-                    required: 'Please enter a message',
-                    minlength:
-                        'Your message must be longer than 10 characters'
-                }
-            },
-            errorElement: 'span',
-            highlight: function(e) {},
-            success: function(e) {}
-        });
+                onkeyup: !1,
+                onclick: !1,
+                rules: {
+                    name: {
+                        required: !0,
+                        minlength: 2
+                    },
+                    email: {
+                        required: !0,
+                        email: !0
+                    },
+                    subject: {
+                        required: !0
+                    },
+                    message: {
+                        required: !0,
+                        minlength: 10
+                    }
+                },
+                messages: {
+                    name: {
+                        required: 'Please specify your name',
+                        minlength: 'Your name must be longer than 2 characters'
+                    },
+                    email: {
+                        required: 'We need your email address to contact you',
+                        email: 'Please enter a valid email address e.g. name@domain.com'
+                    },
+                    subject: {
+                        required: 'Please enter a subject'
+                    },
+                    message: {
+                        required: 'Please enter a message',
+                        minlength: 'Your message must be longer than 10 characters'
+                    }
+                },
+                errorElement: 'span',
+                highlight: function(e) {},
+                success: function(e) {}
+            });
         $('#link-item>div').click(() => {
             $('#link-item ul li').toggle('500');
         })
     })
-</script>
 
+    function showPanel() {
+        $("#kefu-icon").hide()
+        $("#kefu-panel").show()
+    }
+
+    function closePanel() {
+        $("#kefu-icon").show()
+        $("#kefu-panel").hide()
+    }
+</script>
