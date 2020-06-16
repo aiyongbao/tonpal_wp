@@ -230,6 +230,41 @@
                         }
                     }
                 }
+            },
+            "customer": {
+                "title": "客服系统",
+                "display": "1",
+                "vars": {
+                    "items": {
+                        "title": "客服系统",
+                        "value": [],
+                        "type": "array",
+                        "item": {
+                            "icon": {
+                                "title": "平台图标",
+                                "value": "",
+                                "type": "image",
+                                "tip": "平台图标"
+                            },
+                            "name": {
+                                "title": "平台名称",
+                                "value": "",
+                                "type": "text",
+                                "tip": ""
+                            },
+                            "link":{
+                                "title": "平台跳转链接",
+                                "value": "",
+                                "type": "text",
+                                "tip": ""
+                            }
+                        },
+                        "tip": "请填写客服系统相关信息！",
+                        "rule": {
+                            "require": true
+                        }
+                    }
+                }
             }
         }
     }
