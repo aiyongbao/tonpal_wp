@@ -522,7 +522,7 @@ display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertica
 .product-view .swiper-button-next,.product-view .swiper-container-rtl .swiper-button-prev {left:100%;margin-left: 0px;}
 /*product summary*/
 .product-summary {position:relative;width:54%;max-width: 720px;float:left;padding:0 0 10px 40px;}
-.product-summary .page_title{font-size: 26px;text-transform: uppercase;text-decoration: underline;font-weight: normal; margin-bottom: 10px;}
+.product-summary .page_title{font-size: 26px;text-decoration: underline;font-weight: normal; margin-bottom: 10px;}
 .product-summary .product-meta {line-height:25px;font-size: 16px;line-height: 1.8;}
 .product-summary .product-meta h3 {margin:0 0 10px;font-size:18px;font-weight: normal;color: #aaa;}
 .product-summary .product-meta p{font-size: 17px;}
